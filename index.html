@@ -118,20 +118,20 @@ body {
     </div>
 
     <!-- 11대 공정 흐름 밸류체인 필터 탭 -->
-    <div class="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1.5 custom-scroll" id="sectorTabContainer"></div>
+    <div class="mt-3.5 flex items-center gap-2 overflow-x-auto pb-1.5 custom-scroll" id="sectorTabContainer"></div>
 </header>
 
 <!-- 메인 2분할 워크스페이스 -->
-<main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 pb-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+<main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 pb-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
 
     <!-- 좌측 메인 영역 (8칸): 선택 종목 기업 심층 브리핑 + 11대 밸류체인 히트맵 -->
-    <section class="lg:col-span-8 space-y-4">
+    <section class="lg:col-span-8 space-y-5">
 
         <!-- 1. 선택 종목 기업 심층 브리핑 & 월가 애널리스트 컨센서스 -->
         <div class="pcb-panel p-5 border-cyan-500/30">
-            <div class="flex flex-wrap justify-between items-start gap-3 pb-3.5 border-b border-slate-800">
+            <div class="flex flex-wrap justify-between items-center gap-4 pb-4 border-b border-slate-800">
                 <div>
-                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                    <div class="flex flex-wrap items-center gap-2 mb-1.5">
                         <span id="inspectorSectorBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">03. AI 가속기 · GPU</span>
                         <span id="inspectorEarnBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">🟢 Beat +9.5%</span>
                     </div>
@@ -139,17 +139,17 @@ body {
                 </div>
 
                 <!-- 현재가 (원화 + 현지통화) 및 월가 애널리스트 컨센서스 -->
-                <div class="flex flex-wrap items-center gap-3">
+                <div class="flex flex-wrap items-center gap-3.5">
                     <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl px-3.5 py-2 text-right">
                         <div class="text-[10px] font-bold text-slate-400">월가 애널리스트 컨센서스</div>
-                        <div class="flex items-center gap-2 mt-0.5">
+                        <div class="flex items-center justify-end gap-2 mt-0.5">
                             <span id="inspectorRating" class="text-xs font-black text-emerald-400">Strong Buy (강력 매수)</span>
                             <span id="inspectorTargetUpside" class="text-[11px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">목표가 +21.4%</span>
                         </div>
                     </div>
-                    <div class="text-right">
+                    <div class="text-right min-w-[110px]">
                         <div id="inspectorPricePrimary" class="text-lg sm:text-xl font-black text-white leading-tight">₩204,786</div>
-                        <div class="text-xs font-bold text-slate-400">
+                        <div class="text-xs font-bold text-slate-400 mt-0.5">
                             <span id="inspectorPriceSecondary">$146.80</span>
                             <span class="mx-1">·</span>
                             <span id="inspectorChg" class="text-emerald-400">+3.42%</span>
@@ -158,54 +158,62 @@ body {
                 </div>
             </div>
 
-            <!-- 4단 핵심 기업 분석 카드 (사업 · 모멘텀 · 공급망 · 주요 라이벌) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3.5">
-                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-3.5">
-                    <div class="text-[11px] font-black text-cyan-300 mb-1.5 flex items-center gap-1">
-                        <span>🏢</span> 핵심 사업 및 밸류체인 지위
+            <!-- 4단 핵심 기업 분석 카드 (균일한 높이 및 간격 정렬) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 mt-4 items-stretch">
+                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-4 flex flex-col justify-start">
+                    <div>
+                        <div class="text-[11px] font-black text-cyan-300 mb-1.5 flex items-center gap-1.5">
+                            <span>🏢</span> 핵심 사업 및 밸류체인 지위
+                        </div>
+                        <p id="inspectorBizDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                            AI 데이터센터 학습·추론용 GPU 시장 점유율 85% 이상을 장악한 절대 강자입니다. 하드웨어(Blackwell·Rubin)와 독점 소프트웨어 생태계(CUDA)의 결합으로 강력한 해자를 구축했습니다.
+                        </p>
                     </div>
-                    <p id="inspectorBizDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
-                        AI 데이터센터 학습·추론용 GPU 시장 점유율 85% 이상을 장악한 절대 강자입니다. 하드웨어(Blackwell·Rubin)와 독점 소프트웨어 생태계(CUDA)의 결합으로 강력한 해자를 구축했습니다.
-                    </p>
                 </div>
 
-                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-3.5">
-                    <div class="text-[11px] font-black text-emerald-300 mb-1.5 flex items-center gap-1">
-                        <span>🚀</span> AI 사이클 핵심 모멘텀
+                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-4 flex flex-col justify-start">
+                    <div>
+                        <div class="text-[11px] font-black text-emerald-300 mb-1.5 flex items-center gap-1.5">
+                            <span>🚀</span> AI 사이클 핵심 모멘텀
+                        </div>
+                        <p id="inspectorMomentumDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                            글로벌 빅테크(MS·메타·구글·아마존)의 AI 설비투자(CapEx) 확대와 차세대 랙 스케일 시스템(GB200/GB300) 본격 출하로 데이터센터 매출 고성장이 이어지고 있습니다.
+                        </p>
                     </div>
-                    <p id="inspectorMomentumDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
-                        글로벌 빅테크(MS·메타·구글·아마존)의 AI 설비투자(CapEx) 확대와 차세대 랙 스케일 시스템(GB200/GB300) 본격 출하로 데이터센터 매출 고성장이 이어지고 있습니다.
-                    </p>
                 </div>
 
-                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-3.5">
-                    <div class="text-[11px] font-black text-amber-300 mb-1.5 flex items-center gap-1">
-                        <span>🔗</span> 연관 공급망 및 동조화 종목
+                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-4 flex flex-col justify-start">
+                    <div>
+                        <div class="text-[11px] font-black text-amber-300 mb-1.5 flex items-center gap-1.5">
+                            <span>🔗</span> 연관 공급망 및 동조화 종목
+                        </div>
+                        <p id="inspectorPeersDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                            TSMC(파운드리·CoWoS 패키징), SK하이닉스·마이크론(HBM3E 공급), 아스테라 랩스·크리도(서버 내 고속 연결), 어드반테스트(최종 테스트 장비)와 강하게 동조화됩니다.
+                        </p>
                     </div>
-                    <p id="inspectorPeersDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
-                        TSMC(파운드리·CoWoS 패키징), SK하이닉스·마이크론(HBM3E 공급), 아스테라 랩스·크리도(서버 내 고속 연결), 어드반테스트(최종 테스트 장비)와 강하게 동조화됩니다.
-                    </p>
                 </div>
 
-                <div class="bg-slate-900/75 border border-rose-500/25 rounded-xl p-3.5">
-                    <div class="text-[11px] font-black text-rose-300 mb-1.5 flex items-center gap-1">
-                        <span>⚔️</span> 주요 라이벌 및 경쟁 구도
+                <div class="bg-slate-900/75 border border-rose-500/25 rounded-xl p-4 flex flex-col justify-start">
+                    <div>
+                        <div class="text-[11px] font-black text-rose-300 mb-1.5 flex items-center gap-1.5">
+                            <span>⚔️</span> 주요 라이벌 및 경쟁 구도
+                        </div>
+                        <p id="inspectorRivalsDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                            AMD(Instinct MI300/MI350 GPU), 브로드컴·마벨(빅테크 자체 커스텀 ASIC 칩)과 AI 데이터센터 연산 점유율을 두고 치열하게 경쟁합니다.
+                        </p>
                     </div>
-                    <p id="inspectorRivalsDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
-                        AMD(Instinct MI300/MI350 GPU), 브로드컴·마벨(빅테크 자체 커스텀 ASIC 칩)과 AI 데이터센터 연산 점유율을 두고 치열하게 경쟁합니다.
-                    </p>
                 </div>
             </div>
         </div>
 
         <!-- 2. 11대 초세분화 밸류체인 히트맵 보드 -->
-        <div class="space-y-3">
+        <div class="space-y-3.5">
             <div class="flex flex-wrap justify-between items-center gap-2 px-1">
-                <div class="flex items-center gap-2">
+                <div class="flex flex-wrap items-center gap-2">
                     <h3 class="text-sm font-black text-white">🗺️ 11대 밸류체인 초세분화 히트맵</h3>
                     <span class="text-[11px] text-slate-400">종목 카드를 클릭하면 상단 기업 분석과 우측 실시간 속보가 해당 종목으로 즉시 전환됩니다</span>
                 </div>
-                <div class="flex items-center gap-1 text-[10px] font-bold">
+                <div class="flex items-center gap-1.5 text-[10px] font-bold">
                     <span class="px-2 py-0.5 rounded bg-rose-900/80 text-rose-200">-3%↓</span>
                     <span class="px-2 py-0.5 rounded bg-rose-950/80 text-rose-300">-1%</span>
                     <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">보합</span>
@@ -214,56 +222,56 @@ body {
                 </div>
             </div>
 
-            <div id="valueChainGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+            <div id="valueChainGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start"></div>
         </div>
     </section>
 
     <!-- 우측 고정 사이드바 (4칸): 실시간 반도체 속보 티커 & 공유 메모 -->
-    <aside class="lg:col-span-4 space-y-4 lg:sticky lg:top-4">
+    <aside class="lg:col-span-4 space-y-5 lg:sticky lg:top-4">
 
         <!-- 1. 실시간 반도체 속보 피드 -->
-        <div class="pcb-panel p-4 flex flex-col max-h-[680px]">
-            <div class="flex justify-between items-center pb-2.5 border-b border-slate-800">
-                <div>
+        <div class="pcb-panel p-4 sm:p-5 flex flex-col h-[700px]">
+            <div class="flex justify-between items-start gap-2 pb-3 border-b border-slate-800 shrink-0">
+                <div class="min-w-0">
                     <div class="flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse shrink-0"></span>
                         <h3 class="text-sm font-black text-white">실시간 반도체 속보</h3>
                     </div>
-                    <p class="text-[11px] text-cyan-300 font-bold mt-0.5" id="newsFilterLabel">엔비디아 (NVDA) 연관 실시간 속보</p>
+                    <p class="text-[11px] text-cyan-300 font-bold mt-1 truncate" id="newsFilterLabel">엔비디아 (NVDA) 연관 실시간 속보</p>
                 </div>
-                <button type="button" id="resetNewsFilterBtn" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded-lg font-bold transition cursor-pointer">
+                <button type="button" id="resetNewsFilterBtn" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1.5 rounded-lg font-bold transition shrink-0 cursor-pointer">
                     전체 보기
                 </button>
             </div>
 
             <!-- 주요 테마 빠른 필터 칩 -->
-            <div class="flex items-center gap-1.5 overflow-x-auto py-2.5 custom-scroll shrink-0">
-                <button type="button" data-news-q="AI semiconductor HBM NVIDIA" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 shrink-0 cursor-pointer">#전체반도체</button>
-                <button type="button" data-news-q="HBM SK하이닉스 삼성전자 마이크론 샌디스크" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#HBM·메모리</button>
-                <button type="button" data-news-q="TSMC 파운드리 인텔 삼성 파운드리" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#파운드리</button>
-                <button type="button" data-news-q="Astera Labs Lumentum Broadcom Marvell AI networking" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#AI네트워킹·광통신</button>
-                <button type="button" data-news-q="ASML Applied Materials Lam Research 한미반도체" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#반도체장비</button>
+            <div class="flex items-center gap-1.5 overflow-x-auto py-3 custom-scroll shrink-0">
+                <button type="button" data-news-q="AI 반도체 OR 엔비디아 OR HBM" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 shrink-0 cursor-pointer">#전체반도체</button>
+                <button type="button" data-news-q="HBM OR SK하이닉스 OR 삼성전자 OR 마이크론 OR 샌디스크" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#HBM·메모리</button>
+                <button type="button" data-news-q="TSMC OR 파운드리 OR 인텔 파운드리 OR 삼성 파운드리" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#파운드리</button>
+                <button type="button" data-news-q="아스테라 랩스 OR 루멘텀 OR 브로드컴 OR 마벨 OR AI 네트워킹" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#AI네트워킹·광통신</button>
+                <button type="button" data-news-q="ASML OR 어플라이드 머티어리얼즈 OR 램리서치 OR 한미반도체" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#반도체장비</button>
             </div>
 
             <!-- 실시간 기사 리스트 (클릭 시 원문 기사 새 창 열림) -->
-            <div id="newsFeedList" class="flex-1 overflow-y-auto space-y-2 pr-1 custom-scroll"></div>
+            <div id="newsFeedList" class="flex-1 overflow-y-auto space-y-2.5 pr-1 custom-scroll"></div>
         </div>
 
         <!-- 2. 실시간 공유 메모 보드 (Firebase 실시간 동기화) -->
-        <div class="pcb-panel p-4">
-            <div class="flex justify-between items-center mb-2.5">
+        <div class="pcb-panel p-4 sm:p-5">
+            <div class="flex justify-between items-center mb-3">
                 <h3 class="text-xs font-black text-white flex items-center gap-1.5">
                     <span>📌</span> 실시간 인사이트 공유 메모
                 </h3>
                 <span class="text-[10px] text-emerald-400 font-bold">접속자 실시간 연동</span>
             </div>
 
-            <form id="briefingForm" class="flex gap-1.5 mb-2.5">
+            <form id="briefingForm" class="flex gap-2 mb-3">
                 <input type="text" id="briefingInput" placeholder="예: 루멘텀 광통신 수주 증가, HBM4 일정 체크..." class="flex-1 text-xs bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-500">
-                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 text-xs font-black px-3 py-2 rounded-xl transition shrink-0 cursor-pointer">등록</button>
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 text-xs font-black px-3.5 py-2 rounded-xl transition shrink-0 cursor-pointer">등록</button>
             </form>
 
-            <div id="briefingList" class="space-y-1.5 max-h-48 overflow-y-auto pr-1 custom-scroll"></div>
+            <div id="briefingList" class="space-y-2 max-h-48 overflow-y-auto pr-1 custom-scroll"></div>
         </div>
     </aside>
 </main>
@@ -856,82 +864,79 @@ function selectStock(ticker, alsoFilterNews) {
 
     if (alsoFilterNews) {
         var cleanTicker = stock.ticker.split(".")[0];
-        var queryTerm = stock.ticker.indexOf(".") !== -1 ? (stock.name + " 반도체") : (stock.name + " " + cleanTicker + " semiconductor");
-        fetchRealtimeNews(queryTerm, stock.name + " (" + stock.ticker + ") 연관 실시간 속보");
+        var isNumTicker = /^\d+$/.test(cleanTicker);
+        var queryTerm = isNumTicker
+            ? ('"' + stock.name + '" 반도체')
+            : ('"' + stock.name + '" OR "' + cleanTicker + '" semiconductor');
+        fetchRealtimeNews(queryTerm, stock.name + " (" + stock.ticker + ") 연관 실시간 속보", stock);
     }
 }
 
-// 6. 11대 밸류체인 상단 필터 탭 렌더링
+// 6. 히트맵 등락률 색상 클래스
+function getHeatClass(chg) {
+    if (chg >= 3.0) return "heat-strong-up";
+    if (chg > 0.2) return "heat-up";
+    if (chg <= -3.0) return "heat-strong-down";
+    if (chg < -0.2) return "heat-down";
+    return "heat-flat";
+}
+
+// 7. 11대 공정 흐름 밸류체인 필터 탭 렌더링
 function renderSectorTabs() {
-    var box = document.getElementById("sectorTabContainer");
-    box.innerHTML = "";
+    var container = document.getElementById("sectorTabContainer");
+    container.innerHTML = "";
     SECTORS.forEach(function(sec) {
         var active = selectedSector === sec.id;
         var btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "text-[11px] font-extrabold px-3 py-1.5 rounded-xl border transition shrink-0 cursor-pointer " +
-            (active
-                ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-md shadow-cyan-500/20"
+        btn.className = "text-xs font-extrabold px-3.5 py-2 rounded-xl transition shrink-0 cursor-pointer border "
+            + (active
+                ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-lg shadow-cyan-500/20"
                 : "bg-slate-900/80 hover:bg-slate-800 text-slate-300 border-slate-800");
         btn.innerText = sec.short;
         btn.onclick = function() {
             selectedSector = sec.id;
             renderSectorTabs();
             renderValueChainGrid();
-            if (sec.id !== "all") {
-                var secNames = STOCKS.filter(function(s) {
-                    return s.sector === sec.id || (Array.isArray(s.multiSectors) && s.multiSectors.indexOf(sec.id) !== -1);
-                }).map(function(s) { return s.name; }).join(" OR ");
-                fetchRealtimeNews("(" + secNames + ") 반도체", sec.code + ". " + sec.name + " 섹터 속보");
-            } else {
-                fetchRealtimeNews("AI semiconductor HBM NVIDIA", "전체 11대 밸류체인 최신 속보");
-            }
         };
-        box.appendChild(btn);
+        container.appendChild(btn);
     });
 }
 
-function getHeatClass(chg) {
-    if (chg >= 3.0) return "heat-strong-up";
-    if (chg > 0.3) return "heat-up";
-    if (chg <= -2.5) return "heat-strong-down";
-    if (chg < -0.3) return "heat-down";
-    return "heat-flat";
-}
-
-// 7. 11대 초세분화 밸류체인 히트맵 렌더링
+// 8. 11대 초세분화 밸류체인 히트맵 그리드 렌더링
 function renderValueChainGrid() {
     var grid = document.getElementById("valueChainGrid");
     grid.innerHTML = "";
 
-    var visibleSectors = SECTORS.filter(function(s) {
-        return s.id !== "all" && (selectedSector === "all" || selectedSector === s.id);
+    var targetSectors = SECTORS.filter(function(s) {
+        if (s.id === "all") return false;
+        return selectedSector === "all" || s.id === selectedSector;
     });
 
-    visibleSectors.forEach(function(sec) {
+    targetSectors.forEach(function(sec) {
         var secStocks = STOCKS.filter(function(st) {
             return st.sector === sec.id || (Array.isArray(st.multiSectors) && st.multiSectors.indexOf(sec.id) !== -1);
         });
         if (secStocks.length === 0) return;
 
-        var avgChg = secStocks.reduce(function(acc, cur) { return acc + cur.chg; }, 0) / secStocks.length;
+        var avgChg = secStocks.reduce(function(sum, x) { return sum + x.chg; }, 0) / secStocks.length;
         var avgStr = (avgChg >= 0 ? "+" : "") + avgChg.toFixed(2) + "%";
-        var avgColor = avgChg > 0 ? "text-emerald-400" : (avgChg < 0 ? "text-rose-400" : "text-slate-400");
+        var avgColor = avgChg >= 0 ? "text-emerald-400" : "text-rose-400";
 
         var panel = document.createElement("div");
-        panel.className = "pcb-panel p-3.5 flex flex-col justify-between";
+        panel.className = "pcb-panel p-4 flex flex-col justify-start";
 
         var header = document.createElement("div");
-        header.className = "flex justify-between items-center mb-2.5 pb-2 border-b border-slate-800/80";
-        header.innerHTML = '<div class="flex items-center gap-1.5">'
-            + '<span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-slate-800 text-cyan-300">' + sec.code + '</span>'
-            + '<h4 class="text-xs sm:text-sm font-black text-white">' + sec.name + '</h4>'
+        header.className = "flex justify-between items-center mb-3 pb-2.5 border-b border-slate-800/80";
+        header.innerHTML = '<div class="flex items-center gap-2 min-w-0">'
+            + '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-slate-800 text-cyan-300 shrink-0">' + sec.code + '</span>'
+            + '<h4 class="text-xs sm:text-sm font-black text-white truncate">' + sec.name + '</h4>'
             + '</div>'
-            + '<span class="text-xs font-black ' + avgColor + '">섹터 ' + avgStr + '</span>';
+            + '<span class="text-xs font-black shrink-0 ml-2 ' + avgColor + '">섹터 ' + avgStr + '</span>';
         panel.appendChild(header);
 
         var tilesWrap = document.createElement("div");
-        tilesWrap.className = "grid grid-cols-2 gap-2";
+        tilesWrap.className = "grid grid-cols-1 sm:grid-cols-2 gap-2.5 content-start";
 
         secStocks.forEach(function(st) {
             var isSelected = st.ticker === selectedTicker;
@@ -945,43 +950,46 @@ function renderValueChainGrid() {
             var isCrossListed = st.sector !== sec.id;
 
             var tile = document.createElement("div");
-            tile.className = "pcb-tile rounded-xl p-2.5 border cursor-pointer flex flex-col justify-between gap-1.5 " + heatCls + (isSelected ? " ring-2 ring-cyan-400" : "");
+            tile.className = "pcb-tile rounded-xl p-3 border cursor-pointer flex flex-col justify-between gap-2 h-[126px] " + heatCls + (isSelected ? " ring-2 ring-cyan-400" : "");
 
             var crossTagHtml = isCrossListed
-                ? '<span class="ml-1 text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-200 border border-cyan-400/30">겸업</span>'
+                ? '<span class="ml-1.5 text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-200 border border-cyan-400/30 shrink-0">겸업</span>'
                 : '';
 
-            tile.innerHTML = '<div class="flex justify-between items-start gap-1">'
-                + '<div>'
-                + '<div class="flex items-center"><span class="text-xs font-black text-white tracking-tight leading-none">' + st.ticker + '</span>' + crossTagHtml + '</div>'
-                + '<div class="text-[11px] font-bold text-slate-300 mt-1 line-clamp-1">' + st.name + '</div>'
+            tile.innerHTML = '<div class="flex justify-between items-start gap-2">'
+                + '<div class="min-w-0">'
+                + '<div class="flex items-center"><span class="text-xs font-black text-white tracking-tight leading-none truncate">' + st.ticker + '</span>' + crossTagHtml + '</div>'
+                + '<div class="text-[11px] font-bold text-slate-300 mt-1 truncate">' + st.name + '</div>'
                 + '</div>'
-                + '<div class="text-right">'
+                + '<div class="text-right shrink-0">'
                 + '<div class="text-xs font-black ' + chgTextColor + '">' + chgText + '</div>'
                 + '<div class="text-[11px] font-black text-white mt-0.5">' + pricePair.primary + '</div>'
                 + '<div class="text-[9px] font-semibold text-slate-400">' + pricePair.secondary + '</div>'
                 + '</div>'
                 + '</div>'
-                + '<p class="text-[10px] text-slate-300/85 line-clamp-1">' + st.role + '</p>'
-                + '<div class="flex justify-between items-center gap-1 pt-1 border-t border-white/10">'
-                + '<span class="text-[9px] font-extrabold text-rose-200/90 bg-rose-950/50 border border-rose-500/20 px-1.5 py-0.5 rounded line-clamp-1">⚔️ ' + st.rivalsShort + '</span>'
+                + '<p class="text-[10px] text-slate-300/85 truncate">' + st.role + '</p>'
+                + '<div class="flex justify-between items-center gap-1.5 pt-1.5 border-t border-white/10">'
+                + '<span class="text-[9px] font-extrabold text-rose-200/90 bg-rose-950/50 border border-rose-500/20 px-1.5 py-0.5 rounded truncate min-w-0">⚔️ ' + st.rivalsShort + '</span>'
                 + '<button type="button" class="earn-toggle-btn shrink-0 text-[9px] font-extrabold px-1.5 py-0.5 rounded border cursor-pointer ' + earnInfo.cls + '" title="클릭하여 어닝 Beat/Inline/Miss 상태 전환">' + earnInfo.text + '</button>'
                 + '</div>';
 
-            tile.onclick = function() {
+            tile.onclick = function(e) {
+                if (e.target && e.target.classList.contains("earn-toggle-btn")) return;
                 selectStock(st.ticker, true);
             };
 
             var earnBtn = tile.querySelector(".earn-toggle-btn");
-            earnBtn.onclick = function(e) {
-                e.stopPropagation();
-                var order = ["beat", "inline", "miss"];
-                var next = order[(order.indexOf(earnStatus) + 1) % order.length];
-                sharedState.earnOverrides[st.ticker] = next;
-                updateInspectorDisplay();
-                renderValueChainGrid();
-                pushSharedState();
-            };
+            if (earnBtn) {
+                earnBtn.onclick = function(e) {
+                    e.stopPropagation();
+                    var cur = sharedState.earnOverrides[st.ticker] || st.defaultEarn;
+                    var next = cur === "beat" ? "inline" : (cur === "inline" ? "miss" : "beat");
+                    sharedState.earnOverrides[st.ticker] = next;
+                    updateInspectorDisplay();
+                    renderValueChainGrid();
+                    pushSharedState();
+                };
+            }
 
             tilesWrap.appendChild(tile);
         });
@@ -991,61 +999,123 @@ function renderValueChainGrid() {
     });
 }
 
-// 8. 실시간 반도체 뉴스 피드 수집 (클릭 시 원문 기사 즉시 이동)
-function fetchRealtimeNews(query, labelText) {
+// 9. 실시간 반도체 뉴스 피드 수집 (다중 RSS 프록시 연동 - 종목 클릭 시 즉시 관련 뉴스로 전환)
+var newsRequestId = 0;
+
+function parseRssXmlItems(xmlText) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(xmlText, "text/xml");
+    var items = Array.from(doc.querySelectorAll("item"));
+    return items.map(function(node) {
+        var titleEl = node.querySelector("title");
+        var linkEl = node.querySelector("link");
+        var pubEl = node.querySelector("pubDate");
+        var srcEl = node.querySelector("source");
+        var rawTitle = titleEl ? titleEl.textContent : "";
+        var sourceName = srcEl ? srcEl.textContent : "";
+        if (!sourceName && rawTitle.indexOf(" - ") !== -1) {
+            var parts = rawTitle.split(" - ");
+            sourceName = parts.pop();
+            rawTitle = parts.join(" - ");
+        }
+        return {
+            title: rawTitle.trim(),
+            link: linkEl ? linkEl.textContent.trim() : "",
+            pubDate: pubEl ? pubEl.textContent.trim() : "",
+            source: sourceName || "글로벌 속보"
+        };
+    }).filter(function(it) { return it.title && it.link; });
+}
+
+function renderNewsItems(items, listEl) {
+    listEl.innerHTML = "";
+    items.slice(0, 18).forEach(function(item) {
+        var pubDate = new Date(item.pubDate);
+        var timeStr = isNaN(pubDate.getTime())
+            ? "실시간"
+            : (String(pubDate.getMonth() + 1).padStart(2, "0") + "/" + String(pubDate.getDate()).padStart(2, "0") + " " + String(pubDate.getHours()).padStart(2, "0") + ":" + String(pubDate.getMinutes()).padStart(2, "0"));
+
+        var card = document.createElement("a");
+        card.href = item.link;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+        card.className = "block p-3 rounded-xl bg-slate-900/75 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 transition group cursor-pointer";
+        card.innerHTML = '<div class="flex justify-between items-center gap-2 mb-1.5">'
+            + '<span class="text-[10px] font-extrabold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded truncate max-w-[160px]">' + item.source + '</span>'
+            + '<div class="flex items-center gap-1.5 shrink-0">'
+            + '<span class="text-[10px] font-bold text-slate-400">' + timeStr + '</span>'
+            + '<span class="text-[10px] text-cyan-400 opacity-75 group-hover:opacity-100">원문 ↗</span>'
+            + '</div>'
+            + '</div>'
+            + '<div class="text-xs font-bold text-slate-100 group-hover:text-cyan-200 leading-snug">' + item.title + '</div>';
+
+        listEl.appendChild(card);
+    });
+}
+
+function fetchRealtimeNews(query, labelText, stockObj) {
     currentNewsQuery = query || currentNewsQuery;
     if (labelText) {
         document.getElementById("newsFilterLabel").innerText = labelText;
     }
 
+    var reqId = ++newsRequestId;
     var listEl = document.getElementById("newsFeedList");
-    var rssUrl = "https://news.google.com/rss/search?q=" + encodeURIComponent(currentNewsQuery) + "&hl=ko&gl=KR&ceid=KR:ko";
-    var apiUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl);
+    listEl.innerHTML = '<div class="p-6 text-center text-xs font-bold text-cyan-300 animate-pulse">⚡ 최신 연관 속보를 불러오는 중입니다...</div>';
 
-    fetch(apiUrl)
+    var rssUrl = "https://news.google.com/rss/search?q=" + encodeURIComponent(currentNewsQuery) + "&hl=ko&gl=KR&ceid=KR:ko";
+    var proxy1 = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl) + "&t=" + Date.now();
+    var proxy2 = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl);
+
+    fetch(proxy1)
         .then(function(res) { return res.json(); })
         .then(function(data) {
-            if (!data || data.status !== "ok" || !Array.isArray(data.items) || data.items.length === 0) {
-                renderFallbackNews();
-                return;
+            if (reqId !== newsRequestId) return;
+            if (data && data.contents) {
+                var parsed = parseRssXmlItems(data.contents);
+                if (parsed.length > 0) {
+                    renderNewsItems(parsed, listEl);
+                    return;
+                }
             }
-            listEl.innerHTML = "";
-            data.items.slice(0, 18).forEach(function(item) {
-                var pubDate = new Date(item.pubDate);
-                var timeStr = isNaN(pubDate.getTime()) ? "실시간" : (String(pubDate.getHours()).padStart(2, "0") + ":" + String(pubDate.getMinutes()).padStart(2, "0"));
-
-                var card = document.createElement("a");
-                card.href = item.link;
-                card.target = "_blank";
-                card.rel = "noopener noreferrer";
-                card.className = "block p-3 rounded-xl bg-slate-900/75 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 transition group cursor-pointer";
-                card.innerHTML = '<div class="flex justify-between items-center gap-2 mb-1.5">'
-                    + '<span class="text-[10px] font-extrabold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">' + (item.author || "글로벌 속보") + '</span>'
-                    + '<div class="flex items-center gap-1.5">'
-                    + '<span class="text-[10px] font-bold text-slate-400">' + timeStr + '</span>'
-                    + '<span class="text-[10px] text-cyan-400 opacity-70 group-hover:opacity-100">원문 ↗</span>'
-                    + '</div>'
-                    + '</div>'
-                    + '<div class="text-xs font-bold text-slate-100 group-hover:text-cyan-200 leading-snug">' + item.title + '</div>';
-
-                listEl.appendChild(card);
-            });
+            throw new Error("empty xml");
         })
         .catch(function() {
-            renderFallbackNews();
+            if (reqId !== newsRequestId) return;
+            fetch(proxy2)
+                .then(function(r) { return r.json(); })
+                .then(function(d2) {
+                    if (reqId !== newsRequestId) return;
+                    if (d2 && d2.status === "ok" && Array.isArray(d2.items) && d2.items.length > 0) {
+                        var mapped = d2.items.map(function(it) {
+                            return { title: it.title, link: it.link, pubDate: it.pubDate, source: it.author || "글로벌 속보" };
+                        });
+                        renderNewsItems(mapped, listEl);
+                    } else {
+                        renderStockSearchLinks(stockObj, listEl);
+                    }
+                })
+                .catch(function() {
+                    if (reqId !== newsRequestId) return;
+                    renderStockSearchLinks(stockObj, listEl);
+                });
         });
 }
 
-function renderFallbackNews() {
-    var listEl = document.getElementById("newsFeedList");
-    var samples = [
-        { src: "Reuters · 반도체", time: "실시간", url: "https://www.reuters.com/technology/", title: "엔비디아 차세대 AI 랙 수요 급증으로 HBM3E 및 AI 네트워킹 리타이머 공급망 풀가동" },
-        { src: "Bloomberg · 파운드리", time: "12분 전", url: "https://www.bloomberg.com/technology", title: "TSMC, AI 가속기 수요 대응 위해 CoWoS 첨단 패키징 생산능력 추가 증설 검토" },
-        { src: "SemiAnalysis · ASIC", time: "28분 전", url: "https://www.semianalysis.com/", title: "하이퍼스케일러 자체 커스텀 AI 칩(ASIC) 투자 확대로 브로드컴·마벨 수주 잔고 사상 최고" },
-        { src: "한경 · 메모리", time: "41분 전", url: "https://www.hankyung.com/it", title: "SK하이닉스·삼성전자, 차세대 HBM4 양산 로드맵 가속화… 전공정·계측 장비 수혜 부각" }
-    ];
+function renderStockSearchLinks(stockObj, listEl) {
+    var st = stockObj || STOCKS.find(function(s) { return s.ticker === selectedTicker; }) || STOCKS[4];
+    var cleanTicker = st.ticker.split(".")[0];
+    var gNewsLink = "https://news.google.com/search?q=" + encodeURIComponent(st.name + " 반도체") + "&hl=ko&gl=KR&ceid=KR%3Ako";
+    var naverLink = "https://search.naver.com/search.naver?where=news&query=" + encodeURIComponent(st.name + " 반도체");
+    var yahooLink = "https://finance.yahoo.com/quote/" + encodeURIComponent(st.ticker) + "/news/";
+
     listEl.innerHTML = "";
-    samples.forEach(function(s) {
+    var links = [
+        { src: "Google 뉴스 · 실시간 검색", time: "바로가기", url: gNewsLink, title: st.name + " (" + cleanTicker + ") 최신 글로벌 반도체 뉴스 모아보기" },
+        { src: "네이버 뉴스 · 국내 속보", time: "바로가기", url: naverLink, title: st.name + " 국내 증권·산업 리포트 및 최신 기사 검색" },
+        { src: "Yahoo Finance · 영문 원문", time: "바로가기", url: yahooLink, title: st.name + " (" + st.ticker + ") 영문 실적 및 월가 애널리스트 뉴스 피드" }
+    ];
+    links.forEach(function(s) {
         var a = document.createElement("a");
         a.href = s.url;
         a.target = "_blank";
