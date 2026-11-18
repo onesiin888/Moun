@@ -65,11 +65,11 @@ html, body { overflow-x: hidden; max-width: 100vw; scroll-behavior: smooth; }
                     </svg>
                 </div>
                 <div>
-                    <div class="flex items-center gap-2">
-                        <h1 class="text-base sm:text-lg font-black tracking-tight text-white">SILICON RADAR</h1>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h1 class="text-base sm:text-lg font-black tracking-tight text-white">강희창과 함께하는 반도체 로드</h1>
                         <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">11대 초세분화 밸류체인</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 font-medium">글로벌 AI 반도체 46대 핵심 종목 분석 · 실시간 뉴스 연동</p>
+                    <p class="text-[11px] text-slate-400 font-medium">글로벌 AI 반도체 핵심 종목 분석 · 실시간 뉴스 연동</p>
                 </div>
             </div>
 
@@ -210,7 +210,7 @@ html, body { overflow-x: hidden; max-width: 100vw; scroll-behavior: smooth; }
         </div>
 
         <!-- 2. 11대 초세분화 밸류체인 히트맵 보드 -->
-        <div class="space-y-3.5">
+        <div id="heatmapSectionWrap" class="space-y-3.5 scroll-mt-4">
             <div class="flex flex-wrap justify-between items-center gap-2 px-1">
                 <div class="flex flex-wrap items-center gap-2">
                     <h3 class="text-sm font-black text-white">🗺️ 11대 밸류체인 초세분화 히트맵</h3>
@@ -296,7 +296,7 @@ var currentUsdKrw = 1395.00;
 
 // 11대 초세분화 반도체 밸류체인 정의
 var SECTORS = [
-    { id: "all", code: "ALL", name: "전체 11대 밸류체인 (46종목)", short: "전체 보기" },
+    { id: "all", code: "ALL", name: "전체 11대 밸류체인", short: "전체 보기" },
     { id: "ip", code: "01", name: "IP · 아키텍처", short: "01. IP·아키텍처" },
     { id: "eda", code: "02", name: "EDA (설계 툴)", short: "02. EDA 설계툴" },
     { id: "gpu", code: "03", name: "AI 가속기 · GPU", short: "03. AI 가속기·GPU" },
@@ -935,16 +935,16 @@ function selectStock(ticker, alsoFilterNews, shouldScrollToTop) {
     }
 }
 
-// 6. 히트맵 등락률 색상 클래스
+// 6. 히트맵 타일 색상 계산
 function getHeatClass(chg) {
-    if (chg >= 3.0) return "heat-strong-up";
-    if (chg > 0.2) return "heat-up";
-    if (chg <= -3.0) return "heat-strong-down";
-    if (chg < -0.2) return "heat-down";
+    if (chg >= 2.5) return "heat-strong-up";
+    if (chg >= 0.4) return "heat-up";
+    if (chg <= -2.5) return "heat-strong-down";
+    if (chg <= -0.4) return "heat-down";
     return "heat-flat";
 }
 
-// 7. 11대 공정 흐름 밸류체인 필터 탭 렌더링
+// 7. 11대 공정 흐름 밸류체인 필터 탭 렌더링 (클릭 시 해당 섹터 위치로 즉시 스크롤 이동)
 function renderSectorTabs() {
     var container = document.getElementById("sectorTabContainer");
     container.innerHTML = "";
@@ -961,7 +961,18 @@ function renderSectorTabs() {
             selectedSector = sec.id;
             if (mobileActiveTab !== "main") setMobileTab("main");
             renderSectorTabs();
-            renderValueChainGrid();
+
+            // 전체 카드를 유지한 채 해당 섹터 패널 위치로 즉시 스크롤 이동
+            var targetPanel = document.getElementById("sector_panel_" + sec.id);
+            if (sec.id === "all") {
+                var wrapEl = document.getElementById("heatmapSectionWrap");
+                if (wrapEl) wrapEl.scrollIntoView({ behavior: "smooth", block: "start" });
+            } else if (targetPanel) {
+                targetPanel.scrollIntoView({ behavior: "smooth", block: "center" });
+                targetPanel.classList.remove("inspector-highlight");
+                void targetPanel.offsetWidth;
+                targetPanel.classList.add("inspector-highlight");
+            }
         };
         container.appendChild(btn);
     });
@@ -973,8 +984,7 @@ function renderValueChainGrid() {
     grid.innerHTML = "";
 
     var targetSectors = SECTORS.filter(function(s) {
-        if (s.id === "all") return false;
-        return selectedSector === "all" || s.id === selectedSector;
+        return s.id !== "all";
     });
 
     targetSectors.forEach(function(sec) {
@@ -988,7 +998,8 @@ function renderValueChainGrid() {
         var avgColor = avgChg >= 0 ? "text-emerald-400" : "text-rose-400";
 
         var panel = document.createElement("div");
-        panel.className = "pcb-panel p-3.5 sm:p-4 flex flex-col justify-start min-w-0";
+        panel.id = "sector_panel_" + sec.id;
+        panel.className = "pcb-panel p-3.5 sm:p-4 flex flex-col justify-start min-w-0 scroll-mt-6 " + (selectedSector === sec.id ? "ring-2 ring-cyan-400/80" : "");
 
         var header = document.createElement("div");
         header.className = "flex justify-between items-center mb-3 pb-2 border-b border-slate-800/80";
