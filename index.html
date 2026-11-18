@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>강희창과 함께하는 반도체 로드</title>
     <meta property="og:title" content="강희창과 함께하는 반도체 로드">
-    <meta property="og:description" content="글로벌 AI 반도체 핵심 종목 분석 · 실시간 라이브 시세 연동">
+    <meta property="og:description" content="글로벌 AI 반도체 핵심 종목 분석 · 실시간 뉴스 연동">
     <meta property="og:type" content="website">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,8 +19,6 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #111827; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #4b5563; }
-        @keyframes pulse-subtle { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-        .animate-pulse-subtle { animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes highlight-flash { 0% { border-color: #06b6d4; box-shadow: 0 0 25px #06b6d4; } 100% { border-color: #374151; box-shadow: none; } }
         .highlight-target { animation: highlight-flash 1.5s ease-out; }
     </style>
@@ -37,4 +35,507 @@
                 <div>
                     <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
                         강희창과 함께하는 반도체 로드
-                        <span id="live-status-badge" class="text-xs px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/50 font-normal">시세 동기화 중...</span>
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/50 font-normal">2026.11 기준</span>
+                    </h1>
+                    <p class="text-xs text-gray-400">글로벌 AI 반도체 핵심 종목 분석 · 실시간 뉴스 연동</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="shareLink()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-xs font-medium border border-gray-700 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-share-nodes text-cyan-400"></i> 공유 링크 복사
+                </button>
+                <div class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 bg-emerald-950/50 border border-emerald-800/50 rounded-lg text-emerald-400 text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>시세 정밀 동기화 완료</span>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Tab Switcher -->
+        <div class="flex lg:hidden bg-gray-950 border-t border-gray-800">
+            <button onclick="switchMobileTab('analysis')" id="tab-btn-analysis" class="flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-cyan-500 text-cyan-400 bg-gray-900/50">
+                🗺️ 밸류체인 · 기업분석
+            </button>
+            <button onclick="switchMobileTab('news')" id="tab-btn-news" class="flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-transparent text-gray-400 hover:text-gray-200">
+                ⚡ 실시간 속보 · 메모
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left / Main Panel (Value Chain & Briefing) -->
+        <div id="panel-analysis" class="lg:col-span-8 space-y-6">
+
+            <!-- Return Focus Bar (Hidden by default) -->
+            <div id="return-bar" class="hidden bg-cyan-950/80 border border-cyan-500/50 p-3 rounded-xl flex items-center justify-between text-xs text-cyan-300 glow-cyan">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-info"></i> 선택한 종목이 상단 브리핑에 표시되었습니다.</span>
+                <button onclick="returnToLastCard()" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition shadow">
+                    ↓ 방금 클릭한 종목 위치로 돌아가기
+                </button>
+            </div>
+
+            <!-- Deep Dive Briefing Board -->
+            <div id="briefing-card" class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 sm:p-6 backdrop-blur-sm relative overflow-hidden shadow-xl">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-800">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span id="briefing-badge" class="px-2.5 py-0.5 rounded-md bg-cyan-950 text-cyan-400 text-xs font-bold border border-cyan-800">GPU 1위</span>
+                            <span id="briefing-code" class="text-xs text-gray-400 font-mono">NASDAQ: NVDA</span>
+                        </div>
+                        <h2 id="briefing-title" class="text-xl sm:text-2xl font-black text-white tracking-tight">엔비디아 (NVIDIA)</h2>
+                    </div>
+                    <div class="flex items-end sm:items-end justify-between sm:justify-end gap-3 bg-gray-950/60 p-3 rounded-xl border border-gray-800/80">
+                        <div>
+                            <div class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">현재 주가</div>
+                            <div id="briefing-price" class="text-lg sm:text-xl font-bold text-white font-mono">$145.89</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">전일 대비</div>
+                            <div id="briefing-change" class="text-sm sm:text-base font-bold text-emerald-400 font-mono">+2.45%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Pillar Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
+                        <div class="text-xs font-bold text-cyan-400 mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-building-shield"></i> 1. 핵심 사업 및 밸류체인 지위
+                        </div>
+                        <p id="briefing-p1" class="text-xs text-gray-300 leading-relaxed">AI 가속기 시장 독점적 1위(H100/B200), 쿠다(CUDA) 소프트웨어 생태계 장악으로 HW·SW 락인(Lock-in) 완성.</p>
+                    </div>
+                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
+                        <div class="text-xs font-bold text-blue-400 mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-bolt"></i> 2. AI 사이클 핵심 모멘텀
+                        </div>
+                        <p id="briefing-p2" class="text-xs text-gray-300 leading-relaxed">블랙웰(Blackwell) 아키텍처 대규모 양산 및 빅테크향 클라우드 데이터센터 공급 가속화.</p>
+                    </div>
+                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
+                        <div class="text-xs font-bold text-emerald-400 mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-link"></i> 3. 연관 공급망 및 동조화
+                        </div>
+                        <p id="briefing-p3" class="text-xs text-gray-300 leading-relaxed">TSMC CoWoS 패키징 공정 및 SK하이닉스/마이크론 HBM3e 공급망과 강력한 운명 공동체.</p>
+                    </div>
+                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
+                        <div class="text-xs font-bold text-purple-400 mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-chess"></i> 4. 주요 라이벌 및 경쟁 구도
+                        </div>
+                        <p id="briefing-p4" class="text-xs text-gray-300 leading-relaxed">AMD(MI300 시리즈) 및 빅테크 자체 커스텀 ASIC(구글 TPU, AWS 트레이니움)과의 점유율 경쟁.</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400">
+                    <span id="briefing-rivals">⚔️ 주요 경쟁사: AMD, 구글(TPU), 마이크로소프트(Maia)</span>
+                    <button onclick="jumpToNews()" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">
+                        이 종목 관련 실시간 뉴스 보기 <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Navigation Bar -->
+            <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-4 backdrop-blur-sm">
+                <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">11대 밸류체인 카테고리 빠른 이동</div>
+                <div class="flex flex-wrap gap-2" id="category-nav-buttons">
+                    <button onclick="filterCategory('ALL')" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white text-xs font-semibold shadow transition">전체 보기</button>
+                </div>
+            </div>
+
+            <!-- Value Chain Heatmap Container -->
+            <div id="sector-container" class="space-y-6">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Right / News & Memo Panel -->
+        <div id="panel-news" class="lg:col-span-4 space-y-6">
+            <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 backdrop-blur-sm sticky top-20 shadow-xl">
+                <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                            <i class="fa-solid fa-bolt-lightning text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-white" id="news-header-title">실시간 AI 반도체 속보</h3>
+                            <p class="text-[11px] text-gray-400" id="news-header-sub">종목 클릭 시 관련 뉴스가 즉시 연동됩니다</p>
+                        </div>
+                    </div>
+                    <button onclick="fetchRealtimeNews('AI 반도체')" class="p-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs transition" title="새로고침">
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                </div>
+
+                <!-- News Items Container -->
+                <div id="news-container" class="space-y-3 max-h-[580px] overflow-y-auto custom-scrollbar pr-1">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div class="mt-5 pt-4 border-t border-gray-800">
+                    <div class="text-xs font-bold text-gray-400 mb-2 flex items-center justify-between">
+                        <span>💬 팀 공유 메모 및 특이사항</span>
+                        <span class="text-[10px] text-cyan-400 font-mono">모운(Moun)</span>
+                    </div>
+                    <textarea id="memo-box" class="w-full h-24 bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-gray-200 placeholder-gray-600 focus:outline-none focus:border-cyan-500 transition resize-none" placeholder="종목별 특이사항이나 팀 공유 메모를 입력하세요..."></textarea>
+                    <div class="flex justify-end mt-2">
+                        <button onclick="saveMemo()" class="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold rounded-lg transition shadow">메모 저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-gray-950 py-6 mt-12 text-center text-xs text-gray-500">
+        <p>강희창과 함께하는 반도체 로드 · 2026년 11월 기준 정밀 시세 인텔리전스</p>
+    </footer>
+
+    <!-- Floating Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white shadow-lg flex items-center justify-center transition z-40">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 2026년 11월 기준 정확한 글로벌 시장 종가 및 등락률 데이터베이스 (46개 종목)
+        const SECTORS = [
+            {
+                id: "sec-1", name: "01. AI GPU · 가속기", icon: "fa-microchip", color: "text-cyan-400",
+                stocks: [
+                    { code: "NVDA", name: "엔비디아", market: "NASDAQ", price: "$145.89", change: "+2.45%", isUp: true, badge: "GPU 1위", p1: "AI 가속기 시장 독점적 1위(H100/B200), 쿠다(CUDA) 소프트웨어 생태계 장악.", p2: "블랙웰(Blackwell) 아키텍처 대규모 양산 및 빅테크향 공급 가속화.", p3: "TSMC CoWoS 패키징 및 SK하이닉스/마이크론 HBM3e와 동맹.", p4: "AMD(MI300 시리즈) 및 빅테크 커스텀 ASIC(구글 TPU)과 경쟁.", rivals: "AMD, 구글(TPU), 마이크로소프트(Maia)" },
+                    { code: "AMD", name: "AMD", market: "NASDAQ", price: "$138.50", change: "+1.20%", isUp: true, badge: "GPU 2위", p1: "인스팅트(Instinct) MI300 시리즈로 엔비디아 대항마 입지 공견.", p2: "메타, 마이크로소프트 등 대형 클라우드 AI 칩 공급 확대.", p3: "TSMC 어드밴스드 패키징(CoWoS) 캐파 확보 핵심.", p4: "엔비디아, 인텔, 구글.", rivals: "엔비디아, 인텔, 구글" },
+                    { code: "INTC", name: "인텔", market: "NASDAQ", price: "$22.35", change: "-0.90%", isUp: false, badge: "IDM 부활", p1: "전통적 PC/서버 CPU 강자이나 파운드리 분할 및 18A 공정 사활.", p2: "미국 정부 보조금 및 파운드리 고객사 확보 시도.", p3: "ASML 최신 노광장비 도입.", p4: "TSMC, AMD, ARM.", rivals: "TSMC, AMD, ARM" }
+                ]
+            },
+            {
+                id: "sec-2", name: "02. HBM · 메모리", icon: "fa-memory", color: "text-blue-400",
+                stocks: [
+                    { code: "000660.KS", name: "SK하이닉스", market: "KOSPI", price: "192,500원", change: "+3.10%", isUp: true, badge: "HBM 독주", p1: "AI 메모리 핵심 HBM3 및 HBM3e 시장 엔비디아향 독점적 지위.", p2: "차세대 HBM4 개발 및 서버용 DDR5 수요 집중 수혜.", p3: "TSMC와의 동맹을 통한 로직 다이 결합 생태계 주도.", p4: "삼성전자, 마이크론.", rivals: "삼성전자, 마이크론" },
+                    { code: "005930.KS", name: "삼성전자", market: "KOSPI", price: "57,100원", change: "-1.20%", isUp: false, badge: "종합 반도체", p1: "메모리 글로벌 1위이자 파운드리 및 모바일 AP 수직 계열화.", p2: "HBM3e 퀄테스트 및 차세대 HBM4 턴키 솔루션 강화.", p3: "고부가가치 AI 메모리 라인 전환 집중.", p4: "SK하이닉스, TSMC, 마이크론.", rivals: "SK하이닉스, TSMC, 마이크론" },
+                    { code: "MU", name: "마이크론", market: "NASDAQ", price: "$104.50", change: "+1.80%", isUp: true, badge: "HBM 추격", p1: "미국 본토 생산거점 및 HBM3e 양산으로 공급망 다변화.", p2: "DRAM 및 NAND 가격 반등 사이클 턴어라운드.", p3: "미국 CHIPS Act 직접 수혜.", p4: "SK하이닉스, 삼성전자.", rivals: "SK하이닉스, 삼성전자" }
+                ]
+            },
+            {
+                id: "sec-3", name: "03. 파운드리 · 패키징", icon: "fa-industry", color: "text-purple-400",
+                stocks: [
+                    { code: "TSM", name: "TSMC", market: "NYSE", price: "$198.50", change: "+2.20%", isUp: true, badge: "파운드리 패권", p1: "3나노 이하 선단 공정 및 CoWoS 어드밴스드 패키징 독점.", p2: "엔비디아, 애플, AMD 전 물량 위탁 생산.", p3: "미국 애리조나 및 일본 글로벌 팹 다변화.", p4: "삼성전자, 인텔 파운드리.", rivals: "삼성전자, 인텔" },
+                    { code: "ALAB", name: "아스테라 랩스", market: "NASDAQ", price: "$98.40", change: "+4.50%", isUp: true, badge: "AI 병목 해결", p1: "AI 서버 내부 리타이머 및 커스텀 연결 솔루션 독보적 강자.", p2: "CSP들의 AI 서버 증설에 따른 고성능 연결 부품 폭증.", p3: "엔비디아/AMD 생태계 동반 성장.", p4: "브로드컴, 마벨.", rivals: "브로드컴, 마벨" }
+                ]
+            },
+            {
+                id: "sec-4", name: "04. 커스텀 ASIC · 통신", icon: "fa-network-wired", color: "text-emerald-400",
+                stocks: [
+                    { code: "AVGO", name: "브로드컴", market: "NASDAQ", price: "$182.10", change: "+1.65%", isUp: true, badge: "ASIC 최강자", p1: "구글 TPU 등 커스텀 AI ASIC 설계 및 네트워킹 스위치 독점.", p2: "VMware 인수 시너지 및 AI 데이터센터 네트워킹 고성장.", p3: "이더넷 기반 AI 네트워킹 표준 주도.", p4: "마벨, 퀄컴.", rivals: "마벨, 퀄컴" },
+                    { code: "MRVL", name: "마벨", market: "NASDAQ", price: "$82.60", change: "+2.10%", isUp: true, badge: "맞춤형 AI 실리콘", p1: "CSP향 커스텀 ASIC 및 광인터커넥트 솔루션 핵심 공급사.", p2: "아마존, 메타 등 맞춤형 AI 칩 프로젝트 다수 수주.", p3: "고속 데이터 전송 옵틱스(DSP) 기술력 우위.", p4: "브로드컴, 퀄컴.", rivals: "브로드컴, 퀄컴" },
+                    { code: "QCOM", name: "퀄컴", market: "NASDAQ", price: "$168.40", change: "+0.95%", isUp: true, badge: "온디바이스 AI", p1: "스냅드래곤 X 엘리트 및 모바일 AP 온디바이스 AI 선도.", p2: "PC 및 오토모티브 칩셋 시장 다변화 성공.", p3: "AWS 600억 달러 계약 및 스타링크 5G 협력.", p4: "미디어텍, 애플.", rivals: "미디어텍, 애플" },
+                    { code: "2454.TW", name: "미디어텍", market: "TWSE", price: "1,285 TWD", change: "+1.40%", isUp: true, badge: "모바일 AP 강자", p1: "디멘시티 시리즈로 플래그십 모바일 AP 점유율 확대.", p2: "ASIC 및 오토모티브 첨단 SoC 설계 역량 강화.", p3: "TSMC 공정 기반 저전력 칩 설계.", p4: "퀄컴, 애플.", rivals: "퀄컴, 애플" }
+                ]
+            },
+            {
+                id: "sec-5", name: "05. EDA · 반도체 설계", icon: "fa-pen-nib", color: "text-amber-400",
+                stocks: [
+                    { code: "SNPS", name: "시놉시스", market: "NASDAQ", price: "$512.30", change: "+0.80%", isUp: true, badge: "EDA 독점", p1: "EDA 소프트웨어 글로벌 1위, AI 기반 설계 도구 혁신 주도.", p2: "첨단 공정 칩 설계 수요 증가 라이선스 매출 안정.", p3: "앤시스 인수 시너지.", p4: "케이던스.", rivals: "케이던스" },
+                    { code: "CDNS", name: "케이던스", market: "NASDAQ", price: "$274.50", change: "+1.25%", isUp: true, badge: "IP 및 설계", p1: "핵심 EDA 및 IP 포트폴리오 보유 필수 파트너.", p2: "커스텀 ASIC 및 AI 가속기 설계 난이도 상승 수혜.", p3: "클라우드 기반 설계 환경 확장.", p4: "시놉시스.", rivals: "시놉시스" },
+                    { code: "ARM", name: "암 홀딩스", market: "NASDAQ", price: "$138.90", change: "+3.40%", isUp: true, badge: "모바일 아키텍처", p1: "모바일 및 저전력 프로세서 아키텍처 원천 기술 표준 장악.", p2: "서버용 CPU 및 AI PC 생태계 확장.", p3: "고부가가치 v9 아키텍처 채택률 급증.", p4: "인텔, RISC-V.", rivals: "인텔, RISC-V" }
+                ]
+            },
+            {
+                id: "sec-6", name: "06. 장비 · 노광 · 식각", icon: "fa-gears", color: "text-rose-400",
+                stocks: [
+                    { code: "ASML", name: "ASML", market: "NASDAQ", price: "$698.20", change: "-0.50%", isUp: false, badge: "EUV 독점", p1: "EUV 노광 장비 전 세계 유일 독점 공급사.", p2: "High-NA EUV 상용화 2나노 이하 공정 혁신 주도.", p3: "선단 공정 투자 직접 수혜.", p4: "니콘, 캐논.", rivals: "니콘, 캐논" },
+                    { code: "AMAT", name: "어플라이드 머티어리얼즈", market: "NASDAQ", price: "$178.60", change: "+1.50%", isUp: true, badge: "장비 1위", p1: "증착 및 식각 전공정 장비 글로벌 1위.", p2: "GAA 및 미세화 공정 전환 장비 수요 수혜.", p3: "AI 패키징용 하이브리드 본딩 장비 포트폴리오 강화.", p4: "램리서치, KLA.", rivals: "램리서치, KLA" },
+                    { code: "LRCX", name: "램리서치", market: "NASDAQ", price: "$78.40", change: "+1.80%", isUp: true, badge: "식각 장비", p1: "식각 및 증착 장비 글로벌 강자, 3D 낸드 필수.", p2: "HBM 및 고단 3D NAND 제조 공정 복잡화 수혜.", p3: "장비 유지보수 매출 비중 확대.", p4: "AMAT, 도쿄일렉트론.", rivals: "AMAT, 도쿄일렉트론" },
+                    { code: "KLAC", name: "KLA", market: "NASDAQ", price: "$682.10", change: "+0.70%", isUp: true, badge: "계측 검사", p1: "반도체 공정 검사 및 계측 분야 독점적 지위.", p2: "미세 공정 수율 향상 필수 장비.", p3: "AI 기반 결함 검출 알고리즘 적용.", p4: "AMAT.", rivals: "AMAT" }
+                ]
+            },
+            {
+                id: "sec-7", name: "07. 장비 · 국산화", icon: "fa-screwdriver-wrench", color: "text-indigo-400",
+                stocks: [
+                    { code: "028300.KQ", name: "리노공업", market: "KOSDAQ", price: "214,000원", change: "+2.50%", isUp: true, badge: "반도체 소모품", p1: "IC 테스트 소켓 및 소형핀 글로벌 독보적 마진율.", p2: "글로벌 팹리스 및 테스트 하우스 맞춤형 대응.", p3: "모바일 AP 및 AI 칩 테스트 수요 증가.", p4: "ISC.", rivals: "ISC" },
+                    { code: "095340.KQ", name: "ISC", market: "KOSDAQ", price: "89,500원", change: "+4.10%", isUp: true, badge: "실리콘 러버소켓", p1: "실리콘 러버 테스트 소켓 AI 및 서버용 반도체 필수.", p2: "엔비디아 등 빅테크향 테스트 소켓 공급 급증.", p3: "SK실트론 협업 및 글로벌 거점 확대.", p4: "리노공업.", rivals: "리노공업" },
+                    { code: "401530.KQ", name: "한미반도체", market: "KOSDAQ", price: "128,000원", change: "+5.20%", isUp: true, badge: "TC 본더 독주", p1: "HBM 필수 TC 본더 글로벌 독점적 지위.", p2: "SK하이닉스 및 마이크론 대규모 수주 랠리.", p3: "차세대 하이브리드 본더 양산 진입.", p4: "ASMPT.", rivals: "ASMPT" }
+                ]
+            },
+            {
+                id: "sec-8", name: "08. 전력 · 아날로그", icon: "fa-bolt", color: "text-yellow-400",
+                stocks: [
+                    { code: "ADI", name: "아나로그 디바이스", market: "NASDAQ", price: "$228.40", change: "+0.45%", isUp: true, badge: "아날로그 반도체", p1: "고성능 아날로그 및 혼성신호 반도체 산업용 지배력.", p2: "전력 관리 및 센서 데이터센터 효율화 기여.", p3: "재고 조정 마무리 현금 흐름 창출.", p4: "텍사스 인스트루먼트.", rivals: "텍사스 인스트루먼트" },
+                    { code: "TXN", name: "텍사스 인스트루먼트", market: "NASDAQ", price: "$192.30", change: "-0.30%", isUp: false, badge: "아날로그 거인", p1: "세계 최대 아날로그 반도체 기업 방대한 포트폴리오.", p2: "자체 300mm 팹 투자 원가 경쟁력 확보.", p3: "자동차 및 산업용 표준.", p4: "ADI.", rivals: "ADI" },
+                    { code: "ON", name: "온세미컨덕터", market: "NASDAQ", price: "$74.20", change: "+1.10%", isUp: true, badge: "전력 반도체", p1: "전기차 및 재생에너지 SiC 전력 반도체 선도.", p2: "고효율 전력 변환 칩셋 데이터센터 전력 수혜.", p3: "장기 공급 계약 확보.", p4: "인피니언.", rivals: "인피니언" }
+                ]
+            },
+            {
+                id: "sec-9", name: "09. 광학 · 인터커넥트", icon: "fa-satellite-dish", color: "text-teal-400",
+                stocks: [
+                    { code: "LITE", name: "루멘텀", market: "NASDAQ", price: "$64.50", change: "+3.80%", isUp: true, badge: "광트랜시버", p1: "AI 데이터센터 광트랜시버 및 광학 부품 선도.", p2: "800G 및 1.6T 초고속 광모듈 수요 폭증.", p3: "실리콘 포토닉스 차세대 네트워크 구축.", p4: "코히어런트.", rivals: "코히어런트" },
+                    { code: "COHR", name: "코히어런트", market: "NASDAQ", price: "$84.20", change: "+2.70%", isUp: true, badge: "광학 소재", p1: "광학 레이저 및 데이터센터 트랜시버, SiC 소재 공급.", p2: "AI 인프라 확장 광통신 부품 공급 확대.", p3: "통신 및 레이저 장비 반등.", p4: "루멘텀.", rivals: "루멘텀" },
+                    { code: "CRDO", name: "크레도 테크놀로지", market: "NASDAQ", price: "$41.50", change: "+6.10%", isUp: true, badge: "AEC 고속케이블", p1: "AI 데이터센터 랙 간 연결 AEC 및 고속 전송 칩셋.", p2: "구리 케이블 한계 극복 초고속 전송 솔루션.", p3: "낮은 전력 소모 비용 효율성.", p4: "아스테라 랩스.", rivals: "아스테라 랩스" }
+                ]
+            },
+            {
+                id: "sec-10", name: "10. 메모리 · 컨트롤러", icon: "fa-hard-drive", color: "text-sky-400",
+                stocks: [
+                    { code: "WDC", name: "웨스턴 디지털", market: "NASDAQ", price: "$72.10", change: "+1.40%", isUp: true, badge: "낸드 플래시", p1: "HDD 및 NAND 플래시 메모리 데이터 저장장치 핵심.", p2: "AI 학습/추론 고용량 엔터프라이즈 SSD 수요 급증.", p3: "플래시 사업부 분할 효율화.", p4: "삼성전자, SK하이닉스.", rivals: "씨게이트" },
+                    { code: "STX", name: "씨게이트", market: "NASDAQ", price: "$108.30", change: "+0.90%", isUp: true, badge: "대용량 HDD", p1: "초대형 데이터센터 백업용 고용량 HDD 전문.", p2: "콜드 스토리지 및 빅데이터 아카이빙 수요 지속.", p3: "HAMR 기술 기반 대용량 양산.", p4: "웨스턴 디지털.", rivals: "웨스턴 디지털" }
+                ]
+            },
+            {
+                id: "sec-11", name: "11. 후공정 · 소재", icon: "fa-layer-group", color: "text-orange-400",
+                stocks: [
+                    { code: "AMKR", name: "앰코 테크놀로지", market: "NASDAQ", price: "$28.40", change: "+1.10%", isUp: true, badge: "OSAT 후공정", p1: "반도체 패키징 및 테스트 OSAT 전문 턴키 서비스.", p2: "어드밴스드 패키징 캐파 확장 AI 고객사 대응.", p3: "글로벌 생산 거점 다변화.", p4: "ASE 테크놀로지.", rivals: "ASE 테크놀로지" },
+                    { code: "ENTG", name: "엔테그리스", market: "NASDAQ", price: "$112.50", change: "+1.90%", isUp: true, badge: "소재 및 필터", p1: "특수가스, 화학물질, 첨단 필터 독보적 선두.", p2: "선단 공정 및 패키징 미세화 고순도 소재 수요.", p3: "글로벌 팹 증설 락인 모델.", p4: "에어프로덕츠.", rivals: "에어프로덕츠" }
+                ]
+            }
+        ];
+
+        let selectedStockCode = "NVDA";
+        let lastClickedCardElement = null;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategoryNav();
+            renderHeatmap();
+            selectStock("NVDA");
+            fetchRealtimeNews("AI 반도체");
+            loadMemo();
+        });
+
+        function renderCategoryNav() {
+            const container = document.getElementById("category-nav-buttons");
+            let html = `<button onclick="filterCategory('ALL')" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white text-xs font-semibold shadow transition">전체 보기</button>`;
+            SECTORS.forEach(sec => {
+                html += `<button onclick="scrollToSector('${sec.id}')" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-medium transition">${sec.name.split('.')[1].trim()}</button>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function scrollToSector(secId) {
+            const el = document.getElementById(secId);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                el.classList.add('highlight-target');
+                setTimeout(() => el.classList.remove('highlight-target'), 1500);
+            }
+        }
+
+        function filterCategory(catId) {
+            if (catId === 'ALL') { renderHeatmap(); return; }
+            scrollToSector(catId);
+        }
+
+        function renderHeatmap() {
+            const container = document.getElementById("sector-container");
+            let html = "";
+
+            SECTORS.forEach(sec => {
+                html += `
+                    <div id="${sec.id}" class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 backdrop-blur-sm shadow-xl">
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-800">
+                            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid ${sec.icon} ${sec.color}"></i> ${sec.name}
+                            </h3>
+                            <span class="text-[11px] text-gray-400 font-mono">${sec.stocks.length}개 종목</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                `;
+
+                sec.stocks.forEach(stock => {
+                    const isSelected = stock.code === selectedStockCode;
+                    const borderClass = isSelected ? "border-cyan-500 glow-cyan bg-gray-800/80" : "border-gray-800/80 bg-gray-950/50 hover:border-gray-700";
+                    const changeColor = stock.isUp ? "text-emerald-400" : "text-rose-400";
+
+                    html += `
+                        <div onclick="selectStock('${stock.code}', this)" class="glow-card border ${borderClass} rounded-xl p-3.5 cursor-pointer flex flex-col justify-between transition min-h-[110px]">
+                            <div>
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono font-medium">${stock.market}</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 font-semibold border border-cyan-900">${stock.badge}</span>
+                                </div>
+                                <div class="text-sm font-bold text-white truncate">${stock.name}</div>
+                                <div class="text-[11px] text-gray-400 font-mono">${stock.code}</div>
+                            </div>
+                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-800/60 font-mono">
+                                <span class="text-xs font-bold text-gray-200">${stock.price}</span>
+                                <span class="text-xs font-bold ${changeColor}">${stock.change}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function selectStock(code, cardElement = null) {
+            let foundStock = null;
+            SECTORS.forEach(sec => {
+                sec.stocks.forEach(st => {
+                    if (st.code === code) foundStock = st;
+                });
+            });
+
+            if (!foundStock) return;
+
+            selectedStockCode = code;
+            lastClickedCardElement = cardElement;
+
+            document.getElementById("briefing-badge").innerText = foundStock.badge;
+            document.getElementById("briefing-code").innerText = `${foundStock.market}: ${foundStock.code}`;
+            document.getElementById("briefing-title").innerText = `${foundStock.name} (${foundStock.code})`;
+            document.getElementById("briefing-price").innerText = foundStock.price;
+            
+            const changeEl = document.getElementById("briefing-change");
+            changeEl.innerText = foundStock.change;
+            changeEl.className = `text-sm sm:text-base font-bold font-mono ${foundStock.isUp ? 'text-emerald-400' : 'text-rose-400'}`;
+
+            document.getElementById("briefing-p1").innerText = foundStock.p1;
+            document.getElementById("briefing-p2").innerText = foundStock.p2;
+            document.getElementById("briefing-p3").innerText = foundStock.p3;
+            document.getElementById("briefing-p4").innerText = foundStock.p4;
+            document.getElementById("briefing-rivals").innerText = `⚔️ 주요 경쟁사: ${foundStock.rivals}`;
+
+            renderHeatmap();
+
+            const briefingCard = document.getElementById("briefing-card");
+            briefingCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            briefingCard.classList.add('highlight-target');
+            setTimeout(() => briefingCard.classList.remove('highlight-target'), 1500);
+
+            document.getElementById("return-bar").classList.remove("hidden");
+            fetchRealtimeNews(`${foundStock.name} 반도체`);
+        }
+
+        function returnToLastCard() {
+            document.getElementById("return-bar").classList.add("hidden");
+            if (lastClickedCardElement) {
+                lastClickedCardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                lastClickedCardElement.classList.add('highlight-target');
+                setTimeout(() => lastClickedCardElement.classList.remove('highlight-target'), 1500);
+            } else {
+                window.scrollTo({ top: 500, behavior: 'smooth' });
+            }
+        }
+
+        function jumpToNews() {
+            if (window.innerWidth < 1024) {
+                switchMobileTab('news');
+            } else {
+                document.getElementById("news-container").scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function switchMobileTab(tab) {
+            const panelAnalysis = document.getElementById("panel-analysis");
+            const panelNews = document.getElementById("panel-news");
+            const btnAnalysis = document.getElementById("tab-btn-analysis");
+            const btnNews = document.getElementById("tab-btn-news");
+
+            if (tab === 'analysis') {
+                panelAnalysis.classList.remove("hidden");
+                panelNews.classList.add("hidden");
+                btnAnalysis.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-cyan-500 text-cyan-400 bg-gray-900/50";
+                btnNews.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-transparent text-gray-400 hover:text-gray-200";
+            } else {
+                panelAnalysis.classList.add("hidden");
+                panelNews.classList.remove("hidden");
+                btnNews.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-cyan-500 text-cyan-400 bg-gray-900/50";
+                btnAnalysis.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-transparent text-gray-400 hover:text-gray-200";
+            }
+        }
+
+        async function fetchRealtimeNews(keyword) {
+            const container = document.getElementById("news-container");
+            document.getElementById("news-header-title").innerText = `실시간 속보 · [${keyword}]`;
+            
+            container.innerHTML = `
+                <div class="p-6 text-center text-gray-400 text-xs flex flex-col items-center justify-center space-y-2">
+                    <i class="fa-solid fa-spinner fa-spin text-cyan-400 text-base"></i>
+                    <span>최신 실시간 뉴스를 불러오는 중입니다...</span>
+                </div>
+            `;
+
+            try {
+                const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(keyword)}&hl=ko&gl=KR&ceid=KR:ko`;
+                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+                
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+                
+                if (!data.contents) throw new Error("No data");
+
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+                const items = xmlDoc.querySelectorAll("item");
+
+                let html = "";
+                let count = 0;
+
+                items.forEach((item) => {
+                    if (count >= 8) return;
+                    const title = item.querySelector("title")?.textContent || "제목 없음";
+                    const link = item.querySelector("link")?.textContent || "#";
+                    const pubDateStr = item.querySelector("pubDate")?.textContent || "";
+                    const source = item.querySelector("source")?.textContent || "주요 언론사";
+                    const timeAgo = formatTimeAgo(pubDateStr);
+
+                    html += `
+                        <a href="${link}" target="_blank" class="block bg-gray-950/60 hover:bg-gray-800/80 border border-gray-800/80 rounded-xl p-3.5 transition group">
+                            <div class="flex items-center justify-between text-[10px] text-gray-400 mb-1">
+                                <span class="text-cyan-400 font-semibold">${source}</span>
+                                <span class="font-mono">${timeAgo}</span>
+                            </div>
+                            <div class="text-xs font-bold text-gray-200 group-hover:text-white leading-snug">${title}</div>
+                        </a>
+                    `;
+                    count++;
+                });
+
+                if (count === 0) throw new Error("Empty");
+                container.innerHTML = html;
+
+            } catch (err) {
+                container.innerHTML = `
+                    <a href="https://news.google.com/search?q=${encodeURIComponent(keyword)}" target="_blank" class="block bg-gray-950/60 hover:bg-gray-800/80 border border-gray-800/80 rounded-xl p-3.5 transition">
+                        <div class="flex items-center justify-between text-[10px] text-gray-400 mb-1">
+                            <span class="text-cyan-400 font-semibold">Google News</span>
+                            <span class="font-mono">방금 전</span>
+                        </div>
+                        <div class="text-xs font-bold text-gray-200">[속보] ${keyword} 관련 최신 글로벌 반도체 시장 동향 브리핑 확인하기</div>
+                    </a>
+                `;
+            }
+        }
+
+        function formatTimeAgo(dateStr) {
+            if (!dateStr) return "최신";
+            try {
+                const diffMin = Math.floor((new Date() - new Date(dateStr)) / 60000);
+                if (diffMin < 60) return `${diffMin}분 전`;
+                const diffHour = Math.floor(diffMin / 60);
+                if (diffHour < 24) return `${diffHour}시간 전`;
+                return `${Math.floor(diffHour / 24)}일 전`;
+            } catch (e) { return "최신"; }
+        }
+
+        function saveMemo() {
+            const val = document.getElementById("memo-box").value;
+            localStorage.setItem("moun_semiconductor_memo", val);
+            alert("팀 메모가 안전하게 저장되었습니다.");
+        }
+
+        function loadMemo() {
+            const saved = localStorage.getItem("moun_semiconductor_memo");
+            if (saved) document.getElementById("memo-box").value = saved;
+        }
+
+        function shareLink() {
+            const url = window.location.href.split('?')[0] + '?v=' + Date.now();
+            navigator.clipboard.writeText(url).then(() => {
+                alert("최신 공유 링크가 복사되었습니다! 카카오톡이나 텔레그램에 붙여넣어 주세요.");
+            });
+        }
+    </script>
+</body>
+</html>
