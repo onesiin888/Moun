@@ -1,1 +1,834 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SILICON RADAR | 글로벌 AI·반도체 11대 밸류체인 실시간 보드</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #070B14;
+    color: #F1F5F9;
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.06) 0%, transparent 35%),
+        radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.07) 0%, transparent 40%);
+}
+.pcb-panel {
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(51, 65, 85, 0.65);
+    border-radius: 16px;
+}
+.pcb-tile {
+    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pcb-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -4px rgba(6, 182, 212, 0.22);
+    border-color: rgba(34, 211, 238, 0.6);
+}
+/* Finviz 스타일 히트맵 컬러 그라데이션 */
+.heat-strong-up { background: linear-gradient(135deg, rgba(6, 95, 70, 0.92), rgba(4, 120, 87, 0.85)); border-color: rgba(52, 211, 153, 0.5); }
+.heat-up { background: linear-gradient(135deg, rgba(6, 78, 59, 0.65), rgba(15, 23, 42, 0.9)); border-color: rgba(16, 185, 129, 0.35); }
+.heat-flat { background: rgba(30, 41, 59, 0.72); border-color: rgba(71, 85, 105, 0.5); }
+.heat-down { background: linear-gradient(135deg, rgba(127, 29, 29, 0.6), rgba(15, 23, 42, 0.9)); border-color: rgba(244, 63, 94, 0.35); }
+.heat-strong-down { background: linear-gradient(135deg, rgba(159, 18, 57, 0.9), rgba(136, 19, 55, 0.85)); border-color: rgba(251, 113, 133, 0.5); }
 
+.custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+.custom-scroll::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.4); }
+.custom-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background: #475569; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+
+<!-- 상단 실시간 지수 티커 바 (TradingView 공식 실시간 스트리밍 위젯) -->
+<div class="w-full bg-[#04070D] border-b border-slate-800/80 overflow-hidden h-10">
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+            "symbols": [
+                { "proName": "NASDAQ:SOXX", "title": "SOXX 반도체ETF" },
+                { "proName": "FX_IDC:USDKRW", "title": "달러/원 환율" },
+                { "proName": "NASDAQ:SMH", "title": "SMH 반에크반도체" },
+                { "proName": "NASDAQ:NVDA", "title": "엔비디아" },
+                { "proName": "NASDAQ:AVGO", "title": "브로드컴" },
+                { "proName": "NYSE:TSM", "title": "TSMC" },
+                { "proName": "NASDAQ:ALAB", "title": "아스테라랩스" },
+                { "proName": "NASDAQ:QCOM", "title": "퀄컴" },
+                { "proName": "NASDAQ:ASML", "title": "ASML" },
+                { "proName": "NASDAQ:MU", "title": "마이크론" },
+                { "proName": "KRX:000660", "title": "SK하이닉스" },
+                { "proName": "KRX:005930", "title": "삼성전자" }
+            ],
+            "showSymbolLogo": true,
+            "isTransparent": true,
+            "displayMode": "adaptive",
+            "colorTheme": "dark",
+            "locale": "kr"
+        }
+        </script>
+    </div>
+</div>
+
+<!-- 메인 헤더 -->
+<header class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 pt-4 pb-3">
+    <div class="flex flex-wrap justify-between items-center gap-3">
+        <!-- 좌측 브랜드 & 라이브 상태 -->
+        <div class="flex flex-wrap items-center gap-3">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-base sm:text-lg font-black tracking-tight text-white">SILICON RADAR</h1>
+                        <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">11대 초세분화 밸류체인</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium">Finviz 한계 돌파 · 글로벌 AI 반도체 공급망 실시간 인텔리전스</p>
+                </div>
+            </div>
+
+            <!-- 실시간 동기화 및 동시 접속 표시 -->
+            <div class="flex items-center gap-2">
+                <button type="button" id="syncStatusBtn" class="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition cursor-pointer">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span id="liveSyncText">실시간 친구 연동중</span>
+                </button>
+                <span id="onlineUsersBadge" class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-slate-800/90 text-slate-300 border border-slate-700">
+                    👥 현재 접속 1명
+                </span>
+            </div>
+        </div>
+
+        <!-- 우측 닉네임 설정 & 환율 표시 & 종목 검색 -->
+        <div class="flex flex-wrap items-center gap-2">
+            <div class="flex items-center gap-1.5 text-xs bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-1.5 text-slate-300" title="원화 환산 기준 환율 (수정 가능)">
+                <span class="text-[11px] font-bold text-slate-400">💱 USD/KRW</span>
+                <input type="number" id="usdKrwInput" value="1395" class="w-14 bg-transparent text-cyan-300 font-black text-right focus:outline-none">
+                <span class="text-[11px] font-bold text-slate-400">원</span>
+            </div>
+            <div class="relative">
+                <input type="text" id="tickerSearchInput" placeholder="종목/티커/키워드 검색 (예: ALAB, HBM)" class="text-xs bg-slate-900/90 border border-slate-700/80 focus:border-cyan-400 rounded-xl pl-8 pr-3 py-2 text-slate-200 placeholder:text-slate-500 w-48 sm:w-56 focus:outline-none">
+                <span class="absolute left-2.5 top-2 text-slate-500 text-xs">🔍</span>
+            </div>
+            <button type="button" id="nicknameBtn" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-xl font-bold border border-slate-700 transition cursor-pointer">
+                👤 <span id="myNicknameDisplay">익명트레이더</span>
+            </button>
+            <button type="button" id="refreshNewsBtn" class="text-xs bg-cyan-600 hover:bg-cyan-500 text-slate-950 px-3.5 py-2 rounded-xl font-black transition shadow-lg shadow-cyan-500/20 cursor-pointer">
+                ⚡ 속보 새로고침
+            </button>
+        </div>
+    </div>
+
+    <!-- 11대 공정 흐름 밸류체인 필터 탭 -->
+    <div class="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1.5 custom-scroll" id="sectorTabContainer">
+        <!-- JS로 11개 세부 섹터 탭 자동 생성 -->
+    </div>
+</header>
+
+<!-- 메인 2분할 워크스페이스 (좌측 65% 밸류체인 히트맵 & 상세 차트 / 우측 35% 실시간 속보 & 친구들 인사이트) -->
+<main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 pb-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+
+    <!-- 좌측 메인 영역 (8칸): 초세분화 11대 밸류체인 히트맵 + 선택 종목 실시간 TradingView 차트 -->
+    <section class="lg:col-span-8 space-y-4">
+
+        <!-- 1. 선택 종목 실시간 차트 & 상세 인스펙터 -->
+        <div class="pcb-panel p-4">
+            <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span id="inspectorSectorBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">05. AI 네트워킹 · 인터커넥트</span>
+                    <h2 id="inspectorTitle" class="text-base sm:text-lg font-black text-white">아스테라 랩스 (ALAB)</h2>
+                    <span id="inspectorRoleDesc" class="text-xs text-slate-400 hidden sm:inline">· AI 데이터센터 PCIe 리타이머·초고속 연결 1등주</span>
+                </div>
+
+                <!-- 친구들과 실시간 투심 투표 (Bull vs Bear) -->
+                <div class="flex items-center gap-1.5">
+                    <button type="button" id="voteBullBtn" class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 transition cursor-pointer flex items-center gap-1">
+                        <span>🐂 매수/강세</span>
+                        <span id="bullCount" class="font-black">0</span>
+                    </button>
+                    <button type="button" id="voteBearBtn" class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 transition cursor-pointer flex items-center gap-1">
+                        <span>🐻 관망/약세</span>
+                        <span id="bearCount" class="font-black">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TradingView 실시간 미니 차트 임베드 -->
+            <div class="w-full h-[250px] sm:h-[280px] rounded-xl overflow-hidden border border-slate-800 bg-[#0B101B]" id="tvChartWrapper">
+                <!-- JS에서 선택된 티커에 맞춰 TradingView 위젯 동적 렌더링 -->
+            </div>
+        </div>
+
+        <!-- 2. Finviz 스타일 업그레이드: 11대 초세분화 밸류체인 히트맵 보드 -->
+        <div class="space-y-3">
+            <div class="flex flex-wrap justify-between items-center gap-2 px-1">
+                <div class="flex items-center gap-2">
+                    <h3 class="text-sm font-black text-white">🗺️ 11대 밸류체인 초세분화 히트맵</h3>
+                    <span class="text-[11px] text-slate-400">카드를 클릭하면 위 실시간 차트와 우측 속보가 해당 종목으로 즉시 필터링됩니다</span>
+                </div>
+                <!-- 히트맵 범례 -->
+                <div class="flex items-center gap-1 text-[10px] font-bold">
+                    <span class="px-2 py-0.5 rounded bg-rose-900/80 text-rose-200">-3%↓</span>
+                    <span class="px-2 py-0.5 rounded bg-rose-950/80 text-rose-300">-1%</span>
+                    <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">보합</span>
+                    <span class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300">+1%</span>
+                    <span class="px-2 py-0.5 rounded bg-emerald-800/80 text-emerald-200">+3%↑</span>
+                </div>
+            </div>
+
+            <!-- 11개 섹터 그룹 컨테이너 -->
+            <div id="valueChainGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <!-- JS에서 11개 세부 섹터와 글로벌 핵심 종목 카드 생성 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 우측 사이드 영역 (4칸): 실시간 반도체 속보 티커 + 친구들 공동 메모/핀보드 -->
+    <aside class="lg:col-span-4 space-y-4 lg:sticky lg:top-4">
+
+        <!-- 1. 친구들과 실시간 공유하는 핵심 속보 핀(Pin) & 한줄 브리핑 -->
+        <div class="pcb-panel p-4">
+            <div class="flex justify-between items-center mb-2.5">
+                <div class="flex items-center gap-1.5">
+                    <span class="text-sm">📌</span>
+                    <h3 class="text-xs sm:text-sm font-black text-white">팀 라이브 브리핑 · 핵심 핀</h3>
+                </div>
+                <span class="text-[10px] font-bold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">실시간 동기화</span>
+            </div>
+
+            <!-- 한줄 인사이트 등록 폼 -->
+            <form id="briefingForm" class="flex gap-1.5 mb-3">
+                <input type="text" id="briefingInput" placeholder="예: AVGO 실적 가이던스 상향으로 ALAB 동반 강세!" class="flex-1 text-xs bg-slate-900/90 border border-slate-700 focus:border-cyan-400 rounded-xl px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:outline-none">
+                <button type="submit" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-2 rounded-xl transition cursor-pointer shrink-0">등록</button>
+            </form>
+
+            <!-- 실시간 브리핑 리스트 -->
+            <div id="briefingList" class="space-y-2 max-h-40 overflow-y-auto custom-scroll pr-1">
+                <!-- JS 렌더링 -->
+            </div>
+        </div>
+
+        <!-- 2. Saveticker 스타일 실시간 반도체 속보 피드 -->
+        <div class="pcb-panel p-4 flex flex-col">
+            <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                        <h3 class="text-xs sm:text-sm font-black text-white">실시간 글로벌 반도체 속보</h3>
+                    </div>
+                    <p id="newsFilterLabel" class="text-[11px] text-slate-400 mt-0.5">전체 11대 밸류체인 최신 헤드라인 (30초 자동 갱신)</p>
+                </div>
+                <button type="button" id="resetNewsFilterBtn" class="hidden text-[10px] font-extrabold px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 cursor-pointer">
+                    전체 보기 ✕
+                </button>
+            </div>
+
+            <!-- 빠른 키워드 필터 칩 -->
+            <div class="flex flex-wrap gap-1 mb-3">
+                <button type="button" data-news-q="AI semiconductor HBM NVIDIA" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">🔥 전체 AI반도체</button>
+                <button type="button" data-news-q="SK하이닉스 삼성전자 HBM" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">🇰🇷 K-메모리/HBM</button>
+                <button type="button" data-news-q="TSMC foundry CoWoS ASML" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">🏭 파운드리·EUV</button>
+                <button type="button" data-news-q="Astera Labs Broadcom Marvell AI networking" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">⚡ ASIC·네트워킹</button>
+            </div>
+
+            <!-- 뉴스 피드 리스트 -->
+            <div id="newsFeedList" class="space-y-2.5 max-h-[560px] overflow-y-auto custom-scroll pr-1">
+                <div class="text-center py-8 text-xs text-slate-500">실시간 반도체 뉴스 피드를 불러오는 중...</div>
+            </div>
+        </div>
+    </aside>
+</main>
+
+<!-- 닉네임 변경 모달 -->
+<div id="nicknameModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 flex items-center justify-center hidden p-4">
+    <div class="pcb-panel p-5 max-w-xs w-full shadow-2xl">
+        <h3 class="text-sm font-black text-white mb-1">👤 내 트레이더 닉네임 설정</h3>
+        <p class="text-[11px] text-slate-400 mb-3">브리핑 작성 시 친구들에게 표시되는 이름입니다.</p>
+        <input type="text" id="nicknameInput" placeholder="예: 알랩홀더, HBM대장" class="w-full text-xs bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white mb-3 focus:outline-none focus:border-cyan-400">
+        <div class="flex gap-2">
+            <button type="button" id="closeNicknameBtn" class="flex-1 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-bold cursor-pointer">취소</button>
+            <button type="button" id="saveNicknameBtn" class="flex-1 py-2 rounded-xl bg-cyan-500 text-slate-950 text-xs font-black cursor-pointer">저장</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Firebase Firestore 실시간 연동 엔드포인트
+var DB_URL = "https://firestore.googleapis.com/v1/projects/dadam-lounge/databases/(default)/documents/semi_intel/live_board";
+
+// 11대 초세분화 밸류체인 섹터 정의
+var SECTORS = [
+    { id: "all", code: "ALL", name: "전체 11대 밸류체인", short: "🌐 전체 (36)" },
+    { id: "ip", code: "01", name: "IP · 아키텍처", short: "01. IP·아키텍처" },
+    { id: "eda", code: "02", name: "EDA (설계 툴)", short: "02. EDA 툴" },
+    { id: "gpu", code: "03", name: "AI 가속기 · GPU", short: "03. AI GPU" },
+    { id: "asic", code: "04", name: "커스텀 ASIC · 통신", short: "04. ASIC·통신" },
+    { id: "net", code: "05", name: "AI 네트워킹 · 인터커넥트", short: "05. AI 네트워킹" },
+    { id: "mem", code: "06", name: "메모리 · HBM · NAND", short: "06. HBM·메모리" },
+    { id: "foundry", code: "07", name: "파운드리 (위탁생산)", short: "07. 파운드리" },
+    { id: "idm", code: "08", name: "IDM · 전력 · 아날로그", short: "08. IDM·전력" },
+    { id: "equip", code: "09", name: "전공정 핵심 장비", short: "09. 전공정 장비" },
+    { id: "mi", code: "10", name: "계측 · 검사 (MI)", short: "10. 계측·검사" },
+    { id: "osat", code: "11", name: "후공정 · 테스트 · 소재", short: "11. 후공정·소재" }
+];
+
+// 글로벌 핵심 36개 종목 마스터 (미국 + 한국 + 대만 + 일본, 기준가 및 통화 포함)
+var STOCKS = [
+    // 01. IP · 아키텍처
+    { ticker: "ARM", tvSymbol: "NASDAQ:ARM", name: "ARM 홀딩스", sector: "ip", currency: "USD", price: 148.20, role: "모바일·AI 서버 CPU 아키텍처 IP 독점", chg: 2.85, earningDate: "D-14", defaultEarn: "beat", earnSurprise: "+6.2%" },
+    { ticker: "CEVA", tvSymbol: "NASDAQ:CEVA", name: "CEVA", sector: "ip", currency: "USD", price: 24.50, role: "엣지 AI · 무선 통신 DSP IP 라이선스", chg: 0.92, earningDate: "D-21", defaultEarn: "inline", earnSurprise: "+1.1%" },
+
+    // 02. EDA (설계 툴)
+    { ticker: "SNPS", tvSymbol: "NASDAQ:SNPS", name: "시높시스", sector: "eda", currency: "USD", price: 542.10, role: "AI 칩 회로 설계 EDA 1위 · IP 강자", chg: 1.45, earningDate: "D-9", defaultEarn: "beat", earnSurprise: "+4.8%" },
+    { ticker: "CDNS", tvSymbol: "NASDAQ:CDNS", name: "케이던스", sector: "eda", currency: "USD", price: 298.40, role: "초미세 공정 EDA 및 시스템 설계 소프트웨어", chg: 1.18, earningDate: "D-18", defaultEarn: "beat", earnSurprise: "+3.9%" },
+
+    // 03. AI 가속기 · GPU
+    { ticker: "NVDA", tvSymbol: "NASDAQ:NVDA", name: "엔비디아", sector: "gpu", currency: "USD", price: 146.80, role: "AI 데이터센터 GPU · CUDA 생태계 절대 강자", chg: 3.42, earningDate: "D-5", defaultEarn: "beat", earnSurprise: "+9.5%" },
+    { ticker: "AMD", tvSymbol: "NASDAQ:AMD", name: "AMD", sector: "gpu", currency: "USD", price: 141.30, role: "MI300/MI350 AI 가속기 · 서버 CPU EPYC", chg: -0.74, earningDate: "D-24", defaultEarn: "inline", earnSurprise: "+1.8%" },
+
+    // 04. 커스텀 ASIC · 통신
+    { ticker: "AVGO", tvSymbol: "NASDAQ:AVGO", name: "브로드컴", sector: "asic", currency: "USD", price: 178.90, role: "빅테크 맞춤형 AI ASIC 1위 · 네트워크 스위치", chg: 4.15, earningDate: "D-11", defaultEarn: "beat", earnSurprise: "+7.4%" },
+    { ticker: "MRVL", tvSymbol: "NASDAQ:MRVL", name: "마벨 테크놀로지", sector: "asic", currency: "USD", price: 91.40, role: "아마존·MS 커스텀 AI 칩 · 광통신 DSP", chg: 2.30, earningDate: "D-13", defaultEarn: "beat", earnSurprise: "+5.1%" },
+    { ticker: "QCOM", tvSymbol: "NASDAQ:QCOM", name: "퀄컴", sector: "asic", currency: "USD", price: 164.50, role: "온디바이스 AI 스냅드래곤 · 전장 SoC", chg: 1.64, earningDate: "D-28", defaultEarn: "beat", earnSurprise: "+4.3%" },
+    { ticker: "2454.TW", tvSymbol: "TWSE:2454", name: "미디어텍", sector: "asic", currency: "TWD", price: 1290, role: "모바일 AP 글로벌 점유율 1위 · 엣지 AI", chg: 0.85, earningDate: "D-19", defaultEarn: "beat", earnSurprise: "+3.5%" },
+
+    // 05. AI 네트워킹 · 인터커넥트
+    { ticker: "ALAB", tvSymbol: "NASDAQ:ALAB", name: "아스테라 랩스", sector: "net", currency: "USD", price: 96.40, role: "AI 서버 PCIe/CXL 리타이머 · 연결 병목 해소", chg: 5.62, earningDate: "D-16", defaultEarn: "beat", earnSurprise: "+14.2%" },
+    { ticker: "CRDO", tvSymbol: "NASDAQ:CRDO", name: "크리도 테크놀로지", sector: "net", currency: "USD", price: 44.20, role: "AI 클러스터 초고속 AEC 케이블 · SerDes", chg: 4.88, earningDate: "D-12", defaultEarn: "beat", earnSurprise: "+11.0%" },
+    { ticker: "ANET", tvSymbol: "NYSE:ANET", name: "아리스타 네트웍스", sector: "net", currency: "USD", price: 412.60, role: "AI 백엔드 초고속 이더넷 스위치 대장주", chg: 2.12, earningDate: "D-22", defaultEarn: "beat", earnSurprise: "+6.7%" },
+    { ticker: "COHR", tvSymbol: "NYSE:COHR", name: "코히어런트", sector: "net", currency: "USD", price: 98.70, role: "800G/1.6T AI 데이터센터 광트랜시버·레이저", chg: -1.25, earningDate: "D-20", defaultEarn: "inline", earnSurprise: "+0.9%" },
+
+    // 06. 메모리 · HBM · NAND
+    { ticker: "000660.KS", tvSymbol: "KRX:000660", name: "SK하이닉스", sector: "mem", currency: "KRW", price: 194500, role: "HBM3E/HBM4 글로벌 1위 · 엔비디아 핵심 파트너", chg: 3.15, earningDate: "D-25", defaultEarn: "beat", earnSurprise: "+12.4%" },
+    { ticker: "005930.KS", tvSymbol: "KRX:005930", name: "삼성전자", sector: "mem", currency: "KRW", price: 58400, role: "글로벌 메모리 1위 · 파운드리/IDM 종합반도체", chg: 1.05, earningDate: "D-23", defaultEarn: "miss", earnSurprise: "-4.1%" },
+    { ticker: "MU", tvSymbol: "NASDAQ:MU", name: "마이크론", sector: "mem", currency: "USD", price: 103.80, role: "미국 유일 HBM3E·AI 데이터센터 DRAM/eSSD", chg: 2.74, earningDate: "D-15", defaultEarn: "beat", earnSurprise: "+8.9%" },
+    { ticker: "WDC", tvSymbol: "NASDAQ:WDC", name: "웨스턴디지털", sector: "mem", currency: "USD", price: 66.20, role: "AI 데이터센터 대용량 기업용 SSD · 낸드플래시", chg: -0.65, earningDate: "D-27", defaultEarn: "inline", earnSurprise: "+1.5%" },
+
+    // 07. 파운드리 (위탁생산)
+    { ticker: "TSM", tvSymbol: "NYSE:TSM", name: "TSMC", sector: "foundry", currency: "USD", price: 193.50, role: "3나노·2나노 초미세 파운드리 및 CoWoS 독점", chg: 2.40, earningDate: "D-17", defaultEarn: "beat", earnSurprise: "+6.8%" },
+    { ticker: "GFS", tvSymbol: "NASDAQ:GFS", name: "글로벌파운드리", sector: "foundry", currency: "USD", price: 41.80, role: "미국·유럽 특수 공정(RF·전력·차량용) 파운드리", chg: -1.42, earningDate: "D-26", defaultEarn: "miss", earnSurprise: "-3.4%" },
+    { ticker: "UMC", tvSymbol: "NYSE:UMC", name: "UMC", sector: "foundry", currency: "USD", price: 7.45, role: "대만 성숙 공정(28nm/22nm) 전문 파운드리", chg: 0.35, earningDate: "D-29", defaultEarn: "inline", earnSurprise: "+0.5%" },
+
+    // 08. IDM · 전력 · 아날로그
+    { ticker: "MPWR", tvSymbol: "NASDAQ:MPWR", name: "모놀리식 파워", sector: "idm", currency: "USD", price: 762.00, role: "AI GPU 보드 고효율 전력 관리 반도체(PMIC)", chg: 1.95, earningDate: "D-19", defaultEarn: "beat", earnSurprise: "+4.6%" },
+    { ticker: "TXN", tvSymbol: "NASDAQ:TXN", name: "텍사스 인스트루먼트", sector: "idm", currency: "USD", price: 204.30, role: "산업용·차량용 아날로그 반도체 글로벌 1위", chg: 0.42, earningDate: "D-30", defaultEarn: "inline", earnSurprise: "+1.2%" },
+    { ticker: "ADI", tvSymbol: "NASDAQ:ADI", name: "아나로그 디바이스", sector: "idm", currency: "USD", price: 226.10, role: "고성능 아날로그·혼합신호 처리 IDM", chg: 0.78, earningDate: "D-8", defaultEarn: "beat", earnSurprise: "+3.2%" },
+    { ticker: "INTC", tvSymbol: "NASDAQ:INTC", name: "인텔", sector: "idm", currency: "USD", price: 23.40, role: "x86 CPU · 18A 파운드리 턴어라운드 추진", chg: -2.65, earningDate: "D-27", defaultEarn: "miss", earnSurprise: "-11.5%" },
+    { ticker: "ON", tvSymbol: "NASDAQ:ON", name: "온세미", sector: "idm", currency: "USD", price: 69.80, role: "전기차 SiC 전력반도체 · 이미지센서", chg: -1.80, earningDate: "D-25", defaultEarn: "miss", earnSurprise: "-3.8%" },
+
+    // 09. 전공정 핵심 장비
+    { ticker: "ASML", tvSymbol: "NASDAQ:ASML", name: "ASML", sector: "equip", currency: "USD", price: 694.20, role: "초미세 EUV 노광장비 전 세계 100% 독점", chg: 1.88, earningDate: "D-21", defaultEarn: "beat", earnSurprise: "+5.0%" },
+    { ticker: "AMAT", tvSymbol: "NASDAQ:AMAT", name: "어플라이드 머티어리얼즈", sector: "equip", currency: "USD", price: 184.60, role: "증착·식각 등 종합 전공정 장비 글로벌 1위", chg: 1.32, earningDate: "D-6", defaultEarn: "beat", earnSurprise: "+4.1%" },
+    { ticker: "LRCX", tvSymbol: "NASDAQ:LRCX", name: "램리서치", sector: "equip", currency: "USD", price: 76.90, role: "HBM·3D 낸드 초고단 식각(Etch) 장비 핵심", chg: 2.05, earningDate: "D-24", defaultEarn: "beat", earnSurprise: "+5.7%" },
+    { ticker: "8035.T", tvSymbol: "TSE:8035", name: "도쿄일렉트론", sector: "equip", currency: "JPY", price: 23450, role: "EUV 코터/디벨로퍼 독점 · 일본 최대 장비사", chg: 1.55, earningDate: "D-22", defaultEarn: "beat", earnSurprise: "+4.9%" },
+
+    // 10. 계측 · 검사 (MI)
+    { ticker: "KLAC", tvSymbol: "NASDAQ:KLAC", name: "KLA", sector: "mi", currency: "USD", price: 668.50, role: "웨이퍼 결함 검사·계측 장비 글로벌 압도적 1위", chg: 1.72, earningDate: "D-23", defaultEarn: "beat", earnSurprise: "+5.3%" },
+    { ticker: "ONTO", tvSymbol: "NYSE:ONTO", name: "온토 이노베이션", sector: "mi", currency: "USD", price: 196.40, role: "HBM·CoWoS 첨단 패키징 3D 계측·검사 강자", chg: 3.10, earningDate: "D-17", defaultEarn: "beat", earnSurprise: "+7.8%" },
+
+    // 11. 후공정 · 테스트 · 소재
+    { ticker: "6857.T", tvSymbol: "TSE:6857", name: "어드반테스트", sector: "osat", currency: "JPY", price: 9120, role: "엔비디아 AI GPU·HBM 최종 양품 테스트 장비 1위", chg: 3.65, earningDate: "D-20", defaultEarn: "beat", earnSurprise: "+10.2%" },
+    { ticker: "TER", tvSymbol: "NASDAQ:TER", name: "테라다인", sector: "osat", currency: "USD", price: 112.30, role: "AI·모바일 SoC 반도체 테스트 및 협동로봇", chg: 0.95, earningDate: "D-26", defaultEarn: "inline", earnSurprise: "+2.1%" },
+    { ticker: "AMKR", tvSymbol: "NASDAQ:AMKR", name: "앰코 테크놀로지", sector: "osat", currency: "USD", price: 26.80, role: "글로벌 2위 후공정(OSAT) · 첨단 패키징", chg: -0.85, earningDate: "D-28", defaultEarn: "miss", earnSurprise: "-3.1%" },
+    { ticker: "ENTG", tvSymbol: "NASDAQ:ENTG", name: "인테그리스", sector: "osat", currency: "USD", price: 104.20, role: "초미세 공정 특수가스·필터·CMP 소재 1위", chg: 0.64, earningDate: "D-25", defaultEarn: "inline", earnSurprise: "+1.4%" }
+];
+
+// 실시간 공유 상태 (Firebase Firestore와 동기화)
+var sharedState = {
+    earnOverrides: {},
+    votes: {},
+    briefings: [
+        { id: 1700000001, author: "시스템", text: "카드의 [Beat/Miss] 뱃지를 클릭하면 친구들 화면에도 어닝 상태가 실시간 변경됩니다!", time: "방금" }
+    ],
+    pinnedNews: [],
+    activeUsers: {},
+    updatedAt: 0
+};
+
+var selectedSector = "all";
+var selectedTicker = "ALAB";
+var currentNewsQuery = "AI semiconductor HBM NVIDIA";
+var myNickname = localStorage.getItem("semi_nick_v1") || ("트레이더#" + Math.floor(100 + Math.random() * 900));
+var sessionId = "u_" + Math.random().toString(36).slice(2, 9);
+
+// 1. Firebase 실시간 동기화 함수
+function pushSharedState() {
+    sharedState.updatedAt = Date.now();
+    sharedState.activeUsers[sessionId] = Date.now();
+
+    var payload = {
+        fields: {
+            json: { stringValue: JSON.stringify(sharedState) },
+            updatedAt: { integerValue: String(sharedState.updatedAt) }
+        }
+    };
+
+    fetch(DB_URL, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    }).then(function(res) {
+        if (res.ok) {
+            document.getElementById("liveSyncText").innerText = "실시간 친구 연동중";
+        }
+    }).catch(function() {});
+}
+
+function pullSharedState() {
+    fetch(DB_URL + "?t=" + Date.now())
+        .then(function(res) {
+            if (res.status === 404) {
+                pushSharedState();
+                return null;
+            }
+            if (!res.ok) return null;
+            return res.json();
+        })
+        .then(function(data) {
+            if (!data || !data.fields || !data.fields.json) return;
+            var remote = JSON.parse(data.fields.json.stringValue);
+            if ((Number(remote.updatedAt) || 0) >= sharedState.updatedAt || sharedState.updatedAt === 0) {
+                sharedState = remote;
+                if (!sharedState.earnOverrides) sharedState.earnOverrides = {};
+                if (!sharedState.votes) sharedState.votes = {};
+                if (!sharedState.briefings) sharedState.briefings = [];
+                if (!sharedState.activeUsers) sharedState.activeUsers = {};
+                renderAll();
+            }
+            updateOnlineCount();
+        })
+        .catch(function() {});
+}
+
+function updateOnlineCount() {
+    var now = Date.now();
+    sharedState.activeUsers[sessionId] = now;
+    var count = 0;
+    Object.keys(sharedState.activeUsers).forEach(function(k) {
+        if (now - sharedState.activeUsers[k] < 45000) count++;
+    });
+    document.getElementById("onlineUsersBadge").innerText = "👥 현재 접속 " + Math.max(1, count) + "명";
+}
+
+// 2. TradingView 실시간 차트 렌더링
+function renderTradingViewChart(stock) {
+    var wrapper = document.getElementById("tvChartWrapper");
+    wrapper.innerHTML = "";
+    var container = document.createElement("div");
+    container.className = "tradingview-widget-container";
+    container.style.height = "100%";
+    container.style.width = "100%";
+
+    var widgetDiv = document.createElement("div");
+    widgetDiv.className = "tradingview-widget-container__widget";
+    widgetDiv.style.height = "100%";
+    widgetDiv.style.width = "100%";
+    container.appendChild(widgetDiv);
+
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+        "autosize": true,
+        "symbol": stock.tvSymbol,
+        "interval": "15",
+        "timezone": "Asia/Seoul",
+        "theme": "dark",
+        "style": "1",
+        "locale": "kr",
+        "backgroundColor": "#0B101B",
+        "gridColor": "rgba(30, 41, 59, 0.45)",
+        "hide_top_toolbar": false,
+        "hide_legend": false,
+        "save_image": false,
+        "calendar": false,
+        "support_host": "https://www.tradingview.com"
+    });
+    container.appendChild(script);
+    wrapper.appendChild(container);
+}
+
+// 3. 종목 선택 시 인스펙터 & 뉴스 동시 연동
+function selectStock(ticker, alsoFilterNews) {
+    selectedTicker = ticker;
+    var stock = STOCKS.find(function(s) { return s.ticker === ticker; }) || STOCKS[0];
+    var sec = SECTORS.find(function(x) { return x.id === stock.sector; });
+
+    document.getElementById("inspectorSectorBadge").innerText = sec ? (sec.code + ". " + sec.name) : "";
+    document.getElementById("inspectorTitle").innerText = stock.name + " (" + stock.ticker + ")";
+    document.getElementById("inspectorRoleDesc").innerText = "· " + stock.role;
+
+    var v = sharedState.votes[stock.ticker] || { bull: 0, bear: 0 };
+    document.getElementById("bullCount").innerText = v.bull || 0;
+    document.getElementById("bearCount").innerText = v.bear || 0;
+
+    renderTradingViewChart(stock);
+    renderValueChainGrid();
+
+    if (alsoFilterNews) {
+        var queryTerm = stock.ticker.indexOf(".") !== -1 ? stock.name : (stock.ticker + " " + stock.name);
+        fetchRealtimeNews(queryTerm + " semiconductor", stock.name + " (" + stock.ticker + ") 실시간 속보");
+    }
+}
+
+// 4. 11대 밸류체인 상단 필터 탭 렌더링
+function renderSectorTabs() {
+    var box = document.getElementById("sectorTabContainer");
+    box.innerHTML = "";
+    SECTORS.forEach(function(sec) {
+        var active = selectedSector === sec.id;
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "text-[11px] font-extrabold px-3 py-1.5 rounded-xl border transition shrink-0 cursor-pointer " +
+            (active
+                ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-md shadow-cyan-500/20"
+                : "bg-slate-900/80 hover:bg-slate-800 text-slate-300 border-slate-800");
+        btn.innerText = sec.short;
+        btn.onclick = function() {
+            selectedSector = sec.id;
+            renderSectorTabs();
+            renderValueChainGrid();
+            if (sec.id !== "all") {
+                var secStocks = STOCKS.filter(function(s) { return s.sector === sec.id; }).map(function(s) { return s.ticker.split(".")[0]; }).join(" OR ");
+                fetchRealtimeNews("(" + secStocks + ") semiconductor", sec.code + ". " + sec.name + " 섹터 속보");
+            }
+        };
+        box.appendChild(btn);
+    });
+}
+
+// 5. 히트맵 컬러 & 어닝 뱃지 헬퍼
+function getHeatClass(chg) {
+    if (chg >= 3.0) return "heat-strong-up";
+    if (chg > 0.3) return "heat-up";
+    if (chg <= -2.5) return "heat-strong-down";
+    if (chg < -0.3) return "heat-down";
+    return "heat-flat";
+}
+
+function getEarnBadgeInfo(status, surprise) {
+    if (status === "beat") {
+        return { text: "🟢 Beat " + surprise, cls: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40" };
+    }
+    if (status === "miss") {
+        return { text: "🔴 Miss " + surprise, cls: "bg-rose-500/20 text-rose-300 border-rose-500/40" };
+    }
+    return { text: "🟡 부합 " + surprise, cls: "bg-amber-500/20 text-amber-300 border-amber-500/40" };
+}
+
+// 달러/엔화/대만달러 -> 원화(₩) 실시간 환산 포맷 헬퍼
+function formatPriceDual(st) {
+    var usdRate = Number(document.getElementById("usdKrwInput").value) || 1395;
+    if (st.currency === "KRW") {
+        return {
+            primary: "₩" + Number(st.price).toLocaleString(),
+            secondary: "$" + (st.price / usdRate).toFixed(2)
+        };
+    }
+    if (st.currency === "JPY") {
+        var krwFromJpy = Math.round(st.price * (usdRate / 154));
+        return {
+            primary: "₩" + krwFromJpy.toLocaleString(),
+            secondary: "¥" + Number(st.price).toLocaleString()
+        };
+    }
+    if (st.currency === "TWD") {
+        var krwFromTwd = Math.round(st.price * (usdRate / 32.5));
+        return {
+            primary: "₩" + krwFromTwd.toLocaleString(),
+            secondary: "NT$" + Number(st.price).toLocaleString()
+        };
+    }
+    var krwVal = Math.round(st.price * usdRate);
+    return {
+        primary: "₩" + krwVal.toLocaleString(),
+        secondary: "$" + Number(st.price).toFixed(2)
+    };
+}
+
+// 6. 11대 초세분화 밸류체인 히트맵 렌더링
+function renderValueChainGrid() {
+    var grid = document.getElementById("valueChainGrid");
+    var searchVal = document.getElementById("tickerSearchInput").value.trim().toLowerCase();
+    grid.innerHTML = "";
+
+    var visibleSectors = SECTORS.filter(function(s) {
+        return s.id !== "all" && (selectedSector === "all" || selectedSector === s.id);
+    });
+
+    visibleSectors.forEach(function(sec) {
+        var secStocks = STOCKS.filter(function(st) {
+            if (st.sector !== sec.id) return false;
+            if (!searchVal) return true;
+            return st.ticker.toLowerCase().indexOf(searchVal) !== -1 ||
+                   st.name.toLowerCase().indexOf(searchVal) !== -1 ||
+                   st.role.toLowerCase().indexOf(searchVal) !== -1;
+        });
+
+        if (secStocks.length === 0) return;
+
+        // 섹터 평균 등락률 계산
+        var avgChg = secStocks.reduce(function(acc, cur) { return acc + cur.chg; }, 0) / secStocks.length;
+        var avgStr = (avgChg >= 0 ? "+" : "") + avgChg.toFixed(2) + "%";
+        var avgColor = avgChg > 0 ? "text-emerald-400" : (avgChg < 0 ? "text-rose-400" : "text-slate-400");
+
+        var panel = document.createElement("div");
+        panel.className = "pcb-panel p-3.5 flex flex-col justify-between";
+
+        // 섹터 헤더
+        var header = document.createElement("div");
+        header.className = "flex justify-between items-center mb-2.5 pb-2 border-b border-slate-800/80";
+        header.innerHTML = '<div class="flex items-center gap-1.5">'
+            + '<span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-slate-800 text-cyan-300">' + sec.code + '</span>'
+            + '<h4 class="text-xs sm:text-sm font-black text-white">' + sec.name + '</h4>'
+            + '</div>'
+            + '<span class="text-xs font-black ' + avgColor + '">섹터 ' + avgStr + '</span>';
+        panel.appendChild(header);
+
+        // 종목 히트맵 타일 그리드
+        var tilesWrap = document.createElement("div");
+        tilesWrap.className = "grid grid-cols-2 gap-2";
+
+        secStocks.forEach(function(st) {
+            var isSelected = st.ticker === selectedTicker;
+            var heatCls = getHeatClass(st.chg);
+            var chgText = (st.chg >= 0 ? "+" : "") + st.chg.toFixed(2) + "%";
+            var chgTextColor = st.chg >= 0 ? "text-emerald-300" : "text-rose-300";
+
+            var earnStatus = sharedState.earnOverrides[st.ticker] || st.defaultEarn;
+            var earnInfo = getEarnBadgeInfo(earnStatus, st.earnSurprise);
+            var pricePair = formatPriceDual(st);
+
+            var tile = document.createElement("div");
+            tile.className = "pcb-tile rounded-xl p-2.5 border cursor-pointer flex flex-col justify-between gap-1.5 " + heatCls + (isSelected ? " ring-2 ring-cyan-400" : "");
+
+            tile.innerHTML = '<div class="flex justify-between items-start gap-1">'
+                + '<div>'
+                + '<div class="text-xs font-black text-white tracking-tight leading-none">' + st.ticker + '</div>'
+                + '<div class="text-[11px] font-bold text-slate-300 mt-1 line-clamp-1">' + st.name + '</div>'
+                + '</div>'
+                + '<div class="text-right">'
+                + '<div class="text-xs font-black ' + chgTextColor + '">' + chgText + '</div>'
+                + '<div class="text-[11px] font-black text-white mt-0.5">' + pricePair.primary + '</div>'
+                + '<div class="text-[9px] font-semibold text-slate-400">' + pricePair.secondary + '</div>'
+                + '</div>'
+                + '</div>'
+                + '<p class="text-[10px] text-slate-300/85 line-clamp-1">' + st.role + '</p>'
+                + '<div class="flex justify-between items-center pt-1 border-t border-white/10">'
+                + '<span class="text-[9px] font-extrabold text-slate-300 bg-slate-950/50 px-1.5 py-0.5 rounded">실적 ' + st.earningDate + '</span>'
+                + '<button type="button" class="earn-toggle-btn text-[9px] font-extrabold px-1.5 py-0.5 rounded border cursor-pointer ' + earnInfo.cls + '" title="클릭하여 어닝 Beat/Inline/Miss 상태 전환 (친구들과 실시간 동기화)">' + earnInfo.text + '</button>'
+                + '</div>';
+
+            // 카드 클릭 시 상단 실시간 차트 + 우측 속보 동시 전환
+            tile.onclick = function() {
+                selectStock(st.ticker, true);
+            };
+
+            // 어닝 서프라이즈/쇼크 뱃지 클릭 시 실시간 상태 순환 전환
+            var earnBtn = tile.querySelector(".earn-toggle-btn");
+            earnBtn.onclick = function(e) {
+                e.stopPropagation();
+                var order = ["beat", "inline", "miss"];
+                var next = order[(order.indexOf(earnStatus) + 1) % order.length];
+                sharedState.earnOverrides[st.ticker] = next;
+                renderValueChainGrid();
+                pushSharedState();
+            };
+
+            tilesWrap.appendChild(tile);
+        });
+
+        panel.appendChild(tilesWrap);
+        grid.appendChild(panel);
+    });
+}
+
+// 7. 실시간 반도체 뉴스 RSS 피드 수집
+function fetchRealtimeNews(query, labelText) {
+    currentNewsQuery = query || currentNewsQuery;
+    if (labelText) {
+        document.getElementById("newsFilterLabel").innerText = labelText;
+        document.getElementById("resetNewsFilterBtn").classList.remove("hidden");
+    }
+
+    var listEl = document.getElementById("newsFeedList");
+    var rssUrl = "https://news.google.com/rss/search?q=" + encodeURIComponent(currentNewsQuery) + "&hl=ko&gl=KR&ceid=KR:ko";
+    var apiUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl);
+
+    fetch(apiUrl)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (!data || data.status !== "ok" || !Array.isArray(data.items) || data.items.length === 0) {
+                renderFallbackNews();
+                return;
+            }
+            listEl.innerHTML = "";
+            data.items.slice(0, 18).forEach(function(item) {
+                var pubDate = new Date(item.pubDate);
+                var timeStr = isNaN(pubDate.getTime()) ? "실시간" : (String(pubDate.getHours()).padStart(2, "0") + ":" + String(pubDate.getMinutes()).padStart(2, "0"));
+
+                var card = document.createElement("div");
+                card.className = "p-3 rounded-xl bg-slate-900/75 hover:bg-slate-800/90 border border-slate-800 hover:border-cyan-500/40 transition group";
+                card.innerHTML = '<div class="flex justify-between items-center gap-2 mb-1">'
+                    + '<span class="text-[10px] font-extrabold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">' + (item.author || "글로벌 속보") + '</span>'
+                    + '<div class="flex items-center gap-1.5">'
+                    + '<span class="text-[10px] font-bold text-slate-400">' + timeStr + '</span>'
+                    + '<button type="button" class="pin-news-btn text-[10px] text-slate-400 hover:text-amber-300 cursor-pointer" title="팀 브리핑 보드에 고정">📌</button>'
+                    + '</div>'
+                    + '</div>'
+                    + '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" class="block text-xs font-bold text-slate-100 group-hover:text-cyan-200 leading-snug">' + item.title + '</a>';
+
+                card.querySelector(".pin-news-btn").onclick = function() {
+                    sharedState.briefings.unshift({
+                        id: Date.now(),
+                        author: myNickname,
+                        text: "📰 [속보공유] " + item.title,
+                        time: timeStr
+                    });
+                    renderBriefings();
+                    pushSharedState();
+                };
+
+                listEl.appendChild(card);
+            });
+        })
+        .catch(function() {
+            renderFallbackNews();
+        });
+}
+
+function renderFallbackNews() {
+    var listEl = document.getElementById("newsFeedList");
+    var samples = [
+        { src: "Reuters · 반도체", time: "실시간", title: "엔비디아 차세대 블랙웰·루빈 랙 수요 급증으로 HBM3E 및 AI 네트워킹 리타이머 공급망 풀가동" },
+        { src: "Bloomberg · 파운드리", time: "12분 전", title: "TSMC, AI 가속기 수요 대응 위해 CoWoS 첨단 패키징 생산능력 추가 증설 검토" },
+        { src: "SemiAnalysis · ASIC", time: "28분 전", title: "하이퍼스케일러 자체 커스텀 AI 칩(ASIC) 투자 확대로 브로드컴·마벨 수주 잔고 사상 최고" },
+        { src: "한경 · 메모리", time: "41분 전", title: "SK하이닉스·삼성전자, 차세대 HBM4 양산 로드맵 가속화… 전공정·계측 장비 수혜 부각" }
+    ];
+    listEl.innerHTML = "";
+    samples.forEach(function(s) {
+        var div = document.createElement("div");
+        div.className = "p-3 rounded-xl bg-slate-900/75 border border-slate-800";
+        div.innerHTML = '<div class="flex justify-between text-[10px] mb-1"><span class="font-extrabold text-cyan-300">' + s.src + '</span><span class="text-slate-400">' + s.time + '</span></div>'
+            + '<div class="text-xs font-bold text-slate-100 leading-snug">' + s.title + '</div>';
+        listEl.appendChild(div);
+    });
+}
+
+// 8. 친구들 실시간 브리핑 보드 렌더링
+function renderBriefings() {
+    var box = document.getElementById("briefingList");
+    box.innerHTML = "";
+    sharedState.briefings.slice(0, 15).forEach(function(b) {
+        var row = document.createElement("div");
+        row.className = "p-2.5 rounded-xl bg-slate-900/90 border border-slate-800/90 text-xs flex justify-between items-start gap-2";
+        row.innerHTML = '<div class="min-w-0 flex-1">'
+            + '<div class="flex items-center gap-1.5 mb-0.5">'
+            + '<span class="text-[10px] font-black text-emerald-300">' + b.author + '</span>'
+            + '<span class="text-[9px] text-slate-500">' + (b.time || "") + '</span>'
+            + '</div>'
+            + '<p class="text-[11px] font-semibold text-slate-200 break-words leading-snug">' + b.text + '</p>'
+            + '</div>';
+        box.appendChild(row);
+    });
+}
+
+function renderAll() {
+    document.getElementById("myNicknameDisplay").innerText = myNickname;
+    renderSectorTabs();
+    renderValueChainGrid();
+    renderBriefings();
+
+    var v = sharedState.votes[selectedTicker] || { bull: 0, bear: 0 };
+    document.getElementById("bullCount").innerText = v.bull || 0;
+    document.getElementById("bearCount").innerText = v.bear || 0;
+}
+
+// 이벤트 바인딩
+document.getElementById("tickerSearchInput").oninput = renderValueChainGrid;
+document.getElementById("usdKrwInput").oninput = renderValueChainGrid;
+
+document.getElementById("voteBullBtn").onclick = function() {
+    if (!sharedState.votes[selectedTicker]) sharedState.votes[selectedTicker] = { bull: 0, bear: 0 };
+    sharedState.votes[selectedTicker].bull += 1;
+    renderAll();
+    pushSharedState();
+};
+
+document.getElementById("voteBearBtn").onclick = function() {
+    if (!sharedState.votes[selectedTicker]) sharedState.votes[selectedTicker] = { bull: 0, bear: 0 };
+    sharedState.votes[selectedTicker].bear += 1;
+    renderAll();
+    pushSharedState();
+};
+
+document.getElementById("briefingForm").onsubmit = function(e) {
+    e.preventDefault();
+    var input = document.getElementById("briefingInput");
+    var txt = input.value.trim();
+    if (!txt) return;
+    var now = new Date();
+    var timeStr = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
+    sharedState.briefings.unshift({
+        id: Date.now(),
+        author: myNickname,
+        text: txt,
+        time: timeStr
+    });
+    input.value = "";
+    renderBriefings();
+    pushSharedState();
+};
+
+document.querySelectorAll(".news-preset-chip").forEach(function(chip) {
+    chip.onclick = function() {
+        var q = chip.getAttribute("data-news-q");
+        fetchRealtimeNews(q, chip.innerText + " 실시간 뉴스");
+    };
+});
+
+document.getElementById("resetNewsFilterBtn").onclick = function() {
+    document.getElementById("resetNewsFilterBtn").classList.add("hidden");
+    fetchRealtimeNews("AI semiconductor HBM NVIDIA", "전체 11대 밸류체인 최신 헤드라인 (30초 자동 갱신)");
+};
+
+document.getElementById("refreshNewsBtn").onclick = function() {
+    fetchRealtimeNews(currentNewsQuery);
+    pullSharedState();
+};
+
+document.getElementById("nicknameBtn").onclick = function() {
+    document.getElementById("nicknameInput").value = myNickname;
+    document.getElementById("nicknameModal").classList.remove("hidden");
+};
+document.getElementById("closeNicknameBtn").onclick = function() {
+    document.getElementById("nicknameModal").classList.add("hidden");
+};
+document.getElementById("saveNicknameBtn").onclick = function() {
+    var val = document.getElementById("nicknameInput").value.trim();
+    if (val) {
+        myNickname = val;
+        localStorage.setItem("semi_nick_v1", myNickname);
+        renderAll();
+    }
+    document.getElementById("nicknameModal").classList.add("hidden");
+};
+
+// 초기 구동
+renderAll();
+selectStock("ALAB", false);
+fetchRealtimeNews("AI semiconductor HBM NVIDIA");
+pullSharedState();
+setInterval(pullSharedState, 4000);
+setInterval(function() { fetchRealtimeNews(currentNewsQuery); }, 30000);
+</script>
+</body>
+</html>
