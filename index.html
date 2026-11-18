@@ -39,6 +39,7 @@ body {
 .custom-scroll::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.4); }
 .custom-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
 .custom-scroll::-webkit-scrollbar-thumb:hover { background: #475569; }
+html, body { overflow-x: hidden; max-width: 100vw; }
 </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -128,28 +129,28 @@ body {
     <section class="lg:col-span-8 space-y-5">
 
         <!-- 1. 선택 종목 기업 심층 브리핑 & 월가 애널리스트 컨센서스 -->
-        <div class="pcb-panel p-5 border-cyan-500/30">
-            <div class="flex flex-wrap justify-between items-center gap-4 pb-4 border-b border-slate-800">
-                <div>
+        <div id="inspectorPanel" class="pcb-panel p-4 sm:p-5 border-cyan-500/30">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3.5 pb-4 border-b border-slate-800">
+                <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-2 mb-1.5">
                         <span id="inspectorSectorBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">03. AI 가속기 · GPU</span>
                         <span id="inspectorEarnBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">🟢 Beat +9.5%</span>
                     </div>
-                    <h2 id="inspectorTitle" class="text-lg sm:text-xl font-black text-white tracking-tight">엔비디아 (NVDA)</h2>
+                    <h2 id="inspectorTitle" class="text-lg sm:text-xl font-black text-white tracking-tight truncate">엔비디아 (NVDA)</h2>
                 </div>
 
                 <!-- 현재가 (원화 + 현지통화) 및 월가 애널리스트 컨센서스 -->
-                <div class="flex flex-wrap items-center gap-3.5">
-                    <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl px-3.5 py-2 text-right">
+                <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+                    <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-left sm:text-right flex-1 sm:flex-initial">
                         <div class="text-[10px] font-bold text-slate-400">월가 애널리스트 컨센서스</div>
-                        <div class="flex items-center justify-end gap-2 mt-0.5">
+                        <div class="flex flex-wrap items-center sm:justify-end gap-1.5 mt-0.5">
                             <span id="inspectorRating" class="text-xs font-black text-emerald-400">Strong Buy (강력 매수)</span>
-                            <span id="inspectorTargetUpside" class="text-[11px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">목표가 +21.4%</span>
+                            <span id="inspectorTargetUpside" class="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">목표가 +21.4%</span>
                         </div>
                     </div>
-                    <div class="text-right min-w-[110px]">
-                        <div id="inspectorPricePrimary" class="text-lg sm:text-xl font-black text-white leading-tight">₩204,786</div>
-                        <div class="text-xs font-bold text-slate-400 mt-0.5">
+                    <div class="text-right shrink-0">
+                        <div id="inspectorPricePrimary" class="text-base sm:text-xl font-black text-white leading-tight">₩204,786</div>
+                        <div class="text-[11px] sm:text-xs font-bold text-slate-400 mt-0.5">
                             <span id="inspectorPriceSecondary">$146.80</span>
                             <span class="mx-1">·</span>
                             <span id="inspectorChg" class="text-emerald-400">+3.42%</span>
@@ -230,7 +231,7 @@ body {
     <aside class="lg:col-span-4 space-y-5 lg:sticky lg:top-4">
 
         <!-- 1. 실시간 반도체 속보 피드 -->
-        <div class="pcb-panel p-4 sm:p-5 flex flex-col h-[700px]">
+        <div class="pcb-panel p-4 sm:p-5 flex flex-col h-[480px] lg:h-[700px]">
             <div class="flex justify-between items-start gap-2 pb-3 border-b border-slate-800 shrink-0">
                 <div class="min-w-0">
                     <div class="flex items-center gap-1.5">
@@ -976,6 +977,10 @@ function renderValueChainGrid() {
             tile.onclick = function(e) {
                 if (e.target && e.target.classList.contains("earn-toggle-btn")) return;
                 selectStock(st.ticker, true);
+                if (window.innerWidth < 1024) {
+                    var inspectorEl = document.getElementById("inspectorPanel");
+                    if (inspectorEl) inspectorEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                }
             };
 
             var earnBtn = tile.querySelector(".earn-toggle-btn");
