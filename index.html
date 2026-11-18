@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="ko" class="dark">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SILICON RADAR | 글로벌 AI·반도체 11대 밸류체인 실시간 보드</title>
+<title>SILICON RADAR | 글로벌 AI·반도체 초세분화 인텔리전스 보드</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #070B14;
-    color: #F1F5F9;
-    background-image: 
-        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.06) 0%, transparent 35%),
-        radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.07) 0%, transparent 40%);
+    color: #E2E8F0;
+    background-image:
+        radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
 }
 .pcb-panel {
-    background: rgba(15, 23, 42, 0.82);
+    background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(51, 65, 85, 0.65);
     border-radius: 16px;
@@ -29,7 +29,6 @@ body {
     box-shadow: 0 8px 24px -4px rgba(6, 182, 212, 0.22);
     border-color: rgba(34, 211, 238, 0.6);
 }
-/* Finviz 스타일 히트맵 컬러 그라데이션 */
 .heat-strong-up { background: linear-gradient(135deg, rgba(6, 95, 70, 0.92), rgba(4, 120, 87, 0.85)); border-color: rgba(52, 211, 153, 0.5); }
 .heat-up { background: linear-gradient(135deg, rgba(6, 78, 59, 0.65), rgba(15, 23, 42, 0.9)); border-color: rgba(16, 185, 129, 0.35); }
 .heat-flat { background: rgba(30, 41, 59, 0.72); border-color: rgba(71, 85, 105, 0.5); }
@@ -44,7 +43,7 @@ body {
 </head>
 <body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
 
-<!-- 상단 실시간 지수 티커 바 (TradingView 공식 실시간 스트리밍 위젯) -->
+<!-- 상단 실시간 지수 티커 바 -->
 <div class="w-full bg-[#04070D] border-b border-slate-800/80 overflow-hidden h-10">
     <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
@@ -58,9 +57,9 @@ body {
                 { "proName": "NASDAQ:AVGO", "title": "브로드컴" },
                 { "proName": "NYSE:TSM", "title": "TSMC" },
                 { "proName": "NASDAQ:ALAB", "title": "아스테라랩스" },
-                { "proName": "NASDAQ:QCOM", "title": "퀄컴" },
+                { "proName": "NASDAQ:LITE", "title": "루멘텀" },
+                { "proName": "NASDAQ:SNDK", "title": "샌디스크" },
                 { "proName": "NASDAQ:ASML", "title": "ASML" },
-                { "proName": "NASDAQ:MU", "title": "마이크론" },
                 { "proName": "KRX:000660", "title": "SK하이닉스" },
                 { "proName": "KRX:005930", "title": "삼성전자" }
             ],
@@ -77,7 +76,7 @@ body {
 <!-- 메인 헤더 -->
 <header class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 pt-4 pb-3">
     <div class="flex flex-wrap justify-between items-center gap-3">
-        <!-- 좌측 브랜드 & 라이브 상태 -->
+        <!-- 좌측 브랜드 & 실시간 상태 -->
         <div class="flex flex-wrap items-center gap-3">
             <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
@@ -90,36 +89,28 @@ body {
                         <h1 class="text-base sm:text-lg font-black tracking-tight text-white">SILICON RADAR</h1>
                         <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">11대 초세분화 밸류체인</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 font-medium">Finviz 한계 돌파 · 글로벌 AI 반도체 공급망 실시간 인텔리전스</p>
+                    <p class="text-[11px] text-slate-400 font-medium">글로벌 AI 반도체 공급망 · 기업 분석 & 실시간 뉴스 인텔리전스</p>
                 </div>
             </div>
 
-            <!-- 실시간 동기화 및 동시 접속 표시 -->
+            <!-- 실시간 동기화 & 동시 접속 표시 -->
             <div class="flex items-center gap-2">
-                <button type="button" id="syncStatusBtn" class="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition cursor-pointer">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span id="liveSyncText">실시간 친구 연동중</span>
-                </button>
+                    <span id="liveSyncText">실시간 동기화중</span>
+                </span>
                 <span id="onlineUsersBadge" class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-slate-800/90 text-slate-300 border border-slate-700">
-                    👥 현재 접속 1명
+                    👥 동시 접속 1명
                 </span>
             </div>
         </div>
 
-        <!-- 우측 닉네임 설정 & 환율 표시 & 종목 검색 -->
-        <div class="flex flex-wrap items-center gap-2">
-            <div class="flex items-center gap-1.5 text-xs bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-1.5 text-slate-300" title="원화 환산 기준 환율 (수정 가능)">
-                <span class="text-[11px] font-bold text-slate-400">💱 USD/KRW</span>
-                <input type="number" id="usdKrwInput" value="1395" class="w-14 bg-transparent text-cyan-300 font-black text-right focus:outline-none">
-                <span class="text-[11px] font-bold text-slate-400">원</span>
+        <!-- 우측 실시간 현재 환율 표기 & 속보 갱신 -->
+        <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 text-xs bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-slate-300">
+                <span class="text-[11px] font-bold text-slate-400">💱 현재 환율</span>
+                <span id="liveExchangeRateText" class="text-cyan-300 font-black">1,395.00원</span>
             </div>
-            <div class="relative">
-                <input type="text" id="tickerSearchInput" placeholder="종목/티커/키워드 검색 (예: ALAB, HBM)" class="text-xs bg-slate-900/90 border border-slate-700/80 focus:border-cyan-400 rounded-xl pl-8 pr-3 py-2 text-slate-200 placeholder:text-slate-500 w-48 sm:w-56 focus:outline-none">
-                <span class="absolute left-2.5 top-2 text-slate-500 text-xs">🔍</span>
-            </div>
-            <button type="button" id="nicknameBtn" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-xl font-bold border border-slate-700 transition cursor-pointer">
-                👤 <span id="myNicknameDisplay">익명트레이더</span>
-            </button>
             <button type="button" id="refreshNewsBtn" class="text-xs bg-cyan-600 hover:bg-cyan-500 text-slate-950 px-3.5 py-2 rounded-xl font-black transition shadow-lg shadow-cyan-500/20 cursor-pointer">
                 ⚡ 속보 새로고침
             </button>
@@ -127,53 +118,93 @@ body {
     </div>
 
     <!-- 11대 공정 흐름 밸류체인 필터 탭 -->
-    <div class="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1.5 custom-scroll" id="sectorTabContainer">
-        <!-- JS로 11개 세부 섹터 탭 자동 생성 -->
-    </div>
+    <div class="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1.5 custom-scroll" id="sectorTabContainer"></div>
 </header>
 
-<!-- 메인 2분할 워크스페이스 (좌측 65% 밸류체인 히트맵 & 상세 차트 / 우측 35% 실시간 속보 & 친구들 인사이트) -->
+<!-- 메인 2분할 워크스페이스 -->
 <main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 pb-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
 
-    <!-- 좌측 메인 영역 (8칸): 초세분화 11대 밸류체인 히트맵 + 선택 종목 실시간 TradingView 차트 -->
+    <!-- 좌측 메인 영역 (8칸): 선택 종목 기업 심층 브리핑 + 11대 밸류체인 히트맵 -->
     <section class="lg:col-span-8 space-y-4">
 
-        <!-- 1. 선택 종목 실시간 차트 & 상세 인스펙터 -->
-        <div class="pcb-panel p-4">
-            <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
-                <div class="flex flex-wrap items-center gap-2">
-                    <span id="inspectorSectorBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">05. AI 네트워킹 · 인터커넥트</span>
-                    <h2 id="inspectorTitle" class="text-base sm:text-lg font-black text-white">아스테라 랩스 (ALAB)</h2>
-                    <span id="inspectorRoleDesc" class="text-xs text-slate-400 hidden sm:inline">· AI 데이터센터 PCIe 리타이머·초고속 연결 1등주</span>
+        <!-- 1. 선택 종목 기업 심층 브리핑 & 월가 애널리스트 컨센서스 -->
+        <div class="pcb-panel p-5 border-cyan-500/30">
+            <div class="flex flex-wrap justify-between items-start gap-3 pb-3.5 border-b border-slate-800">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span id="inspectorSectorBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">03. AI 가속기 · GPU</span>
+                        <span id="inspectorEarnBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">🟢 Beat +9.5%</span>
+                    </div>
+                    <h2 id="inspectorTitle" class="text-lg sm:text-xl font-black text-white tracking-tight">엔비디아 (NVDA)</h2>
                 </div>
 
-                <!-- 친구들과 실시간 투심 투표 (Bull vs Bear) -->
-                <div class="flex items-center gap-1.5">
-                    <button type="button" id="voteBullBtn" class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 transition cursor-pointer flex items-center gap-1">
-                        <span>🐂 매수/강세</span>
-                        <span id="bullCount" class="font-black">0</span>
-                    </button>
-                    <button type="button" id="voteBearBtn" class="text-xs font-extrabold px-3 py-1.5 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 transition cursor-pointer flex items-center gap-1">
-                        <span>🐻 관망/약세</span>
-                        <span id="bearCount" class="font-black">0</span>
-                    </button>
+                <!-- 현재가 (원화 + 현지통화) 및 월가 애널리스트 컨센서스 -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl px-3.5 py-2 text-right">
+                        <div class="text-[10px] font-bold text-slate-400">월가 애널리스트 컨센서스</div>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <span id="inspectorRating" class="text-xs font-black text-emerald-400">Strong Buy (강력 매수)</span>
+                            <span id="inspectorTargetUpside" class="text-[11px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300">목표가 +21.4%</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div id="inspectorPricePrimary" class="text-lg sm:text-xl font-black text-white leading-tight">₩204,786</div>
+                        <div class="text-xs font-bold text-slate-400">
+                            <span id="inspectorPriceSecondary">$146.80</span>
+                            <span class="mx-1">·</span>
+                            <span id="inspectorChg" class="text-emerald-400">+3.42%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- TradingView 실시간 미니 차트 임베드 -->
-            <div class="w-full h-[250px] sm:h-[280px] rounded-xl overflow-hidden border border-slate-800 bg-[#0B101B]" id="tvChartWrapper">
-                <!-- JS에서 선택된 티커에 맞춰 TradingView 위젯 동적 렌더링 -->
+            <!-- 4단 핵심 기업 분석 카드 (사업 · 모멘텀 · 공급망 · 주요 라이벌) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3.5">
+                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-3.5">
+                    <div class="text-[11px] font-black text-cyan-300 mb-1.5 flex items-center gap-1">
+                        <span>🏢</span> 핵심 사업 및 밸류체인 지위
+                    </div>
+                    <p id="inspectorBizDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                        AI 데이터센터 학습·추론용 GPU 시장 점유율 85% 이상을 장악한 절대 강자입니다. 하드웨어(Blackwell·Rubin)와 독점 소프트웨어 생태계(CUDA)의 결합으로 강력한 해자를 구축했습니다.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-3.5">
+                    <div class="text-[11px] font-black text-emerald-300 mb-1.5 flex items-center gap-1">
+                        <span>🚀</span> AI 사이클 핵심 모멘텀
+                    </div>
+                    <p id="inspectorMomentumDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                        글로벌 빅테크(MS·메타·구글·아마존)의 AI 설비투자(CapEx) 확대와 차세대 랙 스케일 시스템(GB200/GB300) 본격 출하로 데이터센터 매출 고성장이 이어지고 있습니다.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/75 border border-slate-800 rounded-xl p-3.5">
+                    <div class="text-[11px] font-black text-amber-300 mb-1.5 flex items-center gap-1">
+                        <span>🔗</span> 연관 공급망 및 동조화 종목
+                    </div>
+                    <p id="inspectorPeersDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                        TSMC(파운드리·CoWoS 패키징), SK하이닉스·마이크론(HBM3E 공급), 아스테라 랩스·크리도(서버 내 고속 연결), 어드반테스트(최종 테스트 장비)와 강하게 동조화됩니다.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/75 border border-rose-500/25 rounded-xl p-3.5">
+                    <div class="text-[11px] font-black text-rose-300 mb-1.5 flex items-center gap-1">
+                        <span>⚔️</span> 주요 라이벌 및 경쟁 구도
+                    </div>
+                    <p id="inspectorRivalsDesc" class="text-xs text-slate-200 leading-relaxed font-medium">
+                        AMD(Instinct MI300/MI350 GPU), 브로드컴·마벨(빅테크 자체 커스텀 ASIC 칩)과 AI 데이터센터 연산 점유율을 두고 치열하게 경쟁합니다.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <!-- 2. Finviz 스타일 업그레이드: 11대 초세분화 밸류체인 히트맵 보드 -->
+        <!-- 2. 11대 초세분화 밸류체인 히트맵 보드 -->
         <div class="space-y-3">
             <div class="flex flex-wrap justify-between items-center gap-2 px-1">
                 <div class="flex items-center gap-2">
                     <h3 class="text-sm font-black text-white">🗺️ 11대 밸류체인 초세분화 히트맵</h3>
-                    <span class="text-[11px] text-slate-400">카드를 클릭하면 위 실시간 차트와 우측 속보가 해당 종목으로 즉시 필터링됩니다</span>
+                    <span class="text-[11px] text-slate-400">종목 카드를 클릭하면 상단 기업 분석과 우측 실시간 속보가 해당 종목으로 즉시 전환됩니다</span>
                 </div>
-                <!-- 히트맵 범례 -->
                 <div class="flex items-center gap-1 text-[10px] font-bold">
                     <span class="px-2 py-0.5 rounded bg-rose-900/80 text-rose-200">-3%↓</span>
                     <span class="px-2 py-0.5 rounded bg-rose-950/80 text-rose-300">-1%</span>
@@ -183,182 +214,507 @@ body {
                 </div>
             </div>
 
-            <!-- 11개 섹터 그룹 컨테이너 -->
-            <div id="valueChainGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <!-- JS에서 11개 세부 섹터와 글로벌 핵심 종목 카드 생성 -->
-            </div>
+            <div id="valueChainGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
         </div>
     </section>
 
-    <!-- 우측 사이드 영역 (4칸): 실시간 반도체 속보 티커 + 친구들 공동 메모/핀보드 -->
+    <!-- 우측 고정 사이드바 (4칸): 실시간 반도체 속보 티커 & 공유 메모 -->
     <aside class="lg:col-span-4 space-y-4 lg:sticky lg:top-4">
 
-        <!-- 1. 친구들과 실시간 공유하는 핵심 속보 핀(Pin) & 한줄 브리핑 -->
-        <div class="pcb-panel p-4">
-            <div class="flex justify-between items-center mb-2.5">
-                <div class="flex items-center gap-1.5">
-                    <span class="text-sm">📌</span>
-                    <h3 class="text-xs sm:text-sm font-black text-white">팀 라이브 브리핑 · 핵심 핀</h3>
-                </div>
-                <span class="text-[10px] font-bold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">실시간 동기화</span>
-            </div>
-
-            <!-- 한줄 인사이트 등록 폼 -->
-            <form id="briefingForm" class="flex gap-1.5 mb-3">
-                <input type="text" id="briefingInput" placeholder="예: AVGO 실적 가이던스 상향으로 ALAB 동반 강세!" class="flex-1 text-xs bg-slate-900/90 border border-slate-700 focus:border-cyan-400 rounded-xl px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:outline-none">
-                <button type="submit" class="text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-2 rounded-xl transition cursor-pointer shrink-0">등록</button>
-            </form>
-
-            <!-- 실시간 브리핑 리스트 -->
-            <div id="briefingList" class="space-y-2 max-h-40 overflow-y-auto custom-scroll pr-1">
-                <!-- JS 렌더링 -->
-            </div>
-        </div>
-
-        <!-- 2. Saveticker 스타일 실시간 반도체 속보 피드 -->
-        <div class="pcb-panel p-4 flex flex-col">
-            <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
+        <!-- 1. 실시간 반도체 속보 피드 -->
+        <div class="pcb-panel p-4 flex flex-col max-h-[680px]">
+            <div class="flex justify-between items-center pb-2.5 border-b border-slate-800">
                 <div>
                     <div class="flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-                        <h3 class="text-xs sm:text-sm font-black text-white">실시간 글로벌 반도체 속보</h3>
+                        <h3 class="text-sm font-black text-white">실시간 반도체 속보</h3>
                     </div>
-                    <p id="newsFilterLabel" class="text-[11px] text-slate-400 mt-0.5">전체 11대 밸류체인 최신 헤드라인 (30초 자동 갱신)</p>
+                    <p class="text-[11px] text-cyan-300 font-bold mt-0.5" id="newsFilterLabel">엔비디아 (NVDA) 연관 실시간 속보</p>
                 </div>
-                <button type="button" id="resetNewsFilterBtn" class="hidden text-[10px] font-extrabold px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 cursor-pointer">
-                    전체 보기 ✕
+                <button type="button" id="resetNewsFilterBtn" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded-lg font-bold transition cursor-pointer">
+                    전체 보기
                 </button>
             </div>
 
-            <!-- 빠른 키워드 필터 칩 -->
-            <div class="flex flex-wrap gap-1 mb-3">
-                <button type="button" data-news-q="AI semiconductor HBM NVIDIA" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">🔥 전체 AI반도체</button>
-                <button type="button" data-news-q="SK하이닉스 삼성전자 HBM" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">🇰🇷 K-메모리/HBM</button>
-                <button type="button" data-news-q="TSMC foundry CoWoS ASML" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">🏭 파운드리·EUV</button>
-                <button type="button" data-news-q="Astera Labs Broadcom Marvell AI networking" class="news-preset-chip text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 cursor-pointer">⚡ ASIC·네트워킹</button>
+            <!-- 주요 테마 빠른 필터 칩 -->
+            <div class="flex items-center gap-1.5 overflow-x-auto py-2.5 custom-scroll shrink-0">
+                <button type="button" data-news-q="AI semiconductor HBM NVIDIA" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 shrink-0 cursor-pointer">#전체반도체</button>
+                <button type="button" data-news-q="HBM SK하이닉스 삼성전자 마이크론 샌디스크" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#HBM·메모리</button>
+                <button type="button" data-news-q="TSMC 파운드리 인텔 삼성 파운드리" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#파운드리</button>
+                <button type="button" data-news-q="Astera Labs Lumentum Broadcom Marvell AI networking" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#AI네트워킹·광통신</button>
+                <button type="button" data-news-q="ASML Applied Materials Lam Research 한미반도체" class="news-preset-chip text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 shrink-0 cursor-pointer">#반도체장비</button>
             </div>
 
-            <!-- 뉴스 피드 리스트 -->
-            <div id="newsFeedList" class="space-y-2.5 max-h-[560px] overflow-y-auto custom-scroll pr-1">
-                <div class="text-center py-8 text-xs text-slate-500">실시간 반도체 뉴스 피드를 불러오는 중...</div>
+            <!-- 실시간 기사 리스트 (클릭 시 원문 기사 새 창 열림) -->
+            <div id="newsFeedList" class="flex-1 overflow-y-auto space-y-2 pr-1 custom-scroll"></div>
+        </div>
+
+        <!-- 2. 실시간 공유 메모 보드 (Firebase 실시간 동기화) -->
+        <div class="pcb-panel p-4">
+            <div class="flex justify-between items-center mb-2.5">
+                <h3 class="text-xs font-black text-white flex items-center gap-1.5">
+                    <span>📌</span> 실시간 인사이트 공유 메모
+                </h3>
+                <span class="text-[10px] text-emerald-400 font-bold">접속자 실시간 연동</span>
             </div>
+
+            <form id="briefingForm" class="flex gap-1.5 mb-2.5">
+                <input type="text" id="briefingInput" placeholder="예: 루멘텀 광통신 수주 증가, HBM4 일정 체크..." class="flex-1 text-xs bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-500">
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 text-xs font-black px-3 py-2 rounded-xl transition shrink-0 cursor-pointer">등록</button>
+            </form>
+
+            <div id="briefingList" class="space-y-1.5 max-h-48 overflow-y-auto pr-1 custom-scroll"></div>
         </div>
     </aside>
 </main>
 
-<!-- 닉네임 변경 모달 -->
-<div id="nicknameModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 flex items-center justify-center hidden p-4">
-    <div class="pcb-panel p-5 max-w-xs w-full shadow-2xl">
-        <h3 class="text-sm font-black text-white mb-1">👤 내 트레이더 닉네임 설정</h3>
-        <p class="text-[11px] text-slate-400 mb-3">브리핑 작성 시 친구들에게 표시되는 이름입니다.</p>
-        <input type="text" id="nicknameInput" placeholder="예: 알랩홀더, HBM대장" class="w-full text-xs bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white mb-3 focus:outline-none focus:border-cyan-400">
-        <div class="flex gap-2">
-            <button type="button" id="closeNicknameBtn" class="flex-1 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-bold cursor-pointer">취소</button>
-            <button type="button" id="saveNicknameBtn" class="flex-1 py-2 rounded-xl bg-cyan-500 text-slate-950 text-xs font-black cursor-pointer">저장</button>
-        </div>
-    </div>
-</div>
-
 <script>
-// Firebase Firestore 실시간 연동 엔드포인트
-var DB_URL = "https://firestore.googleapis.com/v1/projects/dadam-lounge/databases/(default)/documents/semi_intel/live_board";
+// Firebase Firestore 실시간 동기화 엔드포인트
+var DB_URL = "https://firestore.googleapis.com/v1/projects/dadam-lounge/databases/(default)/documents/dadam_pantry/semi_intel_v1";
 
-// 11대 초세분화 밸류체인 섹터 정의
+// 실시간 환율 기본값 (로드 즉시 최신 USD/KRW 환율 자동 조회 반영)
+var currentUsdKrw = 1395.00;
+
+// 11대 초세분화 반도체 밸류체인 정의
 var SECTORS = [
-    { id: "all", code: "ALL", name: "전체 11대 밸류체인", short: "🌐 전체 (36)" },
+    { id: "all", code: "ALL", name: "전체 11대 밸류체인 (46종목)", short: "전체 보기" },
     { id: "ip", code: "01", name: "IP · 아키텍처", short: "01. IP·아키텍처" },
-    { id: "eda", code: "02", name: "EDA (설계 툴)", short: "02. EDA 툴" },
-    { id: "gpu", code: "03", name: "AI 가속기 · GPU", short: "03. AI GPU" },
-    { id: "asic", code: "04", name: "커스텀 ASIC · 통신", short: "04. ASIC·통신" },
-    { id: "net", code: "05", name: "AI 네트워킹 · 인터커넥트", short: "05. AI 네트워킹" },
-    { id: "mem", code: "06", name: "메모리 · HBM · NAND", short: "06. HBM·메모리" },
+    { id: "eda", code: "02", name: "EDA (설계 툴)", short: "02. EDA 설계툴" },
+    { id: "gpu", code: "03", name: "AI 가속기 · GPU", short: "03. AI 가속기·GPU" },
+    { id: "asic", code: "04", name: "커스텀 ASIC · 통신", short: "04. 커스텀 ASIC" },
+    { id: "net", code: "05", name: "AI 네트워킹 · 광통신", short: "05. 네트워킹·광통신" },
+    { id: "mem", code: "06", name: "메모리 · HBM · NAND", short: "06. 메모리·HBM" },
     { id: "foundry", code: "07", name: "파운드리 (위탁생산)", short: "07. 파운드리" },
     { id: "idm", code: "08", name: "IDM · 전력 · 아날로그", short: "08. IDM·전력" },
     { id: "equip", code: "09", name: "전공정 핵심 장비", short: "09. 전공정 장비" },
     { id: "mi", code: "10", name: "계측 · 검사 (MI)", short: "10. 계측·검사" },
-    { id: "osat", code: "11", name: "후공정 · 테스트 · 소재", short: "11. 후공정·소재" }
+    { id: "osat", code: "11", name: "후공정 · 테스트 · HBM장비·소재", short: "11. 후공정·소재" }
 ];
 
-// 글로벌 핵심 36개 종목 마스터 (미국 + 한국 + 대만 + 일본, 기준가 및 통화 포함)
+// 글로벌 핵심 46개 종목 마스터 (주요 라이벌 및 겸업 교차 섹터 포함)
 var STOCKS = [
     // 01. IP · 아키텍처
-    { ticker: "ARM", tvSymbol: "NASDAQ:ARM", name: "ARM 홀딩스", sector: "ip", currency: "USD", price: 148.20, role: "모바일·AI 서버 CPU 아키텍처 IP 독점", chg: 2.85, earningDate: "D-14", defaultEarn: "beat", earnSurprise: "+6.2%" },
-    { ticker: "CEVA", tvSymbol: "NASDAQ:CEVA", name: "CEVA", sector: "ip", currency: "USD", price: 24.50, role: "엣지 AI · 무선 통신 DSP IP 라이선스", chg: 0.92, earningDate: "D-21", defaultEarn: "inline", earnSurprise: "+1.1%" },
+    { ticker: "ARM", name: "ARM 홀딩스", sector: "ip", currency: "USD", price: 148.20, chg: 2.85, defaultEarn: "beat", earnSurprise: "+6.2%",
+      rating: "Buy (매수)", upside: "+15.8%",
+      role: "모바일·AI 서버 CPU 아키텍처 IP 독점",
+      rivalsShort: "RISC-V 진영 · 인텔/AMD(x86)",
+      biz: "전 세계 스마트폰 AP의 99%와 차세대 AI 데이터센터용 저전력 CPU(Neoverse) 설계 자산(IP)을 공급하며 로열티·라이선스 수익을 창출합니다.",
+      momentum: "엔비디아 그레이스 CPU 및 AWS·구글·MS 자체 서버 칩에 고수익 최신 아키텍처(v9) 채택률이 급증하면서 로열티 단가가 구조적으로 상승 중입니다.",
+      peers: "엔비디아(Grace Blackwell), 브로드컴·마벨(커스텀 칩 설계), 시높시스·케이던스(EDA 툴)와 생태계를 공유합니다.",
+      rivals: "오픈소스 아키텍처 진영(RISC-V) 및 기존 서버·PC 명령어 시장을 지배해 온 인텔·AMD(x86 아키텍처)가 핵심 경쟁 축입니다." },
+    { ticker: "CEVA", name: "CEVA", sector: "ip", currency: "USD", price: 24.50, chg: 0.92, defaultEarn: "inline", earnSurprise: "+1.1%",
+      rating: "Buy (매수)", upside: "+18.4%",
+      role: "엣지 AI · 무선 통신 DSP IP 라이선스",
+      rivalsShort: "ARM · 시높시스(ARC IP)",
+      biz: "스마트 엣지 기기, 무선 통신(5G/Wi-Fi 7), 센서 융합 및 저전력 NPU(신경망처리장치) IP를 팹리스 기업들에 라이선스하는 전문 IP 기업입니다.",
+      momentum: "온디바이스 AI 보급 확산으로 가전·웨어러블·IoT 기기에 소형 AI 추론 엔진 탑재가 늘어나며 신규 라이선스 계약이 확대되고 있습니다.",
+      peers: "퀄컴, 미디어텍, ARM 등 모바일·엣지 SoC 설계 기업들의 출하량 흐름과 연동됩니다.",
+      rivals: "ARM(Ethos NPU IP) 및 시높시스(ARC 프로세서·DSP IP)와 저전력 엣지 AI·통신 IP 라이선스 시장을 두고 경쟁합니다." },
 
     // 02. EDA (설계 툴)
-    { ticker: "SNPS", tvSymbol: "NASDAQ:SNPS", name: "시높시스", sector: "eda", currency: "USD", price: 542.10, role: "AI 칩 회로 설계 EDA 1위 · IP 강자", chg: 1.45, earningDate: "D-9", defaultEarn: "beat", earnSurprise: "+4.8%" },
-    { ticker: "CDNS", tvSymbol: "NASDAQ:CDNS", name: "케이던스", sector: "eda", currency: "USD", price: 298.40, role: "초미세 공정 EDA 및 시스템 설계 소프트웨어", chg: 1.18, earningDate: "D-18", defaultEarn: "beat", earnSurprise: "+3.9%" },
+    { ticker: "SNPS", name: "시높시스", sector: "eda", currency: "USD", price: 542.10, chg: 1.45, defaultEarn: "beat", earnSurprise: "+4.8%",
+      rating: "Strong Buy (강력 매수)", upside: "+19.2%",
+      role: "AI 칩 회로 설계 EDA 1위 · 인터페이스 IP 강자",
+      rivalsShort: "케이던스(CDNS) · 지멘스EDA",
+      biz: "수백억 개 트랜지스터가 집적된 첨단 AI 반도체를 설계·검증하는 전자설계자동화(EDA) 소프트웨어 글로벌 1위 기업이자 고속 인터페이스 IP 공급사입니다.",
+      momentum: "빅테크들의 자체 AI 칩 개발 붐과 2나노 이하 초미세 공정 전환으로 AI 기반 설계 툴(DSO.ai) 및 검증 솔루션 수요가 비경기적으로 증가하고 있습니다.",
+      peers: "케이던스(CDNS)와 글로벌 EDA 시장을 양분하며, TSMC·엔비디아·브로드컴의 신제품 R&D 투자와 직결됩니다.",
+      rivals: "케이던스(CDNS)와 글로벌 EDA·설계 IP 시장을 양분하고 있으며, 지멘스 EDA(구 멘토그래픽스)가 3위권에서 추격하고 있습니다." },
+    { ticker: "CDNS", name: "케이던스", sector: "eda", currency: "USD", price: 298.40, chg: 1.18, defaultEarn: "beat", earnSurprise: "+3.9%",
+      rating: "Strong Buy (강력 매수)", upside: "+16.5%",
+      role: "초미세 공정 EDA 및 시스템 설계 소프트웨어",
+      rivalsShort: "시높시스(SNPS) · 지멘스EDA",
+      biz: "반도체 회로 설계 자동화(EDA)와 3D-IC 첨단 패키징 시뮬레이션, 하드웨어 에뮬레이션(Palladium) 장비를 공급하는 핵심 소프트웨어 기업입니다.",
+      momentum: "칩렛(Chiplet) 및 CoWoS 같은 3D 적층 패키징이 대세가 되면서 발열·신호 간섭을 사전에 검증하는 시뮬레이션 툴 수주 잔고가 사상 최고치를 경신 중입니다.",
+      peers: "시높시스(SNPS), TSMC(3DFabric 생태계), ARM과 긴밀히 협력합니다.",
+      rivals: "시높시스(SNPS)와 EDA 및 시스템 시뮬레이션(앤시스 인수 추진) 전 영역에서 정면 승부를 벌이는 최대 라이벌입니다." },
 
     // 03. AI 가속기 · GPU
-    { ticker: "NVDA", tvSymbol: "NASDAQ:NVDA", name: "엔비디아", sector: "gpu", currency: "USD", price: 146.80, role: "AI 데이터센터 GPU · CUDA 생태계 절대 강자", chg: 3.42, earningDate: "D-5", defaultEarn: "beat", earnSurprise: "+9.5%" },
-    { ticker: "AMD", tvSymbol: "NASDAQ:AMD", name: "AMD", sector: "gpu", currency: "USD", price: 141.30, role: "MI300/MI350 AI 가속기 · 서버 CPU EPYC", chg: -0.74, earningDate: "D-24", defaultEarn: "inline", earnSurprise: "+1.8%" },
+    { ticker: "NVDA", name: "엔비디아", sector: "gpu", currency: "USD", price: 146.80, chg: 3.42, defaultEarn: "beat", earnSurprise: "+9.5%",
+      rating: "Strong Buy (강력 매수)", upside: "+21.4%",
+      role: "AI 데이터센터 GPU · CUDA 생태계 절대 강자",
+      rivalsShort: "AMD · 브로드컴/마벨(ASIC)",
+      biz: "AI 데이터센터 학습·추론용 GPU 시장 점유율 85% 이상을 장악한 절대 강자입니다. 하드웨어(Blackwell·Rubin)와 독점 소프트웨어(CUDA)의 결합으로 강력한 해자를 구축했습니다.",
+      momentum: "글로벌 빅테크의 AI 설비투자(CapEx) 확대와 차세대 랙 스케일 시스템 본격 출하로 데이터센터 매출 고성장이 이어지고 있습니다.",
+      peers: "TSMC(파운드리·CoWoS), SK하이닉스·마이크론(HBM), 아스테라 랩스·크리도(서버 내 고속 연결), 어드반테스트(테스트 장비)와 강하게 동조화됩니다.",
+      rivals: "AMD(Instinct MI300/MI350 GPU)가 범용 GPU 영역에서 추격 중이며, 브로드컴·마벨이 설계하는 빅테크 자체 커스텀 ASIC(구글 TPU·AWS Trainium)이 구조적 대항마입니다." },
+    { ticker: "AMD", name: "AMD", sector: "gpu", currency: "USD", price: 141.30, chg: -0.74, defaultEarn: "inline", earnSurprise: "+1.8%",
+      rating: "Buy (매수)", upside: "+24.0%",
+      role: "MI300/MI350 AI 가속기 · 서버 CPU EPYC",
+      rivalsShort: "엔비디아(NVDA) · 인텔(INTC)",
+      biz: "데이터센터용 x86 서버 CPU(EPYC) 점유율을 빠르게 잠식하고 있으며, 엔비디아의 대항마로 꼽히는 Instinct MI300/MI350 시리즈 AI 가속기를 공급합니다.",
+      momentum: "MS·메타·오라클 등 하이퍼스케일러들이 추론 워크로드 다변화를 위해 AMD AI GPU 도입을 확대하며 데이터센터 부문 매출 비중이 절반을 넘어섰습니다.",
+      peers: "TSMC(3나노·CoWoS 생산), SK하이닉스·삼성전자(HBM 공급), 인텔(서버 CPU 경쟁사)과 연관성이 높습니다.",
+      rivals: "AI 가속기 시장에서는 절대 강자 엔비디아(NVDA)와 맞붙고, 데이터센터·PC용 x86 CPU 시장에서는 인텔(INTC)과 점유율 경쟁을 벌입니다." },
 
     // 04. 커스텀 ASIC · 통신
-    { ticker: "AVGO", tvSymbol: "NASDAQ:AVGO", name: "브로드컴", sector: "asic", currency: "USD", price: 178.90, role: "빅테크 맞춤형 AI ASIC 1위 · 네트워크 스위치", chg: 4.15, earningDate: "D-11", defaultEarn: "beat", earnSurprise: "+7.4%" },
-    { ticker: "MRVL", tvSymbol: "NASDAQ:MRVL", name: "마벨 테크놀로지", sector: "asic", currency: "USD", price: 91.40, role: "아마존·MS 커스텀 AI 칩 · 광통신 DSP", chg: 2.30, earningDate: "D-13", defaultEarn: "beat", earnSurprise: "+5.1%" },
-    { ticker: "QCOM", tvSymbol: "NASDAQ:QCOM", name: "퀄컴", sector: "asic", currency: "USD", price: 164.50, role: "온디바이스 AI 스냅드래곤 · 전장 SoC", chg: 1.64, earningDate: "D-28", defaultEarn: "beat", earnSurprise: "+4.3%" },
-    { ticker: "2454.TW", tvSymbol: "TWSE:2454", name: "미디어텍", sector: "asic", currency: "TWD", price: 1290, role: "모바일 AP 글로벌 점유율 1위 · 엣지 AI", chg: 0.85, earningDate: "D-19", defaultEarn: "beat", earnSurprise: "+3.5%" },
+    { ticker: "AVGO", name: "브로드컴", sector: "asic", multiSectors: ["net"], currency: "USD", price: 178.90, chg: 4.15, defaultEarn: "beat", earnSurprise: "+7.4%",
+      rating: "Strong Buy (강력 매수)", upside: "+18.9%",
+      role: "빅테크 맞춤형 AI ASIC 1위 · 네트워크 스위치",
+      rivalsShort: "마벨(MRVL) · 엔비디아(GPU)",
+      biz: "구글(TPU), 메타 등 빅테크의 자체 맞춤형 AI 칩(ASIC) 설계 1위 기업이자 AI 클러스터용 초고속 이더넷 스위치 칩(Tomahawk) 시장을 지배하고 있습니다.",
+      momentum: "AI 모델 추론 비용 절감을 위해 빅테크들이 범용 GPU 외에 자체 커스텀 ASIC 투자를 급격히 늘리면서 AI 반도체 매출이 폭발적으로 성장 중입니다.",
+      peers: "마벨(MRVL), 아리스타 네트웍스(ANET), TSMC(첨단 패키징)와 핵심 AI 인프라 축을 이룹니다.",
+      rivals: "커스텀 AI ASIC 수주전에서는 마벨(MRVL)과 양강 구도를 형성하며, AI 클러스터 전체 예산 점유율을 두고는 엔비디아(GPU·인피니밴드)와 경쟁합니다." },
+    { ticker: "MRVL", name: "마벨 테크놀로지", sector: "asic", multiSectors: ["net"], currency: "USD", price: 91.40, chg: 2.30, defaultEarn: "beat", earnSurprise: "+5.1%",
+      rating: "Strong Buy (강력 매수)", upside: "+20.5%",
+      role: "아마존·MS 커스텀 AI 칩 · 광통신 PAM4 DSP",
+      rivalsShort: "브로드컴(AVGO) · 코히어런트",
+      biz: "아마존(AWS Trainium)과 마이크로소프트(Maia)의 맞춤형 AI 가속기 설계 파트너이며, 데이터센터 광트랜시버 핵심 부품인 PAM4 DSP 시장을 선도합니다.",
+      momentum: "AWS의 자체 AI 칩 대규모 클러스터 구축과 800G/1.6T 초고속 광통신 전환 수혜가 동시에 맞물리며 실적 턴어라운드가 가속화되고 있습니다.",
+      peers: "브로드컴(AVGO), 코히어런트(COHR), 루멘텀(LITE), 아스테라 랩스(ALAB)와 동조화 흐름을 보입니다.",
+      rivals: "빅테크 맞춤형 AI 칩(ASIC) 및 데이터센터 고속 네트워킹 칩 시장 전반에서 브로드컴(AVGO)과 직접적인 라이벌 관계입니다." },
+    { ticker: "QCOM", name: "퀄컴", sector: "asic", currency: "USD", price: 164.50, chg: 1.64, defaultEarn: "beat", earnSurprise: "+4.3%",
+      rating: "Buy (매수)", upside: "+17.2%",
+      role: "온디바이스 AI 스냅드래곤 · 전장 SoC",
+      rivalsShort: "미디어텍(2454.TW) · 애플/인텔",
+      biz: "프리미엄 스마트폰 AP(스냅드래곤) 글로벌 선두주자이며, 최근 AI PC용 프로세서(Snapdragon X)와 자율주행·디지털 콕핏 차량용 반도체로 영역을 확장 중입니다.",
+      momentum: "클라우드 의존도를 줄이는 온디바이스 AI 스마트폰 교체 수요와 차량용 디지털 섀시 수주 잔고 증가가 실적 방어와 성장을 견인하고 있습니다.",
+      peers: "미디어텍(2454.TW), ARM, TSMC(선단 공정 위탁생산)와 밀접하게 연동됩니다.",
+      rivals: "모바일 AP 시장에서는 미디어텍(2454.TW) 및 삼성(엑시노스)과 경쟁하며, AI PC 프로세서 시장에서는 인텔·AMD·애플(M시리즈)과 맞붙습니다." },
+    { ticker: "2454.TW", name: "미디어텍", sector: "asic", currency: "TWD", price: 1290, chg: 0.85, defaultEarn: "beat", earnSurprise: "+3.5%",
+      rating: "Buy (매수)", upside: "+14.6%",
+      role: "모바일 AP 글로벌 점유율 1위 · 엣지 AI",
+      rivalsShort: "퀄컴(QCOM) · 삼성(LSI)",
+      biz: "스마트폰 출하량 기준 글로벌 1위 팹리스 기업으로, 플래그십 칩셋(Dimensity 9400)과 스마트 TV·Wi-Fi 7·차량용 인포테인먼트 칩을 설계합니다.",
+      momentum: "중화권 및 글로벌 스마트폰 제조사들의 AI 기능 탑재 경쟁으로 고단가 플래그십 AP 점유율이 상승하며 매출총이익률이 개선되고 있습니다.",
+      peers: "퀄컴(QCOM), TSMC(대만 내 긴밀한 파운드리 협력), ARM과 연동됩니다.",
+      rivals: "프리미엄 및 중저가 안드로이드 스마트폰 AP 시장 전반에서 퀄컴(QCOM)과 점유율·단가 경쟁을 벌이는 최대 라이벌입니다." },
 
-    // 05. AI 네트워킹 · 인터커넥트
-    { ticker: "ALAB", tvSymbol: "NASDAQ:ALAB", name: "아스테라 랩스", sector: "net", currency: "USD", price: 96.40, role: "AI 서버 PCIe/CXL 리타이머 · 연결 병목 해소", chg: 5.62, earningDate: "D-16", defaultEarn: "beat", earnSurprise: "+14.2%" },
-    { ticker: "CRDO", tvSymbol: "NASDAQ:CRDO", name: "크리도 테크놀로지", sector: "net", currency: "USD", price: 44.20, role: "AI 클러스터 초고속 AEC 케이블 · SerDes", chg: 4.88, earningDate: "D-12", defaultEarn: "beat", earnSurprise: "+11.0%" },
-    { ticker: "ANET", tvSymbol: "NYSE:ANET", name: "아리스타 네트웍스", sector: "net", currency: "USD", price: 412.60, role: "AI 백엔드 초고속 이더넷 스위치 대장주", chg: 2.12, earningDate: "D-22", defaultEarn: "beat", earnSurprise: "+6.7%" },
-    { ticker: "COHR", tvSymbol: "NYSE:COHR", name: "코히어런트", sector: "net", currency: "USD", price: 98.70, role: "800G/1.6T AI 데이터센터 광트랜시버·레이저", chg: -1.25, earningDate: "D-20", defaultEarn: "inline", earnSurprise: "+0.9%" },
+    // 05. AI 네트워킹 · 광통신
+    { ticker: "ALAB", name: "아스테라 랩스", sector: "net", currency: "USD", price: 96.40, chg: 5.62, defaultEarn: "beat", earnSurprise: "+14.2%",
+      rating: "Strong Buy (강력 매수)", upside: "+22.8%",
+      role: "AI 서버 PCIe/CXL 리타이머 · 연결 병목 해소",
+      rivalsShort: "브로드컴 · 마벨 · 크리도",
+      biz: "AI 서버 내부에서 GPU와 CPU, 메모리 간 초고속 데이터 전송 시 발생하는 신호 감쇠를 복원하는 PCIe 리타이머(Aries) 및 스마트 케이블 모듈(Taurus) 1위 기업입니다.",
+      momentum: "엔비디아 블랙웰 랙 및 하이퍼스케일러 자체 AI 서버 1대당 탑재되는 리타이머·패브릭 스위치(Scorpio) 수량이 급증하며 고성장을 기록 중입니다.",
+      peers: "엔비디아(NVDA), 크리도(CRDO), 브로드컴(AVGO), 마벨(MRVL)과 AI 네트워킹 테마로 함께 움직입니다.",
+      rivals: "PCIe 리타이머 및 데이터센터 연결 칩 분야에서 브로드컴(AVGO), 마벨(MRVL), 텍사스 인스트루먼트(TXN) 및 케이블 영역의 크리도(CRDO)와 경쟁합니다." },
+    { ticker: "CRDO", name: "크리도 테크놀로지", sector: "net", currency: "USD", price: 44.20, chg: 4.88, defaultEarn: "beat", earnSurprise: "+11.0%",
+      rating: "Strong Buy (강력 매수)", upside: "+19.5%",
+      role: "AI 클러스터 초고속 AEC 케이블 · SerDes",
+      rivalsShort: "아스테라랩스(ALAB) · 광트랜시버 진영",
+      biz: "AI 데이터센터 랙 간 연결에서 기존 구리 케이블의 거리 한계를 극복하고 광케이블보다 전력 소모·비용을 낮춘 능동형 전기 케이블(AEC) 선도 기업입니다.",
+      momentum: "MS·아마존·xAI 등 대형 AI 클러스터 구축 시 랙 간 초고속 단거리 연결 표준으로 AEC 채택이 급증하며 분기 매출이 가파르게 우상향 중입니다.",
+      peers: "아스테라 랩스(ALAB), 아리스타 네트웍스(ANET), 루멘텀(LITE)과 연결 솔루션 밸류체인을 형성합니다.",
+      rivals: "단거리 AI 랙 인터커넥트 시장에서 아스테라 랩스(ALAB)의 스마트 케이블, 암페놀의 구리 케이블 및 코히어런트·루멘텀의 단거리 광모듈과 경쟁합니다." },
+    { ticker: "ANET", name: "아리스타 네트웍스", sector: "net", currency: "USD", price: 412.60, chg: 2.12, defaultEarn: "beat", earnSurprise: "+6.7%",
+      rating: "Strong Buy (강력 매수)", upside: "+15.4%",
+      role: "AI 백엔드 초고속 이더넷 스위치 대장주",
+      rivalsShort: "엔비디아(인피니밴드) · 시스코",
+      biz: "클라우드 데이터센터 및 대규모 AI 클러스터를 연결하는 400G/800G 초고속 이더넷 네트워크 스위치와 전용 운영체제(EOS) 글로벌 1위 기업입니다.",
+      momentum: "수만 개의 GPU를 묶는 AI 백엔드 네트워크에서 엔비디아 인피니밴드의 대안으로 이더넷 채택이 늘어나며 메타·MS향 수주가 크게 증가했습니다.",
+      peers: "브로드컴(스위치 칩 공급 파트너), 크리도(CRDO), 코히어런트(COHR), 루멘텀(LITE)과 동조화됩니다.",
+      rivals: "AI 백엔드 네트워킹에서는 엔비디아(인피니밴드 및 Spectrum-X 이더넷)와 직접 맞붙고, 전통 엔터프라이즈·클라우드 스위치에서는 시스코(CSCO)와 경쟁합니다." },
+    { ticker: "LITE", name: "루멘텀 홀딩스", sector: "net", currency: "USD", price: 84.50, chg: 4.35, defaultEarn: "beat", earnSurprise: "+8.6%",
+      rating: "Buy (매수)", upside: "+18.2%",
+      role: "AI 데이터센터 초고속 광통신 레이저(EML)·광모듈",
+      rivalsShort: "코히어런트(COHR) · 이노라이트",
+      biz: "AI 데이터센터 800G/1.6T 광트랜시버의 핵심 광원인 초고속 변조 레이저(EML) 칩과 광학 네트워킹 솔루션을 공급하는 광통신 핵심 대장주입니다.",
+      momentum: "하이퍼스케일러들의 AI 클러스터 대규모 증설로 고출력·초고속 EML 레이저 칩 품귀 현상이 빚어지며 클라우드 광통신 매출이 가파르게 급증하고 있습니다.",
+      peers: "코히어런트(COHR), 마벨(MRVL), 아리스타 네트웍스(ANET), 시에나(CIEN)와 광통신 AI 수혜주로 강하게 동조화됩니다.",
+      rivals: "코히어런트(COHR)와 광통신 레이저·광모듈 양강 체제를 형성하며, 브로드컴(EML 레이저 칩) 및 중화권 광트랜시버 제조사(이노라이트)와 경쟁합니다." },
+    { ticker: "COHR", name: "코히어런트", sector: "net", currency: "USD", price: 98.70, chg: -1.25, defaultEarn: "inline", earnSurprise: "+0.9%",
+      rating: "Buy (매수)", upside: "+16.8%",
+      role: "800G/1.6T AI 데이터센터 광트랜시버·레이저",
+      rivalsShort: "루멘텀(LITE) · 이노라이트",
+      biz: "AI 데이터센터 내부의 전기 신호를 광신호로 변환해 초고속 전송하는 800G·1.6T 광트랜시버와 핵심 광학 레이저 부품을 수직 계열화해 생산합니다.",
+      momentum: "AI 클러스터 확장으로 데이터 전송 대역폭이 2년마다 2배씩 뛰면서 고마진 800G/1.6T 광트랜시버 출하량이 빠르게 늘고 있습니다.",
+      peers: "루멘텀(LITE), 마벨(MRVL), 아리스타 네트웍스(ANET)와 광통신 밸류체인을 공유합니다.",
+      rivals: "루멘텀(LITE)과 북미 광학·레이저 시장을 양분하며, 글로벌 광트랜시버 점유율을 두고 중화권 이노라이트(InnoLight)와 치열하게 경쟁합니다." },
+    { ticker: "CIEN", name: "시에나", sector: "net", currency: "USD", price: 72.10, chg: 1.78, defaultEarn: "beat", earnSurprise: "+5.4%",
+      rating: "Buy (매수)", upside: "+15.0%",
+      role: "AI 데이터센터 간 초장거리 광전송(DCI) 시스템",
+      rivalsShort: "노키아(인피네라) · 시스코",
+      biz: "여러 지역에 분산된 대형 AI 데이터센터들을 초고속 광섬유망으로 묶어주는 데이터센터 상호연결(DCI) 광전송 장비 및 코히어런트 광학 칩 선도 기업입니다.",
+      momentum: "전력 확보 문제로 AI 데이터센터가 여러 지역에 분산 건설되면서 센터 간 대용량 학습 데이터를 실시간 동기화하는 DCI 장비 수요가 급증 중입니다.",
+      peers: "루멘텀(LITE), 코히어런트(COHR), 아리스타 네트웍스(ANET)와 연동됩니다.",
+      rivals: "광전송(Optical Transport) 및 데이터센터 간 연결(DCI) 장비 시장에서 노키아(인피네라 인수), 시스코(아카시아), 화웨이와 경쟁합니다." },
 
     // 06. 메모리 · HBM · NAND
-    { ticker: "000660.KS", tvSymbol: "KRX:000660", name: "SK하이닉스", sector: "mem", currency: "KRW", price: 194500, role: "HBM3E/HBM4 글로벌 1위 · 엔비디아 핵심 파트너", chg: 3.15, earningDate: "D-25", defaultEarn: "beat", earnSurprise: "+12.4%" },
-    { ticker: "005930.KS", tvSymbol: "KRX:005930", name: "삼성전자", sector: "mem", currency: "KRW", price: 58400, role: "글로벌 메모리 1위 · 파운드리/IDM 종합반도체", chg: 1.05, earningDate: "D-23", defaultEarn: "miss", earnSurprise: "-4.1%" },
-    { ticker: "MU", tvSymbol: "NASDAQ:MU", name: "마이크론", sector: "mem", currency: "USD", price: 103.80, role: "미국 유일 HBM3E·AI 데이터센터 DRAM/eSSD", chg: 2.74, earningDate: "D-15", defaultEarn: "beat", earnSurprise: "+8.9%" },
-    { ticker: "WDC", tvSymbol: "NASDAQ:WDC", name: "웨스턴디지털", sector: "mem", currency: "USD", price: 66.20, role: "AI 데이터센터 대용량 기업용 SSD · 낸드플래시", chg: -0.65, earningDate: "D-27", defaultEarn: "inline", earnSurprise: "+1.5%" },
+    { ticker: "000660.KS", name: "SK하이닉스", sector: "mem", currency: "KRW", price: 194500, chg: 3.15, defaultEarn: "beat", earnSurprise: "+12.4%",
+      rating: "Strong Buy (강력 매수)", upside: "+26.5%",
+      role: "HBM3E/HBM4 글로벌 1위 · 엔비디아 핵심 파트너",
+      rivalsShort: "삼성전자 · 마이크론(MU)",
+      biz: "AI 가속기의 필수 메모리인 초고대역폭 메모리(HBM3E) 시장 점유율 1위이자 엔비디아의 핵심 공급 파트너로, AI 메모리 슈퍼사이클을 주도하고 있습니다.",
+      momentum: "고수익 12단 HBM3E 출하 본격화와 차세대 HBM4 조기 양산 체제 구축, 기업용 고용량 SSD(eSSD) 수요 급증으로 사상 최대 이익 체력을 입증 중입니다.",
+      peers: "엔비디아(NVDA), TSMC(HBM4 베이스다이 협력), 마이크론(MU), 한미반도체(042700.KS)와 직결됩니다.",
+      rivals: "글로벌 메모리(HBM·DRAM·NAND) 3강 체제를 이루는 삼성전자(005930.KS) 및 마이크론(MU)과 차세대 HBM4 수율·납품 점유율을 두고 격돌합니다." },
+    { ticker: "005930.KS", name: "삼성전자", sector: "mem", multiSectors: ["foundry", "idm"], currency: "KRW", price: 58400, chg: 1.05, defaultEarn: "miss", earnSurprise: "-4.1%",
+      rating: "Buy (매수)", upside: "+28.0%",
+      role: "메모리 1위 · 선단 파운드리 · IDM 종합반도체",
+      rivalsShort: "SK하이닉스(HBM) · TSMC(파운드리)",
+      biz: "전 세계 DRAM·NAND 생산능력 1위 기업이자 세계 2위 선단 파운드리(3나노 GAA·2나노), 모바일·가전 사업을 아우르는 글로벌 최대 종합반도체(IDM) 기업입니다.",
+      momentum: "범용 메모리 가격 안정화와 고용량 서버용 DDR5·eSSD 판매 호조가 이어지고 있으며, 차세대 HBM3E 공급 확대 및 파운드리 2나노 수주 성과가 핵심 변수입니다.",
+      peers: "SK하이닉스(메모리 경쟁), TSMC(파운드리 경쟁), 마이크론(MU), ASML·어플라이드(전공정 장비)와 연동됩니다.",
+      rivals: "메모리·HBM 부문에서는 SK하이닉스와 마이크론(MU)이, 선단 파운드리 부문에서는 절대 1위 TSMC(TSM)가 핵심 라이벌입니다." },
+    { ticker: "MU", name: "마이크론", sector: "mem", currency: "USD", price: 103.80, chg: 2.74, defaultEarn: "beat", earnSurprise: "+8.9%",
+      rating: "Strong Buy (강력 매수)", upside: "+24.2%",
+      role: "미국 유일 HBM3E·AI 데이터센터 DRAM/eSSD",
+      rivalsShort: "SK하이닉스 · 삼성전자",
+      biz: "미국 유일의 첨단 메모리(DRAM·NAND) 제조사로, 전력 효율을 강점으로 앞세워 엔비디아 HBM3E 공급망에 진입하며 점유율을 빠르게 확대하고 있습니다.",
+      momentum: "이미 올해와 내년 HBM 물량 계약이 조기 완판되었으며, 데이터센터향 고용량 DDR5와 기업용 SSD 비중 확대로 수익성이 가파르게 개선 중입니다.",
+      peers: "SK하이닉스(000660.KS), 삼성전자(005930.KS), 샌디스크(SNDK), 웨스턴디지털(WDC)과 동조화됩니다.",
+      rivals: "SK하이닉스(000660.KS) 및 삼성전자(005930.KS)와 글로벌 DRAM·HBM 시장을 3분하며, 낸드 부문에서는 키옥시아·샌디스크와도 경쟁합니다." },
+    { ticker: "SNDK", name: "샌디스크", sector: "mem", currency: "USD", price: 48.90, chg: 3.45, defaultEarn: "beat", earnSurprise: "+7.1%",
+      rating: "Buy (매수)", upside: "+23.0%",
+      role: "순수 낸드플래시 · AI 기업용 SSD(eSSD) 전문",
+      rivalsShort: "삼성전자 · SK하이닉스(솔리다임) · 마이크론",
+      biz: "웨스턴디지털에서 분사한 순수 낸드플래시 및 기업용·소비자용 SSD 전문 기업으로, 키옥시아와의 합작 생산 거점을 통해 글로벌 낸드 시장을 선도합니다.",
+      momentum: "AI 데이터센터의 대용량 학습 데이터 저장 및 고속 추론 캐싱용 기업용 SSD(eSSD) 수요 급증과 낸드 업황 반등의 직접적인 순수 수혜주입니다.",
+      peers: "웨스턴디지털(WDC), 마이크론(MU), SK하이닉스(솔리다임), 시게이트(STX)와 낸드·스토리지 업황을 공유합니다.",
+      rivals: "글로벌 낸드플래시 및 기업용 SSD 시장에서 삼성전자, SK하이닉스(솔리다임), 마이크론(MU)과 직접 경쟁합니다." },
+    { ticker: "WDC", name: "웨스턴디지털", sector: "mem", currency: "USD", price: 66.20, chg: -0.65, defaultEarn: "inline", earnSurprise: "+1.5%",
+      rating: "Buy (매수)", upside: "+19.8%",
+      role: "AI 데이터센터 대용량 니어라인 HDD 전문",
+      rivalsShort: "시게이트(STX) · 도시바",
+      biz: "하이퍼스케일러 데이터센터에 방대한 원시 데이터(Data Lake)를 저비용으로 저장하는 초고용량 니어라인 HDD 시장을 시게이트와 양분하는 스토리지 기업입니다.",
+      momentum: "AI 모델 학습용 이미지·영상·텍스트 데이터 폭증으로 클라우드 기업들의 고용량 HDD 장기 공급 계약과 단가 인상이 지속되고 있습니다.",
+      peers: "시게이트(STX), 샌디스크(SNDK), 마이크론(MU)과 데이터센터 스토리지 사이클을 같이합니다.",
+      rivals: "글로벌 데이터센터용 대용량 HDD 시장의 80% 이상을 양분하고 있는 시게이트(STX)가 사실상 유일한 직접 라이벌입니다." },
+    { ticker: "STX", name: "시게이트", sector: "mem", currency: "USD", price: 101.40, chg: 1.12, defaultEarn: "beat", earnSurprise: "+4.5%",
+      rating: "Buy (매수)", upside: "+17.4%",
+      role: "차세대 HAMR 초고용량 데이터센터 HDD 1위",
+      rivalsShort: "웨스턴디지털(WDC) · 도시바",
+      biz: "열보조자기기록(HAMR) 기술 기반의 30TB급 이상 초고용량 데이터센터용 하드디스크 드라이브(HDD) 시장을 선도하는 스토리지 기업입니다.",
+      momentum: "AI 데이터 저장 수요 증가와 HAMR 기반 고용량 신제품 출하 비중 확대에 힘입어 매출총이익률이 구조적으로 개선되고 있습니다.",
+      peers: "웨스턴디지털(WDC), 샌디스크(SNDK)와 클라우드 스토리지 인프라 테마로 연동됩니다.",
+      rivals: "웨스턴디지털(WDC)과 초고용량 니어라인 HDD 기술(HAMR vs ePMR) 및 하이퍼스케일러 납품 점유율을 두고 양강 경쟁을 벌입니다." },
 
     // 07. 파운드리 (위탁생산)
-    { ticker: "TSM", tvSymbol: "NYSE:TSM", name: "TSMC", sector: "foundry", currency: "USD", price: 193.50, role: "3나노·2나노 초미세 파운드리 및 CoWoS 독점", chg: 2.40, earningDate: "D-17", defaultEarn: "beat", earnSurprise: "+6.8%" },
-    { ticker: "GFS", tvSymbol: "NASDAQ:GFS", name: "글로벌파운드리", sector: "foundry", currency: "USD", price: 41.80, role: "미국·유럽 특수 공정(RF·전력·차량용) 파운드리", chg: -1.42, earningDate: "D-26", defaultEarn: "miss", earnSurprise: "-3.4%" },
-    { ticker: "UMC", tvSymbol: "NYSE:UMC", name: "UMC", sector: "foundry", currency: "USD", price: 7.45, role: "대만 성숙 공정(28nm/22nm) 전문 파운드리", chg: 0.35, earningDate: "D-29", defaultEarn: "inline", earnSurprise: "+0.5%" },
+    { ticker: "TSM", name: "TSMC", sector: "foundry", currency: "USD", price: 193.50, chg: 2.40, defaultEarn: "beat", earnSurprise: "+6.8%",
+      rating: "Strong Buy (강력 매수)", upside: "+20.1%",
+      role: "3나노·2나노 초미세 파운드리 및 CoWoS 독점",
+      rivalsShort: "삼성전자(파운드리) · 인텔(IFS)",
+      biz: "글로벌 파운드리 점유율 60% 이상, 특히 AI 칩에 필수적인 3나노·5나노 초미세 공정과 첨단 패키징(CoWoS) 시장을 사실상 독점하고 있는 반도체 제조의 심장입니다.",
+      momentum: "엔비디아·애플·AMD·브로드컴·퀄컴 등 모든 주요 팹리스의 AI 칩 주문을 독식하며 웨이퍼 가격 인상과 2나노 공정 조기 수율 확보로 독주 체제를 굳혔습니다.",
+      peers: "엔비디아(NVDA), 애플, ASML(EUV 장비), 온토 이노베이션·어드반테스트(패키징·테스트)와 직결됩니다.",
+      rivals: "3나노·2나노 이하 초미세 파운드리 시장에서 삼성전자 파운드리 사업부와 인텔 파운드리(18A)가 추격자 위치에서 경쟁하고 있습니다." },
+    { ticker: "GFS", name: "글로벌파운드리", sector: "foundry", currency: "USD", price: 41.80, chg: -1.42, defaultEarn: "miss", earnSurprise: "-3.4%",
+      rating: "Hold (중립)", upside: "+11.2%",
+      role: "미국·유럽 특수 공정(RF·전력·차량용) 파운드리",
+      rivalsShort: "UMC · SMIC · TSMC(성숙공정)",
+      biz: "미국과 유럽에 생산 거점을 둔 파운드리 기업으로, 초미세 공정 대신 통신용 RF, 전력 관리, 차량용 및 방산·우주항공 특화 공정에 집중합니다.",
+      momentum: "미국 반도체 지원법(CHIPS Act) 보조금 수혜와 서구권 공급망 내재화 수요가 강점이나, 스마트폰·산업용 재고 조정 여파로 점진적 회복세를 보이고 있습니다.",
+      peers: "UMC, 퀄컴(RF칩 위탁생산), NXP·온세미(차량용 칩)와 연관됩니다.",
+      rivals: "12나노 이상 성숙·특수 공정(RF·전력·전장) 파운드리 시장에서 대만의 UMC, 뱅가드 및 중국 SMIC와 고객사를 두고 경쟁합니다." },
+    { ticker: "UMC", name: "UMC", sector: "foundry", currency: "USD", price: 7.45, chg: 0.35, defaultEarn: "inline", earnSurprise: "+0.5%",
+      rating: "Hold (중립)", upside: "+9.4%",
+      role: "대만 성숙 공정(28nm/22nm) 전문 파운드리",
+      rivalsShort: "글로벌파운드리(GFS) · SMIC",
+      biz: "대만의 대표적인 성숙 공정(28나노·22나노 이상) 전문 파운드리로, 디스플레이 구동칩(DDI), 통신 칩, 전력 관리 반도체 등을 안정적으로 위탁 생산합니다.",
+      momentum: "AI 서버 및 스마트폰 주변부 칩(OLED DDI, PMIC) 수요 회복과 인텔과의 12나노 공정 협력 프로젝트를 통해 중장기 가동률을 높여가고 있습니다.",
+      peers: "글로벌파운드리(GFS), TSMC, 미디어텍과 대만 반도체 생태계를 구성합니다.",
+      rivals: "글로벌파운드리(GFS), 중국 SMIC, 화홍반도체와 28나노 이상 레거시·성숙 공정 가동률과 웨이퍼 단가를 두고 경쟁합니다." },
+    { ticker: "0981.HK", name: "SMIC (중신국제)", sector: "foundry", currency: "HKD", price: 27.60, chg: 1.90, defaultEarn: "inline", earnSurprise: "+1.7%",
+      rating: "Hold (중립)", upside: "+8.0%",
+      role: "중국 최대 파운드리 · 반도체 자립 핵심",
+      rivalsShort: "UMC · 글로벌파운드리(GFS)",
+      biz: "중국 본토 최대 파운드리 기업으로, 미국의 대중국 반도체 장비 수출 통제 속에서도 중국 내수 팹리스 물량과 레거시·자체 7나노 공정을 가동하고 있습니다.",
+      momentum: "중국 정부의 반도체 국산화 정책에 따른 내수 웨이퍼 주문 집중으로 높은 공장 가동률을 유지하고 있으나 첨단 장비 조달 제약이 상존합니다.",
+      peers: "UMC, 글로벌파운드리(GFS), 화홍반도체와 성숙 공정 경쟁 구도를 형성합니다.",
+      rivals: "글로벌 레거시 파운드리 시장에서 UMC·글로벌파운드리와 맞붙으며, 중국 내수 시장에서는 화홍반도체(Hua Hong)와 함께 자립 생태계를 이룹니다." },
 
     // 08. IDM · 전력 · 아날로그
-    { ticker: "MPWR", tvSymbol: "NASDAQ:MPWR", name: "모놀리식 파워", sector: "idm", currency: "USD", price: 762.00, role: "AI GPU 보드 고효율 전력 관리 반도체(PMIC)", chg: 1.95, earningDate: "D-19", defaultEarn: "beat", earnSurprise: "+4.6%" },
-    { ticker: "TXN", tvSymbol: "NASDAQ:TXN", name: "텍사스 인스트루먼트", sector: "idm", currency: "USD", price: 204.30, role: "산업용·차량용 아날로그 반도체 글로벌 1위", chg: 0.42, earningDate: "D-30", defaultEarn: "inline", earnSurprise: "+1.2%" },
-    { ticker: "ADI", tvSymbol: "NASDAQ:ADI", name: "아나로그 디바이스", sector: "idm", currency: "USD", price: 226.10, role: "고성능 아날로그·혼합신호 처리 IDM", chg: 0.78, earningDate: "D-8", defaultEarn: "beat", earnSurprise: "+3.2%" },
-    { ticker: "INTC", tvSymbol: "NASDAQ:INTC", name: "인텔", sector: "idm", currency: "USD", price: 23.40, role: "x86 CPU · 18A 파운드리 턴어라운드 추진", chg: -2.65, earningDate: "D-27", defaultEarn: "miss", earnSurprise: "-11.5%" },
-    { ticker: "ON", tvSymbol: "NASDAQ:ON", name: "온세미", sector: "idm", currency: "USD", price: 69.80, role: "전기차 SiC 전력반도체 · 이미지센서", chg: -1.80, earningDate: "D-25", defaultEarn: "miss", earnSurprise: "-3.8%" },
+    { ticker: "INTC", name: "인텔", sector: "idm", multiSectors: ["foundry"], currency: "USD", price: 23.40, chg: -2.65, defaultEarn: "miss", earnSurprise: "-11.5%",
+      rating: "Hold (중립)", upside: "+10.2%",
+      role: "x86 CPU · 인텔 파운드리(18A) 턴어라운드",
+      rivalsShort: "AMD(CPU) · TSMC(파운드리) · 엔비디아",
+      biz: "PC 및 서버용 x86 CPU의 전통 강자이자, 자체 설계와 외부 위탁생산(Intel Foundry) 동시 재건을 추진 중인 미국의 대표 종합반도체(IDM) 기업입니다.",
+      momentum: "AI 서버 투자 쏠림에 따른 서버 CPU 점유율 방어와 대규모 파운드리 적자 축소, 차세대 18A(1.8나노급) 공정 외부 고객사 확보 여부가 핵심 변수입니다.",
+      peers: "AMD(CPU 경쟁사), TSMC·삼성전자(파운드리 경쟁사), ASML(High-NA EUV 장비)과 연관됩니다.",
+      rivals: "PC·서버 CPU 시장에서는 AMD와 ARM 진영(퀄컴·애플)에 점유율을 위협받고 있으며, 파운드리 사업에서는 TSMC·삼성전자와 경쟁합니다." },
+    { ticker: "MPWR", name: "모놀리식 파워", sector: "idm", currency: "USD", price: 762.00, chg: 1.95, defaultEarn: "beat", earnSurprise: "+4.6%",
+      rating: "Strong Buy (강력 매수)", upside: "+17.6%",
+      role: "AI GPU 보드 고효율 전력 관리 반도체(PMIC)",
+      rivalsShort: "텍사스인스트루먼트(TXN) · 인피니언",
+      biz: "고성능 AI GPU와 데이터센터 서버에 정밀하고 효율적으로 전력을 공급·제어하는 고집적 전력 관리 반도체(PMIC) 분야의 고성장 선도 기업입니다.",
+      momentum: "차세대 AI 가속기의 소비전력이 1,000W 이상으로 급증하면서 발열을 줄이고 전력 효율을 높이는 고급 전력 솔루션 탑재 단가가 상승하고 있습니다.",
+      peers: "엔비디아(AI 서버 전력 파트너), 텍사스 인스트루먼트(TXN), 아나로그 디바이스(ADI)와 동조화됩니다.",
+      rivals: "AI 데이터센터 및 서버용 전력 관리 반도체(PMIC·전압조정기) 시장에서 텍사스 인스트루먼트(TXN), 인피니언, 르네사스와 경쟁합니다." },
+    { ticker: "TXN", name: "텍사스 인스트루먼트", sector: "idm", currency: "USD", price: 204.30, chg: 0.42, defaultEarn: "inline", earnSurprise: "+1.2%",
+      rating: "Hold (중립)", upside: "+8.5%",
+      role: "산업용·차량용 아날로그 반도체 글로벌 1위",
+      rivalsShort: "아나로그디바이스(ADI) · 모놀리식파워",
+      biz: "빛·소리·온도·전압 등 물리적 신호를 디지털로 변환하고 전력을 제어하는 아날로그 및 임베디드 프로세서 글로벌 1위 기업으로, 수만 종의 다품종 포트폴리오를 보유합니다.",
+      momentum: "300mm 웨이퍼 자체 팹 증설을 통한 원가 경쟁력 강화에 주력하고 있으며, 산업용 및 자동차 고객사들의 긴 재고 조정이 마무리 국면에 진입하고 있습니다.",
+      peers: "아나로그 디바이스(ADI), 온세미(ON), NXP(NXPI)와 아날로그·산업용 반도체 경기를 대변합니다.",
+      rivals: "고성능 아날로그 반도체 시장에서 아나로그 디바이스(ADI)와 양강 구도를 이루며, 전력 관리 분야에서는 모놀리식 파워(MPWR)·온세미와 경쟁합니다." },
+    { ticker: "ADI", name: "아나로그 디바이스", sector: "idm", currency: "USD", price: 226.10, chg: 0.78, defaultEarn: "beat", earnSurprise: "+3.2%",
+      rating: "Buy (매수)", upside: "+14.9%",
+      role: "고성능 아날로그·혼합신호 처리 IDM",
+      rivalsShort: "텍사스인스트루먼트(TXN) · NXP",
+      biz: "산업 자동화, 전기차 배터리 관리(BMS), 통신 인프라 및 AI 데이터센터 전력·광학 제어용 고성능 아날로그 반도체를 설계·생산합니다.",
+      momentum: "산업용 자동화 장비 수주 반등과 AI 데이터센터 전력 관리 매출 증가에 힘입어 업황 바닥을 통과하며 마진율이 회복되고 있습니다.",
+      peers: "텍사스 인스트루먼트(TXN), 모놀리식 파워(MPWR), NXP(NXPI)와 연동됩니다.",
+      rivals: "산업용·전장·통신용 정밀 아날로그 및 데이터 변환기(ADC/DAC) 시장 전반에서 텍사스 인스트루먼트(TXN)와 정면 경쟁합니다." },
+    { ticker: "ON", name: "온세미", sector: "idm", currency: "USD", price: 69.80, chg: -1.80, defaultEarn: "miss", earnSurprise: "-3.8%",
+      rating: "Buy (매수)", upside: "+18.1%",
+      role: "전기차 SiC 전력반도체 · 이미지센서",
+      rivalsShort: "ST마이크로 · 인피니언 · 울프스피드",
+      biz: "전기차 인버터에 쓰이는 실리콘카바이드(SiC) 전력반도체와 자율주행차용 차량 이미지센서 글로벌 선두 기업입니다.",
+      momentum: "글로벌 전기차 수요 둔화 여파를 겪고 있으나, AI 데이터센터 전력 공급용 SiC 솔루션 확대와 하이브리드·전기차 침투율 반등 시 높은 레버리지를 보유합니다.",
+      peers: "NXP, ST마이크로, 텍사스 인스트루먼트(TXN)와 전장·전력 반도체 흐름을 같이합니다.",
+      rivals: "실리콘카바이드(SiC) 전력반도체 시장에서 ST마이크로일렉트로닉스, 인피니언, 울프스피드와 치열한 점유율 경쟁을 벌입니다." },
+    { ticker: "NXPI", name: "NXP 세미컨덕터", sector: "idm", currency: "USD", price: 234.80, chg: 0.55, defaultEarn: "inline", earnSurprise: "+1.0%",
+      rating: "Buy (매수)", upside: "+15.3%",
+      role: "차량용 마이크로컨트롤러(MCU)·레이더 1위",
+      rivalsShort: "인피니언 · 르네사스 · ST마이크로",
+      biz: "자동차 전장화·자율주행의 핵심 두뇌인 차량용 MCU, 자동차 레이더 칩 및 보안 결제(NFC) 반도체를 설계·생산하는 유럽 대표 IDM 기업입니다.",
+      momentum: "소프트웨어 중심 자동차(SDV) 전환에 따라 차량 1대당 탑재되는 고성능 MCU 및 차량 내 네트워크 칩 수량이 구조적으로 증가하고 있습니다.",
+      peers: "온세미(ON), 텍사스 인스트루먼트(TXN), ST마이크로와 전장 반도체 업황을 공유합니다.",
+      rivals: "글로벌 차량용 반도체(MCU·전장 시스템 칩) 시장에서 독일 인피니언, 일본 르네사스, ST마이크로일렉트로닉스와 선두 다툼을 벌입니다." },
 
     // 09. 전공정 핵심 장비
-    { ticker: "ASML", tvSymbol: "NASDAQ:ASML", name: "ASML", sector: "equip", currency: "USD", price: 694.20, role: "초미세 EUV 노광장비 전 세계 100% 독점", chg: 1.88, earningDate: "D-21", defaultEarn: "beat", earnSurprise: "+5.0%" },
-    { ticker: "AMAT", tvSymbol: "NASDAQ:AMAT", name: "어플라이드 머티어리얼즈", sector: "equip", currency: "USD", price: 184.60, role: "증착·식각 등 종합 전공정 장비 글로벌 1위", chg: 1.32, earningDate: "D-6", defaultEarn: "beat", earnSurprise: "+4.1%" },
-    { ticker: "LRCX", tvSymbol: "NASDAQ:LRCX", name: "램리서치", sector: "equip", currency: "USD", price: 76.90, role: "HBM·3D 낸드 초고단 식각(Etch) 장비 핵심", chg: 2.05, earningDate: "D-24", defaultEarn: "beat", earnSurprise: "+5.7%" },
-    { ticker: "8035.T", tvSymbol: "TSE:8035", name: "도쿄일렉트론", sector: "equip", currency: "JPY", price: 23450, role: "EUV 코터/디벨로퍼 독점 · 일본 최대 장비사", chg: 1.55, earningDate: "D-22", defaultEarn: "beat", earnSurprise: "+4.9%" },
+    { ticker: "ASML", name: "ASML", sector: "equip", currency: "USD", price: 694.20, chg: 1.88, defaultEarn: "beat", earnSurprise: "+5.0%",
+      rating: "Strong Buy (강력 매수)", upside: "+23.5%",
+      role: "초미세 EUV 노광장비 전 세계 100% 독점",
+      rivalsShort: "니콘 · 캐논 (DUV 부문 일부)",
+      biz: "7나노 이하 초미세 반도체를 찍어내는 극자외선(EUV) 노광장비를 전 세계에서 유일하게 생산하는 네덜란드의 절대적 슈퍼을(乙) 장비 기업입니다.",
+      momentum: "2나노 공정 전환과 차세대 High-NA EUV 도입, HBM 초미세화를 위한 EUV 레이어 증가로 TSMC·삼성전자·SK하이닉스의 중장기 장비 발주가 이어집니다.",
+      peers: "TSMC, 삼성전자, SK하이닉스(핵심 고객사), 도쿄일렉트론(EUV 트랙 파트너)과 직결됩니다.",
+      rivals: "첨단 EUV 노광장비 시장에서는 전 세계 100% 독점으로 경쟁자가 없으며, 구형 DUV(심자외선) 노광장비 일부 영역에서만 일본 니콘·캐논과 경합합니다." },
+    { ticker: "AMAT", name: "어플라이드 머티어리얼즈", sector: "equip", currency: "USD", price: 184.60, chg: 1.32, defaultEarn: "beat", earnSurprise: "+4.1%",
+      rating: "Buy (매수)", upside: "+19.4%",
+      role: "증착·식각 등 종합 전공정 장비 글로벌 1위",
+      rivalsShort: "램리서치(LRCX) · 도쿄일렉트론",
+      biz: "웨이퍼 위에 얇은 막을 입히는 증착(Deposition), 불순물 주입, 식각, 패키징까지 반도체 전공정 전반에 걸쳐 가장 폭넓은 포트폴리오를 보유한 세계 1위 장비사입니다.",
+      momentum: "차세대 GAA(게이트올어라운드) 트랜지스터 구조 도입과 HBM 적층 패키징 장비 수요 급증으로 전 공정에서 고른 수혜를 입고 있습니다.",
+      peers: "램리서치(LRCX), KLA(KLAC), 도쿄일렉트론(8035.T)과 4대 전공정 장비주를 이룹니다.",
+      rivals: "식각·증착 분야에서는 램리서치(LRCX) 및 도쿄일렉트론(8035.T)과, 공정 검사 분야에서는 KLA(KLAC)와 경합합니다." },
+    { ticker: "LRCX", name: "램리서치", sector: "equip", currency: "USD", price: 76.90, chg: 2.05, defaultEarn: "beat", earnSurprise: "+5.7%",
+      rating: "Strong Buy (강력 매수)", upside: "+21.8%",
+      role: "HBM·3D 낸드 초고단 식각(Etch) 장비 핵심",
+      rivalsShort: "도쿄일렉트론(8035.T) · 어플라이드",
+      biz: "웨이퍼 위 불필요한 부분을 정밀하게 깎아내는 식각(Etch) 장비 글로벌 1위 기업으로, 특히 3D 낸드 고단화와 HBM 실리콘관통전극(TSV) 공정에 필수적입니다.",
+      momentum: "HBM 적층 단수가 8단에서 12단·16단으로 높아지고 기업용 SSD용 고단 낸드 투자가 재개되면서 식각·증착 장비 수주가 강하게 반등 중입니다.",
+      peers: "SK하이닉스·마이크론(메모리 고객사), 어플라이드(AMAT), 도쿄일렉트론(8035.T)과 동조화됩니다.",
+      rivals: "첨단 식각(Etch) 및 증착 장비 시장에서 일본 도쿄일렉트론(8035.T) 및 미국 어플라이드 머티어리얼즈(AMAT)와 치열하게 경쟁합니다." },
+    { ticker: "8035.T", name: "도쿄일렉트론", sector: "equip", currency: "JPY", price: 23450, chg: 1.55, defaultEarn: "beat", earnSurprise: "+4.9%",
+      rating: "Buy (매수)", upside: "+20.2%",
+      role: "EUV 코터/디벨로퍼 독점 · 일본 최대 장비사",
+      rivalsShort: "램리서치(LRCX) · 어플라이드 · 세메스",
+      biz: "노광 공정 전후로 감광액을 바르고 현상하는 코터/디벨로퍼 장비 시장 점유율 약 90%(EUV용은 100%)를 차지하는 일본 최대 반도체 장비 기업입니다.",
+      momentum: "ASML의 EUV 장비 출하량과 1:1로 연동되는 코터/디벨로퍼 독점 지위와 3D 낸드 극저온 초고속 식각 장비 상용화가 핵심 성장 동력입니다.",
+      peers: "ASML, 램리서치(LRCX), 어플라이드(AMAT), 어드반테스트(6857.T)와 연동됩니다.",
+      rivals: "식각·증착 부문에서는 램리서치(LRCX) 및 어플라이드(AMAT)와 맞붙고, 코터/디벨로퍼 부문에서는 한국의 세메스(SEMES)가 추격 중입니다." },
 
     // 10. 계측 · 검사 (MI)
-    { ticker: "KLAC", tvSymbol: "NASDAQ:KLAC", name: "KLA", sector: "mi", currency: "USD", price: 668.50, role: "웨이퍼 결함 검사·계측 장비 글로벌 압도적 1위", chg: 1.72, earningDate: "D-23", defaultEarn: "beat", earnSurprise: "+5.3%" },
-    { ticker: "ONTO", tvSymbol: "NYSE:ONTO", name: "온토 이노베이션", sector: "mi", currency: "USD", price: 196.40, role: "HBM·CoWoS 첨단 패키징 3D 계측·검사 강자", chg: 3.10, earningDate: "D-17", defaultEarn: "beat", earnSurprise: "+7.8%" },
+    { ticker: "KLAC", name: "KLA", sector: "mi", currency: "USD", price: 668.50, chg: 1.72, defaultEarn: "beat", earnSurprise: "+5.3%",
+      rating: "Strong Buy (강력 매수)", upside: "+18.7%",
+      role: "웨이퍼 결함 검사·계측 장비 글로벌 압도적 1위",
+      rivalsShort: "어플라이드(전자빔검사) · 히타치하이테크",
+      biz: "반도체 공정 중 발생하는 나노 단위 미세 결함을 광학·전자빔으로 찾아내고 두께·선폭을 측정하는 공정 제어(계측·검사) 시장 점유율 50% 이상의 독보적 1위 기업입니다.",
+      momentum: "2나노 이하 초미세 공정과 HBM은 작은 결함 하나가 치명적 수율 저하로 이어지므로, 파운드리·메모리 기업들의 계측·검사 장비 투자 비중이 역대 최고 수준입니다.",
+      peers: "TSMC, ASML, 온토 이노베이션(ONTO), 어플라이드(AMAT)와 강하게 동조화됩니다.",
+      rivals: "광학 웨이퍼 검사에서는 압도적 독주 중이나, 전자빔(E-beam) 검사 영역에서는 어플라이드(AMAT)·히타치하이테크, 패키징 계측에서는 온토 이노베이션과 경쟁합니다." },
+    { ticker: "ONTO", name: "온토 이노베이션", sector: "mi", currency: "USD", price: 196.40, chg: 3.10, defaultEarn: "beat", earnSurprise: "+7.8%",
+      rating: "Strong Buy (강력 매수)", upside: "+22.4%",
+      role: "HBM·CoWoS 첨단 패키징 3D 계측·검사 강자",
+      rivalsShort: "KLA(KLAC) · 캠텍(CAMT)",
+      biz: "HBM과 TSMC CoWoS 같은 2.5D/3D 첨단 패키징 공정에서 칩 간 연결 범프(Bump)와 웨이퍼 표면을 초정밀 검사·계측하는 Dragonfly 시스템 선도 기업입니다.",
+      momentum: "AI 칩 성능 향상의 핵심이 전공정에서 첨단 패키징으로 확장되면서, 전 세계 주요 HBM 및 파운드리 고객사들로부터 패키징 계측 장비 대량 수주가 이어지고 있습니다.",
+      peers: "KLA(KLAC), TSMC(CoWoS), SK하이닉스·마이크론(HBM), 캠텍(CAMT)과 연동됩니다.",
+      rivals: "첨단 패키징(HBM·CoWoS) 검사·계측 시장에서 업계 1위 KLA(KLAC) 및 3D 범프 검사 전문 캠텍(CAMT)과 핵심 수주 경쟁을 벌입니다." },
+    { ticker: "CAMT", name: "캠텍", sector: "mi", currency: "USD", price: 88.30, chg: 2.65, defaultEarn: "beat", earnSurprise: "+6.4%",
+      rating: "Strong Buy (강력 매수)", upside: "+21.5%",
+      role: "HBM·칩렛 첨단 패키징 3D 광학 검사 장비",
+      rivalsShort: "온토이노베이션(ONTO) · KLA · 인텍플러스",
+      biz: "HBM 적층과 이종 집적(칩렛) 패키징 공정에서 수십만 개의 마이크로 범프(Micro-Bump) 높이·결함을 고속 3D 광학 스캔으로 검사하는 전문 장비 기업입니다.",
+      momentum: "SK하이닉스·마이크론·TSMC의 HBM 및 CoWoS 라인 증설과 맞물려 3D 패키징 검사 장비 수주 잔고가 사상 최고 수준을 유지 중입니다.",
+      peers: "온토 이노베이션(ONTO), KLA(KLAC), SK하이닉스, 한미반도체와 연동됩니다.",
+      rivals: "HBM·칩렛 마이크로 범프 3D 검사 영역에서 온토 이노베이션(ONTO), KLA(KLAC) 및 국내 검사장비 기업들과 경쟁합니다." },
+    { ticker: "NVMI", name: "노바", sector: "mi", currency: "USD", price: 204.70, chg: 1.92, defaultEarn: "beat", earnSurprise: "+5.8%",
+      rating: "Strong Buy (강력 매수)", upside: "+19.6%",
+      role: "GAA·HBM 박막 두께·소재 조성 계측(Metrology)",
+      rivalsShort: "KLA(KLAC) · 온토이노베이션 · 오로보텍",
+      biz: "초미세 GAA(게이트올어라운드) 트랜지스터 및 HBM 공정에서 나노미터 이하 박막의 두께와 화학적 조성을 비파괴 광학·X선으로 정밀 측정하는 계측 전문 기업입니다.",
+      momentum: "3나노·2나노 GAA 구조 전환으로 측정해야 할 층수와 복잡도가 급증하면서 파운드리·메모리 양쪽에서 계측 장비 채택이 빠르게 늘고 있습니다.",
+      peers: "KLA(KLAC), 온토 이노베이션(ONTO), TSMC, 삼성전자와 동조화됩니다.",
+      rivals: "박막 두께 및 소재 조성 계측(OCD·X선 계측) 시장에서 KLA(KLAC) 및 온토 이노베이션(ONTO)과 직접적인 라이벌 관계입니다." },
 
-    // 11. 후공정 · 테스트 · 소재
-    { ticker: "6857.T", tvSymbol: "TSE:6857", name: "어드반테스트", sector: "osat", currency: "JPY", price: 9120, role: "엔비디아 AI GPU·HBM 최종 양품 테스트 장비 1위", chg: 3.65, earningDate: "D-20", defaultEarn: "beat", earnSurprise: "+10.2%" },
-    { ticker: "TER", tvSymbol: "NASDAQ:TER", name: "테라다인", sector: "osat", currency: "USD", price: 112.30, role: "AI·모바일 SoC 반도체 테스트 및 협동로봇", chg: 0.95, earningDate: "D-26", defaultEarn: "inline", earnSurprise: "+2.1%" },
-    { ticker: "AMKR", tvSymbol: "NASDAQ:AMKR", name: "앰코 테크놀로지", sector: "osat", currency: "USD", price: 26.80, role: "글로벌 2위 후공정(OSAT) · 첨단 패키징", chg: -0.85, earningDate: "D-28", defaultEarn: "miss", earnSurprise: "-3.1%" },
-    { ticker: "ENTG", tvSymbol: "NASDAQ:ENTG", name: "인테그리스", sector: "osat", currency: "USD", price: 104.20, role: "초미세 공정 특수가스·필터·CMP 소재 1위", chg: 0.64, earningDate: "D-25", defaultEarn: "inline", earnSurprise: "+1.4%" }
+    // 11. 후공정 · 테스트 · HBM장비 · 소재
+    { ticker: "6857.T", name: "어드반테스트", sector: "osat", currency: "JPY", price: 9120, chg: 3.65, defaultEarn: "beat", earnSurprise: "+10.2%",
+      rating: "Strong Buy (강력 매수)", upside: "+21.0%",
+      role: "엔비디아 AI GPU·HBM 최종 양품 테스트 장비 1위",
+      rivalsShort: "테라다인(TER) · 코후(COHU)",
+      biz: "완성된 AI GPU, 고성능 SoC, HBM 메모리의 전기적 성능과 불량 여부를 최종 검증하는 반도체 테스트(ATE) 장비 글로벌 1위 기업입니다.",
+      momentum: "AI 칩의 회로 복잡도 증가로 칩 1개당 테스트 시간이 2~3배 길어지고 고성능 테스터 수요가 폭증하면서 엔비디아·TSMC향 수주가 급증하고 있습니다.",
+      peers: "테라다인(TER), 엔비디아(NVDA), TSMC, SK하이닉스와 실적 흐름이 맞물립니다.",
+      rivals: "글로벌 반도체 자동화 테스트 장비(ATE) 시장을 90% 이상 양분하고 있는 미국의 테라다인(TER)이 최대 라이벌입니다." },
+    { ticker: "042700.KS", name: "한미반도체", sector: "osat", currency: "KRW", price: 96800, chg: 4.10, defaultEarn: "beat", earnSurprise: "+11.8%",
+      rating: "Strong Buy (강력 매수)", upside: "+25.4%",
+      role: "HBM 핵심 열압착 본딩(TC 본더) 글로벌 1위",
+      rivalsShort: "ASMPT · 한화정밀기계 · 베시(BESI)",
+      biz: "HBM 생산의 핵심 공정인 D램 칩 수직 적층용 열압착 본딩 장비(TC 본더) 글로벌 1위 기업으로, SK하이닉스와 마이크론에 핵심 장비를 공급합니다.",
+      momentum: "12단·16단 차세대 HBM 고단화 및 글로벌 메모리 기업들의 HBM 생산능력 경쟁적 증설로 TC 본더 수주 모멘텀이 지속되고 있습니다.",
+      peers: "SK하이닉스(000660.KS), 마이크론(MU), 온토 이노베이션(ONTO), 캠텍(CAMT)과 직결됩니다.",
+      rivals: "HBM용 TC 본더 시장에서는 ASMPT 및 한화정밀기계와 경쟁하며, 차세대 하이브리드 본딩 영역에서는 네덜란드 베시(BESI)와 경쟁합니다." },
+    { ticker: "TER", name: "테라다인", sector: "osat", currency: "USD", price: 112.30, chg: 0.95, defaultEarn: "inline", earnSurprise: "+2.1%",
+      rating: "Buy (매수)", upside: "+16.3%",
+      role: "AI·모바일 SoC 반도체 테스트 및 협동로봇",
+      rivalsShort: "어드반테스트(6857.T) · 코후",
+      biz: "어드반테스트와 함께 글로벌 반도체 테스트 장비 시장을 양분하는 미국 기업으로, 모바일 AP·커스텀 AI 칩·HBM 테스트 장비와 산업용 협동로봇 사업을 영위합니다.",
+      momentum: "스마트폰 AP 수요 회복과 하이퍼스케일러들의 자체 커스텀 AI 칩(ASIC) 양산 확대에 따른 신규 테스트 장비 도입이 실적 성장을 견인 중입니다.",
+      peers: "어드반테스트(6857.T), 퀄컴, 브로드컴, TSMC와 연관됩니다.",
+      rivals: "AI GPU 및 고성능 SoC·메모리 테스트 장비 시장 전역에서 일본 어드반테스트(6857.T)와 치열한 양강 경쟁을 벌입니다." },
+    { ticker: "AMKR", name: "앰코 테크놀로지", sector: "osat", currency: "USD", price: 26.80, chg: -0.85, defaultEarn: "miss", earnSurprise: "-3.1%",
+      rating: "Buy (매수)", upside: "+19.0%",
+      role: "글로벌 2위 후공정(OSAT) · 첨단 패키징",
+      rivalsShort: "ASE(ASX) · JCET(장전과기)",
+      biz: "설계·제조가 끝난 웨이퍼를 절단하고 외부와 연결해 완제품 칩으로 패키징·테스트하는 글로벌 2위 전문 후공정(OSAT) 기업입니다.",
+      momentum: "TSMC의 CoWoS 패키징 병목 해소를 위한 외주 물량 수혜와 미국 애리조나 첨단 패키징 팹 건설을 통한 북미 AI·애플 공급망 핵심 거점화가 기대됩니다.",
+      peers: "TSMC, ASE(ASX), 애플, 퀄컴과 후공정 밸류체인을 공유합니다.",
+      rivals: "글로벌 후공정(OSAT) 업계 1위인 대만의 ASE 테크놀로지(ASX) 및 중국 최대 OSAT 기업 JCET(장전과기)와 수주 경쟁을 벌입니다." },
+    { ticker: "ASX", name: "ASE 테크놀로지", sector: "osat", currency: "USD", price: 10.45, chg: 1.25, defaultEarn: "beat", earnSurprise: "+3.7%",
+      rating: "Buy (매수)", upside: "+17.5%",
+      role: "글로벌 1위 후공정(OSAT) · CoWoS 외주 파트너",
+      rivalsShort: "앰코(AMKR) · JCET(장전과기)",
+      biz: "전 세계 후공정(OSAT) 시장 점유율 1위의 대만 기업으로, TSMC와 인접한 지리적 이점을 바탕으로 AI 칩 첨단 패키징 및 테스트 외주 물량을 소화합니다.",
+      momentum: "TSMC의 첨단 패키징(CoWoS-S/R) 후공정 외주 확대와 AI 스마트폰·서버용 SiP(시스템인패키지) 수요 증가로 가동률이 상승 중입니다.",
+      peers: "TSMC, 앰코(AMKR), 엔비디아, 미디어텍과 대만 후공정 생태계를 이룹니다.",
+      rivals: "북미 거점을 앞세운 글로벌 2위 후공정 기업 앰코 테크놀로지(AMKR) 및 중화권 JCET·통푸마이크로와 패키징 점유율을 두고 경쟁합니다." },
+    { ticker: "ENTG", name: "인테그리스", sector: "osat", currency: "USD", price: 104.20, chg: 0.64, defaultEarn: "inline", earnSurprise: "+1.4%",
+      rating: "Buy (매수)", upside: "+20.8%",
+      role: "초미세 공정 특수가스·필터·CMP 소재 1위",
+      rivalsShort: "머크(Merck) · 듀폰 · 신에츠화학",
+      biz: "초미세 반도체 공정에서 불순물을 걸러내는 첨단 액체·가스 필터, 웨이퍼 평탄화(CMP) 슬러리, 특수가스 및 웨이퍼 이송 용기를 공급하는 소재 1위 기업입니다.",
+      momentum: "2나노 공정 전환과 HBM 적층 수 증가로 공정 단계가 늘어나면서 웨이퍼 1장당 투입되는 고순도 필터 및 CMP 소재 소모량이 구조적으로 증가하고 있습니다.",
+      peers: "TSMC, 삼성전자, SK하이닉스(웨이퍼 투입량 증가 시 직접 수혜)와 연동됩니다.",
+      rivals: "특수가스·프리커서 부문에서는 독일 머크(Merck)·에어리퀴드, CMP 슬러리 부문에서는 듀폰(DuPont)·후지필름과 경쟁합니다." }
 ];
 
 // 실시간 공유 상태 (Firebase Firestore와 동기화)
 var sharedState = {
     earnOverrides: {},
-    votes: {},
     briefings: [
-        { id: 1700000001, author: "시스템", text: "카드의 [Beat/Miss] 뱃지를 클릭하면 친구들 화면에도 어닝 상태가 실시간 변경됩니다!", time: "방금" }
+        { id: 1700000001, text: "종목 카드의 [Beat/Miss] 뱃지를 클릭하면 동시 접속자 화면에도 어닝 상태가 실시간 반영됩니다.", time: "안내" }
     ],
-    pinnedNews: [],
     activeUsers: {},
     updatedAt: 0
 };
 
 var selectedSector = "all";
-var selectedTicker = "ALAB";
-var currentNewsQuery = "AI semiconductor HBM NVIDIA";
-var myNickname = localStorage.getItem("semi_nick_v1") || ("트레이더#" + Math.floor(100 + Math.random() * 900));
+var selectedTicker = "NVDA";
+var currentNewsQuery = "NVIDIA NVDA AI semiconductor";
 var sessionId = "u_" + Math.random().toString(36).slice(2, 9);
 
-// 1. Firebase 실시간 동기화 함수
+// 1. 실시간 원/달러 환율 자동 조회
+function fetchLiveExchangeRate() {
+    fetch("https://open.er-api.com/v6/latest/USD")
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (data && data.rates && data.rates.KRW) {
+                currentUsdKrw = Number(data.rates.KRW);
+                document.getElementById("liveExchangeRateText").innerText = currentUsdKrw.toLocaleString("ko-KR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "원";
+                renderValueChainGrid();
+                updateInspectorDisplay();
+            }
+        })
+        .catch(function() {});
+}
+
+// 2. Firebase 실시간 동기화
 function pushSharedState() {
     sharedState.updatedAt = Date.now();
     sharedState.activeUsers[sessionId] = Date.now();
@@ -374,10 +730,6 @@ function pushSharedState() {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
-    }).then(function(res) {
-        if (res.ok) {
-            document.getElementById("liveSyncText").innerText = "실시간 친구 연동중";
-        }
     }).catch(function() {});
 }
 
@@ -397,7 +749,6 @@ function pullSharedState() {
             if ((Number(remote.updatedAt) || 0) >= sharedState.updatedAt || sharedState.updatedAt === 0) {
                 sharedState = remote;
                 if (!sharedState.earnOverrides) sharedState.earnOverrides = {};
-                if (!sharedState.votes) sharedState.votes = {};
                 if (!sharedState.briefings) sharedState.briefings = [];
                 if (!sharedState.activeUsers) sharedState.activeUsers = {};
                 renderAll();
@@ -414,72 +765,103 @@ function updateOnlineCount() {
     Object.keys(sharedState.activeUsers).forEach(function(k) {
         if (now - sharedState.activeUsers[k] < 45000) count++;
     });
-    document.getElementById("onlineUsersBadge").innerText = "👥 현재 접속 " + Math.max(1, count) + "명";
+    document.getElementById("onlineUsersBadge").innerText = "👥 동시 접속 " + Math.max(1, count) + "명";
 }
 
-// 2. TradingView 실시간 차트 렌더링
-function renderTradingViewChart(stock) {
-    var wrapper = document.getElementById("tvChartWrapper");
-    wrapper.innerHTML = "";
-    var container = document.createElement("div");
-    container.className = "tradingview-widget-container";
-    container.style.height = "100%";
-    container.style.width = "100%";
-
-    var widgetDiv = document.createElement("div");
-    widgetDiv.className = "tradingview-widget-container__widget";
-    widgetDiv.style.height = "100%";
-    widgetDiv.style.width = "100%";
-    container.appendChild(widgetDiv);
-
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-    script.async = true;
-    script.innerHTML = JSON.stringify({
-        "autosize": true,
-        "symbol": stock.tvSymbol,
-        "interval": "15",
-        "timezone": "Asia/Seoul",
-        "theme": "dark",
-        "style": "1",
-        "locale": "kr",
-        "backgroundColor": "#0B101B",
-        "gridColor": "rgba(30, 41, 59, 0.45)",
-        "hide_top_toolbar": false,
-        "hide_legend": false,
-        "save_image": false,
-        "calendar": false,
-        "support_host": "https://www.tradingview.com"
-    });
-    container.appendChild(script);
-    wrapper.appendChild(container);
+// 3. 통화 포맷 (원화 + 현지 통화 병기)
+function formatPriceDual(st) {
+    if (st.currency === "KRW") {
+        return {
+            primary: "₩" + Number(st.price).toLocaleString(),
+            secondary: "$" + (st.price / currentUsdKrw).toFixed(2)
+        };
+    }
+    if (st.currency === "JPY") {
+        var krwFromJpy = Math.round(st.price * (currentUsdKrw / 154));
+        return {
+            primary: "₩" + krwFromJpy.toLocaleString(),
+            secondary: "¥" + Number(st.price).toLocaleString()
+        };
+    }
+    if (st.currency === "TWD") {
+        var krwFromTwd = Math.round(st.price * (currentUsdKrw / 32.5));
+        return {
+            primary: "₩" + krwFromTwd.toLocaleString(),
+            secondary: "NT$" + Number(st.price).toLocaleString()
+        };
+    }
+    if (st.currency === "HKD") {
+        var krwFromHkd = Math.round(st.price * (currentUsdKrw / 7.78));
+        return {
+            primary: "₩" + krwFromHkd.toLocaleString(),
+            secondary: "HK$" + Number(st.price).toFixed(2)
+        };
+    }
+    var krwVal = Math.round(st.price * currentUsdKrw);
+    return {
+        primary: "₩" + krwVal.toLocaleString(),
+        secondary: "$" + Number(st.price).toFixed(2)
+    };
 }
 
-// 3. 종목 선택 시 인스펙터 & 뉴스 동시 연동
-function selectStock(ticker, alsoFilterNews) {
-    selectedTicker = ticker;
-    var stock = STOCKS.find(function(s) { return s.ticker === ticker; }) || STOCKS[0];
+function getEarnBadgeInfo(status, surprise) {
+    if (status === "beat") {
+        return { text: "🟢 Beat " + surprise, cls: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40" };
+    }
+    if (status === "miss") {
+        return { text: "🔴 Miss " + surprise, cls: "bg-rose-500/20 text-rose-300 border-rose-500/40" };
+    }
+    return { text: "🟡 부합 " + surprise, cls: "bg-amber-500/20 text-amber-300 border-amber-500/40" };
+}
+
+// 4. 선택 종목 상단 심층 분석 브리핑 업데이트
+function updateInspectorDisplay() {
+    var stock = STOCKS.find(function(s) { return s.ticker === selectedTicker; }) || STOCKS[4];
     var sec = SECTORS.find(function(x) { return x.id === stock.sector; });
+    var earnStatus = sharedState.earnOverrides[stock.ticker] || stock.defaultEarn;
+    var earnInfo = getEarnBadgeInfo(earnStatus, stock.earnSurprise);
+    var pricePair = formatPriceDual(stock);
 
     document.getElementById("inspectorSectorBadge").innerText = sec ? (sec.code + ". " + sec.name) : "";
+    var earnEl = document.getElementById("inspectorEarnBadge");
+    earnEl.innerText = earnInfo.text;
+    earnEl.className = "text-[11px] font-extrabold px-2.5 py-0.5 rounded-md border " + earnInfo.cls;
+
     document.getElementById("inspectorTitle").innerText = stock.name + " (" + stock.ticker + ")";
-    document.getElementById("inspectorRoleDesc").innerText = "· " + stock.role;
 
-    var v = sharedState.votes[stock.ticker] || { bull: 0, bear: 0 };
-    document.getElementById("bullCount").innerText = v.bull || 0;
-    document.getElementById("bearCount").innerText = v.bear || 0;
+    var ratingEl = document.getElementById("inspectorRating");
+    ratingEl.innerText = stock.rating;
+    ratingEl.className = "text-xs font-black " + (stock.rating.indexOf("Hold") !== -1 ? "text-amber-300" : "text-emerald-400");
+    document.getElementById("inspectorTargetUpside").innerText = "목표가 " + stock.upside;
 
-    renderTradingViewChart(stock);
+    document.getElementById("inspectorPricePrimary").innerText = pricePair.primary;
+    document.getElementById("inspectorPriceSecondary").innerText = pricePair.secondary;
+    var chgEl = document.getElementById("inspectorChg");
+    chgEl.innerText = (stock.chg >= 0 ? "+" : "") + stock.chg.toFixed(2) + "%";
+    chgEl.className = stock.chg >= 0 ? "text-emerald-400" : "text-rose-400";
+
+    document.getElementById("inspectorBizDesc").innerText = stock.biz;
+    document.getElementById("inspectorMomentumDesc").innerText = stock.momentum;
+    document.getElementById("inspectorPeersDesc").innerText = stock.peers;
+    document.getElementById("inspectorRivalsDesc").innerText = stock.rivals;
+}
+
+// 5. 종목 선택 시 상세 브리핑 + 연관 실시간 뉴스 즉시 전환
+function selectStock(ticker, alsoFilterNews) {
+    selectedTicker = ticker;
+    var stock = STOCKS.find(function(s) { return s.ticker === ticker; }) || STOCKS[4];
+
+    updateInspectorDisplay();
     renderValueChainGrid();
 
     if (alsoFilterNews) {
-        var queryTerm = stock.ticker.indexOf(".") !== -1 ? stock.name : (stock.ticker + " " + stock.name);
-        fetchRealtimeNews(queryTerm + " semiconductor", stock.name + " (" + stock.ticker + ") 실시간 속보");
+        var cleanTicker = stock.ticker.split(".")[0];
+        var queryTerm = stock.ticker.indexOf(".") !== -1 ? (stock.name + " 반도체") : (stock.name + " " + cleanTicker + " semiconductor");
+        fetchRealtimeNews(queryTerm, stock.name + " (" + stock.ticker + ") 연관 실시간 속보");
     }
 }
 
-// 4. 11대 밸류체인 상단 필터 탭 렌더링
+// 6. 11대 밸류체인 상단 필터 탭 렌더링
 function renderSectorTabs() {
     var box = document.getElementById("sectorTabContainer");
     box.innerHTML = "";
@@ -497,15 +879,18 @@ function renderSectorTabs() {
             renderSectorTabs();
             renderValueChainGrid();
             if (sec.id !== "all") {
-                var secStocks = STOCKS.filter(function(s) { return s.sector === sec.id; }).map(function(s) { return s.ticker.split(".")[0]; }).join(" OR ");
-                fetchRealtimeNews("(" + secStocks + ") semiconductor", sec.code + ". " + sec.name + " 섹터 속보");
+                var secNames = STOCKS.filter(function(s) {
+                    return s.sector === sec.id || (Array.isArray(s.multiSectors) && s.multiSectors.indexOf(sec.id) !== -1);
+                }).map(function(s) { return s.name; }).join(" OR ");
+                fetchRealtimeNews("(" + secNames + ") 반도체", sec.code + ". " + sec.name + " 섹터 속보");
+            } else {
+                fetchRealtimeNews("AI semiconductor HBM NVIDIA", "전체 11대 밸류체인 최신 속보");
             }
         };
         box.appendChild(btn);
     });
 }
 
-// 5. 히트맵 컬러 & 어닝 뱃지 헬퍼
 function getHeatClass(chg) {
     if (chg >= 3.0) return "heat-strong-up";
     if (chg > 0.3) return "heat-up";
@@ -514,50 +899,9 @@ function getHeatClass(chg) {
     return "heat-flat";
 }
 
-function getEarnBadgeInfo(status, surprise) {
-    if (status === "beat") {
-        return { text: "🟢 Beat " + surprise, cls: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40" };
-    }
-    if (status === "miss") {
-        return { text: "🔴 Miss " + surprise, cls: "bg-rose-500/20 text-rose-300 border-rose-500/40" };
-    }
-    return { text: "🟡 부합 " + surprise, cls: "bg-amber-500/20 text-amber-300 border-amber-500/40" };
-}
-
-// 달러/엔화/대만달러 -> 원화(₩) 실시간 환산 포맷 헬퍼
-function formatPriceDual(st) {
-    var usdRate = Number(document.getElementById("usdKrwInput").value) || 1395;
-    if (st.currency === "KRW") {
-        return {
-            primary: "₩" + Number(st.price).toLocaleString(),
-            secondary: "$" + (st.price / usdRate).toFixed(2)
-        };
-    }
-    if (st.currency === "JPY") {
-        var krwFromJpy = Math.round(st.price * (usdRate / 154));
-        return {
-            primary: "₩" + krwFromJpy.toLocaleString(),
-            secondary: "¥" + Number(st.price).toLocaleString()
-        };
-    }
-    if (st.currency === "TWD") {
-        var krwFromTwd = Math.round(st.price * (usdRate / 32.5));
-        return {
-            primary: "₩" + krwFromTwd.toLocaleString(),
-            secondary: "NT$" + Number(st.price).toLocaleString()
-        };
-    }
-    var krwVal = Math.round(st.price * usdRate);
-    return {
-        primary: "₩" + krwVal.toLocaleString(),
-        secondary: "$" + Number(st.price).toFixed(2)
-    };
-}
-
-// 6. 11대 초세분화 밸류체인 히트맵 렌더링
+// 7. 11대 초세분화 밸류체인 히트맵 렌더링
 function renderValueChainGrid() {
     var grid = document.getElementById("valueChainGrid");
-    var searchVal = document.getElementById("tickerSearchInput").value.trim().toLowerCase();
     grid.innerHTML = "";
 
     var visibleSectors = SECTORS.filter(function(s) {
@@ -566,16 +910,10 @@ function renderValueChainGrid() {
 
     visibleSectors.forEach(function(sec) {
         var secStocks = STOCKS.filter(function(st) {
-            if (st.sector !== sec.id) return false;
-            if (!searchVal) return true;
-            return st.ticker.toLowerCase().indexOf(searchVal) !== -1 ||
-                   st.name.toLowerCase().indexOf(searchVal) !== -1 ||
-                   st.role.toLowerCase().indexOf(searchVal) !== -1;
+            return st.sector === sec.id || (Array.isArray(st.multiSectors) && st.multiSectors.indexOf(sec.id) !== -1);
         });
-
         if (secStocks.length === 0) return;
 
-        // 섹터 평균 등락률 계산
         var avgChg = secStocks.reduce(function(acc, cur) { return acc + cur.chg; }, 0) / secStocks.length;
         var avgStr = (avgChg >= 0 ? "+" : "") + avgChg.toFixed(2) + "%";
         var avgColor = avgChg > 0 ? "text-emerald-400" : (avgChg < 0 ? "text-rose-400" : "text-slate-400");
@@ -583,7 +921,6 @@ function renderValueChainGrid() {
         var panel = document.createElement("div");
         panel.className = "pcb-panel p-3.5 flex flex-col justify-between";
 
-        // 섹터 헤더
         var header = document.createElement("div");
         header.className = "flex justify-between items-center mb-2.5 pb-2 border-b border-slate-800/80";
         header.innerHTML = '<div class="flex items-center gap-1.5">'
@@ -593,7 +930,6 @@ function renderValueChainGrid() {
             + '<span class="text-xs font-black ' + avgColor + '">섹터 ' + avgStr + '</span>';
         panel.appendChild(header);
 
-        // 종목 히트맵 타일 그리드
         var tilesWrap = document.createElement("div");
         tilesWrap.className = "grid grid-cols-2 gap-2";
 
@@ -606,13 +942,18 @@ function renderValueChainGrid() {
             var earnStatus = sharedState.earnOverrides[st.ticker] || st.defaultEarn;
             var earnInfo = getEarnBadgeInfo(earnStatus, st.earnSurprise);
             var pricePair = formatPriceDual(st);
+            var isCrossListed = st.sector !== sec.id;
 
             var tile = document.createElement("div");
             tile.className = "pcb-tile rounded-xl p-2.5 border cursor-pointer flex flex-col justify-between gap-1.5 " + heatCls + (isSelected ? " ring-2 ring-cyan-400" : "");
 
+            var crossTagHtml = isCrossListed
+                ? '<span class="ml-1 text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-200 border border-cyan-400/30">겸업</span>'
+                : '';
+
             tile.innerHTML = '<div class="flex justify-between items-start gap-1">'
                 + '<div>'
-                + '<div class="text-xs font-black text-white tracking-tight leading-none">' + st.ticker + '</div>'
+                + '<div class="flex items-center"><span class="text-xs font-black text-white tracking-tight leading-none">' + st.ticker + '</span>' + crossTagHtml + '</div>'
                 + '<div class="text-[11px] font-bold text-slate-300 mt-1 line-clamp-1">' + st.name + '</div>'
                 + '</div>'
                 + '<div class="text-right">'
@@ -622,23 +963,22 @@ function renderValueChainGrid() {
                 + '</div>'
                 + '</div>'
                 + '<p class="text-[10px] text-slate-300/85 line-clamp-1">' + st.role + '</p>'
-                + '<div class="flex justify-between items-center pt-1 border-t border-white/10">'
-                + '<span class="text-[9px] font-extrabold text-slate-300 bg-slate-950/50 px-1.5 py-0.5 rounded">실적 ' + st.earningDate + '</span>'
-                + '<button type="button" class="earn-toggle-btn text-[9px] font-extrabold px-1.5 py-0.5 rounded border cursor-pointer ' + earnInfo.cls + '" title="클릭하여 어닝 Beat/Inline/Miss 상태 전환 (친구들과 실시간 동기화)">' + earnInfo.text + '</button>'
+                + '<div class="flex justify-between items-center gap-1 pt-1 border-t border-white/10">'
+                + '<span class="text-[9px] font-extrabold text-rose-200/90 bg-rose-950/50 border border-rose-500/20 px-1.5 py-0.5 rounded line-clamp-1">⚔️ ' + st.rivalsShort + '</span>'
+                + '<button type="button" class="earn-toggle-btn shrink-0 text-[9px] font-extrabold px-1.5 py-0.5 rounded border cursor-pointer ' + earnInfo.cls + '" title="클릭하여 어닝 Beat/Inline/Miss 상태 전환">' + earnInfo.text + '</button>'
                 + '</div>';
 
-            // 카드 클릭 시 상단 실시간 차트 + 우측 속보 동시 전환
             tile.onclick = function() {
                 selectStock(st.ticker, true);
             };
 
-            // 어닝 서프라이즈/쇼크 뱃지 클릭 시 실시간 상태 순환 전환
             var earnBtn = tile.querySelector(".earn-toggle-btn");
             earnBtn.onclick = function(e) {
                 e.stopPropagation();
                 var order = ["beat", "inline", "miss"];
                 var next = order[(order.indexOf(earnStatus) + 1) % order.length];
                 sharedState.earnOverrides[st.ticker] = next;
+                updateInspectorDisplay();
                 renderValueChainGrid();
                 pushSharedState();
             };
@@ -651,12 +991,11 @@ function renderValueChainGrid() {
     });
 }
 
-// 7. 실시간 반도체 뉴스 RSS 피드 수집
+// 8. 실시간 반도체 뉴스 피드 수집 (클릭 시 원문 기사 즉시 이동)
 function fetchRealtimeNews(query, labelText) {
     currentNewsQuery = query || currentNewsQuery;
     if (labelText) {
         document.getElementById("newsFilterLabel").innerText = labelText;
-        document.getElementById("resetNewsFilterBtn").classList.remove("hidden");
     }
 
     var listEl = document.getElementById("newsFeedList");
@@ -675,27 +1014,19 @@ function fetchRealtimeNews(query, labelText) {
                 var pubDate = new Date(item.pubDate);
                 var timeStr = isNaN(pubDate.getTime()) ? "실시간" : (String(pubDate.getHours()).padStart(2, "0") + ":" + String(pubDate.getMinutes()).padStart(2, "0"));
 
-                var card = document.createElement("div");
-                card.className = "p-3 rounded-xl bg-slate-900/75 hover:bg-slate-800/90 border border-slate-800 hover:border-cyan-500/40 transition group";
-                card.innerHTML = '<div class="flex justify-between items-center gap-2 mb-1">'
+                var card = document.createElement("a");
+                card.href = item.link;
+                card.target = "_blank";
+                card.rel = "noopener noreferrer";
+                card.className = "block p-3 rounded-xl bg-slate-900/75 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 transition group cursor-pointer";
+                card.innerHTML = '<div class="flex justify-between items-center gap-2 mb-1.5">'
                     + '<span class="text-[10px] font-extrabold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">' + (item.author || "글로벌 속보") + '</span>'
                     + '<div class="flex items-center gap-1.5">'
                     + '<span class="text-[10px] font-bold text-slate-400">' + timeStr + '</span>'
-                    + '<button type="button" class="pin-news-btn text-[10px] text-slate-400 hover:text-amber-300 cursor-pointer" title="팀 브리핑 보드에 고정">📌</button>'
+                    + '<span class="text-[10px] text-cyan-400 opacity-70 group-hover:opacity-100">원문 ↗</span>'
                     + '</div>'
                     + '</div>'
-                    + '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" class="block text-xs font-bold text-slate-100 group-hover:text-cyan-200 leading-snug">' + item.title + '</a>';
-
-                card.querySelector(".pin-news-btn").onclick = function() {
-                    sharedState.briefings.unshift({
-                        id: Date.now(),
-                        author: myNickname,
-                        text: "📰 [속보공유] " + item.title,
-                        time: timeStr
-                    });
-                    renderBriefings();
-                    pushSharedState();
-                };
+                    + '<div class="text-xs font-bold text-slate-100 group-hover:text-cyan-200 leading-snug">' + item.title + '</div>';
 
                 listEl.appendChild(card);
             });
@@ -708,68 +1039,45 @@ function fetchRealtimeNews(query, labelText) {
 function renderFallbackNews() {
     var listEl = document.getElementById("newsFeedList");
     var samples = [
-        { src: "Reuters · 반도체", time: "실시간", title: "엔비디아 차세대 블랙웰·루빈 랙 수요 급증으로 HBM3E 및 AI 네트워킹 리타이머 공급망 풀가동" },
-        { src: "Bloomberg · 파운드리", time: "12분 전", title: "TSMC, AI 가속기 수요 대응 위해 CoWoS 첨단 패키징 생산능력 추가 증설 검토" },
-        { src: "SemiAnalysis · ASIC", time: "28분 전", title: "하이퍼스케일러 자체 커스텀 AI 칩(ASIC) 투자 확대로 브로드컴·마벨 수주 잔고 사상 최고" },
-        { src: "한경 · 메모리", time: "41분 전", title: "SK하이닉스·삼성전자, 차세대 HBM4 양산 로드맵 가속화… 전공정·계측 장비 수혜 부각" }
+        { src: "Reuters · 반도체", time: "실시간", url: "https://www.reuters.com/technology/", title: "엔비디아 차세대 AI 랙 수요 급증으로 HBM3E 및 AI 네트워킹 리타이머 공급망 풀가동" },
+        { src: "Bloomberg · 파운드리", time: "12분 전", url: "https://www.bloomberg.com/technology", title: "TSMC, AI 가속기 수요 대응 위해 CoWoS 첨단 패키징 생산능력 추가 증설 검토" },
+        { src: "SemiAnalysis · ASIC", time: "28분 전", url: "https://www.semianalysis.com/", title: "하이퍼스케일러 자체 커스텀 AI 칩(ASIC) 투자 확대로 브로드컴·마벨 수주 잔고 사상 최고" },
+        { src: "한경 · 메모리", time: "41분 전", url: "https://www.hankyung.com/it", title: "SK하이닉스·삼성전자, 차세대 HBM4 양산 로드맵 가속화… 전공정·계측 장비 수혜 부각" }
     ];
     listEl.innerHTML = "";
     samples.forEach(function(s) {
-        var div = document.createElement("div");
-        div.className = "p-3 rounded-xl bg-slate-900/75 border border-slate-800";
-        div.innerHTML = '<div class="flex justify-between text-[10px] mb-1"><span class="font-extrabold text-cyan-300">' + s.src + '</span><span class="text-slate-400">' + s.time + '</span></div>'
+        var a = document.createElement("a");
+        a.href = s.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.className = "block p-3 rounded-xl bg-slate-900/75 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 transition";
+        a.innerHTML = '<div class="flex justify-between text-[10px] mb-1"><span class="font-extrabold text-cyan-300">' + s.src + '</span><span class="text-slate-400">' + s.time + ' ↗</span></div>'
             + '<div class="text-xs font-bold text-slate-100 leading-snug">' + s.title + '</div>';
-        listEl.appendChild(div);
+        listEl.appendChild(a);
     });
 }
 
-// 8. 친구들 실시간 브리핑 보드 렌더링
+// 9. 실시간 공유 메모 렌더링
 function renderBriefings() {
     var box = document.getElementById("briefingList");
     box.innerHTML = "";
     sharedState.briefings.slice(0, 15).forEach(function(b) {
         var row = document.createElement("div");
         row.className = "p-2.5 rounded-xl bg-slate-900/90 border border-slate-800/90 text-xs flex justify-between items-start gap-2";
-        row.innerHTML = '<div class="min-w-0 flex-1">'
-            + '<div class="flex items-center gap-1.5 mb-0.5">'
-            + '<span class="text-[10px] font-black text-emerald-300">' + b.author + '</span>'
-            + '<span class="text-[9px] text-slate-500">' + (b.time || "") + '</span>'
-            + '</div>'
-            + '<p class="text-[11px] font-semibold text-slate-200 break-words leading-snug">' + b.text + '</p>'
-            + '</div>';
+        row.innerHTML = '<p class="text-[11px] font-semibold text-slate-200 break-words leading-snug flex-1">' + b.text + '</p>'
+            + '<span class="text-[9px] text-slate-500 shrink-0">' + (b.time || "") + '</span>';
         box.appendChild(row);
     });
 }
 
 function renderAll() {
-    document.getElementById("myNicknameDisplay").innerText = myNickname;
+    updateInspectorDisplay();
     renderSectorTabs();
     renderValueChainGrid();
     renderBriefings();
-
-    var v = sharedState.votes[selectedTicker] || { bull: 0, bear: 0 };
-    document.getElementById("bullCount").innerText = v.bull || 0;
-    document.getElementById("bearCount").innerText = v.bear || 0;
 }
 
 // 이벤트 바인딩
-document.getElementById("tickerSearchInput").oninput = renderValueChainGrid;
-document.getElementById("usdKrwInput").oninput = renderValueChainGrid;
-
-document.getElementById("voteBullBtn").onclick = function() {
-    if (!sharedState.votes[selectedTicker]) sharedState.votes[selectedTicker] = { bull: 0, bear: 0 };
-    sharedState.votes[selectedTicker].bull += 1;
-    renderAll();
-    pushSharedState();
-};
-
-document.getElementById("voteBearBtn").onclick = function() {
-    if (!sharedState.votes[selectedTicker]) sharedState.votes[selectedTicker] = { bull: 0, bear: 0 };
-    sharedState.votes[selectedTicker].bear += 1;
-    renderAll();
-    pushSharedState();
-};
-
 document.getElementById("briefingForm").onsubmit = function(e) {
     e.preventDefault();
     var input = document.getElementById("briefingInput");
@@ -779,7 +1087,6 @@ document.getElementById("briefingForm").onsubmit = function(e) {
     var timeStr = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
     sharedState.briefings.unshift({
         id: Date.now(),
-        author: myNickname,
         text: txt,
         time: timeStr
     });
@@ -796,39 +1103,23 @@ document.querySelectorAll(".news-preset-chip").forEach(function(chip) {
 });
 
 document.getElementById("resetNewsFilterBtn").onclick = function() {
-    document.getElementById("resetNewsFilterBtn").classList.add("hidden");
-    fetchRealtimeNews("AI semiconductor HBM NVIDIA", "전체 11대 밸류체인 최신 헤드라인 (30초 자동 갱신)");
+    fetchRealtimeNews("AI semiconductor HBM NVIDIA", "전체 11대 밸류체인 최신 속보");
 };
 
 document.getElementById("refreshNewsBtn").onclick = function() {
     fetchRealtimeNews(currentNewsQuery);
+    fetchLiveExchangeRate();
     pullSharedState();
-};
-
-document.getElementById("nicknameBtn").onclick = function() {
-    document.getElementById("nicknameInput").value = myNickname;
-    document.getElementById("nicknameModal").classList.remove("hidden");
-};
-document.getElementById("closeNicknameBtn").onclick = function() {
-    document.getElementById("nicknameModal").classList.add("hidden");
-};
-document.getElementById("saveNicknameBtn").onclick = function() {
-    var val = document.getElementById("nicknameInput").value.trim();
-    if (val) {
-        myNickname = val;
-        localStorage.setItem("semi_nick_v1", myNickname);
-        renderAll();
-    }
-    document.getElementById("nicknameModal").classList.add("hidden");
 };
 
 // 초기 구동
 renderAll();
-selectStock("ALAB", false);
-fetchRealtimeNews("AI semiconductor HBM NVIDIA");
+selectStock("NVDA", true);
+fetchLiveExchangeRate();
 pullSharedState();
 setInterval(pullSharedState, 4000);
 setInterval(function() { fetchRealtimeNews(currentNewsQuery); }, 30000);
+setInterval(fetchLiveExchangeRate, 60000);
 </script>
 </body>
 </html>
