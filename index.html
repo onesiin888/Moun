@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>강희창과 함께하는 반도체 로드</title>
+<meta name="application-name" content="강희창과 함께하는 반도체 로드">
+<meta name="apple-mobile-web-app-title" content="강희창과 함께하는 반도체 로드">
 <meta name="description" content="글로벌 AI 반도체 핵심 종목 분석 · 11대 초세분화 밸류체인 히트맵 · 실시간 뉴스 연동">
+<meta property="og:locale" content="ko_KR">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="강희창과 함께하는 반도체 로드">
 <meta property="og:title" content="강희창과 함께하는 반도체 로드">
@@ -99,6 +102,9 @@ html, body { overflow-x: hidden; max-width: 100vw; scroll-behavior: smooth; }
                 <span class="text-[11px] font-bold text-slate-400">💱 현재 환율</span>
                 <span id="liveExchangeRateText" class="text-cyan-300 font-black">1,395.00원</span>
             </div>
+            <button type="button" id="copyShareLinkBtn" class="text-xs bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-cyan-500/30 px-3 py-2 rounded-xl font-black transition cursor-pointer shrink-0">
+                🔗 공유 링크 복사
+            </button>
             <button type="button" id="refreshNewsBtn" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-3.5 py-2 rounded-xl font-black transition shadow-lg shadow-cyan-500/20 cursor-pointer shrink-0">
                 ⚡ 속보 새로고침
             </button>
@@ -1308,6 +1314,25 @@ document.getElementById("refreshNewsBtn").onclick = function() {
     fetchRealtimeNews(currentNewsQuery);
     fetchLiveExchangeRate();
     pullSharedState();
+};
+
+document.getElementById("copyShareLinkBtn").onclick = function() {
+    var baseUrl = window.location.href.split("?")[0].split("#")[0];
+    if (baseUrl.indexOf("about:") === 0 || baseUrl.indexOf("blob:") === 0) {
+        baseUrl = "https://onesiin888.github.io/";
+    }
+    var freshShareUrl = baseUrl + "?road=" + Math.floor(Date.now() / 1000);
+    var tempInput = document.createElement("textarea");
+    tempInput.value = freshShareUrl;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    try {
+        document.execCommand("copy");
+        showSelectionToast("✅ 카톡·텔레그램 최신 제목 공유 링크가 복사되었습니다! (" + freshShareUrl + ")");
+    } catch (err) {
+        showSelectionToast("링크: " + freshShareUrl);
+    }
+    document.body.removeChild(tempInput);
 };
 
 // 초기 구동
