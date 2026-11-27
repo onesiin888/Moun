@@ -530,60 +530,14 @@
         </p>
       </div>
 
-      <!-- Original Phone Consultation Guide Image Slot -->
-      <div class="bg-white rounded-2xl border border-fintech-border shadow-card overflow-hidden mb-4">
-        <!-- 실제 배포 시 같은 폴더에 20261127_102220.png 파일을 두거나, 모운 서버 이미지 URL로 src를 교체하세요 -->
+      <!-- Official Phone Consultation Guide Image -->
+      <div class="bg-white rounded-2xl border border-fintech-border shadow-card overflow-hidden mb-3">
         <img
-          id="phoneGuideImg"
-          src="20261127_102220.png"
+          src="https://cdn.moun.co.kr/data/service/img_data/1756874632_768ac9a9f7e589fdc121.jpg"
           alt="모운 전화 상담 이용방법 가이드 (1~4단계)"
           class="w-full h-auto block"
-          onerror="handleGuideImgError()"
+          loading="lazy"
         />
-
-        <!-- Preview Fallback: 미리보기 환경에서 로컬 이미지가 없을 때 즉시 선택해서 확인 가능 -->
-        <div id="guideImgFallback" class="hidden p-5 text-center bg-white">
-          <div class="rounded-xl border-2 border-dashed border-fintech-border bg-fintech-bg/70 px-4 py-6">
-            <div class="w-11 h-11 rounded-2xl bg-crimson-50 text-crimson-600 flex items-center justify-center mx-auto mb-3 text-[20px]">
-              🖼️
-            </div>
-            <p class="text-[13.5px] font-extrabold text-ink-900 mb-1">
-              전화 상담 이용방법 가이드 이미지 영역
-            </p>
-            <p class="text-[12px] leading-[1.55] text-ink-500 mb-4">
-              실제 배포 시 <code class="px-1.5 py-0.5 rounded bg-white border border-fintech-border text-ink-700 font-mono text-[11px]">20261127_102220.png</code> 파일이<br />
-              이 자리에 자동으로 표시됩니다.
-            </p>
-            <label class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-burgundy-900 hover:bg-burgundy-800 active:scale-95 transition text-champagne-200 text-[12.5px] font-bold cursor-pointer shadow-sm whitespace-nowrap">
-              <span>📷 방금 올린 이미지 불러와서 미리보기</span>
-              <input
-                type="file"
-                accept="image/*"
-                class="hidden"
-                onchange="previewLocalGuideImage(event)"
-              />
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <!-- Highlight Reassurance Callout Box (추가 요금 걱정 ZERO!) -->
-      <div class="rounded-2xl bg-gradient-to-br from-champagne-50 via-champagne-100/90 to-champagne-200/50 border border-champagne-300/80 p-4 shadow-card mb-3">
-        <div class="flex items-start gap-3">
-          <div class="w-9 h-9 rounded-xl bg-burgundy-900 text-champagne-200 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          </div>
-          <div class="min-w-0">
-            <h3 class="text-[14.5px] font-extrabold text-burgundy-950 whitespace-nowrap mb-1">
-              추가 요금 걱정 ZERO!
-            </h3>
-            <p class="text-[12.5px] leading-[1.58] text-ink-700 font-medium">
-              모운 상담은 <strong class="text-burgundy-900 font-bold">보유하신 코인 안에서만 진행</strong>되며, 코인이 다 떨어지면 통화는 자동 종료됩니다. 원활한 상담을 원하신다면 코인을 미리 충전해 두세요!
-            </p>
-          </div>
-        </div>
       </div>
 
       <!-- Fee Info Bar -->
@@ -857,35 +811,6 @@
         }
       } catch (err) {
         console.error('Worry selection error:', err);
-      }
-    }
-
-    /**
-     * 3. Guide Image Fallback & Local Preview Loader
-     */
-    function handleGuideImgError() {
-      const imgEl = document.getElementById('phoneGuideImg');
-      const fallbackEl = document.getElementById('guideImgFallback');
-      if (imgEl) imgEl.classList.add('hidden');
-      if (fallbackEl) fallbackEl.classList.remove('hidden');
-    }
-
-    function previewLocalGuideImage(event) {
-      try {
-        const file = event.target.files && event.target.files[0];
-        if (!file) return;
-
-        const imgEl = document.getElementById('phoneGuideImg');
-        const fallbackEl = document.getElementById('guideImgFallback');
-        if (!imgEl) return;
-
-        const objectUrl = URL.createObjectURL(file);
-        imgEl.onerror = null;
-        imgEl.src = objectUrl;
-        imgEl.classList.remove('hidden');
-        if (fallbackEl) fallbackEl.classList.add('hidden');
-      } catch (err) {
-        console.error('Guide image preview error:', err);
       }
     }
   </script>
