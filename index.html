@@ -16,9 +16,9 @@
         extend: {
           colors: {
             burgundy: {
-              950: '#22050D',
-              900: '#3B0C18',
-              800: '#511222',
+              950: '#2D0810',
+              900: '#3D0C17',
+              800: '#4D111E',
               700: '#6B1A2F',
             },
             crimson: {
@@ -37,10 +37,10 @@
               500: '#CC9F2E',
               600: '#9E7618',
             },
-            ivory: {
-              50: '#F8F6F2',
-              100: '#F1EDE6',
-              200: '#E5DFD5',
+            fintech: {
+              bg: '#F5F6F8',
+              border: '#E5E8EB',
+              subtle: '#F2F4F6',
             },
             ink: {
               900: '#191F28',
@@ -55,9 +55,8 @@
           },
           boxShadow: {
             'card': '0 2px 10px rgba(25, 31, 40, 0.04)',
-            'vip': '0 16px 34px -10px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(227, 188, 84, 0.5)',
+            'vip': '0 16px 34px -10px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(227, 188, 84, 0.55)',
             'cta-gold': '0 10px 24px -6px rgba(227, 188, 84, 0.45)',
-            'cta-crimson': '0 8px 20px -6px rgba(214, 40, 72, 0.45)',
           }
         }
       }
@@ -73,16 +72,16 @@
 
     body {
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      background-color: #E7E2DA;
+      background-color: #E5E7EB;
       color: #191F28;
       word-break: keep-all;
       overflow-wrap: break-word;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Deep Burgundy Luxury Hero Gradient (#3B0C18 to #22050D) */
+    /* Deep Burgundy Luxury Hero Gradient (#2D0810 to #4D111E) */
     .hero-burgundy {
-      background: linear-gradient(180deg, #3B0C18 0%, #2D0812 58%, #22050D 100%);
+      background: linear-gradient(180deg, #2D0810 0%, #3F0D18 55%, #4D111E 100%);
       position: relative;
     }
     .hero-burgundy::before {
@@ -91,14 +90,14 @@
       inset: 0;
       background-image:
         radial-gradient(circle at 82% 16%, rgba(239, 211, 131, 0.16) 0%, transparent 42%),
-        radial-gradient(circle at 16% 34%, rgba(214, 40, 72, 0.22) 0%, transparent 48%),
-        radial-gradient(circle at 50% 90%, rgba(227, 188, 84, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 16% 36%, rgba(214, 40, 72, 0.22) 0%, transparent 48%),
+        linear-gradient(90deg, transparent 49.8%, rgba(239, 211, 131, 0.06) 50%, transparent 50.2%);
       pointer-events: none;
     }
 
-    /* Closing Burgundy Banner Gradient */
+    /* Closing Burgundy Gradient matching Hero */
     .closing-burgundy {
-      background: linear-gradient(145deg, #3B0C18 0%, #22050D 100%);
+      background: linear-gradient(155deg, #2D0810 0%, #4D111E 100%);
     }
 
     /* Champagne Gold Metallic VIP Coupon Card */
@@ -116,7 +115,7 @@
       position: absolute;
       inset: 0;
       width: 38%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
       animation: metallicShimmer 4.2s infinite ease-in-out;
       pointer-events: none;
     }
@@ -129,7 +128,7 @@
       width: 18px;
       height: 18px;
       border-radius: 9999px;
-      background-color: #26060F;
+      background-color: #460F1B;
       transform: translateY(-50%);
       z-index: 10;
     }
@@ -164,7 +163,7 @@
     .worry-card-active {
       border-color: #6B1A2F !important;
       background-color: #FFF9FA !important;
-      box-shadow: 0 0 0 1px #6B1A2F, 0 8px 18px -6px rgba(107, 26, 47, 0.2) !important;
+      box-shadow: 0 0 0 1px #6B1A2F, 0 8px 18px -6px rgba(107, 26, 47, 0.18) !important;
     }
 
     /* Tabular numbers for steady countdown width */
@@ -175,16 +174,16 @@
 </head>
 <body class="selection:bg-crimson-100 selection:text-crimson-700">
 
-  <!-- Mobile-First Centered Frame (max-w-440px) -->
-  <div class="w-full max-w-[440px] mx-auto min-h-screen bg-ivory-50 shadow-2xl relative overflow-x-hidden">
+  <!-- Mobile-First Centered Frame (max-w-430px centered on desktop) -->
+  <div class="w-full max-w-[430px] mx-auto min-h-screen bg-fintech-bg shadow-2xl relative overflow-x-hidden">
 
     <!-- ==================== 1. TOP HERO SECTION ==================== -->
-    <section class="hero-burgundy px-5 pt-4 pb-7 text-center">
+    <section class="hero-burgundy px-5 pt-4 pb-7 text-center border-b border-champagne-400/30">
       <div class="relative z-10">
 
         <!-- Top Bar: Crisp '모운' Logo + Single-line Pill Badge -->
-        <header class="flex items-center justify-between pb-6">
-          <a href="#" class="flex items-center gap-2 focus:outline-none shrink-0">
+        <header class="flex items-center justify-between pb-5 border-b border-champagne-300/15 mb-5">
+          <a href="https://moun.co.kr/s/Buzzvill" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 focus:outline-none shrink-0">
             <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-crimson-500 to-burgundy-700 border border-champagne-300/50 flex items-center justify-center shadow-sm">
               <svg class="w-4 h-4 text-champagne-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -193,9 +192,9 @@
             <span class="text-[18px] font-extrabold tracking-tight text-white whitespace-nowrap">모운</span>
           </a>
 
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-champagne-400/15 border border-champagne-300/40 text-[11.5px] font-bold text-champagne-200 tracking-tight whitespace-nowrap shrink-0">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-champagne-400/15 border border-champagne-300/40 text-[11px] font-bold text-champagne-200 tracking-tight whitespace-nowrap shrink-0">
             <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 shrink-0"></span>
-            2027 붉은 양의 해
+            2027 정미년 · 미리 보는 신년운세
           </span>
         </header>
 
@@ -204,7 +203,7 @@
           복잡한 절차 없이 바로 끝나는 첫 상담 혜택
         </p>
 
-        <!-- Main Headline (Exact 2 Balanced Lines, 26px Bold) -->
+        <!-- Main Headline (Exact 2 Balanced Lines) -->
         <h1 class="text-[26px] font-extrabold text-white leading-[1.32] tracking-[-0.025em] mb-4">
           30초 간편 가입하고<br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-champagne-100 via-champagne-300 to-champagne-400">
@@ -214,7 +213,7 @@
 
         <!-- Cute Red Sheep SVG Peeking Cleanly Over VIP Coupon Card -->
         <div class="relative mt-1 mb-5">
-          <!-- Cute Red Sheep Character (Warm Cream Wool + Rosy Cheeks + Red-Gold Auspicious Details) -->
+          <!-- Cute Red Sheep Character -->
           <div class="relative z-20 flex justify-center -mb-6 pointer-events-none">
             <svg class="w-[144px] h-auto animate-mascot drop-shadow-xl" viewBox="0 0 180 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="2027 정미년 붉은 양 캐릭터">
               <!-- Soft Golden Halo -->
@@ -246,13 +245,12 @@
               <!-- Cute Face -->
               <ellipse cx="90" cy="61" rx="29" ry="25" fill="#FFFDF8" stroke="#8C152B" stroke-width="1.7"/>
 
-              <!-- Warm Cream Forehead Wool + Subtle Red Crown Ribbon Accent -->
+              <!-- Warm Cream Forehead Wool + Subtle Red Crown Accent -->
               <g fill="#FFF5E6">
                 <circle cx="76" cy="40" r="9.5"/>
                 <circle cx="90" cy="36" r="11"/>
                 <circle cx="104" cy="40" r="9.5"/>
               </g>
-              <!-- Little Red-Gold Lucky Medallion on Wool -->
               <circle cx="90" cy="36" r="5" fill="#D62848" stroke="#EFD383" stroke-width="1.3"/>
               <circle cx="90" cy="36" r="1.5" fill="#EFD383"/>
 
@@ -268,7 +266,7 @@
               <path d="M87.5 65.5C87.5 64.4 92.5 64.4 92.5 65.5C92.5 67 90 68.5 90 68.5C90 68.5 87.5 67 87.5 65.5Z" fill="#D62848"/>
               <path d="M85.8 71C87.5 72.8 90 72.4 90 70.7C90 72.4 92.5 72.8 94.2 71" stroke="#4E5968" stroke-width="1.6" stroke-linecap="round"/>
 
-              <!-- Red-Gold Festive Collar / Scarf -->
+              <!-- Red-Gold Festive Scarf -->
               <path d="M68 82C77 88 103 88 112 82C114 86 110 91 103 92C95 94 85 94 77 92C70 91 66 86 68 82Z" fill="#D62848" stroke="#EFD383" stroke-width="1.4"/>
 
               <!-- Left Paw with Mini Red Lucky Pouch -->
@@ -291,7 +289,7 @@
               <defs>
                 <radialGradient id="sheepGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(90 60) rotate(90) scale(46)">
                   <stop stop-color="#EFD383" stop-opacity="0.34"/>
-                  <stop offset="1" stop-color="#3B0C18" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#3F0D18" stop-opacity="0"/>
                 </radialGradient>
                 <linearGradient id="goldCoin" x1="2" y1="2" x2="28" y2="28" gradientUnits="userSpaceOnUse">
                   <stop stop-color="#FFF5CF"/>
@@ -307,7 +305,7 @@
             <div class="coupon-notch-l" aria-hidden="true"></div>
             <div class="coupon-notch-r" aria-hidden="true"></div>
 
-            <div class="rounded-xl border border-dashed border-champagne-600/45 bg-white/70 px-4 py-4 flex flex-col items-center">
+            <div class="rounded-xl border border-dashed border-champagne-600/45 bg-white/75 px-4 py-4 flex flex-col items-center">
               <!-- Top Label (1 Line) -->
               <p class="text-[13px] font-bold text-burgundy-800 tracking-tight whitespace-nowrap mb-1.5">
                 타로·사주·신점 무료상담 쿠폰
@@ -315,7 +313,7 @@
 
               <!-- Center Big Display (1 Line, whitespace-nowrap) -->
               <div class="text-[36px] font-black tracking-[-0.03em] text-burgundy-950 leading-none whitespace-nowrap my-1">
-                10,000 코인
+                10,000코인
               </div>
 
               <!-- Bottom Pill Badge (1 Line, whitespace-nowrap) -->
@@ -326,226 +324,219 @@
           </div>
         </div>
 
-        <!-- Primary CTA Button (Height 54px, Crisp 1 Line) -->
-        <button
-          type="button"
-          onclick="openSignupModal()"
+        <!-- Primary Hero CTA Anchor Link -->
+        <a
+          href="https://moun.co.kr/s/Buzzvill"
+          target="_blank"
+          rel="noopener noreferrer"
           class="w-full h-[54px] px-4 rounded-2xl bg-gradient-to-r from-champagne-200 via-champagne-300 to-champagne-400 text-burgundy-950 font-extrabold text-[16px] tracking-tight shadow-cta-gold hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 whitespace-nowrap"
         >
           <span>최대 7분 전화상담 무료로 받기</span>
           <svg class="w-4 h-4 text-burgundy-950 shrink-0" fill="none" stroke="currentColor" stroke-width="2.8" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
           </svg>
-        </button>
+        </a>
 
       </div>
     </section>
 
-    <!-- ==================== 2. URGENCY STATUS STRIP ==================== -->
-    <section class="px-5 pt-4 pb-2 bg-ivory-50">
-      <div class="rounded-2xl bg-white border border-ivory-200 shadow-card px-3.5 py-3 flex items-center justify-between gap-2">
-        <!-- Left: Bell Icon + Single-line Label -->
-        <div class="flex items-center gap-1.5 min-w-0">
-          <span class="text-[14px] leading-none shrink-0" aria-hidden="true">🔔</span>
-          <span class="text-[12.5px] font-bold text-ink-900 tracking-tight whitespace-nowrap">
-            오늘의 혜택 마감 임박
-          </span>
-        </div>
-
-        <!-- Right: Live Countdown + Remaining Badge -->
-        <div class="flex items-center gap-1.5 shrink-0">
-          <span class="inline-flex items-center gap-1 font-mono text-[12.5px] font-extrabold text-crimson-600 tabular-nums whitespace-nowrap">
-            <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-dot shrink-0"></span>
-            <span class="js-countdown">14:19:52</span>
-          </span>
-          <span class="px-2 py-0.5 rounded-md bg-burgundy-900 text-champagne-200 text-[11px] font-bold whitespace-nowrap">
-            잔여 9,996명
-          </span>
+    <!-- ==================== 2. URGENCY COUNTDOWN BAR ==================== -->
+    <section class="bg-[#230E13] border-b border-champagne-400/20 px-4 py-3 flex items-center justify-between gap-2.5">
+      <div class="min-w-0">
+        <p class="text-[11.5px] font-semibold text-white/90 tracking-tight whitespace-nowrap leading-snug">
+          🔔 오늘의 신규 회원 지원 혜택 마감 임박 · <span class="text-champagne-300 font-bold">잔여 9,996명</span>
+        </p>
+        <div class="flex items-center gap-1.5 mt-0.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-dot shrink-0"></span>
+          <span class="text-[11px] text-white/70 whitespace-nowrap">마감까지</span>
+          <span class="font-mono text-[12.5px] font-extrabold text-champagne-200 tabular-nums whitespace-nowrap js-countdown">14:19:52</span>
         </div>
       </div>
+
+      <a
+        href="https://moun.co.kr/s/Buzzvill"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="shrink-0 px-3 py-2 rounded-xl bg-champagne-300 hover:bg-champagne-200 active:scale-95 transition text-burgundy-950 text-[12px] font-extrabold whitespace-nowrap shadow-sm"
+      >
+        지금 가입하기 &gt;
+      </a>
     </section>
 
     <!-- ==================== 3. 2027 NEW YEAR WORRY SELECTION ==================== -->
-    <section class="py-8 px-5 bg-ivory-50">
-      <!-- Exact 2 Balanced Lines -->
+    <section class="py-8 px-5 bg-fintech-bg">
       <div class="mb-5">
         <span class="inline-block text-[12px] font-bold text-crimson-500 tracking-tight whitespace-nowrap mb-1.5">
-          2027 정미년 맞춤 운세
+          2027 정미년 미리 보는 신년운세
         </span>
-        <h2 class="text-[21px] font-extrabold text-ink-900 leading-[1.36] tracking-[-0.025em]">
-          2027년 미리 보는 신년운세,<br />
+        <h2 class="text-[20px] font-extrabold text-ink-900 leading-[1.36] tracking-[-0.025em]">
+          다가오는 2027년 붉은 양의 해,<br />
           어떤 고민이 가장 크신가요?
         </h2>
       </div>
 
-      <!-- Interactive 2x2 Grid (Strictly Equal Heights) -->
+      <!-- Interactive 2x2 Equal-Height Grid -->
       <div class="grid grid-cols-2 gap-3 mb-4" id="worryGrid">
-        <!-- Card 1: 이직운 -->
+        <!-- Card 1: 이직 -->
         <button
           type="button"
           onclick="selectWorry('career', this)"
-          class="worry-card worry-card-active h-full flex flex-col justify-between text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-card transition-all duration-200 focus:outline-none"
+          class="worry-card worry-card-active h-full flex flex-col justify-between text-left bg-white rounded-2xl p-3.5 border border-fintech-border shadow-card transition-all duration-200 focus:outline-none"
         >
-          <div class="flex items-center justify-between w-full mb-3">
+          <div class="flex items-center justify-between w-full mb-2.5">
             <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-crimson-50 text-crimson-600 text-[12px] font-bold whitespace-nowrap">
               <span>🚀</span>
-              <span>이직운</span>
+              <span>이직</span>
             </span>
             <span class="worry-check w-4 h-4 rounded-full bg-burgundy-900 text-champagne-300 flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
           </div>
-          <p class="text-[12.5px] sm:text-[13px] leading-[1.52] text-ink-700 font-semibold">
-            "지금 이직해도 될까?"<br />
-            "올해 승진운은?"
+          <p class="text-[12px] sm:text-[12.5px] leading-[1.52] text-ink-700 font-semibold">
+            "지금 발령해도 될까?<br />올해 이직해도 될까?"
           </p>
         </button>
 
-        <!-- Card 2: 재물운 -->
+        <!-- Card 2: 재물 -->
         <button
           type="button"
           onclick="selectWorry('wealth', this)"
-          class="worry-card h-full flex flex-col justify-between text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-card transition-all duration-200 focus:outline-none"
+          class="worry-card h-full flex flex-col justify-between text-left bg-white rounded-2xl p-3.5 border border-fintech-border shadow-card transition-all duration-200 focus:outline-none"
         >
-          <div class="flex items-center justify-between w-full mb-3">
+          <div class="flex items-center justify-between w-full mb-2.5">
             <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-champagne-100 text-champagne-600 text-[12px] font-bold whitespace-nowrap">
               <span>💰</span>
-              <span>재물운</span>
+              <span>재물</span>
             </span>
-            <span class="worry-check w-4 h-4 rounded-full bg-ivory-200 text-transparent flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
+            <span class="worry-check w-4 h-4 rounded-full bg-fintech-border text-transparent flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
           </div>
-          <p class="text-[12.5px] sm:text-[13px] leading-[1.52] text-ink-700 font-semibold">
-            "열심히 일하는데"<br />
-            "돈은 언제 모일까?"
+          <p class="text-[12px] sm:text-[12.5px] leading-[1.52] text-ink-700 font-semibold">
+            "열심히 일하는데,<br />재수가 왜 이렇게 없을까?"
           </p>
         </button>
 
-        <!-- Card 3: 관계운 -->
+        <!-- Card 3: 관계 -->
         <button
           type="button"
           onclick="selectWorry('relation', this)"
-          class="worry-card h-full flex flex-col justify-between text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-card transition-all duration-200 focus:outline-none"
+          class="worry-card h-full flex flex-col justify-between text-left bg-white rounded-2xl p-3.5 border border-fintech-border shadow-card transition-all duration-200 focus:outline-none"
         >
-          <div class="flex items-center justify-between w-full mb-3">
-            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-ivory-100 text-ink-700 text-[12px] font-bold whitespace-nowrap">
+          <div class="flex items-center justify-between w-full mb-2.5">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-fintech-subtle text-ink-700 text-[12px] font-bold whitespace-nowrap">
               <span>😤</span>
-              <span>관계운</span>
+              <span>관계</span>
             </span>
-            <span class="worry-check w-4 h-4 rounded-full bg-ivory-200 text-transparent flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
+            <span class="worry-check w-4 h-4 rounded-full bg-fintech-border text-transparent flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
           </div>
-          <p class="text-[12.5px] sm:text-[13px] leading-[1.52] text-ink-700 font-semibold">
-            "힘든 상사·동료"<br />
-            "현명한 해결책은?"
+          <p class="text-[12px] sm:text-[12.5px] leading-[1.52] text-ink-700 font-semibold">
+            "힘든 상사, 편한 동료...<br />인간관계 해결책은?"
           </p>
         </button>
 
-        <!-- Card 4: 연애운 -->
+        <!-- Card 4: 연애 -->
         <button
           type="button"
           onclick="selectWorry('love', this)"
-          class="worry-card h-full flex flex-col justify-between text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-card transition-all duration-200 focus:outline-none"
+          class="worry-card h-full flex flex-col justify-between text-left bg-white rounded-2xl p-3.5 border border-fintech-border shadow-card transition-all duration-200 focus:outline-none"
         >
-          <div class="flex items-center justify-between w-full mb-3">
+          <div class="flex items-center justify-between w-full mb-2.5">
             <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-crimson-50 text-crimson-500 text-[12px] font-bold whitespace-nowrap">
               <span>💌</span>
-              <span>연애운</span>
+              <span>연애</span>
             </span>
-            <span class="worry-check w-4 h-4 rounded-full bg-ivory-200 text-transparent flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
+            <span class="worry-check w-4 h-4 rounded-full bg-fintech-border text-transparent flex items-center justify-center text-[10px] font-bold shrink-0">✓</span>
           </div>
-          <p class="text-[12.5px] sm:text-[13px] leading-[1.52] text-ink-700 font-semibold">
-            "떠나간 연인..."<br />
-            "내 인연은 어디에?"
+          <p class="text-[12px] sm:text-[12.5px] leading-[1.52] text-ink-700 font-semibold">
+            "떠나간 연인...<br />내 인연은 어디에?"
           </p>
         </button>
       </div>
 
-      <!-- Clean 2-Line Dynamic Message Box -->
+      <!-- Clean Dynamic Highlight Banner -->
       <div class="rounded-2xl bg-white border border-champagne-300/80 p-4 text-center shadow-card">
         <span id="worryBadge" class="inline-block px-2.5 py-0.5 rounded-full bg-burgundy-900 text-champagne-200 text-[11px] font-bold whitespace-nowrap mb-2">
-          🚀 2027 이직·승진운 핵심 풀이
+          🚀 2027 이직운 핵심 풀이
         </span>
-        <p id="worryMessage" class="text-[14px] font-bold text-ink-900 leading-[1.55]">
+        <p class="text-[14px] font-bold text-ink-900 leading-[1.55]">
           지금 당신에게 필요한 <span class="text-crimson-600">'최적의 타이밍'</span>을<br />
           무료로 7분 만에 확인하세요.
         </p>
       </div>
     </section>
 
-    <!-- ==================== 4. MOUN INTRO & COIN USAGE ==================== -->
-    <section class="py-9 px-5 bg-white border-y border-ivory-200">
-      <!-- Intro Header -->
-      <span class="inline-block px-2.5 py-1 rounded-md bg-burgundy-900 text-champagne-200 text-[11.5px] font-bold whitespace-nowrap mb-3">
-        모운 소개
-      </span>
+    <!-- ==================== 4. 모운 소개 SECTION ==================== -->
+    <section class="py-8 px-5 bg-white border-y border-fintech-border">
+      <div class="rounded-2xl bg-fintech-bg border border-fintech-border p-5">
+        <span class="inline-block px-2.5 py-1 rounded-md bg-burgundy-900 text-champagne-200 text-[11.5px] font-bold whitespace-nowrap mb-3">
+          모운 소개
+        </span>
 
-      <h2 class="text-[20px] font-extrabold text-ink-900 leading-[1.38] tracking-[-0.025em] mb-2.5">
-        개인별 맞춤 상담을 제공하는<br />
-        운세 전화 상담 전문 플랫폼
-      </h2>
+        <h2 class="text-[18.5px] font-extrabold text-ink-900 leading-[1.42] tracking-[-0.025em] mb-3">
+          모운은 개인별 맞춤 상담을 제공하는 운세 전화 상담 전문 플랫폼입니다.
+        </h2>
 
-      <p class="text-[13.5px] leading-[1.6] text-ink-500 mb-7">
-        검증된 전문 상담사와의 1:1 전화 통화로<br />
-        쉽게 털어놓지 못한 고민을 해결해 보세요.
-      </p>
-
-      <!-- Divider -->
-      <div class="h-px bg-ivory-200 mb-7"></div>
-
-      <!-- Coin Usage Sub-section -->
-      <h3 class="text-[17px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
-        모운 코인으로 무엇을 할 수 있나요?
-      </h3>
-
-      <!-- Clean 2-Column Side-by-Side Uniform Height Cards -->
-      <div class="grid grid-cols-2 gap-3">
-        <!-- Step 01 Card -->
-        <div class="h-full rounded-2xl bg-ivory-50 border border-ivory-200 p-4 flex flex-col items-center text-center justify-between">
-          <div class="w-11 h-11 rounded-2xl bg-white border border-ivory-200 shadow-sm flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-burgundy-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-          </div>
-          <span class="inline-block px-2 py-0.5 rounded-full bg-champagne-100 text-champagne-600 text-[10.5px] font-extrabold tracking-wide whitespace-nowrap mb-1.5">
-            STEP 01
-          </span>
-          <p class="text-[13.5px] font-bold text-ink-900 tracking-tight whitespace-nowrap">
-            원하는 상담사 선택
-          </p>
+        <div class="space-y-2 text-[13.5px] leading-[1.62] text-ink-600">
+          <p>전문 상담사들과의 1:1 대화를 통해 고민과 문제를 해결할 수 있습니다.</p>
+          <p>전화 한 통으로 쉽게 털어놓기 힘든 고민들을 모운과 함께 해결해보세요!</p>
         </div>
+      </div>
 
-        <!-- Step 02 Card -->
-        <div class="h-full rounded-2xl bg-ivory-50 border border-ivory-200 p-4 flex flex-col items-center text-center justify-between">
-          <div class="w-11 h-11 rounded-2xl bg-white border border-ivory-200 shadow-sm flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-crimson-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
+      <!-- ==================== 5. 모운 코인으로 무엇을 할 수 있나요? ==================== -->
+      <div class="mt-8">
+        <h3 class="text-[18px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
+          모운 코인으로 무엇을 할 수 있나요?
+        </h3>
+
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Step ① Card -->
+          <div class="h-full rounded-2xl bg-fintech-bg border border-fintech-border p-4 flex flex-col items-center text-center justify-between">
+            <div class="w-11 h-11 rounded-2xl bg-white border border-fintech-border shadow-sm flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-burgundy-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <span class="inline-block px-2 py-0.5 rounded-full bg-champagne-100 text-champagne-600 text-[10.5px] font-extrabold tracking-wide whitespace-nowrap mb-1.5">
+              STEP 01
+            </span>
+            <p class="text-[13px] font-bold text-ink-900 leading-[1.42]">
+              ① 원하는 상담사를<br />선택한다
+            </p>
           </div>
-          <span class="inline-block px-2 py-0.5 rounded-full bg-crimson-50 text-crimson-600 text-[10.5px] font-extrabold tracking-wide whitespace-nowrap mb-1.5">
-            STEP 02
-          </span>
-          <p class="text-[13.5px] font-bold text-ink-900 tracking-tight whitespace-nowrap">
-            코인으로 무료 상담
-          </p>
+
+          <!-- Step ② Card -->
+          <div class="h-full rounded-2xl bg-fintech-bg border border-fintech-border p-4 flex flex-col items-center text-center justify-between">
+            <div class="w-11 h-11 rounded-2xl bg-white border border-fintech-border shadow-sm flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-crimson-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <span class="inline-block px-2 py-0.5 rounded-full bg-crimson-50 text-crimson-600 text-[10.5px] font-extrabold tracking-wide whitespace-nowrap mb-1.5">
+              STEP 02
+            </span>
+            <p class="text-[13px] font-bold text-ink-900 leading-[1.42]">
+              ② 코인으로 무료 상담을<br />받아본다
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 5. HOW TO USE (INTERACTIVE TAB CARD) ==================== -->
-    <section class="py-9 px-5 bg-ivory-50">
-      <h2 class="text-[20px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
+    <!-- ==================== 6. 이용방법 SECTION (INTERACTIVE TABS) ==================== -->
+    <section class="py-8 px-5 bg-fintech-bg">
+      <h2 class="text-[19px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
         이용방법
       </h2>
 
-      <div class="bg-white rounded-2xl p-4 border border-ivory-200 shadow-card">
-        <!-- Segmented Tab Control (2 Equal-Width 1-Line Tabs) -->
-        <div class="grid grid-cols-2 p-1 rounded-xl bg-ivory-100 border border-ivory-200 mb-4" role="tablist" aria-label="이용방법 탭">
+      <div class="bg-white rounded-2xl p-4 border border-fintech-border shadow-card">
+        <!-- Segmented Tab Control -->
+        <div class="grid grid-cols-2 p-1 rounded-xl bg-fintech-bg border border-fintech-border mb-4" role="tablist" aria-label="이용방법 탭">
           <button
             type="button"
             id="tabMobile"
             role="tab"
             aria-selected="true"
             onclick="switchUsageTab('mobile')"
-            class="py-2 rounded-lg text-[13px] font-bold whitespace-nowrap transition-all bg-white text-ink-900 shadow-sm"
+            class="py-2 rounded-lg text-[12.5px] font-bold whitespace-nowrap transition-all bg-white text-ink-900 shadow-sm"
           >
-            모바일 이용
+            모바일에서 이용 시
           </button>
           <button
             type="button"
@@ -553,57 +544,42 @@
             role="tab"
             aria-selected="false"
             onclick="switchUsageTab('pc')"
-            class="py-2 rounded-lg text-[13px] font-semibold whitespace-nowrap transition-all text-ink-500 hover:text-ink-700"
+            class="py-2 rounded-lg text-[12.5px] font-semibold whitespace-nowrap transition-all text-ink-500 hover:text-ink-700"
           >
-            PC 이용
+            PC에서 이용 시
           </button>
         </div>
 
-        <!-- Mobile Tab Steps -->
-        <ol id="panelMobile" class="space-y-2.5 mb-4">
-          <li class="flex items-center gap-2.5 rounded-xl bg-ivory-50 px-3.5 py-3">
-            <span class="w-5 h-5 rounded-full bg-burgundy-900 text-champagne-200 text-[11px] font-extrabold flex items-center justify-center shrink-0">1</span>
-            <span class="text-[13.5px] font-semibold text-ink-700">5,000 코인 이상 보유 확인</span>
-          </li>
-          <li class="flex items-center gap-2.5 rounded-xl bg-ivory-50 px-3.5 py-3">
-            <span class="w-5 h-5 rounded-full bg-burgundy-900 text-champagne-200 text-[11px] font-extrabold flex items-center justify-center shrink-0">2</span>
-            <span class="text-[13.5px] font-semibold text-ink-700">원하는 상담사 <strong class="text-ink-900">[상담하기]</strong> 클릭</span>
-          </li>
-          <li class="flex items-center gap-2.5 rounded-xl bg-ivory-50 px-3.5 py-3">
-            <span class="w-5 h-5 rounded-full bg-burgundy-900 text-champagne-200 text-[11px] font-extrabold flex items-center justify-center shrink-0">3</span>
-            <span class="text-[13.5px] font-semibold text-ink-700"><strong class="text-crimson-600 font-bold">070-7663-0517</strong> 로 전화 연결</span>
-          </li>
-        </ol>
+        <!-- Mobile Tab Panel -->
+        <div id="panelMobile" class="rounded-xl bg-fintech-bg p-4 mb-3.5 flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-burgundy-900 text-champagne-200 text-[12px] font-extrabold flex items-center justify-center shrink-0 mt-0.5">1</span>
+          <p class="text-[13.5px] leading-[1.6] text-ink-700 font-medium">
+            5,000 코인 이상 보유 후, <strong class="text-ink-900 font-bold">[상담하기]</strong>를 누르고 <strong class="text-crimson-600 font-extrabold whitespace-nowrap">070-7663-0517</strong>로 전화하세요.
+          </p>
+        </div>
 
-        <!-- PC Tab Steps -->
-        <ol id="panelPc" class="hidden space-y-2.5 mb-4">
-          <li class="flex items-center gap-2.5 rounded-xl bg-ivory-50 px-3.5 py-3">
-            <span class="w-5 h-5 rounded-full bg-burgundy-900 text-champagne-200 text-[11px] font-extrabold flex items-center justify-center shrink-0">1</span>
-            <span class="text-[13.5px] font-semibold text-ink-700">5,000 코인 이상 보유 확인</span>
-          </li>
-          <li class="flex items-center gap-2.5 rounded-xl bg-ivory-50 px-3.5 py-3">
-            <span class="w-5 h-5 rounded-full bg-burgundy-900 text-champagne-200 text-[11px] font-extrabold flex items-center justify-center shrink-0">2</span>
-            <span class="text-[13.5px] font-semibold text-ink-700">상담사 프로필 <strong class="text-ink-900">[상담하기]</strong> 클릭</span>
-          </li>
-          <li class="flex items-center gap-2.5 rounded-xl bg-ivory-50 px-3.5 py-3">
-            <span class="w-5 h-5 rounded-full bg-burgundy-900 text-champagne-200 text-[11px] font-extrabold flex items-center justify-center shrink-0">3</span>
-            <span class="text-[13.5px] font-semibold text-ink-700"><strong class="text-crimson-600 font-bold">070-7663-0517</strong> 입력 후 통화</span>
-          </li>
-        </ol>
+        <!-- PC Tab Panel -->
+        <div id="panelPc" class="hidden rounded-xl bg-fintech-bg p-4 mb-3.5 flex items-start gap-3">
+          <span class="w-6 h-6 rounded-full bg-burgundy-900 text-champagne-200 text-[12px] font-extrabold flex items-center justify-center shrink-0 mt-0.5">1</span>
+          <p class="text-[13.5px] leading-[1.6] text-ink-700 font-medium">
+            5,000 코인 이상 보유 후, 원하는 상담사 프로필에서 <strong class="text-ink-900 font-bold">[상담하기]</strong>를 클릭하고 <strong class="text-crimson-600 font-extrabold whitespace-nowrap">070-7663-0517</strong>을 입력해 통화하세요.
+          </p>
+        </div>
 
-        <!-- Compact Fee Notice Strip -->
-        <div class="rounded-xl bg-champagne-100/80 border border-champagne-300/60 px-3.5 py-2.5 text-center">
-          <p class="text-[12px] font-semibold text-ink-700 leading-[1.45]">
-            <strong class="text-ink-900">이용 요금 안내</strong> · 상담사별 30초당 700원 ~ 2,900원 적용
+        <!-- 이용 요금 안내 Callout -->
+        <div class="rounded-xl bg-champagne-100/80 border border-champagne-300/60 px-3.5 py-3">
+          <p class="text-[12px] font-bold text-ink-900 mb-0.5 whitespace-nowrap">이용 요금 안내</p>
+          <p class="text-[12.5px] text-ink-700 leading-[1.5]">
+            상담사가 설정한 가격에 따라 30초당 700원 ~ 2,900원 적용됩니다.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 6. PRIVACY & REFUND TRUST CARDS ==================== -->
-    <section class="py-9 px-5 bg-white border-y border-ivory-200 space-y-4">
-      <!-- Privacy Card -->
-      <div class="rounded-2xl bg-ivory-50 border border-ivory-200 p-5">
+    <!-- ==================== 7. 익명보장 & 환불 정책 SECTION ==================== -->
+    <section class="py-8 px-5 bg-white border-y border-fintech-border space-y-4">
+      <!-- Fintech Privacy Trust Card -->
+      <div class="rounded-2xl bg-fintech-bg border border-fintech-border p-5">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-crimson-50 border border-crimson-100 text-crimson-600 text-[12px] font-bold whitespace-nowrap">
             <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
@@ -617,134 +593,136 @@
           전화 상담, 내 정보는 안전할까요?
         </h3>
 
-        <p class="text-[13px] leading-[1.62] text-ink-600">
-          상담사에게 번호가 보이지 않고 모운 전용 번호만 표시됩니다. 상담 내용은 기록되지 않으며 완벽한 익명이 보장됩니다.
+        <p class="text-[13px] leading-[1.64] text-ink-600">
+          모운에서는 상담사에게 번호가 보이지 않고 모운 전용 번호만 표시됩니다. 상담 내용은 기록되지 않으며, 완벽한 익명이 됩니다. 안심하고 상담하세요!
         </p>
       </div>
 
-      <!-- Refund Policy Card -->
-      <div class="rounded-2xl bg-white border border-ivory-200 shadow-card overflow-hidden">
-        <div class="px-5 py-3.5 bg-ivory-50 border-b border-ivory-200 flex items-center justify-between">
-          <h3 class="text-[16px] font-extrabold text-ink-900 whitespace-nowrap">투명한 환불 정책</h3>
-          <span class="text-[11.5px] font-semibold text-ink-500 whitespace-nowrap">결제 보호 기준</span>
+      <!-- Refund Policy Card (Fixed-width 74px labels) -->
+      <div class="rounded-2xl bg-white border border-fintech-border shadow-card overflow-hidden">
+        <div class="px-4 py-3.5 bg-fintech-bg border-b border-fintech-border flex items-center justify-between">
+          <h3 class="text-[16px] font-extrabold text-ink-900 whitespace-nowrap">환불 정책</h3>
+          <span class="text-[11.5px] font-semibold text-ink-500 whitespace-nowrap">투명한 결제 보호</span>
         </div>
 
-        <div class="divide-y divide-ivory-200">
-          <div class="px-4 py-3.5 flex items-center gap-3">
-            <span class="min-w-[74px] text-center py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[11.5px] font-bold whitespace-nowrap shrink-0">
+        <div class="divide-y divide-fintech-border">
+          <div class="px-4 py-3.5 flex items-start gap-3">
+            <span class="w-[74px] text-center py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[11.5px] font-bold whitespace-nowrap shrink-0 mt-0.5">
               7일 이내
             </span>
-            <p class="text-[13px] leading-[1.48] text-ink-700">
-              미사용 코인 <strong class="font-bold text-ink-900">100% 전액 환불</strong> 가능
+            <p class="text-[13px] leading-[1.52] text-ink-700">
+              코인을 사용하지 않은 경우 100% 전액 환불이 가능합니다.
             </p>
           </div>
 
-          <div class="px-4 py-3.5 flex items-center gap-3">
-            <span class="min-w-[74px] text-center py-1 rounded-md bg-champagne-100 text-champagne-600 border border-champagne-300/70 text-[11.5px] font-bold whitespace-nowrap shrink-0">
+          <div class="px-4 py-3.5 flex items-start gap-3">
+            <span class="w-[74px] text-center py-1 rounded-md bg-champagne-100 text-champagne-600 border border-champagne-300/70 text-[11.5px] font-bold whitespace-nowrap shrink-0 mt-0.5">
               7일 이후
             </span>
-            <p class="text-[13px] leading-[1.48] text-ink-700">
-              결제금액의 <strong class="font-bold text-ink-900">10% 수수료</strong> 공제 후 환불
+            <p class="text-[13px] leading-[1.52] text-ink-700">
+              결제금액의 10% 환불 수수료를 공제 후 환불 처리됩니다.
             </p>
           </div>
 
-          <div class="px-4 py-3.5 flex items-center gap-3">
-            <span class="min-w-[74px] text-center py-1 rounded-md bg-crimson-50 text-crimson-600 border border-crimson-100 text-[11.5px] font-bold whitespace-nowrap shrink-0">
+          <div class="px-4 py-3.5 flex items-start gap-3">
+            <span class="w-[74px] text-center py-1 rounded-md bg-crimson-50 text-crimson-600 border border-crimson-100 text-[11.5px] font-bold whitespace-nowrap shrink-0 mt-0.5">
               환불 불가
             </span>
-            <p class="text-[13px] leading-[1.48] text-ink-700">
-              사용한 코인 및 무료 지급 코인(이벤트 등)
+            <p class="text-[13px] leading-[1.52] text-ink-700">
+              이미 사용한 코인, 무료로 지급받은 코인(이벤트·추천인 등)은 환불되지 않습니다.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 7. MOUN ADVANTAGES (3 HORIZONTAL CARDS) ==================== -->
-    <section class="py-9 px-5 bg-ivory-50">
-      <h2 class="text-[20px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
-        모운만의 장점
+    <!-- ==================== 8. 모운 만의 장점 SECTION ==================== -->
+    <section class="py-8 px-5 bg-fintech-bg">
+      <h2 class="text-[19px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
+        모운 만의 장점
       </h2>
 
       <div class="space-y-3">
         <!-- Advantage 1 -->
-        <div class="bg-white rounded-2xl p-4 border border-ivory-200 shadow-card flex items-center gap-3.5">
-          <div class="w-11 h-11 rounded-xl bg-ivory-50 border border-ivory-200 flex items-center justify-center text-[20px] shrink-0" aria-hidden="true">
+        <div class="bg-white rounded-2xl p-4 border border-fintech-border shadow-card flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-fintech-bg border border-fintech-border flex items-center justify-center text-[20px] shrink-0" aria-hidden="true">
             🛡️
           </div>
           <div class="min-w-0">
-            <h3 class="text-[14.5px] font-bold text-ink-900 whitespace-nowrap mb-0.5">
-              프라이빗한 1:1 상담
+            <h3 class="text-[14.5px] font-bold text-ink-900 whitespace-nowrap mb-1">
+              프라이빗한 상담
             </h3>
-            <p class="text-[12.5px] text-ink-500 leading-[1.45]">
-              검증된 전문 상담사와 안심하고 고민 해결
+            <p class="text-[12.5px] text-ink-600 leading-[1.5]">
+              모운의 전문 상담사들과의 대화를 통해 고민을 쉽게 해결할 수 있습니다!
             </p>
           </div>
         </div>
 
         <!-- Advantage 2 -->
-        <div class="bg-white rounded-2xl p-4 border border-ivory-200 shadow-card flex items-center gap-3.5">
-          <div class="w-11 h-11 rounded-xl bg-ivory-50 border border-ivory-200 flex items-center justify-center text-[20px] shrink-0" aria-hidden="true">
+        <div class="bg-white rounded-2xl p-4 border border-fintech-border shadow-card flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-fintech-bg border border-fintech-border flex items-center justify-center text-[20px] shrink-0" aria-hidden="true">
             📱
           </div>
           <div class="min-w-0">
-            <h3 class="text-[14.5px] font-bold text-ink-900 whitespace-nowrap mb-0.5">
+            <h3 class="text-[14.5px] font-bold text-ink-900 whitespace-nowrap mb-1">
               편리한 상담 접근성
             </h3>
-            <p class="text-[12.5px] text-ink-500 leading-[1.45]">
-              시간·장소 구애 없이 언제 어디서나 바로 연결
+            <p class="text-[12.5px] text-ink-600 leading-[1.5]">
+              시간과 장소에 구애받지 않고 언제 어디서나 간편하게 시작할 수 있습니다.
             </p>
           </div>
         </div>
 
         <!-- Advantage 3 -->
-        <div class="bg-white rounded-2xl p-4 border border-ivory-200 shadow-card flex items-center gap-3.5">
-          <div class="w-11 h-11 rounded-xl bg-ivory-50 border border-ivory-200 flex items-center justify-center text-[20px] shrink-0" aria-hidden="true">
+        <div class="bg-white rounded-2xl p-4 border border-fintech-border shadow-card flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-fintech-bg border border-fintech-border flex items-center justify-center text-[20px] shrink-0" aria-hidden="true">
             🎯
           </div>
           <div class="min-w-0">
-            <h3 class="text-[14.5px] font-bold text-ink-900 whitespace-nowrap mb-0.5">
+            <h3 class="text-[14.5px] font-bold text-ink-900 whitespace-nowrap mb-1">
               개인 맞춤형 조언
             </h3>
-            <p class="text-[12.5px] text-ink-500 leading-[1.45]">
-              내 성향과 고민에 꼭 맞는 실질적인 해결책 제시
+            <p class="text-[12.5px] text-ink-600 leading-[1.5]">
+              성향과 고민에 맞게 검증된 전문가를 통해 맞춤형 실질적인 해결책을 제공합니다.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 8. CLOSING CTA BANNER ==================== -->
-    <section class="px-5 pt-1 pb-9 bg-ivory-50">
+    <!-- ==================== 9. FINAL EMPATHY CTA SECTION ==================== -->
+    <section class="px-5 pt-1 pb-9 bg-fintech-bg">
       <div class="closing-burgundy rounded-3xl px-5 py-7 text-center relative overflow-hidden border border-champagne-400/35 shadow-xl">
         <!-- Ambient Glow -->
         <div class="w-36 h-36 rounded-full bg-crimson-500/20 blur-3xl absolute -top-10 -right-10 pointer-events-none" aria-hidden="true"></div>
         <div class="w-32 h-32 rounded-full bg-champagne-400/15 blur-2xl absolute -bottom-10 -left-10 pointer-events-none" aria-hidden="true"></div>
 
-        <h2 class="relative z-10 text-[17.5px] sm:text-[19px] font-extrabold text-white leading-[1.42] tracking-[-0.025em] mb-2.5">
-          내 이야기, 괜찮을까 고민하지 마세요.<br />
+        <h2 class="relative z-10 text-[18.5px] font-extrabold text-white leading-[1.45] tracking-[-0.025em] mb-3">
+          내 이야기, 괜찮을까<br />
+          고민하지 마세요.<br />
           <span class="text-champagne-300">모운은 어떤 이야기도 존중합니다.</span>
         </h2>
 
-        <p class="relative z-10 text-[13px] leading-[1.55] text-ivory-200/85 mb-6">
-          당신의 이야기를 차별 없이 듣고, 당신만의 답을 찾아드립니다.
+        <p class="relative z-10 text-[13px] leading-[1.6] text-white/80 mb-6">
+          모운 전문가와 이야기를 나눠보세요. 당신의 이야기를 차별 없이 듣고, 당신만의 답을 함께 찾아드립니다.
         </p>
 
-        <button
-          type="button"
-          onclick="openSignupModal()"
+        <a
+          href="https://moun.co.kr/s/Buzzvill"
+          target="_blank"
+          rel="noopener noreferrer"
           class="relative z-10 w-full h-[52px] px-4 rounded-2xl bg-gradient-to-r from-champagne-200 via-champagne-300 to-champagne-400 text-burgundy-950 font-extrabold text-[15.5px] tracking-tight shadow-cta-gold hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 whitespace-nowrap"
         >
           <span>최대 7분 전화상담 무료로 받기</span>
           <svg class="w-4 h-4 text-burgundy-950 shrink-0" fill="none" stroke="currentColor" stroke-width="2.8" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
           </svg>
-        </button>
+        </a>
       </div>
     </section>
 
-    <!-- ==================== 9. CLEAN FOOTER ==================== -->
-    <footer class="bg-ink-900 text-ink-400 px-5 pt-7 pb-24 text-[11px] leading-[1.75]">
+    <!-- ==================== 10. CLEAN FOOTER ==================== -->
+    <footer class="bg-ink-900 text-ink-400 px-5 pt-7 pb-28 text-[11px] leading-[1.75]">
       <div class="flex items-center gap-2 mb-3">
         <span class="text-[15px] font-extrabold text-white whitespace-nowrap">모운</span>
         <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-champagne-300 font-semibold whitespace-nowrap">2027 정미년</span>
@@ -755,84 +733,38 @@
         <p>사업자등록번호 : 415-86-01563 | 통신판매업신고 : 제2023-서울금천-2866호</p>
         <p>서울 금천구 가산디지털2로 169-16, 하우스디 가산퍼스타 A동 907호</p>
         <p>대표전화 : 1533-9748 | 이메일 : help@moun.co.kr</p>
-        <p>고객센터 : 평일 09:00 ~ 18:00 (점심 12:30 ~ 13:30)</p>
+        <p>고객센터 운영시간 : 평일 09:00 ~ 18:00 (점심시간 12:30 ~ 13:30)</p>
       </div>
 
-      <div class="mt-4 pt-3.5 border-t border-white/10 flex items-center gap-3 text-[11.5px] text-ivory-200">
-        <button type="button" onclick="openPolicyModal('이용약관')" class="hover:text-champagne-300 transition whitespace-nowrap">이용약관</button>
+      <div class="mt-4 pt-3.5 border-t border-white/10 flex items-center gap-3 text-[11.5px] text-white/80">
+        <a href="https://moun.co.kr/s/Buzzvill" target="_blank" rel="noopener noreferrer" class="hover:text-champagne-300 transition whitespace-nowrap">이용약관</a>
         <span class="text-white/20">|</span>
-        <button type="button" onclick="openPolicyModal('개인정보 취급방침')" class="font-bold hover:text-champagne-300 transition whitespace-nowrap">개인정보 취급방침</button>
+        <a href="https://moun.co.kr/s/Buzzvill" target="_blank" rel="noopener noreferrer" class="font-bold hover:text-champagne-300 transition whitespace-nowrap">개인정보 취급방침</a>
       </div>
     </footer>
 
   </div><!-- /Mobile-First Centered Frame -->
 
-  <!-- ==================== 10. STICKY BOTTOM FLOATING BAR ==================== -->
-  <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[440px] z-40 px-3 pb-3 pt-1.5 pointer-events-none">
+  <!-- ==================== 11. STICKY BOTTOM FLOATING BAR ==================== -->
+  <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-40 px-3 pb-3 pt-1.5 pointer-events-none">
     <div class="pointer-events-auto rounded-2xl bg-burgundy-950/95 backdrop-blur-md text-white px-4 py-2.5 shadow-2xl border border-champagne-400/35 flex items-center justify-between gap-3">
-      <!-- Left: Compact 2-Line Stack -->
-      <div class="min-w-0">
-        <p class="text-[11px] font-semibold text-ivory-200/85 whitespace-nowrap leading-tight">
-          혜택 마감 임박 · <span class="text-champagne-300 font-bold">잔여 9,996명</span>
-        </p>
-        <div class="flex items-center gap-1.5 mt-0.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-dot shrink-0"></span>
-          <span class="font-mono text-[13px] font-extrabold text-white tabular-nums whitespace-nowrap js-countdown">14:19:52</span>
-        </div>
+      <!-- Left: Single-row Clean Status -->
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-dot shrink-0"></span>
+        <span class="font-mono text-[13px] font-extrabold text-white tabular-nums whitespace-nowrap js-countdown">14:19:52</span>
+        <span class="text-white/25">|</span>
+        <span class="text-[12px] font-bold text-champagne-300 whitespace-nowrap">잔여 9,996명</span>
       </div>
 
-      <!-- Right: Crisp Single-Line Pill CTA Button -->
-      <button
-        type="button"
-        onclick="openSignupModal()"
+      <!-- Right: Crisp Single-Line CTA Link -->
+      <a
+        href="https://moun.co.kr/s/Buzzvill"
+        target="_blank"
+        rel="noopener noreferrer"
         class="shrink-0 px-4 py-2.5 rounded-xl bg-gradient-to-r from-champagne-300 to-champagne-400 text-burgundy-950 text-[13px] font-extrabold whitespace-nowrap shadow-cta-gold hover:brightness-105 active:scale-95 transition"
       >
         지금 가입하기 &gt;
-      </button>
-    </div>
-  </div>
-
-  <!-- ==================== 11. INTERACTIVE SIGNUP MODAL ==================== -->
-  <div id="signupModal" class="fixed inset-0 z-50 hidden items-center justify-center px-5" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <!-- Backdrop -->
-    <div onclick="closeModal()" class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-
-    <!-- Modal Card -->
-    <div class="relative w-full max-w-[340px] bg-white rounded-3xl p-6 text-center shadow-2xl border border-ivory-200">
-      <div class="w-12 h-12 rounded-2xl bg-crimson-50 border border-crimson-100 flex items-center justify-center mx-auto mb-3.5 text-[24px]" id="modalEmoji">
-        🎁
-      </div>
-
-      <span class="inline-block px-2.5 py-0.5 rounded-full bg-champagne-100 text-champagne-600 text-[11px] font-bold whitespace-nowrap mb-2" id="modalBadge">
-        2027 정미년 신규 회원 혜택
-      </span>
-
-      <h3 id="modalTitle" class="text-[18px] font-extrabold text-ink-900 leading-[1.35] tracking-tight mb-2">
-        30초 간편 가입하고<br />10,000코인 즉시 받기
-      </h3>
-
-      <p id="modalDesc" class="text-[13px] text-ink-600 leading-[1.58] mb-5">
-        휴대폰 본인인증으로 간편 가입하면<br />
-        <strong class="text-crimson-600">10,000코인(최대 7분 무료 상담)</strong>이<br />
-        즉시 지급됩니다.
-      </p>
-
-      <div class="space-y-2" id="modalActions">
-        <button
-          type="button"
-          onclick="confirmMockSignup()"
-          class="w-full h-[46px] rounded-xl bg-burgundy-900 hover:bg-burgundy-800 active:scale-[0.98] transition text-champagne-200 font-bold text-[14.5px] whitespace-nowrap"
-        >
-          10,000코인 받고 시작하기
-        </button>
-        <button
-          type="button"
-          onclick="closeModal()"
-          class="w-full h-[42px] rounded-xl bg-ivory-100 hover:bg-ivory-200 transition text-ink-600 font-semibold text-[13.5px] whitespace-nowrap"
-        >
-          닫기
-        </button>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -866,23 +798,11 @@
     /**
      * 2. Interactive 2027 Worry Card Selection
      */
-    const worryContent = {
-      career: {
-        badge: '🚀 2027 이직·승진운 핵심 풀이',
-        html: "지금 당신에게 필요한 <span class='text-crimson-600'>'최적의 타이밍'</span>을<br />무료로 7분 만에 확인하세요."
-      },
-      wealth: {
-        badge: '💰 2027 재물·금전운 핵심 풀이',
-        html: "막혀 있던 <span class='text-crimson-600'>'재물운의 전환점'</span>을<br />무료로 7분 만에 확인하세요."
-      },
-      relation: {
-        badge: '😤 2027 인간관계운 핵심 풀이',
-        html: "내 편이 될 귀인과 <span class='text-crimson-600'>'관계의 해답'</span>을<br />무료로 7분 만에 확인하세요."
-      },
-      love: {
-        badge: '💌 2027 연애·재회운 핵심 풀이',
-        html: "다가올 인연과 <span class='text-crimson-600'>'상대방의 속마음'</span>을<br />무료로 7분 만에 확인하세요."
-      }
+    const worryBadges = {
+      career: '🚀 2027 이직운 핵심 풀이',
+      wealth: '💰 2027 재물운 핵심 풀이',
+      relation: '😤 2027 관계운 핵심 풀이',
+      love: '💌 2027 연애운 핵심 풀이'
     };
 
     function selectWorry(key, clickedCard) {
@@ -892,7 +812,7 @@
           const check = card.querySelector('.worry-check');
           if (check) {
             check.classList.remove('bg-burgundy-900', 'text-champagne-300');
-            check.classList.add('bg-ivory-200', 'text-transparent');
+            check.classList.add('bg-fintech-border', 'text-transparent');
           }
         });
 
@@ -900,17 +820,14 @@
           clickedCard.classList.add('worry-card-active');
           const activeCheck = clickedCard.querySelector('.worry-check');
           if (activeCheck) {
-            activeCheck.classList.remove('bg-ivory-200', 'text-transparent');
+            activeCheck.classList.remove('bg-fintech-border', 'text-transparent');
             activeCheck.classList.add('bg-burgundy-900', 'text-champagne-300');
           }
         }
 
-        const data = worryContent[key];
         const badgeEl = document.getElementById('worryBadge');
-        const msgEl = document.getElementById('worryMessage');
-        if (data && badgeEl && msgEl) {
-          badgeEl.textContent = data.badge;
-          msgEl.innerHTML = data.html;
+        if (badgeEl && worryBadges[key]) {
+          badgeEl.textContent = worryBadges[key];
         }
       } catch (err) {
         console.error('Worry selection error:', err);
@@ -955,74 +872,6 @@
         console.error('Tab switch error:', err);
       }
     }
-
-    /**
-     * 4. Interactive Signup & Policy Modal Controls
-     */
-    const modalEl = document.getElementById('signupModal');
-    const modalEmoji = document.getElementById('modalEmoji');
-    const modalBadge = document.getElementById('modalBadge');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalActions = document.getElementById('modalActions');
-
-    function openSignupModal() {
-      if (!modalEl) return;
-      modalEmoji.textContent = '🎁';
-      modalBadge.textContent = '2027 정미년 신규 회원 혜택';
-      modalTitle.innerHTML = '30초 간편 가입하고<br />10,000코인 즉시 받기';
-      modalDesc.innerHTML =
-        '휴대폰 본인인증으로 간편 가입하면<br /><strong class="text-crimson-600">10,000코인(최대 7분 무료 상담)</strong>이<br />즉시 지급됩니다.';
-      modalActions.innerHTML = `
-        <button type="button" onclick="confirmMockSignup()" class="w-full h-[46px] rounded-xl bg-burgundy-900 hover:bg-burgundy-800 active:scale-[0.98] transition text-champagne-200 font-bold text-[14.5px] whitespace-nowrap">
-          10,000코인 받고 시작하기
-        </button>
-        <button type="button" onclick="closeModal()" class="w-full h-[42px] rounded-xl bg-ivory-100 hover:bg-ivory-200 transition text-ink-600 font-semibold text-[13.5px] whitespace-nowrap">
-          닫기
-        </button>
-      `;
-      modalEl.classList.remove('hidden');
-      modalEl.classList.add('flex');
-    }
-
-    function confirmMockSignup() {
-      if (!modalEl) return;
-      modalEmoji.textContent = '✅';
-      modalBadge.textContent = '혜택 적용 안내';
-      modalTitle.innerHTML = '10,000코인이 준비되었습니다!';
-      modalDesc.innerHTML =
-        '실제 서비스 연동 시 모운 회원가입 페이지로 이동하며,<br />가입 즉시 <strong class="text-crimson-600">최대 7분 무료 전화상담</strong>이 가능합니다.';
-      modalActions.innerHTML = `
-        <button type="button" onclick="closeModal()" class="w-full h-[46px] rounded-xl bg-burgundy-900 hover:bg-burgundy-800 active:scale-[0.98] transition text-champagne-200 font-bold text-[14.5px] whitespace-nowrap">
-          확인
-        </button>
-      `;
-    }
-
-    function openPolicyModal(title) {
-      if (!modalEl) return;
-      modalEmoji.textContent = '📄';
-      modalBadge.textContent = '모운 안내';
-      modalTitle.textContent = title;
-      modalDesc.textContent = `실제 서비스 적용 시 모운 공식 ${title} 페이지로 연결됩니다.`;
-      modalActions.innerHTML = `
-        <button type="button" onclick="closeModal()" class="w-full h-[44px] rounded-xl bg-ink-900 text-white font-bold text-[14px] whitespace-nowrap">
-          닫기
-        </button>
-      `;
-      modalEl.classList.remove('hidden');
-      modalEl.classList.add('flex');
-    }
-
-    function closeModal() {
-      if (!modalEl) return;
-      modalEl.classList.add('hidden');
-      modalEl.classList.remove('flex');
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
   </script>
 </body>
 </html>
