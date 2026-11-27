@@ -1,541 +1,1097 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>강희창과 함께하는 반도체 로드</title>
-    <meta property="og:title" content="강희창과 함께하는 반도체 로드">
-    <meta property="og:description" content="글로벌 AI 반도체 핵심 종목 분석 · 실시간 뉴스 연동">
-    <meta property="og:type" content="website">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <style>
-        body { font-family: 'Pretendard', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
-        .glow-cyan { box-shadow: 0 0 20px rgba(6, 182, 212, 0.25); }
-        .glow-card { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glow-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.3); border-color: rgba(6, 182, 212, 0.6); }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #111827; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #4b5563; }
-        @keyframes highlight-flash { 0% { border-color: #06b6d4; box-shadow: 0 0 25px #06b6d4; } 100% { border-color: #374151; box-shadow: none; } }
-        .highlight-target { animation: highlight-flash 1.5s ease-out; }
-    </style>
-</head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>모운 - 2027 정미년 붉은 양의 해 미리 보는 신년운세</title>
 
-    <!-- Header -->
-    <header class="bg-gray-900/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center glow-cyan">
-                    <i class="fa-solid fa-microchip text-white text-lg"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
-                        강희창과 함께하는 반도체 로드
-                        <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/50 font-normal">2026.11 기준</span>
-                    </h1>
-                    <p class="text-xs text-gray-400">글로벌 AI 반도체 핵심 종목 분석 · 실시간 뉴스 연동</p>
-                </div>
-            </div>
-            <div class="flex items-center space-x-2">
-                <button onclick="shareLink()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg text-xs font-medium border border-gray-700 transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-share-nodes text-cyan-400"></i> 공유 링크 복사
-                </button>
-                <div class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 bg-emerald-950/50 border border-emerald-800/50 rounded-lg text-emerald-400 text-xs font-medium">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>시세 정밀 동기화 완료</span>
-                </div>
-            </div>
+  <!-- Pretendard Webfont CDN -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              950: '#170812',
+              900: '#2D0B16',
+              800: '#421222',
+              700: '#5C1A30',
+            },
+            crimson: {
+              50: '#FFF1F3',
+              100: '#FFE0E5',
+              500: '#D92B4B',
+              600: '#BE1E3C',
+              700: '#9E1731',
+            },
+            champagne: {
+              100: '#FDF8E7',
+              200: '#F8EAC0',
+              300: '#F1D78A',
+              400: '#E5C158',
+              500: '#CFA332',
+              600: '#A67E1E',
+            },
+            ivory: {
+              50: '#FAF8F5',
+              100: '#F3EFE9',
+              200: '#E8E2D9',
+            },
+            charcoal: {
+              900: '#191F28',
+              700: '#333D4B',
+              600: '#4E5968',
+              500: '#6B7684',
+              400: '#8B95A1',
+            }
+          },
+          fontFamily: {
+            sans: ['"Pretendard Variable"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'fintech': '0 2px 12px rgba(25, 31, 40, 0.04)',
+            'fintech-hover': '0 8px 24px rgba(217, 43, 75, 0.12)',
+            'vip-card': '0 18px 38px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(229, 193, 88, 0.45)',
+            'gold-cta': '0 10px 24px -6px rgba(229, 193, 88, 0.45)',
+            'crimson-cta': '0 10px 24px -6px rgba(217, 43, 75, 0.45)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #EAE6E0;
+      color: #191F28;
+      word-break: keep-all;
+    }
+
+    /* Luxurious Deep Burgundy-Midnight Hero Gradient with Subtle Ambient Glow */
+    .hero-burgundy-bg {
+      background: linear-gradient(180deg, #2D0B16 0%, #200914 55%, #170812 100%);
+      position: relative;
+    }
+    .hero-burgundy-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 80% 18%, rgba(229, 193, 88, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 15% 32%, rgba(217, 43, 75, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 88%, rgba(229, 193, 88, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Closing Burgundy Card Gradient */
+    .closing-burgundy-bg {
+      background: linear-gradient(145deg, #2D0B16 0%, #170812 100%);
+    }
+
+    /* Metallic Gold-Trimmed VIP Coupon Card */
+    .vip-coupon {
+      position: relative;
+      background: linear-gradient(145deg, #FFFDF8 0%, #FCF4DE 52%, #F6E3B4 100%);
+      overflow: hidden;
+    }
+    @keyframes metallicSweep {
+      0% { transform: translateX(-140%) skewX(-22deg); }
+      38%, 100% { transform: translateX(260%) skewX(-22deg); }
+    }
+    .vip-coupon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 40%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      animation: metallicSweep 4s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    /* Perforated Side Notches for VIP Coupon */
+    .coupon-notch-left,
+    .coupon-notch-right {
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      border-radius: 9999px;
+      background-color: #1C0813;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    .coupon-notch-left {
+      left: -10px;
+      box-shadow: inset -1.5px 0 0 rgba(229, 193, 88, 0.65);
+    }
+    .coupon-notch-right {
+      right: -10px;
+      box-shadow: inset 1.5px 0 0 rgba(229, 193, 88, 0.65);
+    }
+
+    /* Gentle Mascot Float Animation */
+    @keyframes sheepFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+    .animate-sheep-float {
+      animation: sheepFloat 3.4s ease-in-out infinite;
+    }
+
+    /* Live Indicator Pulse */
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.25); }
+    }
+    .animate-live-pulse {
+      animation: livePulse 1.8s infinite ease-in-out;
+    }
+
+    /* Selected Concern Card State */
+    .concern-card-active {
+      border-color: #D92B4B !important;
+      background-color: #FFF8F9 !important;
+      box-shadow: 0 0 0 1px #D92B4B, 0 8px 20px -6px rgba(217, 43, 75, 0.22) !important;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-crimson-100 selection:text-crimson-700">
+
+  <!-- Mobile-First Centered Frame (max-w-440px on desktop, full width on mobile) -->
+  <div class="w-full max-w-[440px] mx-auto min-h-screen bg-ivory-50 shadow-2xl relative overflow-x-hidden">
+
+    <!-- ==================== 1. TOP MINIMAL STICKY HEADER ==================== -->
+    <header class="sticky top-0 z-30 bg-burgundy-950/95 backdrop-blur-md border-b border-white/10 px-5 py-3.5 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 focus:outline-none">
+        <!-- Minimalist Brand Mark -->
+        <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-crimson-500 to-burgundy-700 border border-champagne-400/50 flex items-center justify-center shadow-sm">
+          <svg class="w-4 h-4 text-champagne-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
         </div>
-        <!-- Mobile Tab Switcher -->
-        <div class="flex lg:hidden bg-gray-950 border-t border-gray-800">
-            <button onclick="switchMobileTab('analysis')" id="tab-btn-analysis" class="flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-cyan-500 text-cyan-400 bg-gray-900/50">
-                🗺️ 밸류체인 · 기업분석
-            </button>
-            <button onclick="switchMobileTab('news')" id="tab-btn-news" class="flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-transparent text-gray-400 hover:text-gray-200">
-                ⚡ 실시간 속보 · 메모
-            </button>
-        </div>
+        <span class="text-[18px] font-extrabold tracking-tight text-white">모운</span>
+      </a>
+
+      <!-- Right Pill Badge -->
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-champagne-400/15 border border-champagne-400/35 text-[11.5px] font-bold text-champagne-300 tracking-tight">
+        <span class="w-1.5 h-1.5 rounded-full bg-crimson-500"></span>
+        2027 정미년 신년특집
+      </span>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-        <!-- Left / Main Panel (Value Chain & Briefing) -->
-        <div id="panel-analysis" class="lg:col-span-8 space-y-6">
-
-            <!-- Return Focus Bar (Hidden by default) -->
-            <div id="return-bar" class="hidden bg-cyan-950/80 border border-cyan-500/50 p-3 rounded-xl flex items-center justify-between text-xs text-cyan-300 glow-cyan">
-                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-info"></i> 선택한 종목이 상단 브리핑에 표시되었습니다.</span>
-                <button onclick="returnToLastCard()" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition shadow">
-                    ↓ 방금 클릭한 종목 위치로 돌아가기
-                </button>
-            </div>
-
-            <!-- Deep Dive Briefing Board -->
-            <div id="briefing-card" class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 sm:p-6 backdrop-blur-sm relative overflow-hidden shadow-xl">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
-                
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-800">
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span id="briefing-badge" class="px-2.5 py-0.5 rounded-md bg-cyan-950 text-cyan-400 text-xs font-bold border border-cyan-800">GPU 1위</span>
-                            <span id="briefing-code" class="text-xs text-gray-400 font-mono">NASDAQ: NVDA</span>
-                        </div>
-                        <h2 id="briefing-title" class="text-xl sm:text-2xl font-black text-white tracking-tight">엔비디아 (NVIDIA)</h2>
-                    </div>
-                    <div class="flex items-end sm:items-end justify-between sm:justify-end gap-3 bg-gray-950/60 p-3 rounded-xl border border-gray-800/80">
-                        <div>
-                            <div class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">현재 주가</div>
-                            <div id="briefing-price" class="text-lg sm:text-xl font-bold text-white font-mono">$145.89</div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-[10px] text-gray-400 font-medium uppercase tracking-wider">전일 대비</div>
-                            <div id="briefing-change" class="text-sm sm:text-base font-bold text-emerald-400 font-mono">+2.45%</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4 Pillar Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
-                        <div class="text-xs font-bold text-cyan-400 mb-1 flex items-center gap-1.5">
-                            <i class="fa-solid fa-building-shield"></i> 1. 핵심 사업 및 밸류체인 지위
-                        </div>
-                        <p id="briefing-p1" class="text-xs text-gray-300 leading-relaxed">AI 가속기 시장 독점적 1위(H100/B200), 쿠다(CUDA) 소프트웨어 생태계 장악으로 HW·SW 락인(Lock-in) 완성.</p>
-                    </div>
-                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
-                        <div class="text-xs font-bold text-blue-400 mb-1 flex items-center gap-1.5">
-                            <i class="fa-solid fa-bolt"></i> 2. AI 사이클 핵심 모멘텀
-                        </div>
-                        <p id="briefing-p2" class="text-xs text-gray-300 leading-relaxed">블랙웰(Blackwell) 아키텍처 대규모 양산 및 빅테크향 클라우드 데이터센터 공급 가속화.</p>
-                    </div>
-                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
-                        <div class="text-xs font-bold text-emerald-400 mb-1 flex items-center gap-1.5">
-                            <i class="fa-solid fa-link"></i> 3. 연관 공급망 및 동조화
-                        </div>
-                        <p id="briefing-p3" class="text-xs text-gray-300 leading-relaxed">TSMC CoWoS 패키징 공정 및 SK하이닉스/마이크론 HBM3e 공급망과 강력한 운명 공동체.</p>
-                    </div>
-                    <div class="bg-gray-950/50 p-4 rounded-xl border border-gray-800/60">
-                        <div class="text-xs font-bold text-purple-400 mb-1 flex items-center gap-1.5">
-                            <i class="fa-solid fa-chess"></i> 4. 주요 라이벌 및 경쟁 구도
-                        </div>
-                        <p id="briefing-p4" class="text-xs text-gray-300 leading-relaxed">AMD(MI300 시리즈) 및 빅테크 자체 커스텀 ASIC(구글 TPU, AWS 트레이니움)과의 점유율 경쟁.</p>
-                    </div>
-                </div>
-
-                <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400">
-                    <span id="briefing-rivals">⚔️ 주요 경쟁사: AMD, 구글(TPU), 마이크로소프트(Maia)</span>
-                    <button onclick="jumpToNews()" class="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">
-                        이 종목 관련 실시간 뉴스 보기 <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Category Navigation Bar -->
-            <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-4 backdrop-blur-sm">
-                <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">11대 밸류체인 카테고리 빠른 이동</div>
-                <div class="flex flex-wrap gap-2" id="category-nav-buttons">
-                    <button onclick="filterCategory('ALL')" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white text-xs font-semibold shadow transition">전체 보기</button>
-                </div>
-            </div>
-
-            <!-- Value Chain Heatmap Container -->
-            <div id="sector-container" class="space-y-6">
-                <!-- Populated by JavaScript -->
-            </div>
+    <!-- ==================== 2. HERO SECTION (DEEP BURGUNDY-GOLD + RED SHEEP) ==================== -->
+    <section class="hero-burgundy-bg px-5 pt-7 pb-8 text-center">
+      <div class="relative z-10">
+        <!-- Top Pill Badge -->
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-champagne-400/35 backdrop-blur-sm mb-4">
+          <span class="text-[12px] font-bold text-champagne-200 tracking-tight">
+            2027 붉은 양의 해 · 미리 보는 신년운세
+          </span>
         </div>
 
-        <!-- Right / News & Memo Panel -->
-        <div id="panel-news" class="lg:col-span-4 space-y-6">
-            <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 backdrop-blur-sm sticky top-20 shadow-xl">
-                <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                            <i class="fa-solid fa-bolt-lightning text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-white" id="news-header-title">실시간 AI 반도체 속보</h3>
-                            <p class="text-[11px] text-gray-400" id="news-header-sub">종목 클릭 시 관련 뉴스가 즉시 연동됩니다</p>
-                        </div>
-                    </div>
-                    <button onclick="fetchRealtimeNews('AI 반도체')" class="p-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs transition" title="새로고침">
-                        <i class="fa-solid fa-rotate"></i>
-                    </button>
-                </div>
+        <!-- Sub & Main Headline -->
+        <p class="text-[14px] font-semibold text-champagne-300/95 tracking-tight mb-2">
+          복잡한 절차 없이 바로 끝나는 첫 상담 혜택
+        </p>
+        <h1 class="text-[28px] sm:text-[31px] font-extrabold text-white leading-[1.3] tracking-[-0.025em] mb-4">
+          30초 간편 가입하고<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-champagne-200 via-champagne-400 to-champagne-200">
+            무료 상담 받으세요
+          </span>
+        </h1>
 
-                <!-- News Items Container -->
-                <div id="news-container" class="space-y-3 max-h-[580px] overflow-y-auto custom-scrollbar pr-1">
-                    <!-- Populated by JS -->
-                </div>
+        <!-- Stylized Red Sheep Mascot Peeking Over Metallic VIP Coupon Card -->
+        <div class="relative mt-2 mb-5">
+          <!-- Cute Stylized Red Sheep SVG Mascot (Modern Vector) -->
+          <div class="relative z-20 flex justify-center -mb-7 pointer-events-none">
+            <svg class="w-[152px] h-auto animate-sheep-float drop-shadow-xl" viewBox="0 0 180 124" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="2027 정미년 붉은 양 캐릭터">
+              <!-- Ambient Halo behind sheep -->
+              <circle cx="90" cy="64" r="48" fill="url(#sheepAura)" />
 
-                <div class="mt-5 pt-4 border-t border-gray-800">
-                    <div class="text-xs font-bold text-gray-400 mb-2 flex items-center justify-between">
-                        <span>💬 팀 공유 메모 및 특이사항</span>
-                        <span class="text-[10px] text-cyan-400 font-mono">모운(Moun)</span>
-                    </div>
-                    <textarea id="memo-box" class="w-full h-24 bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-gray-200 placeholder-gray-600 focus:outline-none focus:border-cyan-500 transition resize-none" placeholder="종목별 특이사항이나 팀 공유 메모를 입력하세요..."></textarea>
-                    <div class="flex justify-end mt-2">
-                        <button onclick="saveMemo()" class="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold rounded-lg transition shadow">메모 저장</button>
-                    </div>
-                </div>
+              <!-- Sparkle accents -->
+              <path d="M26 32L28 37L33 39L28 41L26 46L24 41L19 39L24 37L26 32Z" fill="#E5C158"/>
+              <path d="M154 24L155.5 28L159.5 29.5L155.5 31L154 35L152.5 31L148.5 29.5L152.5 28L154 24Z" fill="#F8EAC0"/>
+              <circle cx="146" cy="64" r="2.5" fill="#D92B4B"/>
+
+              <!-- Cute Golden Horns -->
+              <path d="M64 38C54 31 53 20 62 18C68 17 72 23 70 29" fill="#E5C158" stroke="#A67E1E" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M116 38C126 31 127 20 118 18C112 17 108 23 110 29" fill="#E5C158" stroke="#A67E1E" stroke-width="1.8" stroke-linecap="round"/>
+
+              <!-- Fluffy Crimson/Coral Wool Behind Head -->
+              <g fill="#D92B4B" stroke="#8C1830" stroke-width="1.6">
+                <circle cx="62" cy="54" r="16"/>
+                <circle cx="118" cy="54" r="16"/>
+                <circle cx="72" cy="34" r="14"/>
+                <circle cx="90" cy="28" r="16"/>
+                <circle cx="108" cy="34" r="14"/>
+              </g>
+
+              <!-- Ears -->
+              <ellipse cx="52" cy="58" rx="13" ry="7.5" transform="rotate(-18 52 58)" fill="#FFF5EA" stroke="#8C1830" stroke-width="1.6"/>
+              <ellipse cx="53" cy="59" rx="7" ry="3.8" transform="rotate(-18 53 59)" fill="#F9A8B8"/>
+              <ellipse cx="128" cy="58" rx="13" ry="7.5" transform="rotate(18 128 58)" fill="#FFF5EA" stroke="#8C1830" stroke-width="1.6"/>
+              <ellipse cx="127" cy="59" rx="7" ry="3.8" transform="rotate(18 127 59)" fill="#F9A8B8"/>
+
+              <!-- Warm Cream Face -->
+              <ellipse cx="90" cy="64" rx="30" ry="26" fill="#FFF9F2" stroke="#8C1830" stroke-width="1.8"/>
+
+              <!-- Fluffy Red Wool Forehead Bangs -->
+              <g fill="#E23B59">
+                <circle cx="76" cy="41" r="10"/>
+                <circle cx="90" cy="37" r="12"/>
+                <circle cx="104" cy="41" r="10"/>
+              </g>
+              <path d="M74 35C82 31 94 31 103 35" stroke="#FF8DA1" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+              <!-- Eyes & Rosy Cheeks -->
+              <circle cx="78" cy="62" r="3.4" fill="#191F28"/>
+              <circle cx="76.8" cy="60.8" r="1.2" fill="#FFFFFF"/>
+              <circle cx="102" cy="62" r="3.4" fill="#191F28"/>
+              <circle cx="100.8" cy="60.8" r="1.2" fill="#FFFFFF"/>
+              <ellipse cx="69" cy="69" rx="5.5" ry="3" fill="#F9A8B8" opacity="0.65"/>
+              <ellipse cx="111" cy="69" rx="5.5" ry="3" fill="#F9A8B8" opacity="0.65"/>
+
+              <!-- Nose & Gentle Smile -->
+              <path d="M87.5 68C87.5 66.8 92.5 66.8 92.5 68C92.5 69.5 90 71 90 71C90 71 87.5 69.5 87.5 68Z" fill="#D92B4B"/>
+              <path d="M85.5 73.5C87.3 75.5 90 75 90 73.2C90 75 92.7 75.5 94.5 73.5" stroke="#4E5968" stroke-width="1.6" stroke-linecap="round"/>
+
+              <!-- Peeking Paws Resting on Coupon Top + Glowing Gold Fortune Coin & Lucky Pouch -->
+              <!-- Left Paw with Mini Lucky Pouch -->
+              <g transform="translate(38, 76)">
+                <path d="M8 10C4 16 4 28 12 32C18 35 24 35 30 32C38 28 38 16 34 10L28 7H14L8 10Z" fill="#D92B4B" stroke="#8C1830" stroke-width="1.5"/>
+                <path d="M13 7L10 1C14 3 18 2 21 1C24 2 28 3 32 1L29 7H13Z" fill="#EC4766" stroke="#8C1830" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M12 8H30" stroke="#E5C158" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="21" cy="21" r="6.5" fill="#F1D78A"/>
+                <text x="21" y="24" text-anchor="middle" font-size="8.5" font-weight="800" fill="#8C1830">福</text>
+              </g>
+              <ellipse cx="66" cy="96" rx="10" ry="7" fill="#FFF5EA" stroke="#8C1830" stroke-width="1.6"/>
+
+              <!-- Right Paw with Glowing Gold Coin -->
+              <g transform="translate(108, 76)">
+                <circle cx="17" cy="17" r="16" fill="url(#fortuneCoin)" stroke="#A67E1E" stroke-width="1.8"/>
+                <circle cx="17" cy="17" r="11.5" stroke="#FFF9E6" stroke-width="1.2" stroke-dasharray="2.5 2"/>
+                <text x="17" y="21.5" text-anchor="middle" font-size="13" font-weight="900" fill="#7A5608">C</text>
+              </g>
+              <ellipse cx="114" cy="96" rx="10" ry="7" fill="#FFF5EA" stroke="#8C1830" stroke-width="1.6"/>
+
+              <defs>
+                <radialGradient id="sheepAura" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(90 64) rotate(90) scale(48)">
+                  <stop stop-color="#E5C158" stop-opacity="0.32"/>
+                  <stop offset="1" stop-color="#2D0B16" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="fortuneCoin" x1="2" y1="2" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFF4CC"/>
+                  <stop offset="0.5" stop-color="#E5C158"/>
+                  <stop offset="1" stop-color="#B8891E"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <!-- Sleek Metallic Gold-Trimmed VIP Coupon Card -->
+          <div class="vip-coupon rounded-2xl shadow-vip-card p-1.5 pt-6">
+            <div class="coupon-notch-left" aria-hidden="true"></div>
+            <div class="coupon-notch-right" aria-hidden="true"></div>
+
+            <div class="rounded-xl border border-dashed border-champagne-600/45 bg-white/65 px-4 py-4">
+              <p class="text-[13px] font-bold text-burgundy-800 tracking-tight mb-1">
+                타로·사주·신점 무료상담 쿠폰
+              </p>
+
+              <div class="flex flex-wrap items-center justify-center gap-2 my-1">
+                <span class="text-[38px] font-black tracking-[-0.03em] text-burgundy-950 leading-none">
+                  10,000<span class="text-[24px] font-extrabold ml-0.5">코인</span>
+                </span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-crimson-500 text-white text-[11.5px] font-bold shadow-sm">
+                  회원가입 시 즉시지급!
+                </span>
+              </div>
+
+              <p class="text-[12.5px] font-semibold text-charcoal-600 mt-1.5">
+                최대 7분 무료 전화상담 가능
+              </p>
             </div>
+          </div>
         </div>
 
-    </main>
+        <!-- Primary High-Contrast CTA Button -->
+        <button
+          type="button"
+          onclick="openSignupModal()"
+          class="w-full py-4 px-5 rounded-2xl bg-gradient-to-r from-champagne-300 via-champagne-400 to-champagne-500 text-burgundy-950 font-extrabold text-[16.5px] tracking-tight shadow-gold-cta hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mb-4"
+        >
+          <span>최대 7분 전화상담 무료로 받기</span>
+          <svg class="w-5 h-5 text-burgundy-950" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-800 bg-gray-950 py-6 mt-12 text-center text-xs text-gray-500">
-        <p>강희창과 함께하는 반도체 로드 · 2026년 11월 기준 정밀 시세 인텔리전스</p>
+        <!-- Live Urgency Bar Inside Hero -->
+        <div class="rounded-xl bg-white/[0.07] border border-white/15 px-3.5 py-2.5 flex items-center justify-between gap-2 text-left">
+          <p class="text-[12px] font-medium text-ivory-100 leading-snug">
+            🔔 오늘의 신규 회원 지원 혜택 마감 임박 · <strong class="text-champagne-300 font-bold">잔여 9,996명</strong>
+          </p>
+          <span class="shrink-0 inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-burgundy-950/80 border border-champagne-400/30">
+            <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-pulse"></span>
+            <span class="font-mono text-[12px] font-bold text-champagne-300 tracking-wider js-countdown">14:19:52</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. INTERACTIVE '2027 신년 고민 선택' SECTION ==================== -->
+    <section class="py-10 px-5 bg-ivory-50">
+      <div class="mb-5">
+        <span class="inline-block text-[12px] font-bold text-crimson-500 tracking-tight mb-1">
+          2027 정미년 맞춤 운세
+        </span>
+        <h2 class="text-[21px] font-extrabold text-charcoal-900 leading-[1.35] tracking-[-0.02em]">
+          2027년 정미년,<br />어떤 고민이 가장 크신가요?
+        </h2>
+        <p class="text-[13px] text-charcoal-500 mt-1">
+          가장 마음이 쓰이는 카드를 눌러보세요.
+        </p>
+      </div>
+
+      <!-- 2x2 Interactive Card Grid -->
+      <div class="grid grid-cols-2 gap-3 mb-4" id="concernGrid">
+        <!-- Card 1: 이직 -->
+        <button
+          type="button"
+          data-concern="career"
+          onclick="selectConcern('career', this)"
+          class="concern-card concern-card-active text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-fintech transition-all duration-200 hover:-translate-y-0.5 focus:outline-none"
+        >
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-crimson-50 text-crimson-600 text-[12.5px] font-bold">
+              <span>🚀</span>
+              <span>이직</span>
+            </span>
+            <span class="concern-check w-4 h-4 rounded-full bg-crimson-500 text-white flex items-center justify-center text-[10px]">✓</span>
+          </div>
+          <p class="text-[13.5px] leading-[1.5] text-charcoal-700 font-semibold">
+            "지금 발령해도 될까? 올해 이직해도 될까?"
+          </p>
+        </button>
+
+        <!-- Card 2: 재물 -->
+        <button
+          type="button"
+          data-concern="wealth"
+          onclick="selectConcern('wealth', this)"
+          class="concern-card text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-fintech transition-all duration-200 hover:-translate-y-0.5 focus:outline-none"
+        >
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-champagne-100 text-champagne-600 text-[12.5px] font-bold">
+              <span>💰</span>
+              <span>재물</span>
+            </span>
+            <span class="concern-check w-4 h-4 rounded-full bg-ivory-200 text-transparent flex items-center justify-center text-[10px]">✓</span>
+          </div>
+          <p class="text-[13.5px] leading-[1.5] text-charcoal-700 font-semibold">
+            "열심히 일하는데, 재수가 왜 이렇게 없을까?"
+          </p>
+        </button>
+
+        <!-- Card 3: 관계 -->
+        <button
+          type="button"
+          data-concern="relation"
+          onclick="selectConcern('relation', this)"
+          class="concern-card text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-fintech transition-all duration-200 hover:-translate-y-0.5 focus:outline-none"
+        >
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ivory-100 text-charcoal-700 text-[12.5px] font-bold">
+              <span>😤</span>
+              <span>관계</span>
+            </span>
+            <span class="concern-check w-4 h-4 rounded-full bg-ivory-200 text-transparent flex items-center justify-center text-[10px]">✓</span>
+          </div>
+          <p class="text-[13.5px] leading-[1.5] text-charcoal-700 font-semibold">
+            "힘든 상사, 편한 동료... 인간관계 해결책은?"
+          </p>
+        </button>
+
+        <!-- Card 4: 연애 -->
+        <button
+          type="button"
+          data-concern="love"
+          onclick="selectConcern('love', this)"
+          class="concern-card text-left bg-white rounded-2xl p-4 border border-ivory-200 shadow-fintech transition-all duration-200 hover:-translate-y-0.5 focus:outline-none"
+        >
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-crimson-50 text-crimson-500 text-[12.5px] font-bold">
+              <span>💌</span>
+              <span>연애</span>
+            </span>
+            <span class="concern-check w-4 h-4 rounded-full bg-ivory-200 text-transparent flex items-center justify-center text-[10px]">✓</span>
+          </div>
+          <p class="text-[13.5px] leading-[1.5] text-charcoal-700 font-semibold">
+            "떠나간 연인... 내 인연은 어디에?"
+          </p>
+        </button>
+      </div>
+
+      <!-- Dynamic Encouraging Message + Highlighted Banner -->
+      <div class="rounded-2xl bg-white border border-crimson-100 p-4 shadow-fintech">
+        <div class="flex items-center gap-2 mb-1.5">
+          <span class="px-2 py-0.5 rounded bg-crimson-50 text-crimson-600 text-[11px] font-bold" id="concernTag">🚀 이직·커리어 운세</span>
+          <span class="text-[12px] font-medium text-charcoal-500" id="concernDynamicMsg">2027년 정미년, 이직과 승진의 황금 시기를 짚어드려요.</span>
+        </div>
+        <p class="text-[14.5px] font-bold text-charcoal-900 leading-[1.5]">
+          지금 당신에게 필요한 <span class="text-crimson-600">'최적의 타이밍'</span>을 무료로 7분 만에 확인하세요.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== 4. BRAND TRUST & INTRO SECTION ==================== -->
+    <section class="py-10 px-5 bg-white border-y border-ivory-200">
+      <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-burgundy-900 text-champagne-300 text-[11.5px] font-bold tracking-tight mb-3.5">
+        모운 소개
+      </span>
+
+      <h2 class="text-[20px] font-extrabold text-charcoal-900 leading-[1.42] tracking-[-0.02em] mb-3">
+        모운은 개인별 맞춤 상담을 제공하는<br />
+        운세 전화 상담 전문 플랫폼입니다.
+      </h2>
+
+      <p class="text-[14.5px] leading-[1.68] text-charcoal-600 mb-6">
+        전문 상담사들과의 1:1 대화를 통해 고민과 문제를 해결할 수 있습니다. 전화 한 통으로 쉽게 털어놓기 힘든 고민들을 모운과 함께 해결해보세요!
+      </p>
+
+      <!-- 3 Clean Trust Metrics / Pills -->
+      <div class="grid grid-cols-3 gap-2">
+        <div class="rounded-xl bg-ivory-50 border border-ivory-200 py-3 px-2 text-center">
+          <div class="text-[15px] mb-1">🎯</div>
+          <p class="text-[12px] font-bold text-charcoal-900">1:1 맞춤 상담</p>
+        </div>
+        <div class="rounded-xl bg-ivory-50 border border-ivory-200 py-3 px-2 text-center">
+          <div class="text-[15px] mb-1">🔒</div>
+          <p class="text-[12px] font-bold text-charcoal-900">100% 익명 보장</p>
+        </div>
+        <div class="rounded-xl bg-ivory-50 border border-ivory-200 py-3 px-2 text-center">
+          <div class="text-[15px] mb-1">🪙</div>
+          <p class="text-[12px] font-bold text-charcoal-900">즉시 코인 지급</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. VISUAL STEP-BY-STEP & INTERACTIVE USAGE GUIDE ==================== -->
+    <section class="py-10 px-5 bg-ivory-50">
+      <div class="mb-5">
+        <span class="text-[12px] font-bold text-champagne-600 tracking-wider uppercase block mb-1">HOW TO USE</span>
+        <h2 class="text-[21px] font-extrabold text-charcoal-900 tracking-[-0.02em]">
+          모운 코인으로 무엇을 할 수 있나요?
+        </h2>
+      </div>
+
+      <!-- 2 Sleek Step Cards with Clean Vector Phone/UI Illustrations -->
+      <div class="space-y-3.5 mb-8">
+        <!-- Step ① -->
+        <div class="bg-white rounded-2xl p-5 border border-ivory-200 shadow-fintech">
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <span class="w-6 h-6 rounded-full bg-crimson-500 text-white text-[13px] font-bold flex items-center justify-center">①</span>
+            <h3 class="text-[15.5px] font-bold text-charcoal-900">원하는 상담사를 선택한다</h3>
+          </div>
+
+          <!-- Clean Vector UI Mockup: Counselor Selection -->
+          <div class="rounded-xl bg-ivory-50 border border-ivory-200 p-3.5">
+            <div class="flex items-center justify-between gap-2.5 mb-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="w-10 h-10 rounded-full bg-burgundy-900 text-champagne-300 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[13.5px] font-bold text-charcoal-900 truncate">서연 타로·신년운세</span>
+                    <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-bold shrink-0">대기중</span>
+                  </div>
+                  <p class="text-[11.5px] text-charcoal-500 mt-0.5 truncate">★ 5.0 · 2027 정미년 운세 전문</p>
+                </div>
+              </div>
+              <span class="shrink-0 px-3 py-1.5 rounded-lg bg-crimson-500 text-white text-[12px] font-bold">상담하기</span>
+            </div>
+            <div class="flex items-center gap-1.5 pt-2.5 border-t border-ivory-200/80">
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-white border border-ivory-200 text-charcoal-600">#타로</span>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-white border border-ivory-200 text-charcoal-600">#사주</span>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-white border border-ivory-200 text-charcoal-600">#신점</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step ② -->
+        <div class="bg-white rounded-2xl p-5 border border-ivory-200 shadow-fintech">
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <span class="w-6 h-6 rounded-full bg-crimson-500 text-white text-[13px] font-bold flex items-center justify-center">②</span>
+            <h3 class="text-[15.5px] font-bold text-charcoal-900">코인으로 무료 상담을 받아본다</h3>
+          </div>
+
+          <!-- Clean Vector UI Mockup: Active Call Screen -->
+          <div class="rounded-xl bg-burgundy-950 text-white p-4 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="relative shrink-0">
+                <div class="w-10 h-10 rounded-full bg-white/10 border border-champagne-400/50 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-champagne-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                </div>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-burgundy-950 absolute bottom-0 right-0 animate-live-pulse"></span>
+              </div>
+              <div class="min-w-0">
+                <span class="inline-block px-2 py-0.5 rounded bg-champagne-400/20 text-champagne-300 text-[10.5px] font-bold mb-1">
+                  10,000코인 즉시 적용
+                </span>
+                <p class="text-[13px] font-bold text-white truncate">1:1 익명 전화상담 연결됨</p>
+              </div>
+            </div>
+            <div class="text-right shrink-0">
+              <span class="font-mono text-[14px] font-bold text-emerald-400 block">03:45</span>
+              <span class="text-[10.5px] text-white/60">무료 통화중</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clean Tabbed Toggle for '이용방법' -->
+      <div class="bg-white rounded-2xl p-5 border border-ivory-200 shadow-fintech">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-[17px] font-extrabold text-charcoal-900">이용방법</h3>
+          <!-- Segmented Control Tabs -->
+          <div class="inline-flex p-1 rounded-xl bg-ivory-100 border border-ivory-200" role="tablist" aria-label="이용방법 선택">
+            <button
+              type="button"
+              id="tabMobile"
+              role="tab"
+              aria-selected="true"
+              onclick="switchUsageTab('mobile')"
+              class="px-3 py-1.5 rounded-lg text-[12.5px] font-bold transition-all bg-white text-charcoal-900 shadow-sm"
+            >
+              모바일 이용 시
+            </button>
+            <button
+              type="button"
+              id="tabPc"
+              role="tab"
+              aria-selected="false"
+              onclick="switchUsageTab('pc')"
+              class="px-3 py-1.5 rounded-lg text-[12.5px] font-semibold transition-all text-charcoal-500 hover:text-charcoal-700"
+            >
+              PC 이용 시
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Content: Mobile -->
+        <div id="panelMobile" class="rounded-xl bg-ivory-50 border border-ivory-200 p-4 mb-3.5">
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-md bg-burgundy-900 text-champagne-300 text-[12px] font-bold flex items-center justify-center shrink-0 mt-0.5">M</span>
+            <p class="text-[13.5px] leading-[1.62] text-charcoal-700 font-medium">
+              5,000 코인 이상 보유 후, <strong class="text-charcoal-900">[상담하기]</strong>를 누르고 <strong class="text-crimson-600 font-bold">070-7663-0517</strong>로 전화하세요.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tab Content: PC -->
+        <div id="panelPc" class="hidden rounded-xl bg-ivory-50 border border-ivory-200 p-4 mb-3.5">
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-md bg-burgundy-900 text-champagne-300 text-[12px] font-bold flex items-center justify-center shrink-0 mt-0.5">P</span>
+            <p class="text-[13.5px] leading-[1.62] text-charcoal-700 font-medium">
+              5,000 코인 이상 보유 후, 원하는 상담사 프로필에서 <strong class="text-charcoal-900">[상담하기]</strong>를 클릭하고 <strong class="text-crimson-600 font-bold">070-7663-0517</strong>을 입력해 통화하세요.
+            </p>
+          </div>
+        </div>
+
+        <!-- Compact Info Box for '이용 요금 안내' -->
+        <div class="rounded-xl bg-champagne-100/70 border border-champagne-300/60 px-3.5 py-3 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-champagne-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <div>
+            <p class="text-[12.5px] font-bold text-charcoal-900 mb-0.5">이용 요금 안내</p>
+            <p class="text-[12.5px] leading-[1.5] text-charcoal-600">
+              상담사가 설정한 가격에 따라 30초당 700원 ~ 2,900원 적용됩니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. FINTECH-GRADE TRUST & REFUND GUARANTEE SECTION ==================== -->
+    <section class="py-10 px-5 bg-white border-y border-ivory-200 space-y-5">
+      <!-- Privacy Card -->
+      <div class="rounded-2xl bg-ivory-50 border border-ivory-200 p-5">
+        <div class="flex items-center justify-between gap-2 mb-3.5">
+          <div class="w-10 h-10 rounded-xl bg-white border border-ivory-200 flex items-center justify-center shadow-sm">
+            <svg class="w-5 h-5 text-crimson-500" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-crimson-50 border border-crimson-100 text-crimson-600 text-[12px] font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-crimson-500"></span>
+            익명보장 100%
+          </span>
+        </div>
+
+        <h3 class="text-[18px] font-extrabold text-charcoal-900 mb-2 tracking-[-0.015em]">
+          전화 상담, 내 정보는 안전할까요?
+        </h3>
+        <p class="text-[13.5px] leading-[1.65] text-charcoal-600">
+          모운에서는 상담사에게 번호가 보이지 않고 모운 전용 번호만 표시됩니다. 상담 내용은 기록되지 않으며, 완벽한 익명이 됩니다. 안심하고 상담하세요!
+        </p>
+      </div>
+
+      <!-- Structured Refund Policy Card -->
+      <div class="rounded-2xl bg-white border border-ivory-200 shadow-fintech overflow-hidden">
+        <div class="px-5 py-3.5 bg-ivory-50 border-b border-ivory-200 flex items-center justify-between">
+          <h3 class="text-[16px] font-extrabold text-charcoal-900">환불 정책</h3>
+          <span class="text-[11.5px] font-semibold text-charcoal-500">투명한 결제 보호</span>
+        </div>
+
+        <div class="divide-y divide-ivory-200">
+          <!-- 7일 이내 -->
+          <div class="p-4 flex items-start gap-3">
+            <span class="shrink-0 w-[68px] text-center py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[11.5px] font-bold">
+              7일 이내
+            </span>
+            <p class="text-[13px] leading-[1.55] text-charcoal-700">
+              코인을 사용하지 않은 경우 100% 전액 환불이 가능합니다.
+            </p>
+          </div>
+
+          <!-- 7일 이후 -->
+          <div class="p-4 flex items-start gap-3">
+            <span class="shrink-0 w-[68px] text-center py-1 rounded-md bg-champagne-100 text-champagne-600 border border-champagne-300/70 text-[11.5px] font-bold">
+              7일 이후
+            </span>
+            <p class="text-[13px] leading-[1.55] text-charcoal-700">
+              결제금액의 10% 환불 수수료를 공제 후 환불 처리됩니다.
+            </p>
+          </div>
+
+          <!-- 환불 불가 -->
+          <div class="p-4 flex items-start gap-3">
+            <span class="shrink-0 w-[68px] text-center py-1 rounded-md bg-crimson-50 text-crimson-600 border border-crimson-100 text-[11.5px] font-bold">
+              환불 불가
+            </span>
+            <p class="text-[13px] leading-[1.55] text-charcoal-700">
+              이미 사용한 코인, 무료로 지급받은 코인(이벤트·추천인 등)은 환불되지 않습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. '모운 만의 장점' (3 HORIZONTAL ICON CARDS) ==================== -->
+    <section class="py-10 px-5 bg-ivory-50">
+      <div class="mb-5">
+        <span class="text-[12px] font-bold text-crimson-500 tracking-wider uppercase block mb-1">WHY MOUN</span>
+        <h2 class="text-[21px] font-extrabold text-charcoal-900 tracking-[-0.02em]">
+          모운 만의 장점
+        </h2>
+      </div>
+
+      <div class="space-y-3">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl p-4 border border-ivory-200 shadow-fintech flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-ivory-50 border border-ivory-200 flex items-center justify-center text-[20px] shrink-0">
+            🛡️
+          </div>
+          <div>
+            <h3 class="text-[15.5px] font-bold text-charcoal-900 mb-1">프라이빗한 상담</h3>
+            <p class="text-[13.5px] leading-[1.58] text-charcoal-600">
+              모운의 전문 상담사들과의 대화를 통해 고민을 쉽게 해결할 수 있습니다!
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl p-4 border border-ivory-200 shadow-fintech flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-ivory-50 border border-ivory-200 flex items-center justify-center text-[20px] shrink-0">
+            📱
+          </div>
+          <div>
+            <h3 class="text-[15.5px] font-bold text-charcoal-900 mb-1">편리한 상담 접근성</h3>
+            <p class="text-[13.5px] leading-[1.58] text-charcoal-600">
+              시간과 장소에 구애받지 않고 언제 어디서나 간편하게 시작할 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl p-4 border border-ivory-200 shadow-fintech flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-ivory-50 border border-ivory-200 flex items-center justify-center text-[20px] shrink-0">
+            🎯
+          </div>
+          <div>
+            <h3 class="text-[15.5px] font-bold text-charcoal-900 mb-1">개인 맞춤형 조언</h3>
+            <p class="text-[13.5px] leading-[1.58] text-charcoal-600">
+              성향과 고민에 맞게 검증된 전문가를 통해 맞춤형 실질적인 해결책을 제공합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. EMOTIONAL CLOSING BANNER (DEEP BURGUNDY + RED SHEEP) ==================== -->
+    <section class="px-5 pb-10 pt-2 bg-ivory-50">
+      <div class="closing-burgundy-bg rounded-3xl p-6 text-center relative overflow-hidden border border-champagne-400/30 shadow-xl">
+        <!-- Subtle corner glow -->
+        <div class="w-40 h-40 rounded-full bg-crimson-500/20 blur-3xl absolute -top-12 -right-12 pointer-events-none" aria-hidden="true"></div>
+        <div class="w-32 h-32 rounded-full bg-champagne-400/15 blur-2xl absolute -bottom-10 -left-10 pointer-events-none" aria-hidden="true"></div>
+
+        <!-- Smaller Welcoming Red Sheep Icon -->
+        <div class="relative z-10 flex justify-center mb-4">
+          <svg class="w-16 h-16 drop-shadow-md" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="붉은 양 마스코트 아이콘">
+            <circle cx="44" cy="44" r="40" fill="#FFFFFF" fill-opacity="0.08" stroke="#E5C158" stroke-opacity="0.45" stroke-width="1.2"/>
+            <!-- Horns -->
+            <path d="M30 28C25 24 25 18 30 17" stroke="#E5C158" stroke-width="2" stroke-linecap="round"/>
+            <path d="M58 28C63 24 63 18 58 17" stroke="#E5C158" stroke-width="2" stroke-linecap="round"/>
+            <!-- Wool -->
+            <circle cx="34" cy="30" r="8" fill="#D92B4B"/>
+            <circle cx="44" cy="26" r="9.5" fill="#D92B4B"/>
+            <circle cx="54" cy="30" r="8" fill="#D92B4B"/>
+            <!-- Ears -->
+            <ellipse cx="24" cy="42" rx="6.5" ry="4" transform="rotate(-18 24 42)" fill="#FFF5EA"/>
+            <ellipse cx="64" cy="42" rx="6.5" ry="4" transform="rotate(18 64 42)" fill="#FFF5EA"/>
+            <!-- Face -->
+            <ellipse cx="44" cy="46" rx="17" ry="15" fill="#FFF9F2"/>
+            <!-- Eyes & Blush -->
+            <circle cx="37.5" cy="45" r="2.1" fill="#191F28"/>
+            <circle cx="50.5" cy="45" r="2.1" fill="#191F28"/>
+            <ellipse cx="33" cy="49" rx="3" ry="1.8" fill="#F9A8B8" opacity="0.7"/>
+            <ellipse cx="55" cy="49" rx="3" ry="1.8" fill="#F9A8B8" opacity="0.7"/>
+            <path d="M41.5 50.5C43 52 45 52 46.5 50.5" stroke="#4E5968" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Mini Gold Coin Accent -->
+            <circle cx="62" cy="62" r="8" fill="#E5C158" stroke="#FFF4CC" stroke-width="1.2"/>
+            <text x="62" y="65" text-anchor="middle" font-size="8" font-weight="900" fill="#5C1A30">福</text>
+          </svg>
+        </div>
+
+        <h2 class="relative z-10 text-[20px] font-extrabold text-white leading-[1.42] tracking-[-0.02em] mb-3">
+          내 이야기, 괜찮을까 고민하지 마세요.<br />
+          <span class="text-champagne-300">모운은 어떤 이야기도 존중합니다.</span>
+        </h2>
+
+        <p class="relative z-10 text-[13.5px] leading-[1.65] text-ivory-200/85 mb-6 max-w-[320px] mx-auto">
+          모운 전문가와 이야기를 나눠보세요. 당신의 이야기를 차별 없이 듣고, 당신만의 답을 함께 찾아드립니다.
+        </p>
+
+        <button
+          type="button"
+          onclick="openSignupModal()"
+          class="relative z-10 w-full py-4 px-5 rounded-2xl bg-gradient-to-r from-champagne-300 via-champagne-400 to-champagne-500 text-burgundy-950 font-extrabold text-[16px] tracking-tight shadow-gold-cta hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5"
+        >
+          <span>최대 7분 전화상담 무료로 받기</span>
+          <svg class="w-5 h-5 text-burgundy-950" fill="none" stroke="currentColor" stroke-width="2.6" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== 9. FOOTER (EXACT LEGAL DETAILS) ==================== -->
+    <footer class="bg-charcoal-900 text-charcoal-400 px-5 pt-8 pb-28 text-[11.5px] leading-[1.75]">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-[16px] font-extrabold text-white tracking-tight">모운</span>
+        <span class="text-[10.5px] px-2 py-0.5 rounded bg-white/10 text-champagne-300 font-semibold">2027 정미년</span>
+      </div>
+
+      <div class="space-y-0.5">
+        <p>주식회사 업사이클솔루션 | 대표 : 김도한</p>
+        <p>사업자등록번호 : 415-86-01563 | 통신판매업신고 : 제2023-서울금천-2866호</p>
+        <p>서울 금천구 가산디지털2로 169-16, 하우스디 가산퍼스타 A동 907호</p>
+        <p>대표전화 : 1533-9748 | 이메일 : help@moun.co.kr</p>
+        <p>고객센터 운영시간 : 평일 09:00 ~ 18:00 (점심시간 12:30 ~ 13:30)</p>
+      </div>
+
+      <div class="mt-4 pt-3.5 border-t border-white/10 flex items-center gap-3 text-[12px] text-ivory-200">
+        <button type="button" onclick="openPolicyModal('이용약관')" class="hover:text-champagne-300 transition underline-offset-2 hover:underline">이용약관</button>
+        <span class="text-white/20">|</span>
+        <button type="button" onclick="openPolicyModal('개인정보 취급방침')" class="font-bold hover:text-champagne-300 transition underline-offset-2 hover:underline">개인정보 취급방침</button>
+      </div>
     </footer>
 
-    <!-- Floating Top Button -->
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white shadow-lg flex items-center justify-center transition z-40">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+  </div><!-- /Mobile-First Centered Frame -->
 
-    <script>
-        // 2026년 11월 기준 정확한 글로벌 시장 종가 및 등락률 데이터베이스 (46개 종목)
-        const SECTORS = [
-            {
-                id: "sec-1", name: "01. AI GPU · 가속기", icon: "fa-microchip", color: "text-cyan-400",
-                stocks: [
-                    { code: "NVDA", name: "엔비디아", market: "NASDAQ", price: "$145.89", change: "+2.45%", isUp: true, badge: "GPU 1위", p1: "AI 가속기 시장 독점적 1위(H100/B200), 쿠다(CUDA) 소프트웨어 생태계 장악.", p2: "블랙웰(Blackwell) 아키텍처 대규모 양산 및 빅테크향 공급 가속화.", p3: "TSMC CoWoS 패키징 및 SK하이닉스/마이크론 HBM3e와 동맹.", p4: "AMD(MI300 시리즈) 및 빅테크 커스텀 ASIC(구글 TPU)과 경쟁.", rivals: "AMD, 구글(TPU), 마이크로소프트(Maia)" },
-                    { code: "AMD", name: "AMD", market: "NASDAQ", price: "$138.50", change: "+1.20%", isUp: true, badge: "GPU 2위", p1: "인스팅트(Instinct) MI300 시리즈로 엔비디아 대항마 입지 공견.", p2: "메타, 마이크로소프트 등 대형 클라우드 AI 칩 공급 확대.", p3: "TSMC 어드밴스드 패키징(CoWoS) 캐파 확보 핵심.", p4: "엔비디아, 인텔, 구글.", rivals: "엔비디아, 인텔, 구글" },
-                    { code: "INTC", name: "인텔", market: "NASDAQ", price: "$22.35", change: "-0.90%", isUp: false, badge: "IDM 부활", p1: "전통적 PC/서버 CPU 강자이나 파운드리 분할 및 18A 공정 사활.", p2: "미국 정부 보조금 및 파운드리 고객사 확보 시도.", p3: "ASML 최신 노광장비 도입.", p4: "TSMC, AMD, ARM.", rivals: "TSMC, AMD, ARM" }
-                ]
-            },
-            {
-                id: "sec-2", name: "02. HBM · 메모리", icon: "fa-memory", color: "text-blue-400",
-                stocks: [
-                    { code: "000660.KS", name: "SK하이닉스", market: "KOSPI", price: "192,500원", change: "+3.10%", isUp: true, badge: "HBM 독주", p1: "AI 메모리 핵심 HBM3 및 HBM3e 시장 엔비디아향 독점적 지위.", p2: "차세대 HBM4 개발 및 서버용 DDR5 수요 집중 수혜.", p3: "TSMC와의 동맹을 통한 로직 다이 결합 생태계 주도.", p4: "삼성전자, 마이크론.", rivals: "삼성전자, 마이크론" },
-                    { code: "005930.KS", name: "삼성전자", market: "KOSPI", price: "57,100원", change: "-1.20%", isUp: false, badge: "종합 반도체", p1: "메모리 글로벌 1위이자 파운드리 및 모바일 AP 수직 계열화.", p2: "HBM3e 퀄테스트 및 차세대 HBM4 턴키 솔루션 강화.", p3: "고부가가치 AI 메모리 라인 전환 집중.", p4: "SK하이닉스, TSMC, 마이크론.", rivals: "SK하이닉스, TSMC, 마이크론" },
-                    { code: "MU", name: "마이크론", market: "NASDAQ", price: "$104.50", change: "+1.80%", isUp: true, badge: "HBM 추격", p1: "미국 본토 생산거점 및 HBM3e 양산으로 공급망 다변화.", p2: "DRAM 및 NAND 가격 반등 사이클 턴어라운드.", p3: "미국 CHIPS Act 직접 수혜.", p4: "SK하이닉스, 삼성전자.", rivals: "SK하이닉스, 삼성전자" }
-                ]
-            },
-            {
-                id: "sec-3", name: "03. 파운드리 · 패키징", icon: "fa-industry", color: "text-purple-400",
-                stocks: [
-                    { code: "TSM", name: "TSMC", market: "NYSE", price: "$198.50", change: "+2.20%", isUp: true, badge: "파운드리 패권", p1: "3나노 이하 선단 공정 및 CoWoS 어드밴스드 패키징 독점.", p2: "엔비디아, 애플, AMD 전 물량 위탁 생산.", p3: "미국 애리조나 및 일본 글로벌 팹 다변화.", p4: "삼성전자, 인텔 파운드리.", rivals: "삼성전자, 인텔" },
-                    { code: "ALAB", name: "아스테라 랩스", market: "NASDAQ", price: "$98.40", change: "+4.50%", isUp: true, badge: "AI 병목 해결", p1: "AI 서버 내부 리타이머 및 커스텀 연결 솔루션 독보적 강자.", p2: "CSP들의 AI 서버 증설에 따른 고성능 연결 부품 폭증.", p3: "엔비디아/AMD 생태계 동반 성장.", p4: "브로드컴, 마벨.", rivals: "브로드컴, 마벨" }
-                ]
-            },
-            {
-                id: "sec-4", name: "04. 커스텀 ASIC · 통신", icon: "fa-network-wired", color: "text-emerald-400",
-                stocks: [
-                    { code: "AVGO", name: "브로드컴", market: "NASDAQ", price: "$182.10", change: "+1.65%", isUp: true, badge: "ASIC 최강자", p1: "구글 TPU 등 커스텀 AI ASIC 설계 및 네트워킹 스위치 독점.", p2: "VMware 인수 시너지 및 AI 데이터센터 네트워킹 고성장.", p3: "이더넷 기반 AI 네트워킹 표준 주도.", p4: "마벨, 퀄컴.", rivals: "마벨, 퀄컴" },
-                    { code: "MRVL", name: "마벨", market: "NASDAQ", price: "$82.60", change: "+2.10%", isUp: true, badge: "맞춤형 AI 실리콘", p1: "CSP향 커스텀 ASIC 및 광인터커넥트 솔루션 핵심 공급사.", p2: "아마존, 메타 등 맞춤형 AI 칩 프로젝트 다수 수주.", p3: "고속 데이터 전송 옵틱스(DSP) 기술력 우위.", p4: "브로드컴, 퀄컴.", rivals: "브로드컴, 퀄컴" },
-                    { code: "QCOM", name: "퀄컴", market: "NASDAQ", price: "$168.40", change: "+0.95%", isUp: true, badge: "온디바이스 AI", p1: "스냅드래곤 X 엘리트 및 모바일 AP 온디바이스 AI 선도.", p2: "PC 및 오토모티브 칩셋 시장 다변화 성공.", p3: "AWS 600억 달러 계약 및 스타링크 5G 협력.", p4: "미디어텍, 애플.", rivals: "미디어텍, 애플" },
-                    { code: "2454.TW", name: "미디어텍", market: "TWSE", price: "1,285 TWD", change: "+1.40%", isUp: true, badge: "모바일 AP 강자", p1: "디멘시티 시리즈로 플래그십 모바일 AP 점유율 확대.", p2: "ASIC 및 오토모티브 첨단 SoC 설계 역량 강화.", p3: "TSMC 공정 기반 저전력 칩 설계.", p4: "퀄컴, 애플.", rivals: "퀄컴, 애플" }
-                ]
-            },
-            {
-                id: "sec-5", name: "05. EDA · 반도체 설계", icon: "fa-pen-nib", color: "text-amber-400",
-                stocks: [
-                    { code: "SNPS", name: "시놉시스", market: "NASDAQ", price: "$512.30", change: "+0.80%", isUp: true, badge: "EDA 독점", p1: "EDA 소프트웨어 글로벌 1위, AI 기반 설계 도구 혁신 주도.", p2: "첨단 공정 칩 설계 수요 증가 라이선스 매출 안정.", p3: "앤시스 인수 시너지.", p4: "케이던스.", rivals: "케이던스" },
-                    { code: "CDNS", name: "케이던스", market: "NASDAQ", price: "$274.50", change: "+1.25%", isUp: true, badge: "IP 및 설계", p1: "핵심 EDA 및 IP 포트폴리오 보유 필수 파트너.", p2: "커스텀 ASIC 및 AI 가속기 설계 난이도 상승 수혜.", p3: "클라우드 기반 설계 환경 확장.", p4: "시놉시스.", rivals: "시놉시스" },
-                    { code: "ARM", name: "암 홀딩스", market: "NASDAQ", price: "$138.90", change: "+3.40%", isUp: true, badge: "모바일 아키텍처", p1: "모바일 및 저전력 프로세서 아키텍처 원천 기술 표준 장악.", p2: "서버용 CPU 및 AI PC 생태계 확장.", p3: "고부가가치 v9 아키텍처 채택률 급증.", p4: "인텔, RISC-V.", rivals: "인텔, RISC-V" }
-                ]
-            },
-            {
-                id: "sec-6", name: "06. 장비 · 노광 · 식각", icon: "fa-gears", color: "text-rose-400",
-                stocks: [
-                    { code: "ASML", name: "ASML", market: "NASDAQ", price: "$698.20", change: "-0.50%", isUp: false, badge: "EUV 독점", p1: "EUV 노광 장비 전 세계 유일 독점 공급사.", p2: "High-NA EUV 상용화 2나노 이하 공정 혁신 주도.", p3: "선단 공정 투자 직접 수혜.", p4: "니콘, 캐논.", rivals: "니콘, 캐논" },
-                    { code: "AMAT", name: "어플라이드 머티어리얼즈", market: "NASDAQ", price: "$178.60", change: "+1.50%", isUp: true, badge: "장비 1위", p1: "증착 및 식각 전공정 장비 글로벌 1위.", p2: "GAA 및 미세화 공정 전환 장비 수요 수혜.", p3: "AI 패키징용 하이브리드 본딩 장비 포트폴리오 강화.", p4: "램리서치, KLA.", rivals: "램리서치, KLA" },
-                    { code: "LRCX", name: "램리서치", market: "NASDAQ", price: "$78.40", change: "+1.80%", isUp: true, badge: "식각 장비", p1: "식각 및 증착 장비 글로벌 강자, 3D 낸드 필수.", p2: "HBM 및 고단 3D NAND 제조 공정 복잡화 수혜.", p3: "장비 유지보수 매출 비중 확대.", p4: "AMAT, 도쿄일렉트론.", rivals: "AMAT, 도쿄일렉트론" },
-                    { code: "KLAC", name: "KLA", market: "NASDAQ", price: "$682.10", change: "+0.70%", isUp: true, badge: "계측 검사", p1: "반도체 공정 검사 및 계측 분야 독점적 지위.", p2: "미세 공정 수율 향상 필수 장비.", p3: "AI 기반 결함 검출 알고리즘 적용.", p4: "AMAT.", rivals: "AMAT" }
-                ]
-            },
-            {
-                id: "sec-7", name: "07. 장비 · 국산화", icon: "fa-screwdriver-wrench", color: "text-indigo-400",
-                stocks: [
-                    { code: "028300.KQ", name: "리노공업", market: "KOSDAQ", price: "214,000원", change: "+2.50%", isUp: true, badge: "반도체 소모품", p1: "IC 테스트 소켓 및 소형핀 글로벌 독보적 마진율.", p2: "글로벌 팹리스 및 테스트 하우스 맞춤형 대응.", p3: "모바일 AP 및 AI 칩 테스트 수요 증가.", p4: "ISC.", rivals: "ISC" },
-                    { code: "095340.KQ", name: "ISC", market: "KOSDAQ", price: "89,500원", change: "+4.10%", isUp: true, badge: "실리콘 러버소켓", p1: "실리콘 러버 테스트 소켓 AI 및 서버용 반도체 필수.", p2: "엔비디아 등 빅테크향 테스트 소켓 공급 급증.", p3: "SK실트론 협업 및 글로벌 거점 확대.", p4: "리노공업.", rivals: "리노공업" },
-                    { code: "401530.KQ", name: "한미반도체", market: "KOSDAQ", price: "128,000원", change: "+5.20%", isUp: true, badge: "TC 본더 독주", p1: "HBM 필수 TC 본더 글로벌 독점적 지위.", p2: "SK하이닉스 및 마이크론 대규모 수주 랠리.", p3: "차세대 하이브리드 본더 양산 진입.", p4: "ASMPT.", rivals: "ASMPT" }
-                ]
-            },
-            {
-                id: "sec-8", name: "08. 전력 · 아날로그", icon: "fa-bolt", color: "text-yellow-400",
-                stocks: [
-                    { code: "ADI", name: "아나로그 디바이스", market: "NASDAQ", price: "$228.40", change: "+0.45%", isUp: true, badge: "아날로그 반도체", p1: "고성능 아날로그 및 혼성신호 반도체 산업용 지배력.", p2: "전력 관리 및 센서 데이터센터 효율화 기여.", p3: "재고 조정 마무리 현금 흐름 창출.", p4: "텍사스 인스트루먼트.", rivals: "텍사스 인스트루먼트" },
-                    { code: "TXN", name: "텍사스 인스트루먼트", market: "NASDAQ", price: "$192.30", change: "-0.30%", isUp: false, badge: "아날로그 거인", p1: "세계 최대 아날로그 반도체 기업 방대한 포트폴리오.", p2: "자체 300mm 팹 투자 원가 경쟁력 확보.", p3: "자동차 및 산업용 표준.", p4: "ADI.", rivals: "ADI" },
-                    { code: "ON", name: "온세미컨덕터", market: "NASDAQ", price: "$74.20", change: "+1.10%", isUp: true, badge: "전력 반도체", p1: "전기차 및 재생에너지 SiC 전력 반도체 선도.", p2: "고효율 전력 변환 칩셋 데이터센터 전력 수혜.", p3: "장기 공급 계약 확보.", p4: "인피니언.", rivals: "인피니언" }
-                ]
-            },
-            {
-                id: "sec-9", name: "09. 광학 · 인터커넥트", icon: "fa-satellite-dish", color: "text-teal-400",
-                stocks: [
-                    { code: "LITE", name: "루멘텀", market: "NASDAQ", price: "$64.50", change: "+3.80%", isUp: true, badge: "광트랜시버", p1: "AI 데이터센터 광트랜시버 및 광학 부품 선도.", p2: "800G 및 1.6T 초고속 광모듈 수요 폭증.", p3: "실리콘 포토닉스 차세대 네트워크 구축.", p4: "코히어런트.", rivals: "코히어런트" },
-                    { code: "COHR", name: "코히어런트", market: "NASDAQ", price: "$84.20", change: "+2.70%", isUp: true, badge: "광학 소재", p1: "광학 레이저 및 데이터센터 트랜시버, SiC 소재 공급.", p2: "AI 인프라 확장 광통신 부품 공급 확대.", p3: "통신 및 레이저 장비 반등.", p4: "루멘텀.", rivals: "루멘텀" },
-                    { code: "CRDO", name: "크레도 테크놀로지", market: "NASDAQ", price: "$41.50", change: "+6.10%", isUp: true, badge: "AEC 고속케이블", p1: "AI 데이터센터 랙 간 연결 AEC 및 고속 전송 칩셋.", p2: "구리 케이블 한계 극복 초고속 전송 솔루션.", p3: "낮은 전력 소모 비용 효율성.", p4: "아스테라 랩스.", rivals: "아스테라 랩스" }
-                ]
-            },
-            {
-                id: "sec-10", name: "10. 메모리 · 컨트롤러", icon: "fa-hard-drive", color: "text-sky-400",
-                stocks: [
-                    { code: "WDC", name: "웨스턴 디지털", market: "NASDAQ", price: "$72.10", change: "+1.40%", isUp: true, badge: "낸드 플래시", p1: "HDD 및 NAND 플래시 메모리 데이터 저장장치 핵심.", p2: "AI 학습/추론 고용량 엔터프라이즈 SSD 수요 급증.", p3: "플래시 사업부 분할 효율화.", p4: "삼성전자, SK하이닉스.", rivals: "씨게이트" },
-                    { code: "STX", name: "씨게이트", market: "NASDAQ", price: "$108.30", change: "+0.90%", isUp: true, badge: "대용량 HDD", p1: "초대형 데이터센터 백업용 고용량 HDD 전문.", p2: "콜드 스토리지 및 빅데이터 아카이빙 수요 지속.", p3: "HAMR 기술 기반 대용량 양산.", p4: "웨스턴 디지털.", rivals: "웨스턴 디지털" }
-                ]
-            },
-            {
-                id: "sec-11", name: "11. 후공정 · 소재", icon: "fa-layer-group", color: "text-orange-400",
-                stocks: [
-                    { code: "AMKR", name: "앰코 테크놀로지", market: "NASDAQ", price: "$28.40", change: "+1.10%", isUp: true, badge: "OSAT 후공정", p1: "반도체 패키징 및 테스트 OSAT 전문 턴키 서비스.", p2: "어드밴스드 패키징 캐파 확장 AI 고객사 대응.", p3: "글로벌 생산 거점 다변화.", p4: "ASE 테크놀로지.", rivals: "ASE 테크놀로지" },
-                    { code: "ENTG", name: "엔테그리스", market: "NASDAQ", price: "$112.50", change: "+1.90%", isUp: true, badge: "소재 및 필터", p1: "특수가스, 화학물질, 첨단 필터 독보적 선두.", p2: "선단 공정 및 패키징 미세화 고순도 소재 수요.", p3: "글로벌 팹 증설 락인 모델.", p4: "에어프로덕츠.", rivals: "에어프로덕츠" }
-                ]
-            }
-        ];
+  <!-- ==================== 10. STICKY BOTTOM FLOATING BAR ==================== -->
+  <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[440px] z-40 px-3 pb-3 pt-2 pointer-events-none">
+    <div class="pointer-events-auto rounded-2xl bg-burgundy-950/95 backdrop-blur-md text-white px-4 py-3 shadow-2xl border border-champagne-400/35 flex items-center justify-between gap-2.5">
+      <div class="min-w-0">
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-pulse shrink-0"></span>
+          <span class="font-mono text-[13px] font-bold text-champagne-300 tracking-wider js-countdown">14:19:52</span>
+          <span class="text-white/30 text-[11px]">|</span>
+          <span class="text-[12px] font-bold text-white truncate">잔여 9,996명</span>
+        </div>
+        <p class="text-[11px] text-ivory-200/75 mt-0.5 truncate">
+          신규 가입 시 10,000코인 즉시 지급
+        </p>
+      </div>
 
-        let selectedStockCode = "NVDA";
-        let lastClickedCardElement = null;
+      <button
+        type="button"
+        onclick="openSignupModal()"
+        class="shrink-0 bg-crimson-500 hover:bg-crimson-600 active:scale-95 transition text-white text-[13px] font-extrabold px-4 py-2.5 rounded-xl shadow-crimson-cta"
+      >
+        지금 가입하기 &gt;
+      </button>
+    </div>
+  </div>
 
-        window.addEventListener('DOMContentLoaded', () => {
-            renderCategoryNav();
-            renderHeatmap();
-            selectStock("NVDA");
-            fetchRealtimeNews("AI 반도체");
-            loadMemo();
+  <!-- ==================== INTERACTIVE SIGNUP CONFIRMATION MODAL ==================== -->
+  <div id="signupModal" class="fixed inset-0 z-50 hidden items-center justify-center px-5" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <!-- Backdrop -->
+    <div onclick="closeModal()" class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+
+    <!-- Modal Panel -->
+    <div class="relative w-full max-w-[350px] bg-white rounded-3xl p-6 text-center shadow-2xl border border-ivory-200">
+      <!-- Icon -->
+      <div class="w-14 h-14 rounded-2xl bg-crimson-50 border border-crimson-100 flex items-center justify-center mx-auto mb-4">
+        <span class="text-[28px]" id="modalEmoji">🎁</span>
+      </div>
+
+      <span class="inline-block px-2.5 py-0.5 rounded-full bg-champagne-100 text-champagne-600 text-[11.5px] font-bold mb-2" id="modalBadge">
+        2027 정미년 신규 회원 혜택
+      </span>
+
+      <h3 id="modalTitle" class="text-[19px] font-extrabold text-charcoal-900 mb-2 tracking-tight">
+        30초 간편 가입 &amp; 10,000코인 즉시 지급
+      </h3>
+
+      <p id="modalDesc" class="text-[13.5px] text-charcoal-600 leading-[1.6] mb-5">
+        휴대폰 본인인증으로 30초 만에 가입하면<br />
+        <strong class="text-crimson-600">10,000코인(최대 7분 무료 상담)</strong>이<br />
+        즉시 지갑으로 지급됩니다.
+      </p>
+
+      <div class="space-y-2" id="modalActions">
+        <button
+          type="button"
+          onclick="confirmMockSignup()"
+          class="w-full py-3.5 rounded-xl bg-crimson-500 hover:bg-crimson-600 active:scale-[0.98] transition text-white font-bold text-[15px] shadow-crimson-cta"
+        >
+          10,000코인 받고 시작하기
+        </button>
+        <button
+          type="button"
+          onclick="closeModal()"
+          class="w-full py-2.5 rounded-xl bg-ivory-100 hover:bg-ivory-200 transition text-charcoal-600 font-semibold text-[13.5px]"
+        >
+          잠시 후 다시 보기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    /**
+     * 1. Real-time Countdown Timer to Local Midnight (HH:MM:SS)
+     */
+    function updateCountdownTimers() {
+      try {
+        const now = new Date();
+        const midnight = new Date(now);
+        midnight.setHours(24, 0, 0, 0);
+
+        const diffMs = Math.max(0, midnight.getTime() - now.getTime());
+        const totalSeconds = Math.floor(diffMs / 1000);
+        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        document.querySelectorAll('.js-countdown').forEach((el) => {
+          el.textContent = timeString;
+        });
+      } catch (error) {
+        console.error('Countdown update failed:', error);
+      }
+    }
+
+    updateCountdownTimers();
+    setInterval(updateCountdownTimers, 1000);
+
+    /**
+     * 2. Interactive Concern Card Selection
+     */
+    const concernMessages = {
+      career: {
+        tag: '🚀 이직·커리어 운세',
+        msg: '2027년 정미년, 이직과 승진의 황금 시기를 짚어드려요.'
+      },
+      wealth: {
+        tag: '💰 재물·금전 운세',
+        msg: '막혀 있던 재물운이 트이는 2027년 전환점을 확인해 보세요.'
+      },
+      relation: {
+        tag: '😤 인간관계 운세',
+        msg: '내 편이 될 귀인과 피해야 할 인연을 미리 알아두세요.'
+      },
+      love: {
+        tag: '💌 연애·재회 운세',
+        msg: '2027년 붉은 양의 해, 다가올 인연과 상대방의 속마음을 읽어드려요.'
+      }
+    };
+
+    function selectConcern(key, clickedBtn) {
+      try {
+        // Reset all cards
+        document.querySelectorAll('.concern-card').forEach((card) => {
+          card.classList.remove('concern-card-active');
+          const checkBadge = card.querySelector('.concern-check');
+          if (checkBadge) {
+            checkBadge.classList.remove('bg-crimson-500', 'text-white');
+            checkBadge.classList.add('bg-ivory-200', 'text-transparent');
+          }
         });
 
-        function renderCategoryNav() {
-            const container = document.getElementById("category-nav-buttons");
-            let html = `<button onclick="filterCategory('ALL')" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white text-xs font-semibold shadow transition">전체 보기</button>`;
-            SECTORS.forEach(sec => {
-                html += `<button onclick="scrollToSector('${sec.id}')" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-medium transition">${sec.name.split('.')[1].trim()}</button>`;
-            });
-            container.innerHTML = html;
+        // Activate selected card
+        if (clickedBtn) {
+          clickedBtn.classList.add('concern-card-active');
+          const activeCheck = clickedBtn.querySelector('.concern-check');
+          if (activeCheck) {
+            activeCheck.classList.remove('bg-ivory-200', 'text-transparent');
+            activeCheck.classList.add('bg-crimson-500', 'text-white');
+          }
         }
 
-        function scrollToSector(secId) {
-            const el = document.getElementById(secId);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                el.classList.add('highlight-target');
-                setTimeout(() => el.classList.remove('highlight-target'), 1500);
-            }
+        // Update dynamic banner text
+        const info = concernMessages[key];
+        const tagEl = document.getElementById('concernTag');
+        const msgEl = document.getElementById('concernDynamicMsg');
+        if (info && tagEl && msgEl) {
+          tagEl.textContent = info.tag;
+          msgEl.textContent = info.msg;
         }
+      } catch (error) {
+        console.error('Concern selection error:', error);
+      }
+    }
 
-        function filterCategory(catId) {
-            if (catId === 'ALL') { renderHeatmap(); return; }
-            scrollToSector(catId);
+    /**
+     * 3. Tabbed Toggle for Usage Guide (Mobile vs PC)
+     */
+    function switchUsageTab(mode) {
+      try {
+        const tabMobile = document.getElementById('tabMobile');
+        const tabPc = document.getElementById('tabPc');
+        const panelMobile = document.getElementById('panelMobile');
+        const panelPc = document.getElementById('panelPc');
+
+        if (!tabMobile || !tabPc || !panelMobile || !panelPc) return;
+
+        const activeClasses = ['bg-white', 'text-charcoal-900', 'shadow-sm', 'font-bold'];
+        const inactiveClasses = ['text-charcoal-500', 'hover:text-charcoal-700', 'font-semibold'];
+
+        if (mode === 'mobile') {
+          tabMobile.setAttribute('aria-selected', 'true');
+          tabPc.setAttribute('aria-selected', 'false');
+
+          tabMobile.classList.add(...activeClasses);
+          tabMobile.classList.remove(...inactiveClasses);
+          tabPc.classList.remove(...activeClasses);
+          tabPc.classList.add(...inactiveClasses);
+
+          panelMobile.classList.remove('hidden');
+          panelPc.classList.add('hidden');
+        } else {
+          tabPc.setAttribute('aria-selected', 'true');
+          tabMobile.setAttribute('aria-selected', 'false');
+
+          tabPc.classList.add(...activeClasses);
+          tabPc.classList.remove(...inactiveClasses);
+          tabMobile.classList.remove(...activeClasses);
+          tabMobile.classList.add(...inactiveClasses);
+
+          panelPc.classList.remove('hidden');
+          panelMobile.classList.add('hidden');
         }
+      } catch (error) {
+        console.error('Tab switch error:', error);
+      }
+    }
 
-        function renderHeatmap() {
-            const container = document.getElementById("sector-container");
-            let html = "";
+    /**
+     * 4. Interactive Signup & Policy Modal (No alert/confirm)
+     */
+    const modalEl = document.getElementById('signupModal');
+    const modalEmoji = document.getElementById('modalEmoji');
+    const modalBadge = document.getElementById('modalBadge');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalActions = document.getElementById('modalActions');
 
-            SECTORS.forEach(sec => {
-                html += `
-                    <div id="${sec.id}" class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 backdrop-blur-sm shadow-xl">
-                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-gray-800">
-                            <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                                <i class="fa-solid ${sec.icon} ${sec.color}"></i> ${sec.name}
-                            </h3>
-                            <span class="text-[11px] text-gray-400 font-mono">${sec.stocks.length}개 종목</span>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                `;
+    function openSignupModal() {
+      if (!modalEl) return;
+      modalEmoji.textContent = '🎁';
+      modalBadge.textContent = '2027 정미년 신규 회원 혜택';
+      modalTitle.textContent = '30초 간편 가입 & 10,000코인 즉시 지급';
+      modalDesc.innerHTML =
+        '휴대폰 본인인증으로 30초 만에 가입하면<br /><strong class="text-crimson-600">10,000코인(최대 7분 무료 상담)</strong>이<br />즉시 지갑으로 지급됩니다.';
+      modalActions.innerHTML = `
+        <button type="button" onclick="confirmMockSignup()" class="w-full py-3.5 rounded-xl bg-crimson-500 hover:bg-crimson-600 active:scale-[0.98] transition text-white font-bold text-[15px] shadow-crimson-cta">
+          10,000코인 받고 시작하기
+        </button>
+        <button type="button" onclick="closeModal()" class="w-full py-2.5 rounded-xl bg-ivory-100 hover:bg-ivory-200 transition text-charcoal-600 font-semibold text-[13.5px]">
+          잠시 후 다시 보기
+        </button>
+      `;
+      modalEl.classList.remove('hidden');
+      modalEl.classList.add('flex');
+    }
 
-                sec.stocks.forEach(stock => {
-                    const isSelected = stock.code === selectedStockCode;
-                    const borderClass = isSelected ? "border-cyan-500 glow-cyan bg-gray-800/80" : "border-gray-800/80 bg-gray-950/50 hover:border-gray-700";
-                    const changeColor = stock.isUp ? "text-emerald-400" : "text-rose-400";
+    function confirmMockSignup() {
+      if (!modalEl) return;
+      modalEmoji.textContent = '✅';
+      modalBadge.textContent = '지급 완료 시뮬레이션';
+      modalTitle.textContent = '10,000코인이 준비되었습니다!';
+      modalDesc.innerHTML =
+        '실제 서비스 연동 시 모운 회원가입 페이지로 이동하며,<br />가입 직후 <strong class="text-crimson-600">최대 7분 무료 전화상담</strong>을 바로 시작할 수 있습니다.';
+      modalActions.innerHTML = `
+        <button type="button" onclick="closeModal()" class="w-full py-3.5 rounded-xl bg-burgundy-900 hover:bg-burgundy-800 active:scale-[0.98] transition text-champagne-300 font-bold text-[15px]">
+          확인
+        </button>
+      `;
+    }
 
-                    html += `
-                        <div onclick="selectStock('${stock.code}', this)" class="glow-card border ${borderClass} rounded-xl p-3.5 cursor-pointer flex flex-col justify-between transition min-h-[110px]">
-                            <div>
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono font-medium">${stock.market}</span>
-                                    <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 font-semibold border border-cyan-900">${stock.badge}</span>
-                                </div>
-                                <div class="text-sm font-bold text-white truncate">${stock.name}</div>
-                                <div class="text-[11px] text-gray-400 font-mono">${stock.code}</div>
-                            </div>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-800/60 font-mono">
-                                <span class="text-xs font-bold text-gray-200">${stock.price}</span>
-                                <span class="text-xs font-bold ${changeColor}">${stock.change}</span>
-                            </div>
-                        </div>
-                    `;
-                });
+    function openPolicyModal(title) {
+      if (!modalEl) return;
+      modalEmoji.textContent = '📄';
+      modalBadge.textContent = '모운 안내';
+      modalTitle.textContent = title;
+      modalDesc.textContent = `실제 서비스 적용 시 모운 공식 ${title} 페이지로 연결됩니다.`;
+      modalActions.innerHTML = `
+        <button type="button" onclick="closeModal()" class="w-full py-3 rounded-xl bg-charcoal-900 text-white font-bold text-[14px]">
+          닫기
+        </button>
+      `;
+      modalEl.classList.remove('hidden');
+      modalEl.classList.add('flex');
+    }
 
-                html += `</div></div>`;
-            });
+    function closeModal() {
+      if (!modalEl) return;
+      modalEl.classList.add('hidden');
+      modalEl.classList.remove('flex');
+    }
 
-            container.innerHTML = html;
-        }
-
-        function selectStock(code, cardElement = null) {
-            let foundStock = null;
-            SECTORS.forEach(sec => {
-                sec.stocks.forEach(st => {
-                    if (st.code === code) foundStock = st;
-                });
-            });
-
-            if (!foundStock) return;
-
-            selectedStockCode = code;
-            lastClickedCardElement = cardElement;
-
-            document.getElementById("briefing-badge").innerText = foundStock.badge;
-            document.getElementById("briefing-code").innerText = `${foundStock.market}: ${foundStock.code}`;
-            document.getElementById("briefing-title").innerText = `${foundStock.name} (${foundStock.code})`;
-            document.getElementById("briefing-price").innerText = foundStock.price;
-            
-            const changeEl = document.getElementById("briefing-change");
-            changeEl.innerText = foundStock.change;
-            changeEl.className = `text-sm sm:text-base font-bold font-mono ${foundStock.isUp ? 'text-emerald-400' : 'text-rose-400'}`;
-
-            document.getElementById("briefing-p1").innerText = foundStock.p1;
-            document.getElementById("briefing-p2").innerText = foundStock.p2;
-            document.getElementById("briefing-p3").innerText = foundStock.p3;
-            document.getElementById("briefing-p4").innerText = foundStock.p4;
-            document.getElementById("briefing-rivals").innerText = `⚔️ 주요 경쟁사: ${foundStock.rivals}`;
-
-            renderHeatmap();
-
-            const briefingCard = document.getElementById("briefing-card");
-            briefingCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            briefingCard.classList.add('highlight-target');
-            setTimeout(() => briefingCard.classList.remove('highlight-target'), 1500);
-
-            document.getElementById("return-bar").classList.remove("hidden");
-            fetchRealtimeNews(`${foundStock.name} 반도체`);
-        }
-
-        function returnToLastCard() {
-            document.getElementById("return-bar").classList.add("hidden");
-            if (lastClickedCardElement) {
-                lastClickedCardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                lastClickedCardElement.classList.add('highlight-target');
-                setTimeout(() => lastClickedCardElement.classList.remove('highlight-target'), 1500);
-            } else {
-                window.scrollTo({ top: 500, behavior: 'smooth' });
-            }
-        }
-
-        function jumpToNews() {
-            if (window.innerWidth < 1024) {
-                switchMobileTab('news');
-            } else {
-                document.getElementById("news-container").scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
-        function switchMobileTab(tab) {
-            const panelAnalysis = document.getElementById("panel-analysis");
-            const panelNews = document.getElementById("panel-news");
-            const btnAnalysis = document.getElementById("tab-btn-analysis");
-            const btnNews = document.getElementById("tab-btn-news");
-
-            if (tab === 'analysis') {
-                panelAnalysis.classList.remove("hidden");
-                panelNews.classList.add("hidden");
-                btnAnalysis.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-cyan-500 text-cyan-400 bg-gray-900/50";
-                btnNews.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-transparent text-gray-400 hover:text-gray-200";
-            } else {
-                panelAnalysis.classList.add("hidden");
-                panelNews.classList.remove("hidden");
-                btnNews.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-cyan-500 text-cyan-400 bg-gray-900/50";
-                btnAnalysis.className = "flex-1 py-2.5 text-xs font-bold text-center border-b-2 border-transparent text-gray-400 hover:text-gray-200";
-            }
-        }
-
-        async function fetchRealtimeNews(keyword) {
-            const container = document.getElementById("news-container");
-            document.getElementById("news-header-title").innerText = `실시간 속보 · [${keyword}]`;
-            
-            container.innerHTML = `
-                <div class="p-6 text-center text-gray-400 text-xs flex flex-col items-center justify-center space-y-2">
-                    <i class="fa-solid fa-spinner fa-spin text-cyan-400 text-base"></i>
-                    <span>최신 실시간 뉴스를 불러오는 중입니다...</span>
-                </div>
-            `;
-
-            try {
-                const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(keyword)}&hl=ko&gl=KR&ceid=KR:ko`;
-                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
-                
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
-                
-                if (!data.contents) throw new Error("No data");
-
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data.contents, "text/xml");
-                const items = xmlDoc.querySelectorAll("item");
-
-                let html = "";
-                let count = 0;
-
-                items.forEach((item) => {
-                    if (count >= 8) return;
-                    const title = item.querySelector("title")?.textContent || "제목 없음";
-                    const link = item.querySelector("link")?.textContent || "#";
-                    const pubDateStr = item.querySelector("pubDate")?.textContent || "";
-                    const source = item.querySelector("source")?.textContent || "주요 언론사";
-                    const timeAgo = formatTimeAgo(pubDateStr);
-
-                    html += `
-                        <a href="${link}" target="_blank" class="block bg-gray-950/60 hover:bg-gray-800/80 border border-gray-800/80 rounded-xl p-3.5 transition group">
-                            <div class="flex items-center justify-between text-[10px] text-gray-400 mb-1">
-                                <span class="text-cyan-400 font-semibold">${source}</span>
-                                <span class="font-mono">${timeAgo}</span>
-                            </div>
-                            <div class="text-xs font-bold text-gray-200 group-hover:text-white leading-snug">${title}</div>
-                        </a>
-                    `;
-                    count++;
-                });
-
-                if (count === 0) throw new Error("Empty");
-                container.innerHTML = html;
-
-            } catch (err) {
-                container.innerHTML = `
-                    <a href="https://news.google.com/search?q=${encodeURIComponent(keyword)}" target="_blank" class="block bg-gray-950/60 hover:bg-gray-800/80 border border-gray-800/80 rounded-xl p-3.5 transition">
-                        <div class="flex items-center justify-between text-[10px] text-gray-400 mb-1">
-                            <span class="text-cyan-400 font-semibold">Google News</span>
-                            <span class="font-mono">방금 전</span>
-                        </div>
-                        <div class="text-xs font-bold text-gray-200">[속보] ${keyword} 관련 최신 글로벌 반도체 시장 동향 브리핑 확인하기</div>
-                    </a>
-                `;
-            }
-        }
-
-        function formatTimeAgo(dateStr) {
-            if (!dateStr) return "최신";
-            try {
-                const diffMin = Math.floor((new Date() - new Date(dateStr)) / 60000);
-                if (diffMin < 60) return `${diffMin}분 전`;
-                const diffHour = Math.floor(diffMin / 60);
-                if (diffHour < 24) return `${diffHour}시간 전`;
-                return `${Math.floor(diffHour / 24)}일 전`;
-            } catch (e) { return "최신"; }
-        }
-
-        function saveMemo() {
-            const val = document.getElementById("memo-box").value;
-            localStorage.setItem("moun_semiconductor_memo", val);
-            alert("팀 메모가 안전하게 저장되었습니다.");
-        }
-
-        function loadMemo() {
-            const saved = localStorage.getItem("moun_semiconductor_memo");
-            if (saved) document.getElementById("memo-box").value = saved;
-        }
-
-        function shareLink() {
-            const url = window.location.href.split('?')[0] + '?v=' + Date.now();
-            navigator.clipboard.writeText(url).then(() => {
-                alert("최신 공유 링크가 복사되었습니다! 카카오톡이나 텔레그램에 붙여넣어 주세요.");
-            });
-        }
-    </script>
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
 </body>
 </html>
