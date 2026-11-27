@@ -30,17 +30,16 @@
             },
             champagne: {
               50: '#FFFDF7',
-              100: '#FDF6E2',
-              200: '#F7E7B8',
+              100: '#FBF1D4',
+              200: '#F5E0A8',
               300: '#EFD383',
               400: '#E3BC54',
-              500: '#CC9F2E',
               600: '#9E7618',
             },
             fintech: {
-              bg: '#F5F6F8',
+              bg: '#F4F6F9',
+              subtle: '#EEF1F5',
               border: '#E5E8EB',
-              subtle: '#F2F4F6',
             },
             ink: {
               900: '#191F28',
@@ -48,7 +47,7 @@
               600: '#4E5968',
               500: '#6B7684',
               400: '#8B95A1',
-            }
+            },
           },
           fontFamily: {
             sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
@@ -79,9 +78,9 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Deep Burgundy Luxury Hero Gradient (#2D0810 to #4D111E) */
+    /* Deep Burgundy Luxury Hero Gradient (#4A0E1C to #2A060F) */
     .hero-burgundy {
-      background: linear-gradient(180deg, #2D0810 0%, #3F0D18 55%, #4D111E 100%);
+      background: linear-gradient(180deg, #4A0E1C 0%, #380915 55%, #2A060F 100%);
       position: relative;
     }
     .hero-burgundy::before {
@@ -97,7 +96,7 @@
 
     /* Closing Burgundy Gradient matching Hero */
     .closing-burgundy {
-      background: linear-gradient(155deg, #2D0810 0%, #4D111E 100%);
+      background: linear-gradient(155deg, #4A0E1C 0%, #2A060F 100%);
     }
 
     /* Champagne Gold Metallic VIP Coupon Card */
@@ -144,57 +143,45 @@
     /* Gentle Mascot Float */
     @keyframes mascotFloat {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
+      50% { transform: translateY(-4px); }
     }
     .animate-mascot {
-      animation: mascotFloat 3.4s ease-in-out infinite;
+      animation: mascotFloat 3.6s ease-in-out infinite;
     }
 
-    /* Subtle Live Pulse Dot */
+    /* Live Status Dot Pulse */
     @keyframes liveDot {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.45; transform: scale(1.2); }
+      50% { opacity: 0.45; transform: scale(1.25); }
     }
     .animate-live-dot {
-      animation: liveDot 1.8s infinite ease-in-out;
+      animation: liveDot 1.6s ease-in-out infinite;
     }
 
     /* Selected Worry Card Highlight */
     .worry-card-active {
-      border-color: #6B1A2F !important;
-      background-color: #FFF9FA !important;
-      box-shadow: 0 0 0 1px #6B1A2F, 0 8px 18px -6px rgba(107, 26, 47, 0.18) !important;
-    }
-
-    /* Tabular numbers for steady countdown width */
-    .tabular-nums {
-      font-variant-numeric: tabular-nums;
+      border-color: #4D111E !important;
+      background-color: #FFFDF7 !important;
+      box-shadow: 0 4px 14px rgba(77, 17, 30, 0.12) !important;
     }
   </style>
 </head>
-<body class="selection:bg-crimson-100 selection:text-crimson-700">
+<body class="antialiased selection:bg-crimson-100 selection:text-burgundy-900">
 
-  <!-- Mobile-First Centered Frame (max-w-430px centered on desktop) -->
-  <div class="w-full max-w-[430px] mx-auto min-h-screen bg-fintech-bg shadow-2xl relative overflow-x-hidden">
+  <!-- Mobile-First Centered Frame (430px max-width) -->
+  <div class="w-full max-w-[430px] mx-auto min-h-screen bg-white shadow-2xl relative overflow-x-hidden">
 
-    <!-- ==================== 1. TOP HERO SECTION ==================== -->
-    <section class="hero-burgundy px-5 pt-4 pb-7 text-center border-b border-champagne-400/30">
+    <!-- ==================== 1. HERO SECTION ==================== -->
+    <section class="hero-burgundy pt-6 pb-8 px-5 text-center overflow-hidden">
       <div class="relative z-10">
-
-        <!-- Top Bar: Crisp '모운' Logo + Single-line Pill Badge -->
-        <header class="flex items-center justify-between pb-5 border-b border-champagne-300/15 mb-5">
-          <a href="https://moun.co.kr/s/Buzzvill" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 focus:outline-none shrink-0">
-            <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-crimson-500 to-burgundy-700 border border-champagne-300/50 flex items-center justify-center shadow-sm">
-              <svg class="w-4 h-4 text-champagne-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            </span>
-            <span class="text-[18px] font-extrabold tracking-tight text-white whitespace-nowrap">모운</span>
-          </a>
-
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-champagne-400/15 border border-champagne-300/40 text-[11px] font-bold text-champagne-200 tracking-tight whitespace-nowrap shrink-0">
+        <!-- Top Brand Header -->
+        <header class="flex items-center justify-between gap-2 mb-6">
+          <span class="text-[19px] font-black text-white tracking-tight whitespace-nowrap shrink-0">
+            모운
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-champagne-400/15 border border-champagne-300/40 text-[10.5px] sm:text-[11px] font-bold text-champagne-200 tracking-tight whitespace-nowrap shrink-0">
             <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 shrink-0"></span>
-            2027 정미년 · 미리 보는 신년운세
+            2027 정미년 붉은 양의 해 · 미리 보는 신년운세
           </span>
         </header>
 
@@ -211,87 +198,135 @@
           </span>
         </h1>
 
-        <!-- Cute Red Sheep SVG Peeking Cleanly Over VIP Coupon Card -->
+        <!-- Cute Unmistakable Red Sheep SVG Peeking Cleanly Over VIP Coupon Card -->
         <div class="relative mt-1 mb-5">
-          <!-- Cute Red Sheep Character -->
-          <div class="relative z-20 flex justify-center -mb-6 pointer-events-none">
-            <svg class="w-[144px] h-auto animate-mascot drop-shadow-xl" viewBox="0 0 180 116" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="2027 정미년 붉은 양 캐릭터">
-              <!-- Soft Golden Halo -->
-              <circle cx="90" cy="60" r="46" fill="url(#sheepGlow)" />
+          <!-- Cute Sheep Character -->
+          <div class="relative z-20 flex justify-center -mb-5 pointer-events-none">
+            <svg class="w-[184px] h-auto animate-mascot drop-shadow-xl" viewBox="0 0 220 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="2027 정미년 붉은 양 캐릭터">
+              <!-- Soft Golden Halo & Subtle Cloud Accents -->
+              <circle cx="110" cy="70" r="54" fill="url(#sheepGlow)" />
+              <path d="M22 64C22 60.5 24.8 57.8 28.2 57.8C29.4 57.8 30.5 58.1 31.4 58.7C32.7 55.4 35.9 53 39.7 53C44.6 53 48.6 56.9 48.7 61.8C51.2 62.3 53 64.5 53 67.1C53 70.1 50.6 72.5 47.6 72.5H28C24.7 72.5 22 69.8 22 66.5V64Z" fill="#EFD383" fill-opacity="0.14"/>
+              <path d="M168 48C168 45.2 170.3 43 173.1 43C174 43 174.9 43.3 175.6 43.7C176.6 41.1 179.2 39.2 182.2 39.2C186.1 39.2 189.3 42.3 189.4 46.2C191.4 46.6 192.8 48.4 192.8 50.5C192.8 52.9 190.9 54.8 188.5 54.8H172.9C170.2 54.8 168 52.6 168 49.9V48Z" fill="#EFD383" fill-opacity="0.14"/>
 
-              <!-- Auspicious Gold Sparkles -->
-              <path d="M27 28L28.8 32.8L33.6 34.6L28.8 36.4L27 41.2L25.2 36.4L20.4 34.6L25.2 32.8L27 28Z" fill="#EFD383"/>
-              <path d="M153 22L154.5 26L158.5 27.5L154.5 29L153 33L151.5 29L147.5 27.5L151.5 26L153 22Z" fill="#F7E7B8"/>
+              <!-- Auspicious Gold Starlight Sparkles -->
+              <path d="M36 28L38 33L43 35L38 37L36 42L34 37L29 35L34 33L36 28Z" fill="#EFD383"/>
+              <path d="M184 22L185.6 26.2L189.8 27.8L185.6 29.4L184 33.6L182.4 29.4L178.2 27.8L182.4 26.2L184 22Z" fill="#F7E7B8"/>
+              <circle cx="52" cy="18" r="2.2" fill="#F7E7B8" opacity="0.8"/>
+              <circle cx="166" cy="16" r="2" fill="#EFD383" opacity="0.75"/>
 
-              <!-- Curved Gold Horns -->
-              <path d="M64 36C55 29 54 19 63 17C69 16 72 22 70 28" fill="#EFD383" stroke="#9E7618" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M116 36C125 29 126 19 117 17C111 16 108 22 110 28" fill="#EFD383" stroke="#9E7618" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Fluffy Cloud-Like Sheep Body Wool (Multi-lobed Fleece) -->
+              <g fill="#FFF7EB" stroke="#DFC7A8" stroke-width="1.6">
+                <circle cx="72" cy="96" r="19"/>
+                <circle cx="148" cy="96" r="19"/>
+                <circle cx="88" cy="84" r="21"/>
+                <circle cx="132" cy="84" r="21"/>
+                <circle cx="110" cy="88" r="26"/>
+                <circle cx="94" cy="108" r="18"/>
+                <circle cx="126" cy="108" r="18"/>
+              </g>
+              <!-- Unified inner fleece fill -->
+              <ellipse cx="110" cy="96" rx="44" ry="22" fill="#FFF7EB"/>
 
-              <!-- Warm Cream Fluffy Wool Silhouette -->
-              <g fill="#FFF7EB" stroke="#B81D3A" stroke-width="1.6">
-                <circle cx="62" cy="52" r="15"/>
-                <circle cx="118" cy="52" r="15"/>
-                <circle cx="72" cy="33" r="13"/>
-                <circle cx="90" cy="27" r="15"/>
-                <circle cx="108" cy="33" r="13"/>
+              <!-- Festive Crimson-Red New Year Capelet / Scarf with Gold Trim -->
+              <path d="M68 88C78 99 142 99 152 88L158 106C143 116 77 116 62 106L68 88Z" fill="#C81E3C" stroke="#8C1228" stroke-width="1.6" stroke-linejoin="round"/>
+              <!-- Gold Trim Hem on Capelet -->
+              <path d="M65 103C80 113 140 113 155 103" stroke="#EFD383" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Center Gold Knot & Bell -->
+              <path d="M103 97L96 108M117 97L124 108" stroke="#EFD383" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="110" cy="98" r="5" fill="url(#goldCoin)" stroke="#9E7618" stroke-width="1.3"/>
+              <circle cx="110" cy="99.5" r="1.3" fill="#8C1228"/>
+
+              <!-- Curled Golden-Amber Sheep Horns (Distinct Spiral Curl) -->
+              <path d="M84 36C72 22 53 26 54 41C55 51 66 53 71 46C74 42 71 36 66 37" fill="url(#hornGrad)" stroke="#9E7618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M136 36C148 22 167 26 166 41C165 51 154 53 149 46C146 42 149 36 154 37" fill="url(#hornGrad)" stroke="#9E7618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <!-- Classic Floppy Drooping Sheep Ears -->
+              <g transform="rotate(-28 68 62)">
+                <ellipse cx="64" cy="64" rx="16" ry="8.5" fill="#FCE5D2" stroke="#B58468" stroke-width="1.6"/>
+                <ellipse cx="65" cy="65" rx="10" ry="4.5" fill="#F4A3A8"/>
+              </g>
+              <g transform="rotate(28 152 62)">
+                <ellipse cx="156" cy="64" rx="16" ry="8.5" fill="#FCE5D2" stroke="#B58468" stroke-width="1.6"/>
+                <ellipse cx="155" cy="65" rx="10" ry="4.5" fill="#F4A3A8"/>
               </g>
 
-              <!-- Auspicious Red-Gold Ears -->
-              <ellipse cx="52" cy="56" rx="12.5" ry="7" transform="rotate(-18 52 56)" fill="#D62848" stroke="#8C152B" stroke-width="1.5"/>
-              <ellipse cx="53" cy="57" rx="6.5" ry="3.4" transform="rotate(-18 53 57)" fill="#F7E7B8"/>
-              <ellipse cx="128" cy="56" rx="12.5" ry="7" transform="rotate(18 128 56)" fill="#D62848" stroke="#8C152B" stroke-width="1.5"/>
-              <ellipse cx="127" cy="57" rx="6.5" ry="3.4" transform="rotate(18 127 57)" fill="#F7E7B8"/>
-
-              <!-- Cute Face -->
-              <ellipse cx="90" cy="61" rx="29" ry="25" fill="#FFFDF8" stroke="#8C152B" stroke-width="1.7"/>
-
-              <!-- Warm Cream Forehead Wool + Subtle Red Crown Accent -->
-              <g fill="#FFF5E6">
-                <circle cx="76" cy="40" r="9.5"/>
-                <circle cx="90" cy="36" r="11"/>
-                <circle cx="104" cy="40" r="9.5"/>
+              <!-- Back Fluffy Wool Halo Around Head -->
+              <g fill="#FFF9F0" stroke="#DFC7A8" stroke-width="1.5">
+                <circle cx="80" cy="48" r="14"/>
+                <circle cx="140" cy="48" r="14"/>
+                <circle cx="94" cy="34" r="14"/>
+                <circle cx="126" cy="34" r="14"/>
+                <circle cx="110" cy="29" r="16"/>
               </g>
-              <circle cx="90" cy="36" r="5" fill="#D62848" stroke="#EFD383" stroke-width="1.3"/>
-              <circle cx="90" cy="36" r="1.5" fill="#EFD383"/>
 
-              <!-- Eyes & Rosy Cheeks -->
-              <circle cx="78" cy="60" r="3.2" fill="#191F28"/>
-              <circle cx="76.9" cy="58.9" r="1.1" fill="#FFFFFF"/>
-              <circle cx="102" cy="60" r="3.2" fill="#191F28"/>
-              <circle cx="100.9" cy="58.9" r="1.1" fill="#FFFFFF"/>
-              <ellipse cx="69" cy="66.5" rx="5.2" ry="2.8" fill="#F89EB0" opacity="0.7"/>
-              <ellipse cx="111" cy="66.5" rx="5.2" ry="2.8" fill="#F89EB0" opacity="0.7"/>
+              <!-- Soft Peach/Ivory Cute Sheep Face (Slightly tapered chin) -->
+              <path d="M77 58C77 43 91 36 110 36C129 36 143 43 143 58C143 75 130 89 110 89C90 89 77 75 77 58Z" fill="#FFF0E1" stroke="#C79B7E" stroke-width="1.6"/>
 
-              <!-- Nose & Warm Smile -->
-              <path d="M87.5 65.5C87.5 64.4 92.5 64.4 92.5 65.5C92.5 67 90 68.5 90 68.5C90 68.5 87.5 67 87.5 65.5Z" fill="#D62848"/>
-              <path d="M85.8 71C87.5 72.8 90 72.4 90 70.7C90 72.4 92.5 72.8 94.2 71" stroke="#4E5968" stroke-width="1.6" stroke-linecap="round"/>
-
-              <!-- Red-Gold Festive Scarf -->
-              <path d="M68 82C77 88 103 88 112 82C114 86 110 91 103 92C95 94 85 94 77 92C70 91 66 86 68 82Z" fill="#D62848" stroke="#EFD383" stroke-width="1.4"/>
-
-              <!-- Left Paw with Mini Red Lucky Pouch -->
-              <g transform="translate(42, 74)">
-                <path d="M7 9C3 14 3 25 10 29C15 31.5 21 31.5 26 29C33 25 33 14 29 9L24 6H12L7 9Z" fill="#D62848" stroke="#8C152B" stroke-width="1.4"/>
-                <path d="M10 7H26" stroke="#EFD383" stroke-width="2.2" stroke-linecap="round"/>
-                <circle cx="18" cy="19" r="5.5" fill="#F7E7B8"/>
-                <text x="18" y="21.8" text-anchor="middle" font-size="7.5" font-weight="800" fill="#8C152B">福</text>
+              <!-- Puffy Cloud Wool Tuft on Forehead (Signature Sheep Look!) -->
+              <g fill="#FFFDF9" stroke="#DFC7A8" stroke-width="1.4">
+                <circle cx="90" cy="39" r="11"/>
+                <circle cx="103" cy="34" r="12.5"/>
+                <circle cx="117" cy="34" r="12.5"/>
+                <circle cx="130" cy="39" r="11"/>
+                <circle cx="110" cy="41" r="11"/>
               </g>
-              <ellipse cx="67" cy="91" rx="9.5" ry="6.5" fill="#FFF7EB" stroke="#8C152B" stroke-width="1.5"/>
+              <!-- Smooth inner cloud tuft blend -->
+              <ellipse cx="110" cy="37" rx="22" ry="9" fill="#FFFDF9"/>
 
-              <!-- Right Paw with Glowing Gold Coin -->
-              <g transform="translate(107, 74)">
-                <circle cx="15" cy="15" r="14" fill="url(#goldCoin)" stroke="#9E7618" stroke-width="1.6"/>
-                <circle cx="15" cy="15" r="10" stroke="#FFF9E6" stroke-width="1.1" stroke-dasharray="2.5 2"/>
-                <text x="15" y="19" text-anchor="middle" font-size="11.5" font-weight="900" fill="#785408">C</text>
+              <!-- Sparkling Dark Sheep Eyes -->
+              <circle cx="94" cy="62" r="4.2" fill="#231815"/>
+              <circle cx="92.5" cy="60.4" r="1.5" fill="#FFFFFF"/>
+              <circle cx="95.4" cy="63.6" r="0.8" fill="#FFFFFF"/>
+
+              <circle cx="126" cy="62" r="4.2" fill="#231815"/>
+              <circle cx="124.5" cy="60.4" r="1.5" fill="#FFFFFF"/>
+              <circle cx="127.4" cy="63.6" r="0.8" fill="#FFFFFF"/>
+
+              <!-- Rosy Cheeks -->
+              <ellipse cx="84.5" cy="69" rx="5.8" ry="3.2" fill="#F48B9B" opacity="0.6"/>
+              <ellipse cx="135.5" cy="69" rx="5.8" ry="3.2" fill="#F48B9B" opacity="0.6"/>
+
+              <!-- Unmistakable Cute Y-Shaped Sheep Nose & Smile -->
+              <path d="M106.5 68.5C106.5 67 113.5 67 113.5 68.5C113.5 70.6 110 72.5 110 72.5C110 72.5 106.5 70.6 106.5 68.5Z" fill="#D15666"/>
+              <path d="M110 72.5V76.2M103.5 75.5C105.5 78.6 108.8 78.2 110 76.2C111.2 78.2 114.5 78.6 116.5 75.5" stroke="#6B4A3E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <!-- Left Accent: Mini Red Lucky Pouch (복주머니) -->
+              <g transform="translate(34, 86)">
+                <path d="M6 10C2 16 2 28 10 32C15 34.5 21 34.5 26 32C34 28 34 16 30 10L24.5 7H11.5L6 10Z" fill="#D62848" stroke="#8C152B" stroke-width="1.5"/>
+                <path d="M10 7.5L8 3.5C11.5 5 14.5 4.2 18 3.5C21.5 4.2 24.5 5 28 3.5L26 7.5H10Z" fill="#E63956" stroke="#8C152B" stroke-width="1.2"/>
+                <path d="M9.5 8H26.5" stroke="#EFD383" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="18" cy="21" r="6" fill="#F7E7B8"/>
+                <text x="18" y="24" text-anchor="middle" font-size="8.2" font-weight="800" fill="#8C152B">福</text>
               </g>
-              <ellipse cx="113" cy="91" rx="9.5" ry="6.5" fill="#FFF7EB" stroke="#8C152B" stroke-width="1.5"/>
+
+              <!-- Right Accent: Glowing Gold Coin (10,000C) -->
+              <g transform="translate(152, 86)">
+                <circle cx="17" cy="17" r="16" fill="url(#goldCoin)" stroke="#9E7618" stroke-width="1.8"/>
+                <circle cx="17" cy="17" r="11.5" stroke="#FFF9E6" stroke-width="1.2" stroke-dasharray="2.5 2"/>
+                <text x="17" y="21.5" text-anchor="middle" font-size="13" font-weight="900" fill="#785408">C</text>
+              </g>
+
+              <!-- Cute Little Sheep Hooves Peeking Over Top Edge of VIP Coupon Card -->
+              <g>
+                <!-- Left Hoof -->
+                <rect x="74" y="109" width="18" height="16" rx="8" fill="#5C322A" stroke="#3D1E18" stroke-width="1.5"/>
+                <path d="M83 116V124.5" stroke="#3D1E18" stroke-width="1.6" stroke-linecap="round"/>
+                <!-- Right Hoof -->
+                <rect x="128" y="109" width="18" height="16" rx="8" fill="#5C322A" stroke="#3D1E18" stroke-width="1.5"/>
+                <path d="M137 116V124.5" stroke="#3D1E18" stroke-width="1.6" stroke-linecap="round"/>
+              </g>
 
               <defs>
-                <radialGradient id="sheepGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(90 60) rotate(90) scale(46)">
-                  <stop stop-color="#EFD383" stop-opacity="0.34"/>
-                  <stop offset="1" stop-color="#3F0D18" stop-opacity="0"/>
+                <radialGradient id="sheepGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(110 70) rotate(90) scale(54)">
+                  <stop stop-color="#EFD383" stop-opacity="0.32"/>
+                  <stop offset="1" stop-color="#380915" stop-opacity="0"/>
                 </radialGradient>
-                <linearGradient id="goldCoin" x1="2" y1="2" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <linearGradient id="hornGrad" x1="54" y1="24" x2="78" y2="50" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FCE7A6"/>
+                  <stop offset="0.55" stop-color="#E3BC54"/>
+                  <stop offset="1" stop-color="#B8871E"/>
+                </linearGradient>
+                <linearGradient id="goldCoin" x1="2" y1="2" x2="32" y2="32" gradientUnits="userSpaceOnUse">
                   <stop stop-color="#FFF5CF"/>
                   <stop offset="0.5" stop-color="#E3BC54"/>
                   <stop offset="1" stop-color="#B5871E"/>
@@ -470,7 +505,8 @@
         </span>
 
         <h2 class="text-[18.5px] font-extrabold text-ink-900 leading-[1.42] tracking-[-0.025em] mb-3">
-          모운은 개인별 맞춤 상담을 제공하는 운세 전화 상담 전문 플랫폼입니다.
+          모운은 개인별 맞춤 상담을 제공하는<br />
+          운세 전화 상담 전문 플랫폼입니다.
         </h2>
 
         <div class="space-y-2 text-[13.5px] leading-[1.62] text-ink-600">
@@ -478,122 +514,108 @@
           <p>전화 한 통으로 쉽게 털어놓기 힘든 고민들을 모운과 함께 해결해보세요!</p>
         </div>
       </div>
-
-      <!-- ==================== 5. 모운 코인으로 무엇을 할 수 있나요? ==================== -->
-      <div class="mt-8">
-        <h3 class="text-[18px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
-          모운 코인으로 무엇을 할 수 있나요?
-        </h3>
-
-        <div class="grid grid-cols-2 gap-3">
-          <!-- Step ① Card -->
-          <div class="h-full rounded-2xl bg-fintech-bg border border-fintech-border p-4 flex flex-col items-center text-center justify-between">
-            <div class="w-11 h-11 rounded-2xl bg-white border border-fintech-border shadow-sm flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-burgundy-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-            </div>
-            <span class="inline-block px-2 py-0.5 rounded-full bg-champagne-100 text-champagne-600 text-[10.5px] font-extrabold tracking-wide whitespace-nowrap mb-1.5">
-              STEP 01
-            </span>
-            <p class="text-[13px] font-bold text-ink-900 leading-[1.42]">
-              ① 원하는 상담사를<br />선택한다
-            </p>
-          </div>
-
-          <!-- Step ② Card -->
-          <div class="h-full rounded-2xl bg-fintech-bg border border-fintech-border p-4 flex flex-col items-center text-center justify-between">
-            <div class="w-11 h-11 rounded-2xl bg-white border border-fintech-border shadow-sm flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-crimson-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-              </svg>
-            </div>
-            <span class="inline-block px-2 py-0.5 rounded-full bg-crimson-50 text-crimson-600 text-[10.5px] font-extrabold tracking-wide whitespace-nowrap mb-1.5">
-              STEP 02
-            </span>
-            <p class="text-[13px] font-bold text-ink-900 leading-[1.42]">
-              ② 코인으로 무료 상담을<br />받아본다
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- ==================== 6. 이용방법 SECTION (INTERACTIVE TABS) ==================== -->
+    <!-- ==================== 5. 통합 이용방법 — 모운 전화상담, 이렇게 간편해요 ==================== -->
     <section class="py-8 px-5 bg-fintech-bg">
-      <h2 class="text-[19px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-4">
-        이용방법
-      </h2>
+      <div class="mb-5">
+        <span class="inline-block px-2.5 py-1 rounded-md bg-crimson-50 border border-crimson-100 text-crimson-600 text-[11.5px] font-bold whitespace-nowrap mb-2">
+          이용방법 · 전화상담 가이드
+        </span>
+        <h2 class="text-[20px] font-extrabold text-ink-900 tracking-[-0.025em] whitespace-nowrap mb-1">
+          모운 전화상담, 이렇게 간편해요
+        </h2>
+        <p class="text-[13px] text-ink-500 font-medium">
+          복잡한 번호 입력 없이 버튼 한 번으로 바로 연결됩니다.
+        </p>
+      </div>
 
-      <div class="bg-white rounded-2xl p-4 border border-fintech-border shadow-card">
-        <!-- Segmented Tab Control -->
-        <div class="grid grid-cols-2 p-1 rounded-xl bg-fintech-bg border border-fintech-border mb-4" role="tablist" aria-label="이용방법 탭">
-          <button
-            type="button"
-            id="tabMobile"
-            role="tab"
-            aria-selected="true"
-            onclick="switchUsageTab('mobile')"
-            class="py-2 rounded-lg text-[12.5px] font-bold whitespace-nowrap transition-all bg-white text-ink-900 shadow-sm"
-          >
-            모바일에서 이용 시
-          </button>
-          <button
-            type="button"
-            id="tabPc"
-            role="tab"
-            aria-selected="false"
-            onclick="switchUsageTab('pc')"
-            class="py-2 rounded-lg text-[12.5px] font-semibold whitespace-nowrap transition-all text-ink-500 hover:text-ink-700"
-          >
-            PC에서 이용 시
-          </button>
-        </div>
+      <!-- Original Phone Consultation Guide Image Slot -->
+      <div class="bg-white rounded-2xl border border-fintech-border shadow-card overflow-hidden mb-4">
+        <!-- 실제 배포 시 같은 폴더에 20261127_102220.png 파일을 두거나, 모운 서버 이미지 URL로 src를 교체하세요 -->
+        <img
+          id="phoneGuideImg"
+          src="20261127_102220.png"
+          alt="모운 전화 상담 이용방법 가이드 (1~4단계)"
+          class="w-full h-auto block"
+          onerror="handleGuideImgError()"
+        />
 
-        <!-- Mobile Tab Panel -->
-        <div id="panelMobile" class="rounded-xl bg-fintech-bg p-4 mb-3.5 flex items-start gap-3">
-          <span class="w-6 h-6 rounded-full bg-burgundy-900 text-champagne-200 text-[12px] font-extrabold flex items-center justify-center shrink-0 mt-0.5">1</span>
-          <p class="text-[13.5px] leading-[1.6] text-ink-700 font-medium">
-            5,000 코인 이상 보유 후, <strong class="text-ink-900 font-bold">[상담하기]</strong>를 누르고 <strong class="text-crimson-600 font-extrabold whitespace-nowrap">070-7663-0517</strong>로 전화하세요.
-          </p>
-        </div>
-
-        <!-- PC Tab Panel -->
-        <div id="panelPc" class="hidden rounded-xl bg-fintech-bg p-4 mb-3.5 flex items-start gap-3">
-          <span class="w-6 h-6 rounded-full bg-burgundy-900 text-champagne-200 text-[12px] font-extrabold flex items-center justify-center shrink-0 mt-0.5">1</span>
-          <p class="text-[13.5px] leading-[1.6] text-ink-700 font-medium">
-            5,000 코인 이상 보유 후, 원하는 상담사 프로필에서 <strong class="text-ink-900 font-bold">[상담하기]</strong>를 클릭하고 <strong class="text-crimson-600 font-extrabold whitespace-nowrap">070-7663-0517</strong>을 입력해 통화하세요.
-          </p>
-        </div>
-
-        <!-- 이용 요금 안내 Callout -->
-        <div class="rounded-xl bg-champagne-100/80 border border-champagne-300/60 px-3.5 py-3">
-          <p class="text-[12px] font-bold text-ink-900 mb-0.5 whitespace-nowrap">이용 요금 안내</p>
-          <p class="text-[12.5px] text-ink-700 leading-[1.5]">
-            상담사가 설정한 가격에 따라 30초당 700원 ~ 2,900원 적용됩니다.
-          </p>
+        <!-- Preview Fallback: 미리보기 환경에서 로컬 이미지가 없을 때 즉시 선택해서 확인 가능 -->
+        <div id="guideImgFallback" class="hidden p-5 text-center bg-white">
+          <div class="rounded-xl border-2 border-dashed border-fintech-border bg-fintech-bg/70 px-4 py-6">
+            <div class="w-11 h-11 rounded-2xl bg-crimson-50 text-crimson-600 flex items-center justify-center mx-auto mb-3 text-[20px]">
+              🖼️
+            </div>
+            <p class="text-[13.5px] font-extrabold text-ink-900 mb-1">
+              전화 상담 이용방법 가이드 이미지 영역
+            </p>
+            <p class="text-[12px] leading-[1.55] text-ink-500 mb-4">
+              실제 배포 시 <code class="px-1.5 py-0.5 rounded bg-white border border-fintech-border text-ink-700 font-mono text-[11px]">20261127_102220.png</code> 파일이<br />
+              이 자리에 자동으로 표시됩니다.
+            </p>
+            <label class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-burgundy-900 hover:bg-burgundy-800 active:scale-95 transition text-champagne-200 text-[12.5px] font-bold cursor-pointer shadow-sm whitespace-nowrap">
+              <span>📷 방금 올린 이미지 불러와서 미리보기</span>
+              <input
+                type="file"
+                accept="image/*"
+                class="hidden"
+                onchange="previewLocalGuideImage(event)"
+              />
+            </label>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- ==================== 7. 익명보장 & 환불 정책 SECTION ==================== -->
-    <section class="py-8 px-5 bg-white border-y border-fintech-border space-y-4">
-      <!-- Fintech Privacy Trust Card -->
-      <div class="rounded-2xl bg-fintech-bg border border-fintech-border p-5">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-crimson-50 border border-crimson-100 text-crimson-600 text-[12px] font-bold whitespace-nowrap">
-            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+      <!-- Highlight Reassurance Callout Box (추가 요금 걱정 ZERO!) -->
+      <div class="rounded-2xl bg-gradient-to-br from-champagne-50 via-champagne-100/90 to-champagne-200/50 border border-champagne-300/80 p-4 shadow-card mb-3">
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-burgundy-900 text-champagne-200 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
+          </div>
+          <div class="min-w-0">
+            <h3 class="text-[14.5px] font-extrabold text-burgundy-950 whitespace-nowrap mb-1">
+              추가 요금 걱정 ZERO!
+            </h3>
+            <p class="text-[12.5px] leading-[1.58] text-ink-700 font-medium">
+              모운 상담은 <strong class="text-burgundy-900 font-bold">보유하신 코인 안에서만 진행</strong>되며, 코인이 다 떨어지면 통화는 자동 종료됩니다. 원활한 상담을 원하신다면 코인을 미리 충전해 두세요!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fee Info Bar -->
+      <div class="rounded-xl bg-fintech-subtle border border-fintech-border px-4 py-3 flex items-start gap-2.5">
+        <span class="text-[12px] font-extrabold text-ink-900 whitespace-nowrap shrink-0 mt-0.5">이용 요금 안내</span>
+        <span class="text-fintech-border font-bold shrink-0">|</span>
+        <p class="text-[12px] leading-[1.5] text-ink-600">
+          상담사가 설정한 가격에 따라 30초당 700원 ~ 2,900원 적용됩니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== 6 & 7. 익명보장 & 환불 정책 SECTION ==================== -->
+    <section class="py-8 px-5 bg-white border-y border-fintech-border space-y-4">
+      <!-- Anonymity Guarantee Card -->
+      <div class="rounded-2xl bg-gradient-to-br from-burgundy-950 via-burgundy-900 to-burgundy-800 p-5 text-white border border-champagne-400/30 shadow-card">
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-white/10 border border-champagne-300/30 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-champagne-300" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-champagne-300 text-burgundy-950 text-[11.5px] font-extrabold whitespace-nowrap">
+            <span class="w-1.5 h-1.5 rounded-full bg-crimson-600"></span>
             익명보장 100%
           </span>
         </div>
 
-        <h3 class="text-[17.5px] font-extrabold text-ink-900 tracking-[-0.02em] whitespace-nowrap mb-2">
+        <h3 class="text-[17px] font-extrabold text-white tracking-tight mb-2 whitespace-nowrap">
           전화 상담, 내 정보는 안전할까요?
         </h3>
-
-        <p class="text-[13px] leading-[1.64] text-ink-600">
+        <p class="text-[13px] leading-[1.6] text-white/80">
           모운에서는 상담사에게 번호가 보이지 않고 모운 전용 번호만 표시됩니다. 상담 내용은 기록되지 않으며, 완벽한 익명이 됩니다. 안심하고 상담하세요!
         </p>
       </div>
@@ -698,13 +720,14 @@
         <div class="w-32 h-32 rounded-full bg-champagne-400/15 blur-2xl absolute -bottom-10 -left-10 pointer-events-none" aria-hidden="true"></div>
 
         <h2 class="relative z-10 text-[18.5px] font-extrabold text-white leading-[1.45] tracking-[-0.025em] mb-3">
-          내 이야기, 괜찮을까<br />
-          고민하지 마세요.<br />
+          내 이야기, 괜찮을까 고민하지 마세요.<br />
           <span class="text-champagne-300">모운은 어떤 이야기도 존중합니다.</span>
         </h2>
 
-        <p class="relative z-10 text-[13px] leading-[1.6] text-white/80 mb-6">
-          모운 전문가와 이야기를 나눠보세요. 당신의 이야기를 차별 없이 듣고, 당신만의 답을 함께 찾아드립니다.
+        <p class="relative z-10 text-[13px] leading-[1.65] text-white/80 mb-6">
+          모운 전문가와 이야기를 나눠보세요.<br />
+          당신의 이야기를 차별 없이 듣고,<br />
+          당신만의 답을 함께 찾아드립니다.
         </p>
 
         <a
@@ -748,12 +771,15 @@
   <!-- ==================== 11. STICKY BOTTOM FLOATING BAR ==================== -->
   <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-40 px-3 pb-3 pt-1.5 pointer-events-none">
     <div class="pointer-events-auto rounded-2xl bg-burgundy-950/95 backdrop-blur-md text-white px-4 py-2.5 shadow-2xl border border-champagne-400/35 flex items-center justify-between gap-3">
-      <!-- Left: Single-row Clean Status -->
-      <div class="flex items-center gap-2 min-w-0">
-        <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-dot shrink-0"></span>
-        <span class="font-mono text-[13px] font-extrabold text-white tabular-nums whitespace-nowrap js-countdown">14:19:52</span>
-        <span class="text-white/25">|</span>
-        <span class="text-[12px] font-bold text-champagne-300 whitespace-nowrap">잔여 9,996명</span>
+      <!-- Left: Clean Status + Live Timer -->
+      <div class="min-w-0">
+        <p class="text-[11.5px] font-bold text-champagne-200 whitespace-nowrap leading-tight">
+          🔔 마감 임박 · 잔여 9,996명
+        </p>
+        <div class="flex items-center gap-1.5 mt-0.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-live-dot shrink-0"></span>
+          <span class="font-mono text-[13px] font-extrabold text-white tabular-nums whitespace-nowrap js-countdown">14:19:52</span>
+        </div>
       </div>
 
       <!-- Right: Crisp Single-Line CTA Link -->
@@ -835,41 +861,31 @@
     }
 
     /**
-     * 3. Interactive Usage Tab Toggle (Mobile vs PC)
+     * 3. Guide Image Fallback & Local Preview Loader
      */
-    function switchUsageTab(type) {
+    function handleGuideImgError() {
+      const imgEl = document.getElementById('phoneGuideImg');
+      const fallbackEl = document.getElementById('guideImgFallback');
+      if (imgEl) imgEl.classList.add('hidden');
+      if (fallbackEl) fallbackEl.classList.remove('hidden');
+    }
+
+    function previewLocalGuideImage(event) {
       try {
-        const tabMobile = document.getElementById('tabMobile');
-        const tabPc = document.getElementById('tabPc');
-        const panelMobile = document.getElementById('panelMobile');
-        const panelPc = document.getElementById('panelPc');
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
 
-        if (!tabMobile || !tabPc || !panelMobile || !panelPc) return;
+        const imgEl = document.getElementById('phoneGuideImg');
+        const fallbackEl = document.getElementById('guideImgFallback');
+        if (!imgEl) return;
 
-        const activeCls = ['bg-white', 'text-ink-900', 'shadow-sm', 'font-bold'];
-        const inactiveCls = ['text-ink-500', 'hover:text-ink-700', 'font-semibold'];
-
-        if (type === 'mobile') {
-          tabMobile.setAttribute('aria-selected', 'true');
-          tabPc.setAttribute('aria-selected', 'false');
-          tabMobile.classList.add(...activeCls);
-          tabMobile.classList.remove(...inactiveCls);
-          tabPc.classList.remove(...activeCls);
-          tabPc.classList.add(...inactiveCls);
-          panelMobile.classList.remove('hidden');
-          panelPc.classList.add('hidden');
-        } else {
-          tabPc.setAttribute('aria-selected', 'true');
-          tabMobile.setAttribute('aria-selected', 'false');
-          tabPc.classList.add(...activeCls);
-          tabPc.classList.remove(...inactiveCls);
-          tabMobile.classList.remove(...activeCls);
-          tabMobile.classList.add(...inactiveCls);
-          panelPc.classList.remove('hidden');
-          panelMobile.classList.add('hidden');
-        }
+        const objectUrl = URL.createObjectURL(file);
+        imgEl.onerror = null;
+        imgEl.src = objectUrl;
+        imgEl.classList.remove('hidden');
+        if (fallbackEl) fallbackEl.classList.add('hidden');
       } catch (err) {
-        console.error('Tab switch error:', err);
+        console.error('Guide image preview error:', err);
       }
     }
   </script>
